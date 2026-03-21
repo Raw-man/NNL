@@ -1,0 +1,40 @@
+# --- Build Artifacts ---
+# Ignore the entire build directory where CMake generates files
+build/
+bin/
+lib/
+out/
+
+# --- CMake ---
+generated/
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+_deps/
+Makefile
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+.vs/
+*.swp
+*.sublime-project
+*.sublime-workspace
+CMakeUserPresets.json
+
+# --- Documentation ---
+docs/html/
+docs/latex/
+docs/xml/
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
+
+# --- Dependencies --- 
+googletest-src/
+googletest-build/
+

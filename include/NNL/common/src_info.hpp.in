@@ -1,0 +1,45 @@
+/**
+ * @file src_info.hpp
+ * @brief This file defines some macro utils.
+ *
+ */
+#pragma once
+
+/**
+ * @def NNL_STR
+ * @brief Converts a macro argument into a C string literal
+ *
+ */
+#define NNL_STR_HELPER(x) #x
+#define NNL_STR(x) NNL_STR_HELPER(x)
+
+
+#define NNL_VERSION_MAJOR @RacjinAssetLib_VERSION_MAJOR@
+#define NNL_VERSION_MINOR @RacjinAssetLib_VERSION_MINOR@
+#define NNL_VERSION_PATCH @RacjinAssetLib_VERSION_PATCH@
+
+#define NNL_VERSION_STR NNL_STR(NNL_VERSION_MAJOR) "." NNL_STR(NNL_VERSION_MINOR) "." NNL_STR(NNL_VERSION_PATCH)
+
+
+/**
+ * @def NNL_FILE
+ * @brief A macro that expands to the name of the source file.
+ */
+#ifndef NNL_FILE
+#if defined(__FILE_NAME__)
+#define NNL_FILE __FILE_NAME__
+#else
+#define NNL_FILE __FILE__
+#endif
+#endif
+
+/**
+ * @def NNL_SRCINF
+ * @brief Source Information
+ *
+ * Expands to std::string with info about function signature, file and line number
+ */
+#ifndef NNL_SRCINF
+#include <string> // IWYU pragma: export
+#define NNL_SRCINF std::string(std::string(__func__) + "() at " NNL_FILE ":" NNL_STR(__LINE__))
+#endif

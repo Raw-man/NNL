@@ -1,0 +1,39 @@
+#include <gtest/gtest.h>
+
+#include "NNL/utility/data.hpp"
+
+using namespace nnl;
+
+TEST(Data, MD5) {
+  std::array<u8, 16> empty_dig{0xd4, 0x1d, 0x8c, 0xd9, 0x8f, 0x00, 0xb2, 0x04,
+                               0xe9, 0x80, 0x09, 0x98, 0xec, 0xf8, 0x42, 0x7e};
+
+  utl::data::MD5Context md5_ctx;
+
+  md5_ctx.Update(nnl::Buffer{});
+
+  ASSERT_TRUE((md5_ctx.Final() == empty_dig));
+
+  std::array<u8, 16> abc_dig{0x90, 0x01, 0x50, 0x98, 0x3c, 0xd2, 0x4f, 0xb0,
+                             0xd6, 0x96, 0x3f, 0x7d, 0x28, 0xe1, 0x7f, 0x72};
+
+  md5_ctx.Update(std::string{"abc"});
+
+  ASSERT_TRUE((md5_ctx.Final() == abc_dig));
+
+  std::array<u8, 16> long_dig{0x57, 0xed, 0xf4, 0xa2, 0x2b, 0xe3, 0xc9, 0x55,
+                              0xac, 0x49, 0xda, 0x2e, 0x21, 0x07, 0xb6, 0x7a};
+
+  md5_ctx.Update(
+      std::string{"123456789012345678901234567890123456789012345678901234567890"
+                  "12345678901234567890"});
+
+  ASSERT_TRUE((md5_ctx.Final() == long_dig));
+
+  std::array<u8, 16> msg_dig{0x9e, 0x10, 0x7d, 0x9d, 0x37, 0x2b, 0xb6, 0x82,
+                             0x6b, 0xd8, 0x1d, 0x35, 0x42, 0xa4, 0x19, 0xd6};
+
+  md5_ctx.Update({"The quick brown fox jumps over the lazy dog", 43});
+
+  ASSERT_TRUE((md5_ctx.Final() == msg_dig));
+}
