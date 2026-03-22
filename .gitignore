@@ -34,7 +34,9 @@ docs/xml/
 .DS_Store
 Thumbs.db
 
-# --- Dependencies --- 
-googletest-src/
-googletest-build/
+# --- Files --- 
+*.BIN
+*.bak
+*.tmp
+
 
