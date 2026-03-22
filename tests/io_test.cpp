@@ -54,7 +54,7 @@ TEST(IO, ReadWriteContainer) {
 TEST(IO, Write) {
   BufferRW b;
 
-  auto uval = b.WriteLE<std::size_t>(4);
+  auto uval = b.WriteLE<unsigned long>(4);
 
   auto val = b.WriteLE<int>(-3);
 
@@ -62,7 +62,7 @@ TEST(IO, Write) {
 
   auto fval = b.WriteLE(1.0f);
 
-  ASSERT_EQ(*uval, 4);
+  ASSERT_EQ(*uval, 4ul);
 
   ASSERT_EQ(*val, -3);
 
