@@ -156,8 +156,8 @@ enum class NNL_FLAG_ENUM MaterialFeatures : u16 {
 
   kLit = 0b000000010,                ///< Enables diffuse, specular, and emissive components of
                                      ///< the material. The first two depend on external lights.
-                                     ///  The ambient color also becomes dependent on the global
-                                     ///  ambient light.
+                                     ///< The ambient color also becomes dependent on the global
+                                     ///< ambient light.
                                      ///< Without this flag, only a texture, vertex colors **or**
                                      ///< the ambient component are used (an unshaded material).
                                      ///< Normals must be present in the vertex data if this flag

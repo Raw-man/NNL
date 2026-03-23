@@ -21,7 +21,6 @@
 namespace nnl {
 /**
  * \addtogroup Action
- * @copydoc action.hpp
  * @{
  */
 
