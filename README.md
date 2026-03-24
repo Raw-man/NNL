@@ -25,7 +25,7 @@ Add the following to your CMakeLists.txt:
 include(FetchContent)
 
 # 1. Configure the library
-set(NNL_LOG_ENABLED ON)
+set(NNL_ENABLE_LOGGING ON)
 
 FetchContent_Declare(
     NNL
@@ -41,15 +41,14 @@ target_link_libraries(${PROJECT_NAME} PUBLIC NNL::NNL)
 
 ## Building
 
-If you want to build NNL as a standalone library, follow these steps:
+Ensure you have the following installed:
 
-Prerequisites
+- Git
+- C++17 compiler (GCC 13+, Clang 16+, or MSVC 19.28+)
+- CMake 3.20+
+- Doxygen 1.14+ (optional, for documentation) 
 
-- C++17 Compiler (GCC 13+, Clang 16+, or MSVC 19.28+)
-- CMake 3.20 or higher
-- Doxygen (optional, for documentation) 
-
-Build Instructions
+Run the following commands:
 
 ```bash
 git clone https://github.com/Raw-man/NNL.git
