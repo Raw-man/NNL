@@ -14,7 +14,7 @@ NNL is a C++ library dedicated to the modding of two PlayStation Portable titles
 Unpack and repack game archives.
 -   **Asset Processing**:
 Parse and manipulate game-native formats, such as 3D models and textures.
-- **Format Conversion**:
+-   **Format Conversion**:
 Export assets to and import from standard exchange formats, such as **glTF** and **PNG**.
 
 ## Integration (CMake)
