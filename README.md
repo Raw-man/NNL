@@ -13,7 +13,7 @@ NNL is a C++ library dedicated to the modding of two PlayStation Portable titles
 -   **Archive Management**:
 Unpack and repack game archives.
 -   **Asset Processing**:
-Parse and manipulate proprietary formats, such as 3D models and textures.
+Parse and manipulate game-native formats, such as 3D models and textures.
 - **Format Conversion**:
 Export assets to and import from standard exchange formats, such as **glTF** and **PNG**.
 
@@ -44,6 +44,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC NNL::NNL)
 Ensure you have the following installed:
 
 - Git
+- Ninja or Make
 - C++17 compiler (GCC 13+, Clang 16+, or MSVC 19.28+)
 - CMake 3.20+
 - Doxygen 1.14+ (optional, for documentation) 
@@ -81,8 +82,9 @@ into a standard GLB file.
 int main() {
    using namespace nnl;
 
-  // Initialize the path to the main game archive from NSLAR (ULUS10447).
-  // Note: Archives from NSUNI require decryption before processing.
+  // Initialize the path to the main data archive from NSLAR (ULUS10447).
+  // Note: Archives from NSUNI require decryption before processing;
+  // see https://gbatemp.net/threads/pgd-encrypter.432029/ 
 
   std::filesystem::path cfc_dig_path = std::filesystem::u8path("0000.BIN");
 
