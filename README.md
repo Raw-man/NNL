@@ -17,6 +17,13 @@ Parse and manipulate game-native formats, such as 3D models and textures.
 -   **Format Conversion**:
 Export assets to and import from standard exchange formats, such as **glTF** and **PNG**.
 
+## Related Tools
+
+The following projects are built on top of the library:
+
+*   **[UNIT](https://github.com/Raw-man/UNIT)**: A CLI tool for batch processing, unpacking, and converting assets.
+*   **[Web Viewer](https://rcjn.itch.io/view)**: A browser-based viewer for inspection of game assets.
+
 ## Integration (CMake)
 
 Add the following to your CMakeLists.txt:
