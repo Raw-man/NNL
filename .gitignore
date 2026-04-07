@@ -17,6 +17,7 @@ _deps/
 Makefile
 
 # --- IDEs & Editors ---
+.qtcreator/
 .vscode/
 .idea/
 .vs/
