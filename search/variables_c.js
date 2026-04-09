@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['mag_5ffilter_0',['mag_filter',['../d7/d31/group__STexture.html#a41faca5ea7a986cb82a1d62be8a19353',1,'nnl::STexture::mag_filter'],['../d1/da7/group__Texture__Main.html#a142296e009da1ae1d4f3d90ac7fcb7f9',1,'nnl::texture::Texture::mag_filter']]],
+  ['mag_5ffilter_0',['mag_filter',['../d1/da7/group__Texture__Main.html#a142296e009da1ae1d4f3d90ac7fcb7f9',1,'nnl::texture::Texture::mag_filter'],['../d7/d31/group__STexture.html#a41faca5ea7a986cb82a1d62be8a19353',1,'nnl::STexture::mag_filter']]],
   ['markers_1',['markers',['../d3/d7c/group__Minimap__Main.html#aca7c5bcf8163bb76d2689792b6ff93c6',1,'nnl::minimap::MinimapConfig']]],
   ['material_5fid_2',['material_id',['../da/d2b/group__Model__Main.html#ae05989066e0c8b37462fc0fdb1d9a154',1,'nnl::model::Mesh::material_id'],['../d1/dc4/group__SModel.html#abe2158150c6d61cd087e5e84d3acc6cd',1,'nnl::SMesh::material_id']]],
   ['material_5fvariants_3',['material_variants',['../d1/dc4/group__SModel.html#ad3756b7cbb3802aeff3e44b47f201c24',1,'nnl::SMesh::material_variants'],['../d1/dc4/group__SModel.html#a03bf354ee9f2877e46dff73af0d3f305',1,'nnl::SModel::material_variants']]],

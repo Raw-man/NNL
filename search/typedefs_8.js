@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['svisibilitychannel_0',['SVisibilityChannel',['../da/ddc/group__SAnimation.html#ga99847cda736748caa099d34b8cdba610',1,'nnl']]]
+  ['svisibilitychannel_0',['SVisibilityChannel',['../da/ddc/group__SAnimation.html#ga6aee477cc59b2a5343fb485d88db83c8',1,'nnl']]]
 ];

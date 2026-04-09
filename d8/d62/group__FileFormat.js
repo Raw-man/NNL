@@ -1,6 +1,5 @@
 var group__FileFormat =
 [
-    [ "nnl::format", "de/d7c/namespacennl_1_1format.html", null ],
     [ "nnl::format::FileFormat", "d8/d62/group__FileFormat.html#ga5a0fe76a49bddd7e1190c6eaccf9a710", [
       [ "nnl::format::kUnknown", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710affd08db02be75b951bd2a69df0b66093", null ],
       [ "nnl::format::kPGD", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710aef3f389c2bac70df945e34d7a75ab4b4", null ],

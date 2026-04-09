@@ -1,12 +1,24 @@
 var searchData=
 [
-  ['weights_0',['weights',['../d1/dc4/group__SModel.html#a27b2e4b201eed5da320c77ca023026ac',1,'nnl::SVertex']]],
-  ['width_1',['width',['../d1/da7/group__Texture__Main.html#ae67d9978e538dbce229250a0dfbb0ef1',1,'nnl::texture::TextureData::width'],['../d7/d31/group__STexture.html#ad11c7857ee539bad36251b6d030f7cbe',1,'nnl::STexture::width']]],
-  ['world_2',['World',['../df/de4/group__World.html',1,'']]],
-  ['writeargs_3',['WriteArgs',['../d8/d05/group__Action__Auxiliary.html#gaf0b0313672470dd367fcbaeded565b7d',1,'nnl::action']]],
-  ['writearrayle_4',['WriteArrayLE',['../dc/d8c/group__InputOutput.html#ad0237aea44b801f9d4785c5603eecf07',1,'nnl::Writer']]],
-  ['writebuf_5',['WriteBuf',['../dc/d8c/group__InputOutput.html#af100cb40c70e27df168db005b75fc278',1,'nnl::Writer']]],
-  ['writedata_6',['writedata',['../dc/d8c/group__InputOutput.html#a4452f2a079baac1ea30a788d9652a7ca',1,'nnl::Writer::WriteData()'],['../dc/d8c/group__InputOutput.html#a59e36946835ba7992e656418ff0fc1c5',1,'nnl::FileRW::WriteData()'],['../dc/d8c/group__InputOutput.html#a301a638b18abe1ddc7dabe6d738cf545',1,'nnl::BufferSpan::WriteData()'],['../dc/d8c/group__InputOutput.html#ad9e2eaa35cc88366c1111ae147e1e33f',1,'nnl::BufferRW::WriteData()']]],
-  ['writele_7',['WriteLE',['../dc/d8c/group__InputOutput.html#add3034ebdb001383c16d571cd0125e25',1,'nnl::Writer']]],
-  ['writer_8',['Writer',['../dc/d8c/group__InputOutput.html#d9/d51/classnnl_1_1Writer',1,'nnl']]]
+  ['v_5foffset_0',['v_offset',['../da/d2b/group__Model__Main.html#a107cd5a9a44b6538696fc8abdd6354ae',1,'nnl::model::MeshGroup']]],
+  ['v_5fscale_1',['v_scale',['../da/d2b/group__Model__Main.html#a8d8a308ca86b80da7e5ee11b0310ebc2',1,'nnl::model::MeshGroup']]],
+  ['v_5fshift_2',['v_shift',['../da/d2b/group__Model__Main.html#a2453d210154e24a65db189dc6756dfc1',1,'nnl::model::UVAnimation']]],
+  ['value_3',['Simple Value',['../d0/db1/group__SimpleValue.html',1,'']]],
+  ['value_4',['value',['../d6/da3/group__Animation__Main.html#af7389a4107164a93762a567babd565b3',1,'nnl::animation::KeyFrame::value'],['../da/ddc/group__SAnimation.html#a45d5b681410d74d882b44db8dffa3acd',1,'nnl::SKeyFrame::value']]],
+  ['vec2_5',['Vec2',['../dc/ddd/group__FixedType.html#da/d34/structnnl_1_1Vec2',1,'nnl']]],
+  ['vec3_6',['Vec3',['../dc/ddd/group__FixedType.html#de/de5/structnnl_1_1Vec3',1,'nnl']]],
+  ['vec4_7',['Vec4',['../dc/ddd/group__FixedType.html#d2/d09/structnnl_1_1Vec4',1,'nnl']]],
+  ['vertex_20decode_20encode_20utilities_8',['Vertex Decode/Encode Utilities',['../dd/dbb/group__Vertex.html',1,'']]],
+  ['vertex_5fformat_9',['vertex_format',['../da/d2b/group__Model__Main.html#a3f64c2f21c811da6b1ff54c5322fa8df',1,'nnl::model::SubMesh']]],
+  ['vertex_5findex_5fbuffer_10',['vertex_index_buffer',['../da/d2b/group__Model__Main.html#a9c6142961d548e4bd824e6473c40c5a6',1,'nnl::model::Primitive']]],
+  ['vertexde_2ehpp_11',['vertexde.hpp',['../d2/d7e/vertexde_8hpp.html',1,'']]],
+  ['vertexlayout_12',['VertexLayout',['../de/d26/group__Vertex__Auxiliary.html#d4/d92/structnnl_1_1vertexde_1_1VertexLayout',1,'nnl::vertexde']]],
+  ['vertices_13',['vertices',['../dd/df5/group__Collision__Main.html#ac6cfdbaf98eb6e093060746b362c4ca9',1,'nnl::collision::Collision::vertices'],['../d7/df4/group__Shadow__Main.html#afb0ca293fbca36d25555769d2ebe5853',1,'nnl::shadow_collision::Collision::vertices'],['../d1/dc4/group__SModel.html#a9ad4493af5866c9a9a3377106a05c446',1,'nnl::STriangle::vertices'],['../d1/dc4/group__SModel.html#a08ed43de9c84f80e28d354d0a006d260',1,'nnl::SMesh::vertices']]],
+  ['vfx_5fgroup_5fid_14',['vfx_group_id',['../da/d2b/group__Model__Main.html#a5525a2200065ee0110aeb82677b6cdf2',1,'nnl::model::Material::vfx_group_id'],['../d1/dc4/group__SModel.html#ac9989caa2272be8342f9f620883b7987',1,'nnl::SMaterial::vfx_group_id']]],
+  ['visanimation_2ehpp_15',['visanimation.hpp',['../d0/d7d/visanimation_8hpp.html',1,'']]],
+  ['visibility_20animation_16',['Visibility Animation',['../d4/dda/group__Subanimation.html',1,'']]],
+  ['visibility_5fanimations_17',['visibility_animations',['../d4/d43/group__Simple3DAsset.html#a54f1f47ae930a9f0a814d4e950ee2328',1,'nnl::SAsset3D']]],
+  ['visibility_5fchannels_18',['visibility_channels',['../da/ddc/group__SAnimation.html#a1db1431ae6f3b04037e3f95fd6ef60e2',1,'nnl::SVisibilityAnimation']]],
+  ['visual_19',['Visual',['../d7/d71/group__Visual.html',1,'']]],
+  ['void_5ft_20',['void_t',['../d2/d9c/group__Traits.html#gaf782de6087b9dc0b5dc60f29327bc117',1,'nnl::utl::trait']]]
 ];

@@ -1,8 +1,5 @@
 var group__Asset__Auxiliary =
 [
-    [ "nnl::asset::Asset3D", "d6/ded/namespacennl_1_1asset_1_1Asset3D.html", null ],
-    [ "nnl::asset::SoundBank", "d7/d5c/namespacennl_1_1asset_1_1SoundBank.html", null ],
-    [ "nnl::asset::BitmapText", "dc/da5/namespacennl_1_1asset_1_1BitmapText.html", null ],
     [ "nnl::asset::Category", "d8/d00/group__Asset__Auxiliary.html#ga3a279ae0db228c890b6d74f7ca5370f1", [
       [ "nnl::asset::kUnknown", "d8/d00/group__Asset__Auxiliary.html#gga3a279ae0db228c890b6d74f7ca5370f1a61f624a171ee143536e1f6b8be700b04", null ],
       [ "nnl::asset::kAsset3DModel", "d8/d00/group__Asset__Auxiliary.html#gga3a279ae0db228c890b6d74f7ca5370f1a8908d9be60fa047fc00b04fcb301ee49", null ],

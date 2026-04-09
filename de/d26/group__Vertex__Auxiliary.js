@@ -1,8 +1,5 @@
 var group__Vertex__Auxiliary =
 [
-    [ "nnl::vertexde::fmt_code", "d8/d24/namespacennl_1_1vertexde_1_1fmt__code.html", null ],
-    [ "nnl::vertexde::fmt_shift", "dc/d00/namespacennl_1_1vertexde_1_1fmt__shift.html", null ],
-    [ "nnl::vertexde::fmt_mask", "d9/dc4/namespacennl_1_1vertexde_1_1fmt__mask.html", null ],
     [ "nnl::vertexde::VertexLayout", "de/d26/group__Vertex__Auxiliary.html#d4/d92/structnnl_1_1vertexde_1_1VertexLayout", null ],
     [ "nnl::vertexde::GetColorFormat", "de/d26/group__Vertex__Auxiliary.html#ga2ce847fdceafa786a7608179fd4fbb49", null ],
     [ "nnl::vertexde::GetColorNum", "de/d26/group__Vertex__Auxiliary.html#ga22a7e74420c904356eefa4c2a9077efd", null ],

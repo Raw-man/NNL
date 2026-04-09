@@ -12,7 +12,7 @@ var group__Action__Main =
       [ "effect_nodes", "db/d41/group__Action__Main.html#a27abdd04fbf3ac9c21e62f5c163d5ad8", null ],
       [ "name", "db/d41/group__Action__Main.html#afd468282c0b3e8e3f5bcaed1a30a5bcf", null ]
     ] ],
-    [ "nnl::action::ActionConfig", "db/d41/group__Action__Main.html#ga168c8614b88806726cf2b44f8400e626", null ],
+    [ "nnl::action::ActionConfig", "db/d41/group__Action__Main.html#ga63e5cf549f6a37e8c169f8b370950ec7", null ],
     [ "nnl::action::AnimationFunction", "db/d41/group__Action__Main.html#ga5d4f6a41bb4ff42bfa6c9e88795243e6", [
       [ "nnl::action::AnimationFunction::kEnd", "db/d41/group__Action__Main.html#gga5d4f6a41bb4ff42bfa6c9e88795243e6a374bf9ba57a441a600d65b212cf9d13c", null ],
       [ "nnl::action::AnimationFunction::kNext", "db/d41/group__Action__Main.html#gga5d4f6a41bb4ff42bfa6c9e88795243e6ac5312de02506bba2de2101d52c5107ff", null ],

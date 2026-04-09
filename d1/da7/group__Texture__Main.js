@@ -24,7 +24,7 @@ var group__Texture__Main =
       [ "swizzle", "d1/da7/group__Texture__Main.html#aa0eac7ffcda91d81b9e8c049d69e5ecd", null ],
       [ "texture_format", "d1/da7/group__Texture__Main.html#ac3580273ae8ca937ab56981f107ec610", null ]
     ] ],
-    [ "nnl::texture::TextureContainer", "d1/da7/group__Texture__Main.html#ga6763881348e12457efd1bae9b6e69995", null ],
+    [ "nnl::texture::TextureContainer", "d1/da7/group__Texture__Main.html#gaa5733a1b68364ef67fff47c6fc3fe4f9", null ],
     [ "nnl::texture::ClutFormat", "d1/da7/group__Texture__Main.html#gaa93ef6daecb19490fed7dc24332fc705", [
       [ "nnl::texture::ClutFormat::kRGBA8888", "d1/da7/group__Texture__Main.html#ggaa93ef6daecb19490fed7dc24332fc705a213639c073689692dc0e721353bc3ad1", null ],
       [ "nnl::texture::ClutFormat::kRGBA4444", "d1/da7/group__Texture__Main.html#ggaa93ef6daecb19490fed7dc24332fc705aa87888cfb3898b4e8689d2592d5615a1", null ],

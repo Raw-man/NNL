@@ -30,6 +30,6 @@ var group__SAnimation =
       [ "name", "da/ddc/group__SAnimation.html#aa9c2f4f9989ad365fb058a94d00ab8d5", null ],
       [ "translation_channels", "da/ddc/group__SAnimation.html#ab3fe9eb02b5c62e60a79fd1b0c9bd92a", null ]
     ] ],
-    [ "nnl::SVisibilityChannel", "da/ddc/group__SAnimation.html#ga99847cda736748caa099d34b8cdba610", null ],
+    [ "nnl::SVisibilityChannel", "da/ddc/group__SAnimation.html#ga6aee477cc59b2a5343fb485d88db83c8", null ],
     [ "nnl::SInterpolationMode", "da/ddc/group__SAnimation.html#gab43277b2fe23e76adbda78f1618c2d06", null ]
 ];

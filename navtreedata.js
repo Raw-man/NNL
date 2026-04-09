@@ -64,13 +64,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d1/def/group__Light__Main.html#a1f1f8f6e25e23552f44571960ed70dd7",
-"d6/d4e/minimap_8hpp.html",
-"d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710af5bf1f1a795b85c52e2498c450fafe4d",
-"db/d41/group__Action__Main.html#gga92011e0d8830404404a2ed5de6dfc2c2a5c366b6c363cc9d75c5e8631e7753e35",
-"dd/df6/smodel_8hpp_source.html",
-"namespacemembers_n.html"
+"d2/d40/group__String.html#gafec36af00d7c5c0520f5569c27ef3a80",
+"d7/d12/group__Subanimation__Main.html",
+"da/d2b/group__Model__Main.html#abf7f9a6633b264ccdff5b834414ae393",
+"dc/d8c/group__InputOutput.html#a8af4385322e65aa90ed0daf62933e992",
+"de/de6/classnnl_1_1Writer_1_1Ref.html#a257eb71e82937b637b90cc1adc2a55fb"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';
+var LISTOFALLMEMBERS = 'List of all members';

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['offset_0',['Offset',['../da/d76/classnnl_1_1Writer_1_1Offset.html',1,'nnl::Writer']]]
+  ['narrowerror_0',['NarrowError',['../d7/d26/group__Exceptions.html#db/dca/classnnl_1_1NarrowError',1,'nnl']]]
 ];

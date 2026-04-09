@@ -85,5 +85,5 @@ var group__InputOutput =
       [ "Tell", "dc/d8c/group__InputOutput.html#a36d5a6a68101cc7fa42fc1750a1387b7", null ],
       [ "WriteData", "dc/d8c/group__InputOutput.html#ad9e2eaa35cc88366c1111ae147e1e33f", null ]
     ] ],
-    [ "nnl::Buffer", "dc/d8c/group__InputOutput.html#ga66faf0bf47b2f6eb5fd5377da144c1d6", null ]
+    [ "nnl::Buffer", "dc/d8c/group__InputOutput.html#ga536e68388b3e1df823f0f8f9bb4f7dbe", null ]
 ];

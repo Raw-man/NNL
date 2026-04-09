@@ -1,7 +1,7 @@
 var group__Asset__Main =
 [
-    [ "nnl::asset::Asset", "df/d56/group__Asset__Main.html#ga82554185d75dce51b6ef66c6b6b8aad6", null ],
-    [ "nnl::asset::AssetView", "df/d56/group__Asset__Main.html#ga1ad9b813da18ae01a36ca18735da0c0e", null ],
+    [ "nnl::asset::Asset", "df/d56/group__Asset__Main.html#gac5baf128254f8bcd14a3fe35cf3a3aa9", null ],
+    [ "nnl::asset::AssetView", "df/d56/group__Asset__Main.html#ga0f2e3d7ccc2e7923496ad21161af7e1b", null ],
     [ "nnl::asset::Export", "df/d56/group__Asset__Main.html#ga495cbed68b46c22bb6a62a488d217a25", null ],
     [ "nnl::asset::Import", "df/d56/group__Asset__Main.html#ga5897a407f374f53c174c8a5f36eb5e80", null ],
     [ "nnl::asset::ImportView", "df/d56/group__Asset__Main.html#ga7661459d67dbf75baaf123bb9a299fd5", null ],

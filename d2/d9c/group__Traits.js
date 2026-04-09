@@ -1,6 +1,6 @@
 var group__Traits =
 [
-    [ "nnl::utl::trait::void_t", "d2/d9c/group__Traits.html#ga071f48c2214bc85e273167b8044e65df", null ],
+    [ "nnl::utl::trait::void_t", "d2/d9c/group__Traits.html#gaf782de6087b9dc0b5dc60f29327bc117", null ],
     [ "nnl::utl::trait::has_data_member_v", "d2/d9c/group__Traits.html#ga4282864aa39bec1d446b6f42aa6999a7", null ],
     [ "nnl::utl::trait::has_resize_member_v", "d2/d9c/group__Traits.html#ga289de5289dd4973b1a57ef88ccfd70cb", null ],
     [ "nnl::utl::trait::has_size_member_v", "d2/d9c/group__Traits.html#ga646040fcb47f611dcb3f150985a6b665", null ],
