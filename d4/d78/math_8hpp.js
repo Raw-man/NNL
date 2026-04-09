@@ -1,0 +1,25 @@
+var math_8hpp =
+[
+    [ "Compose", "d4/d78/math_8hpp.html#ga58561d668cd86c02dcb1d7ac69097e71", null ],
+    [ "Decompose", "d4/d78/math_8hpp.html#gad06859ec49c0936a82ea418e68fe25e5", null ],
+    [ "EulerToQuat", "d4/d78/math_8hpp.html#gac04e5556a94da89c99c3fce4ceb1a6da", null ],
+    [ "FixedToFloat", "d4/d78/math_8hpp.html#gaa35ad0bb7678acd62311198b30d4de31", null ],
+    [ "FloatToFixed", "d4/d78/math_8hpp.html#gaf2d4935a350cdcb1bb67eabb2a268efa", null ],
+    [ "Inverse", "d4/d78/math_8hpp.html#gaa824f6f5ce703109d44cc2dfe1824202", null ],
+    [ "Inverse", "d4/d78/math_8hpp.html#ga7bf28ad7c12799cec71ade76aa4326fa", null ],
+    [ "InverseSafe", "d4/d78/math_8hpp.html#ga04f8b25d49ec2094c29c458ba3b24175", null ],
+    [ "InverseSafe", "d4/d78/math_8hpp.html#gab98e699ef758ebc13c0c41884338523f", null ],
+    [ "IsApproxEqual", "d4/d78/math_8hpp.html#gacd98d5f4fcfdfa54aecb52af324951a0", null ],
+    [ "IsApproxEqual", "d4/d78/math_8hpp.html#gadd4070b1832a02b3c520d726c0d6cde2", null ],
+    [ "IsFinite", "d4/d78/math_8hpp.html#ga3494166d40382266596488ea565ad0a1", null ],
+    [ "IsFinite", "d4/d78/math_8hpp.html#ga540a3ad9c2022bfd591c33a9797a3552", null ],
+    [ "IsNan", "d4/d78/math_8hpp.html#ga96e86e08863c8a2a83d949d7221cbd0f", null ],
+    [ "IsNan", "d4/d78/math_8hpp.html#gaf4a27e40bb76f20d8ac8b754358b5ec7", null ],
+    [ "IsPow2", "d4/d78/math_8hpp.html#ga0b840699fbe07f241844946a9a068f5b", null ],
+    [ "NormalizeSafe", "d4/d78/math_8hpp.html#ga69b49a0187e4ad83d5dcd45bf5e1489c", null ],
+    [ "QuatToEuler", "d4/d78/math_8hpp.html#ga62cb966dd8bc01feff81fcaa5507cd42", null ],
+    [ "RoundDownPow2", "d4/d78/math_8hpp.html#ga333700ac9dbd48086a183dd70fc28369", null ],
+    [ "RoundNum", "d4/d78/math_8hpp.html#ga7bcc651a53a3e9cccc28600326a7e49e", null ],
+    [ "RoundUpPow2", "d4/d78/math_8hpp.html#gaf85340f99fac85ae3ee31a40bc06946f", null ],
+    [ "Sqr", "d4/d78/math_8hpp.html#ga03250b2f4394ec3454117f0cd2b77b88", null ]
+];

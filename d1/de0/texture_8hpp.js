@@ -1,0 +1,58 @@
+var texture_8hpp =
+[
+    [ "TextureContainer", "d1/de0/texture_8hpp.html#ga6763881348e12457efd1bae9b6e69995", null ],
+    [ "ClutFormat", "d1/de0/texture_8hpp.html#gaa93ef6daecb19490fed7dc24332fc705", [
+      [ "kRGBA8888", "d1/de0/texture_8hpp.html#ggaa93ef6daecb19490fed7dc24332fc705a213639c073689692dc0e721353bc3ad1", null ],
+      [ "kRGBA4444", "d1/de0/texture_8hpp.html#ggaa93ef6daecb19490fed7dc24332fc705aa87888cfb3898b4e8689d2592d5615a1", null ],
+      [ "kRGBA5551", "d1/de0/texture_8hpp.html#ggaa93ef6daecb19490fed7dc24332fc705abaecf872c10041b5905b4c6839d7ac36", null ],
+      [ "kRGB565", "d1/de0/texture_8hpp.html#ggaa93ef6daecb19490fed7dc24332fc705a13ce9890924c13004c5c54c1c017e580", null ]
+    ] ],
+    [ "TextureFilter", "d1/de0/texture_8hpp.html#ga79ea84ffd8eefb12b00ee0b03a508268", [
+      [ "kNearest", "d1/de0/texture_8hpp.html#gga79ea84ffd8eefb12b00ee0b03a508268ae52c2066ca63eef7fada2eefb5c7f31c", null ],
+      [ "kLinear", "d1/de0/texture_8hpp.html#gga79ea84ffd8eefb12b00ee0b03a508268aac97f0008bcf7c7fe4f2ff94160e1385", null ],
+      [ "kNearestMipmapNearest", "d1/de0/texture_8hpp.html#gga79ea84ffd8eefb12b00ee0b03a508268ad0cebbab003a3904b46186b28bbde391", null ],
+      [ "kLinearMipmapNearest", "d1/de0/texture_8hpp.html#gga79ea84ffd8eefb12b00ee0b03a508268aec888b60cff6df356075bb1e0bf6bf4d", null ],
+      [ "kNearestMipmapLinear", "d1/de0/texture_8hpp.html#gga79ea84ffd8eefb12b00ee0b03a508268af0390380ce58ffa04692d4a0fe231ffe", null ],
+      [ "kLinearMipmapLinear", "d1/de0/texture_8hpp.html#gga79ea84ffd8eefb12b00ee0b03a508268ab4ed8b73891d46d5cce59439eb4a1c4c", null ]
+    ] ],
+    [ "TextureFormat", "d1/de0/texture_8hpp.html#ga0028ee87302163e6db78da5f0ea526b6", [
+      [ "kCLUT8", "d1/de0/texture_8hpp.html#gga0028ee87302163e6db78da5f0ea526b6a9084b442aa8d94b14c77d8067b257591", null ],
+      [ "kCLUT4", "d1/de0/texture_8hpp.html#gga0028ee87302163e6db78da5f0ea526b6a070c0729d08f9219c7c5297df2ad7342", null ],
+      [ "kRGBA8888", "d1/de0/texture_8hpp.html#gga0028ee87302163e6db78da5f0ea526b6a213639c073689692dc0e721353bc3ad1", null ],
+      [ "kRGBA4444", "d1/de0/texture_8hpp.html#gga0028ee87302163e6db78da5f0ea526b6aa87888cfb3898b4e8689d2592d5615a1", null ],
+      [ "kRGBA5551", "d1/de0/texture_8hpp.html#gga0028ee87302163e6db78da5f0ea526b6abaecf872c10041b5905b4c6839d7ac36", null ],
+      [ "kRGB565", "d1/de0/texture_8hpp.html#gga0028ee87302163e6db78da5f0ea526b6a13ce9890924c13004c5c54c1c017e580", null ]
+    ] ],
+    [ "AlignBufferWidth", "d1/de0/texture_8hpp.html#ga553061e64a7f265044406c71529db6ba", null ],
+    [ "ApplyPalette", "d1/de0/texture_8hpp.html#ga0116bb73bea4cae99f7796b06a0f232d", null ],
+    [ "Convert", "d1/de0/texture_8hpp.html#ga2ecbba9c7ff32bb64f32e2fc6f656b3f", null ],
+    [ "Convert", "d1/de0/texture_8hpp.html#ga19c5c17464f4c3822a2611cea206635b", null ],
+    [ "Convert", "d1/de0/texture_8hpp.html#gaf59a60154947b2637eda3cf14548eb90", null ],
+    [ "Convert", "d1/de0/texture_8hpp.html#ga47cc732c4c44442c39bb85ca75bf86cc", null ],
+    [ "ConvertIndexed4To8", "d1/de0/texture_8hpp.html#gaf903526636ccad2c07332282d2f5f6fb", null ],
+    [ "ConvertIndexed8To4", "d1/de0/texture_8hpp.html#gaa0d9fcf135869a8b8ff6217aebc65f2b", null ],
+    [ "ConvertRGB565ToRGBA8888", "d1/de0/texture_8hpp.html#ga0ff15628524f3e4a3ba813c7ec29785a", null ],
+    [ "ConvertRGBA4444ToRGBA8888", "d1/de0/texture_8hpp.html#ga094d5d7104080fabffb15fb118c96bbe", null ],
+    [ "ConvertRGBA5551ToRGBA8888", "d1/de0/texture_8hpp.html#ga34bcf43309b16d44335f81465178d8b8", null ],
+    [ "ConvertRGBA8888ToRGB565", "d1/de0/texture_8hpp.html#gad57783e6de342e61d2293bb9d4e820cf", null ],
+    [ "ConvertRGBA8888ToRGBA4444", "d1/de0/texture_8hpp.html#gab460227b2cc4171097ecca2a8727f344", null ],
+    [ "ConvertRGBA8888ToRGBA5551", "d1/de0/texture_8hpp.html#gac71eab0e415ff394ed01ccba7d2af3fc", null ],
+    [ "DealignBufferWidth", "d1/de0/texture_8hpp.html#ga757c9ceddc58b48fa8274dde236ec50a", null ],
+    [ "DeindexClut8ToRGBA8888", "d1/de0/texture_8hpp.html#gadb18739e0c1d3596181999647e1f2783", null ],
+    [ "Export", "d1/de0/texture_8hpp.html#gacd8d4e4b5673f19eeffe828ca0997ce6", null ],
+    [ "GenerateConvertParam", "d1/de0/texture_8hpp.html#ga3b55be97822b8074ecd61fa7690a6230", null ],
+    [ "GenerateConvertParam", "d1/de0/texture_8hpp.html#gaf26782742de47c73cff4b15d5e2e57f4", null ],
+    [ "GeneratePaletteMedian", "d1/de0/texture_8hpp.html#ga75fe1bd72d3785271b94acc332568b7e", null ],
+    [ "GeneratePaletteNaive", "d1/de0/texture_8hpp.html#gaa941c4acf37a06661aadce950068f597", null ],
+    [ "Import", "d1/de0/texture_8hpp.html#gaf5d7dffec2783c947fe3543c083044ee", null ],
+    [ "IsOfType", "d1/de0/texture_8hpp.html#gaa6fc5a25cdc4c96ceab8f974dc31d67b", null ],
+    [ "QuickTexHash", "d1/de0/texture_8hpp.html#ga675a728c366b06b7441930ac3cff7646", null ],
+    [ "SwizzleFromMem", "d1/de0/texture_8hpp.html#ga8d8516f53527aeebf6102a7327e458b4", null ],
+    [ "UnswizzleFromMem", "d1/de0/texture_8hpp.html#ga27a6b9f6d249621dda95f68eb79c1a57", null ],
+    [ "kMagicBytes", "d1/de0/texture_8hpp.html#ga83e9629fb74978050957fc4746965313", null ],
+    [ "kMaxDimension", "d1/de0/texture_8hpp.html#ga27842e8294ba98964d8fb99bd7fe1914", null ],
+    [ "kMaxMipMapLvl", "d1/de0/texture_8hpp.html#ga430115d5dbad9e6e7a6c82ede8672384", null ],
+    [ "kMaxTextureLvl", "d1/de0/texture_8hpp.html#ga95f503e76d7159a6db52948ab196bb7e", null ],
+    [ "kMinByteBufferWidth", "d1/de0/texture_8hpp.html#gae71a3b49e3c1505e25a557f78f27ddaa", null ],
+    [ "kMinDimension", "d1/de0/texture_8hpp.html#gae302011a77efd536993923bce5f4ece6", null ]
+];

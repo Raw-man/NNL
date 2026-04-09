@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['cel_5fshadow_5flight_5fdirection_0',['cel_shadow_light_direction',['../d1/def/group__Light__Main.html#a1d356877cbbb178e2196667fed8d4ace',1,'nnl::lit::Lit']]],
+  ['character_5fbrightness_1',['character_brightness',['../d1/def/group__Light__Main.html#af5b26b1c953752e6f631830d22178b70',1,'nnl::lit::Lit']]],
+  ['characters_2',['characters',['../d8/d44/group__Text__Main.html#a041a1a0a6f2658621a3baacae947151e',1,'nnl::text::Text']]],
+  ['children_3',['children',['../d1/dc4/group__SModel.html#a34378e03d86f8974f6fcb1ad6c21dff2',1,'nnl::SBone']]],
+  ['clut_5fbuffer_4',['clut_buffer',['../d1/da7/group__Texture__Main.html#aa75773b6f5d44c82d3ed572d3d6898e0',1,'nnl::texture::Texture']]],
+  ['clut_5fdither_5',['clut_dither',['../d1/da7/group__Texture__Main.html#a3711a73a902147a3324a16f6035a7a83',1,'nnl::texture::ConvertParam']]],
+  ['clut_5fformat_6',['clut_format',['../d1/da7/group__Texture__Main.html#a517654171730cbb914cf3d46816301e8',1,'nnl::texture::Texture::clut_format'],['../d1/da7/group__Texture__Main.html#a3edf07f24881cea6ccfca0d4a857a5ed',1,'nnl::texture::ConvertParam::clut_format']]],
+  ['col_5fattack_7',['col_attack',['../dd/de7/group__Colbox__Main.html#aa0b535199a7fc0738bd79e308e102b27',1,'nnl::colbox::ColBoxConfig']]],
+  ['col_5fdamage_8',['col_damage',['../dd/de7/group__Colbox__Main.html#a7028e72acf1a9a33e4d49efb59ed5dbc',1,'nnl::colbox::ColBoxConfig']]],
+  ['col_5fentities_9',['col_entities',['../dd/de7/group__Colbox__Main.html#a595c78a402848231cbb1140092537d81',1,'nnl::colbox::ColBoxConfig']]],
+  ['col_5fenviroment_10',['col_enviroment',['../dd/de7/group__Colbox__Main.html#ab31d6b6b6af6cfa1388599943502896e',1,'nnl::colbox::ColBoxConfig']]],
+  ['col_5funknown_11',['col_unknown',['../dd/de7/group__Colbox__Main.html#a1a9ca576eb63294780cf75536e1b0c70',1,'nnl::colbox::ColBoxConfig']]],
+  ['colboxes_12',['colboxes',['../dd/de7/group__Colbox__Main.html#ac9a02c84d581f557a8f211d44f582de9',1,'nnl::colbox::HitboxConfig']]],
+  ['color_13',['color',['../d7/d94/group__Fog__Main.html#ae8a8a4c84e33417c58476e9d36c2d77c',1,'nnl::fog::Fog::color'],['../d4/d43/group__Simple3DAsset.html#a9456b45c2e09fbc8b26b95a0f5bf4cd7',1,'nnl::SLight::color'],['../d1/dc4/group__SModel.html#a2e65c2106c2975f16b64372fadb43f1c',1,'nnl::SVertex::color']]],
+  ['columns_14',['columns',['../df/d14/group__Text__Auxiliary.html#a520d661f02bb52b09a32bbc94a1a629d',1,'nnl::text::BitmapFontParams']]],
+  ['compress_5flvl_15',['compress_lvl',['../da/d2b/group__Model__Main.html#aedbbd7c3210e43e0fa913a89fce4bf66',1,'nnl::model::ConvertParam']]],
+  ['coordinate_5fmap_16',['coordinate_map',['../dd/df5/group__Collision__Main.html#ada1e966fe17c47de3322a0d09e137e40',1,'nnl::collision::Collision::coordinate_map'],['../d7/df4/group__Shadow__Main.html#a87444949b336746903aab1b9263895cc',1,'nnl::shadow_collision::Collision::coordinate_map']]]
+];
