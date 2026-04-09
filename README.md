@@ -72,6 +72,8 @@ ctest --output-on-failure
 ```
 ## Documentation
 
+The latest API reference is available online at **[raw-man.github.io/NNL/](https://raw-man.github.io/NNL/)**
+
 To generate the local HTML API reference, run the custom documentation target after the build step:
 
 ```bash
