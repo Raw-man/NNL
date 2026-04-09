@@ -1,0 +1,47 @@
+name: Deploy Doxygen to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'include/**'
+      - 'docs/**'          # Include your Doxygen sources/configs
+      - 'CMakeLists.txt'
+      - 'Doxyfile*'       # Catch Doxyfile or Doxyfile.in
+      - '.github/workflows/docs.yml'
+
+permissions:
+  contents: write # Needed for peaceiris/actions-gh-pages
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Doxygen
+        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
+
+      - name: Setup CMake
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: 'latest'
+
+      - name: Install Compiler
+        run: sudo apt-get install -y build-essential
+
+      - name: Configure and Build Docs
+        run: |
+          cmake -B build
+          cmake --build build --target doc
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+          publish_dir: ./build/docs/html 
+          # Fixes issues with Doxygen's underscores in filenames
+          enable_jekyll: false 
