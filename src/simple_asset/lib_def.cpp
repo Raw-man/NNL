@@ -34,6 +34,8 @@
 #include "stb_truetype.h"
 #endif
 
+#include <nlohmann/json.hpp>
+
 #ifndef TINYGLTF_IMPLEMENTATION
 #define TINYGLTF_IMPLEMENTATION  // force following include to generate
                                  // implementation

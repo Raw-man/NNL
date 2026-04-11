@@ -76,11 +76,17 @@ FetchContent_Declare(
 )
 
 
+FetchContent_Declare(
+  json
+  GIT_REPOSITORY https://github.com/nlohmann/json.git
+  GIT_TAG v3.12.0
+  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+)
+
 set(TINYGLTF_BUILD_LOADER_EXAMPLE OFF CACHE INTERNAL "" FORCE)
 set(TINYGLTF_HEADER_ONLY ON CACHE INTERNAL "" FORCE)
 set(TINYGLTF_INSTALL OFF CACHE INTERNAL "" FORCE)
 set(TINYGLTF_INSTALL_VENDOR OFF CACHE INTERNAL "" FORCE)
-
 
 FetchContent_Declare(
   tinygltf
@@ -114,7 +120,7 @@ FetchContent_Declare(
   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
-FetchContent_MakeAvailable(glm ordered-map stb tristripper tinygltf meshoptimizer)
+FetchContent_MakeAvailable(glm ordered-map stb tristripper json tinygltf meshoptimizer)
 
 set(BUILD_SHARED_LIBS ${_NNL_ORIG_BUILD_SHARED})
 
@@ -262,6 +268,7 @@ target_compile_definitions(NNL
     PRIVATE
         TINYGLTF_NO_INCLUDE_STB_IMAGE
         TINYGLTF_NO_INCLUDE_STB_IMAGE_WRITE
+        TINYGLTF_NO_INCLUDE_JSON
 )
 
 target_compile_options(NNL
@@ -281,6 +288,7 @@ target_link_libraries(NNL
         tsl::ordered_map
         glm::glm
     PRIVATE
+        nlohmann_json::nlohmann_json
         stb::stb
         syoyo::tinygltf
         zeux::meshoptimizer
