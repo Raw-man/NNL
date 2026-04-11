@@ -982,24 +982,24 @@ constexpr u32 kMagicBytes = 0x16'81'00'01;
 
 NNL_PACK(struct RHeader {
   u32 magic_bytes = kMagicBytes;
-  u32 offset_bones = 0;                      // 0x4; 0x44 for most meshes; 0x48 for effects;
+  u32 offset_bones = 0;                      // 0x4;
   u32 offset_inverse_matrices = 0;           // 0x8
   u32 offset_inverse_matrix_bone_table = 0;  // 0xC
   u32 offset_mesh_groups = 0;                // 0x10
-  u16 num_bones = 1;                         // 0x14
+  u16 num_bones = 0;                         // 0x14
   u16 num_mesh_groups = 0;                   // 0x16
   u16 num_inverse_matrices = 0;              // 0x18
-  u16 num_vfx_groups = 1;                    // 0x1A
-  u32 header_size = 0x40;                    // 0x1C probably...
+  u16 num_vfx_groups = 0;                    // 0x1A
+  u32 header_size = sizeof(RHeader);         // 0x1C probably...
   u16 move_with_root = 0;                    // 0x20
   u16 num_bone_target_tables = 0;            // 0x22; 2 is max
   u32 offset_bone_target_tables = 0;         // 0x24
   u16 num_attachment_matrices = 0;           // 0x28;
-  u16 num_uv_animations = 1;                 // 0x2A
+  u16 num_uv_animations = 0;                 // 0x2A
   u32 offset_attachment_matrices = 0;        // 0x2C
   u32 offset_uv_animations = 0;              // 0x30
 
-  u16 num_textures = 1;          // 0x34 total number of used textures
+  u16 num_textures = 0;          // 0x34 total number of used textures
   u16 num_texture_swaps = 0;     // 0x36
   u32 offset_texture_swaps = 0;  // 0x38
   u32 address = 0;               // 0x3C memory location, filled dynamically
@@ -1008,8 +1008,8 @@ NNL_PACK(struct RHeader {
 static_assert(sizeof(RHeader) == 0x40, "");
 
 NNL_PACK(struct RBone {
-  Vec3<f32> scale{1.0f};
-  i16 parent_index = -1;
+  Vec3<f32> scale{0.0f};
+  i16 parent_index = 0;
   Vec3<i16> rotation{0};  // pitch; yaw; roll; as normalized ints
   Vec3<f32> translation{0.0f};
 });
@@ -1050,7 +1050,7 @@ NNL_PACK(struct RUVAnimation {
 static_assert(sizeof(RUVAnimation) == 0x10, "");
 
 NNL_PACK(struct RTextureSwap {
-  u32 id = 0;  // usually in ascending order; not used
+  u32 id = 0;  // not used
   i16 original_texture_id = 0;
   i16 new_texture_id = 0;
 });
@@ -1080,8 +1080,8 @@ NNL_PACK(struct RMeshGroup {
   u32 offset_meshes = 0;  // 0x0
   u16 num_meshes = 0;     // 0x4
   u16 padding = 0;        // 0x6
-  f32 u_scale = 1.0f;     // 0x8
-  f32 v_scale = 1.0f;     // 0xC
+  f32 u_scale = 0.0f;     // 0x8
+  f32 v_scale = 0.0f;     // 0xC
   f32 u_offset = 0.0f;    // 0x10
   f32 v_offset = 0.0f;    // 0x14
 });
@@ -1089,28 +1089,28 @@ NNL_PACK(struct RMeshGroup {
 static_assert(sizeof(RMeshGroup) == 0x18, "");
 
 NNL_PACK(struct RMesh {
-  u32 offset_submeshes = 0;    // 0x0
-  u16 num_submeshes = 0;       // 0x24
-  u16 material_features = 0;   // 0x6
-  u32 specular = 0xFF000000;   // 0x8
-  u32 diffuse = 0xFFFFFFFF;    // 0xC
-  u32 ambient = 0xFFFFFFFF;    // 0x10
-  u32 emissive = 0xFF000000;   // 0x14
-  f32 specular_power = 50.0f;  // 0x18
-  i16 texture_id = 0;          // 0x1C
-  u16 use_bbox = false;        // 0x1E
-  u32 offset_bbox = 0;         // 0x20 if not used, set to the first offset to submeshes
-  u16 material_id = 0;         // 0x24 note: there is no separate array of
-                               // materials in the binary format. This number is used to
-                               // determine if the next mesh uses the same material or not
-  u8 vfx_group_id = 0;         // 0x26
-  u8 uv_animation_id = 0;      // 0x27
+  u32 offset_submeshes = 0;   // 0x0
+  u16 num_submeshes = 0;      // 0x24
+  u16 material_features = 0;  // 0x6
+  u32 specular = 0;           // 0x8
+  u32 diffuse = 0;            // 0xC
+  u32 ambient = 0;            // 0x10
+  u32 emissive = 0;           // 0x14
+  f32 specular_power = 0.0f;  // 0x18
+  i16 texture_id = 0;         // 0x1C
+  u16 use_bbox = false;       // 0x1E
+  u32 offset_bbox = 0;        // 0x20 if not used, set to the first offset to submeshes
+  u16 material_id = 0;        // 0x24 note: there is no separate array of
+                              // materials in the binary format. This number is used to
+                              // determine if the next mesh uses the same material or not
+  u8 vfx_group_id = 0;        // 0x26
+  u8 uv_animation_id = 0;     // 0x27
 });
 
 static_assert(sizeof(RMesh) == 0x28, "");
 
 NNL_PACK(struct RSubMesh {
-  u16 num_bones = 1;       // 0x0
+  u16 num_bones = 0;       // 0x0
   u16 num_primitives = 0;  // 0x2
 
   u32 vertex_format = 0;                               // 0x4
@@ -1123,7 +1123,7 @@ NNL_PACK(struct RSubMesh {
 static_assert(sizeof(RSubMesh) == 0x24, "");
 
 NNL_PACK(struct RPrimitive {
-  u16 primitive_type = utl::data::as_int(PrimitiveType::kTriangles);
+  u16 primitive_type = 0;
   u16 num_elements = 0;
   u32 offset_buffer = 0;           // offset to vertex buffer or to index buffer
   u32 buffer_size = 0;             // aligned to 0x40

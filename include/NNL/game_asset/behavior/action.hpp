@@ -506,7 +506,7 @@ namespace raw {
  */
 
 NNL_PACK(struct RActionCategory {
-  u32 offset = 0x20;  // never 0
+  u32 offset = 0;
   u32 num_actions = 0;
 });
 

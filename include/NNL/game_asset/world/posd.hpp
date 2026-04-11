@@ -145,7 +145,7 @@ static_assert(sizeof(RHeader) == 0x8, "");
 NNL_PACK(struct RPosition {
   u32 id = 0;
   Vec3<f32> position{0.0f};
-  f32 radius = 80.0f;
+  f32 radius = 0.0f;
   i16 rotation = 0;  // fixed point (4 bits - int, 11 - fraction)
   u16 padding = 0;
 });

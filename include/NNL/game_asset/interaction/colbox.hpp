@@ -199,11 +199,11 @@ constexpr u32 kMagicBytes = 0xFF'FF'00'01;
 
 NNL_PACK(struct RHeader {
   u32 magic_bytes = kMagicBytes;
-  u32 offset_colbox_enviroment = sizeof(RHeader);  // 0x4
-  u32 offset_colbox_entities = sizeof(RHeader);    // 0x8
-  u32 offset_colbox_dmg = sizeof(RHeader);         // 0xC
-  u32 offset_colbox_unknown = sizeof(RHeader);     // 0x10 not used; no refernces in the code
-  u32 offset_colbox_attack = sizeof(RHeader);      // 0x14 RHitboxHeader
+  u32 offset_colbox_enviroment = 0;  // 0x4
+  u32 offset_colbox_entities = 0;    // 0x8
+  u32 offset_colbox_dmg = 0;         // 0xC
+  u32 offset_colbox_unknown = 0;     // 0x10 not used; no refernces in the code
+  u32 offset_colbox_attack = 0;      // 0x14 RHitboxHeader
 
   u32 offset_unknown = 0;         // 0x18
   u32 offset_reserved_0 = 0;      // 0x1C unused
@@ -229,7 +229,7 @@ NNL_PACK(struct RCollisionBox14 {
   u16 unknown2 = 0;             // 0x2
   Vec3<f32> translation{0.0f};  // 0x4
 
-  f32 size = 4.0f;  // 0x10
+  f32 size = 0.0f;  // 0x10
 });
 
 static_assert(sizeof(RCollisionBox14) == 0x14, "");
@@ -238,7 +238,7 @@ NNL_PACK(struct RCollisionBox18 {
   u16 bone_role = 0;            // 0x0
   u16 unknown2 = 0;             // 0x2
   Vec3<f32> translation{0.0f};  // 0x4
-  f32 size = 4.0f;              // 0x10
+  f32 size = 0.0f;              // 0x10
   f32 unknown14 = 0.0f;         // 0x14
 });
 
@@ -259,7 +259,7 @@ NNL_PACK(struct RHitbox {
   u16 dmg_start = 0;        // 0x6
   u16 dmg_end = 0;          // 0x8
   u16 effect_id = 0;        // 0xA
-  u8 unknownC = 1;          // 0xC
+  u8 unknownC = 0;          // 0xC
   u8 unknownD = 0;          // 0xD
   u16 unknownE = 0;         // 0xE
 });

@@ -150,7 +150,7 @@ namespace raw {
 constexpr u32 kMagicBytes = utl::data::FourCC("LIT!");  ///< Magic bytes
 
 NNL_PACK(struct RLight {
-  Vec3<i8> direction{0x7F};
+  Vec3<i8> direction{0};
   Vec3<u8> diffuse{0};   // rgb
   Vec3<u8> specular{0};  // rgb
 });
@@ -158,14 +158,14 @@ NNL_PACK(struct RLight {
 static_assert(sizeof(RLight) == 0x9, "");
 
 NNL_PACK(struct RLit {
-  u32 magic_bytes = kMagicBytes;          // 0x0
-  u8 active_flags = 0b0'0'0;              // 0x4
-  RLight lights[4] = {};                  // 0x5 4th light is a placeholder
-  Vec3<i8> shadow_light_direction{0x7F};  // 0x29
-  u8 character_brightness = 0xFF;         // 0x2C
-  Vec3<u8> global_ambient{0};             // 0x2D rgb
-  u32 unknown30 = 0xFF'FF'FF'FF;          // 0x30 unused
-  u8 unknown34 = 0xFF;                    // 0x34 unused
+  u32 magic_bytes = kMagicBytes;       // 0x0
+  u8 active_flags = 0b0'0'0;           // 0x4
+  RLight lights[4] = {};               // 0x5 4th light is a placeholder
+  Vec3<i8> shadow_light_direction{0};  // 0x29
+  u8 character_brightness = 0;         // 0x2C
+  Vec3<u8> global_ambient{0};          // 0x2D rgb
+  u32 unknown30 = 0xFF'FF'FF'FF;       // 0x30 unused
+  u8 unknown34 = 0xFF;                 // 0x34 unused
 });
 
 static_assert(sizeof(RLit) == 0x35, "");

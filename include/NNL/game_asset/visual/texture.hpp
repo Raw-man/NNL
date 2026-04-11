@@ -617,28 +617,28 @@ constexpr u32 kMagicBytes = 0x88'88'00'01;
 constexpr u32 kColorEntriesInBlock = 16;
 
 NNL_PACK(struct RHeader {
-  u32 magic_bytes = kMagicBytes;              // 0x0
-  u32 offset_textures = sizeof(RHeader);      // 0x4
-  u32 offset_texture_data = sizeof(RHeader);  // 0x8
-  u32 offset_clut_offsets = sizeof(RHeader);  // 0xC
-  u16 num_textures = 0;                       // 0x10
-  u16 num_texture_data = 0;                   // 0x12
-  u16 num_clut_offsets = 0;                   // 0x14
-  u16 unknown = 0;                            // 0x16
+  u32 magic_bytes = kMagicBytes;  // 0x0
+  u32 offset_textures = 0;        // 0x4
+  u32 offset_texture_data = 0;    // 0x8
+  u32 offset_clut_offsets = 0;    // 0xC
+  u16 num_textures = 0;           // 0x10
+  u16 num_texture_data = 0;       // 0x12
+  u16 num_clut_offsets = 0;       // 0x14
+  u16 unknown = 0;                // 0x16
 });
 
 static_assert(sizeof(RHeader) == 0x18, "");
 
 NNL_PACK(struct RTexture {
-  u16 texture_format = static_cast<u16>(TextureFormat::kRGBA8888);             // 0x0
-  u16 index_texture_data = 0;                                                  // 0x2
-  u8 num_texture_data_mipmaps = 0;                                             // 0x4
-  u8 swizzled = false;                                                         // 0x5
-  u8 filter_minifying = static_cast<u8>(TextureFilter::kLinearMipmapNearest);  // 0x6
-  u8 filter_magnifying = static_cast<u8>(TextureFilter::kLinear);              // 0x7
-  u16 index_clut = 0;                                                          // 0x8
-  u8 clut_load_size = 0x10;                                 // 0xA how many blocks of 16 colors to load
-  u8 clut_format = static_cast<u8>(ClutFormat::kRGBA8888);  // 0xB
+  u16 texture_format = 0;           // 0x0
+  u16 index_texture_data = 0;       // 0x2
+  u8 num_texture_data_mipmaps = 0;  // 0x4
+  u8 swizzled = false;              // 0x5
+  u8 filter_minifying = 0;          // 0x6
+  u8 filter_magnifying = 0;         // 0x7
+  u16 index_clut = 0;               // 0x8
+  u8 clut_load_size = 0;            // 0xA how many blocks of 16 colors to load
+  u8 clut_format = 0;               // 0xB
 });
 
 static_assert(sizeof(RTexture) == 0xC, "");

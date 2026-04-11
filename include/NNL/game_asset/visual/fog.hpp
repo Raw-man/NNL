@@ -107,7 +107,7 @@ NNL_PACK(struct RFog {
   u32 magic_bytes = kMagicBytes;
   f32 near_ = 0.0f;
   f32 far_ = 0.0f;
-  u32 color = 0xFF'00'00'00;
+  u32 color = 0;
 });
 
 static_assert(sizeof(RFog) == 0x10, "");

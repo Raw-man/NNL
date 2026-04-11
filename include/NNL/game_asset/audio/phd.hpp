@@ -63,7 +63,7 @@ NNL_PACK(struct RCommonAttr {
   u32 id = kMagicBytes;
   u32 attr_size = sizeof(RCommonAttr) - sizeof(u32) * 2;
   u32 version = 0x10000;
-  u32 reserve1 = -1;
+  u32 reserved_0 = -1;
   u32 program_attr_offset = sizeof(RCommonAttr);
   u32 tone_attr_offset = sizeof(RCommonAttr);
   u32 vag_attr_offset = sizeof(RCommonAttr);

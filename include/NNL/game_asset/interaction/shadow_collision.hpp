@@ -179,7 +179,7 @@ NNL_PACK(struct RHeader {
   u32 offset_vertex_table = 0;            // 0x20
   u32 offset_triangles = 0;               // 0x24
   u32 offset_collision_tests = 0;
-  u16 shift_value = 1;  //+5 is always added to it
+  u16 shift_value = 0;  //+5 is always added to it
   u16 unknown = 0;
 });
 
@@ -197,7 +197,7 @@ static_assert(sizeof(RTriangle) == 0xC, "");
 
 NNL_PACK(struct RCollisionTest {
   u32 offset_triangle_indices = 0;  // 0x0
-  u16 num_triangle_indices = 0x0;   // 0x4
+  u16 num_triangle_indices = 0;     // 0x4
   u16 padding = 0;                  // 0x6
 });
 

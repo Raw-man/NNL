@@ -246,7 +246,7 @@ constexpr u32 kMagicBytes = 0x86'00'00'01;
 NNL_PACK(struct RHeader {
   u32 magic_bytes = kMagicBytes;          // 0x0
   u16 num_animations = 0;                 // 0x4
-  u16 num_bones_per_animation = 1;        // 0x6
+  u16 num_bones_per_animation = 0;        // 0x6
   u16 move_with_root = 0;                 // 0x8
   u16 padding = 0;                        // 0xA
   u32 offset_duration_table = 0;          // 0xC
@@ -263,9 +263,9 @@ NNL_PACK(struct RBoneAnimation {
   u32 index_keyframe_rotation = 0;     // 0x4
   u32 index_scale_table = 0;           // 0xC
   u32 index_rotation_table = 0;        // 0x10
-  u32 index_translation_table = 1;     // 0x14
+  u32 index_translation_table = 0;     // 0x14 uses the same table as scale values
   u16 num_scale_transforms = 0;        // 0x18 how many subsequent keys to play
-  u16 num_rotation_transforms = 0;     // 0x1A
+  u16 num_rotation_transforms = 0;     // 0x1A even if 0, the value at the index is still used
   u16 num_translation_transforms = 0;  // 0x1C
   u16 padding = 0;                     // padding
 });

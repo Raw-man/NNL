@@ -118,22 +118,22 @@ namespace raw {
 constexpr u32 kMagicBytes = 1;  ///< The magic bytes
 
 NNL_PACK(struct RRenderConfig {
-  u32 magic_bytes = 1;                        // 0x0 not very reliable
-  u32 unknown4 = 0;                           // 0x4
-  u32 unknown8 = 0;                           // 0x8
-  u32 unknownC = 0;                           // 0xC
-  u32 enable_buffer_effects = 1;              // 0x10 bloom+distance effect: always active!
-  u32 bloom_translucency = 0;                 // 0x14
-  f32 mipmap_bias = 0.1f;                     // 0x18
-  f32 mipmap_slope = 0.002f;                  // 0x1C
-  f32 draw_distance_near = 500.0f;            // 0x20
-  f32 draw_distance_far = 1200.0f;            // 0x24
-  u32 distance_fog_red = 80;                  // 0x28
-  u32 distance_fog_green = 80;                // 0x2C
-  u32 distance_fog_blue = 80;                 // 0x30
-  u32 distance_transition_translucency = 40;  // 0x34
-  u32 padding0 = 0;                           // 0x38
-  u32 padding1 = 0;                           // 0x3C
+  u32 magic_bytes = kMagicBytes;             // 0x0 not very reliable
+  u32 unknown4 = 0;                          // 0x4
+  u32 unknown8 = 0;                          // 0x8
+  u32 unknownC = 0;                          // 0xC
+  u32 enable_buffer_effects = 1;             // 0x10 bloom+distance effect: always active!
+  u32 bloom_translucency = 0;                // 0x14
+  f32 mipmap_bias = 0.0f;                    // 0x18
+  f32 mipmap_slope = 0.0f;                   // 0x1C
+  f32 draw_distance_near = 0.0f;             // 0x20
+  f32 draw_distance_far = 0.0f;              // 0x24
+  u32 distance_fog_red = 0;                  // 0x28
+  u32 distance_fog_green = 0;                // 0x2C
+  u32 distance_fog_blue = 0;                 // 0x30
+  u32 distance_transition_translucency = 0;  // 0x34
+  u32 padding0 = 0;                          // 0x38
+  u32 padding1 = 0;                          // 0x3C
 });
 
 static_assert(sizeof(RRenderConfig) == 0x40, "");
