@@ -152,11 +152,11 @@ $(function(){initNavTree('dd/d40/shadow__collision_8hpp_source.html','../../',''
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#gaa111b5125734701cae5f29358314dcd9">u32</a> offset_vertex_table = 0;            <span class="comment">// 0x20</span></div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#gaa111b5125734701cae5f29358314dcd9">u32</a> offset_triangles = 0;               <span class="comment">// 0x24</span></div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#gaa111b5125734701cae5f29358314dcd9">u32</a> offset_collision_tests = 0;</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> shift_value = 1;  <span class="comment">//+5 is always added to it</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> shift_value = 0;  <span class="comment">//+5 is always added to it</span></div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> unknown = 0;</div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>});</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RHeader) == 0x30, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RHeader) == 0x30);</div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><a class="code hl_define" href="../../dc/ddd/group__FixedType.html#gaf58aa1cca207444c32dc9145eb4623dc">NNL_PACK</a>(<span class="keyword">struct</span> RTriangle {</div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> index_vertex_0 = 0;   <span class="comment">// 0x0</span></div>
@@ -166,15 +166,15 @@ $(function(){initNavTree('dd/d40/shadow__collision_8hpp_source.html','../../',''
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#gaa111b5125734701cae5f29358314dcd9">u32</a> calculation = 0;      <span class="comment">// 0x8</span></div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>});</div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RTriangle) == 0xC, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RTriangle) == 0xC);</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><a class="code hl_define" href="../../dc/ddd/group__FixedType.html#gaf58aa1cca207444c32dc9145eb4623dc">NNL_PACK</a>(<span class="keyword">struct</span> RCollisionTest {</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#gaa111b5125734701cae5f29358314dcd9">u32</a> offset_triangle_indices = 0;  <span class="comment">// 0x0</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> num_triangle_indices = 0x0;   <span class="comment">// 0x4</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> num_triangle_indices = 0;     <span class="comment">// 0x4</span></div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> padding = 0;                  <span class="comment">// 0x6</span></div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>});</div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RCollisionTest) == 0x8, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RCollisionTest) == 0x8);</div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="keyword">struct </span>RCollision {</div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  RHeader header;</div>

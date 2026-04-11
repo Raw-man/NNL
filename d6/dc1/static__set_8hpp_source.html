@@ -106,7 +106,7 @@ $(function(){initNavTree('d6/dc1/static__set_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, std::<span class="keywordtype">size_t</span> max_size&gt;</div>
 <div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="../../dd/d97/group__UtilityContainers.html">   28</a></span><span class="keyword">class </span>StaticSet {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keyword">static_assert</span>(std::is_arithmetic_v&lt;T&gt;, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keyword">static_assert</span>(std::is_arithmetic_v&lt;T&gt;);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keyword">using </span>container_type = <span class="keyword">typename</span> std::array&lt;T, max_size&gt;;</div>

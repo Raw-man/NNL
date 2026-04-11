@@ -128,7 +128,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#gga5a0fe76a49bddd7e1190c6eaccf9a710a8f0161ac38c9ea42c09406fb4be5b3d3">nnl::format::kLit</a>
 , <a class="el" href="#gga5a0fe76a49bddd7e1190c6eaccf9a710a1c63fcee34b57b9587e6e01a7bd4b1eb">nnl::format::kRenderConfig</a>
 , <br />
-&#160;&#160;<b>kPHD</b>
+&#160;&#160;<a class="el" href="#gga5a0fe76a49bddd7e1190c6eaccf9a710a94b4b158f51c1c7553f481eff655e2e3">nnl::format::kPHD</a>
 , <a class="el" href="#gga5a0fe76a49bddd7e1190c6eaccf9a710aa1ecd02225970b398198d619118757b5">nnl::format::kUIConfig</a>
 , <a class="el" href="#gga5a0fe76a49bddd7e1190c6eaccf9a710a8c2710c925a678fa6db8995c10f20840">nnl::format::kMinimapConfig</a>
 , <a class="el" href="#gga5a0fe76a49bddd7e1190c6eaccf9a710af5bf1f1a795b85c52e2498c450fafe4d">nnl::format::kPNG</a>
@@ -176,12 +176,12 @@ Functions</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710affd08db02be75b951bd2a69df0b66093" name="gga5a0fe76a49bddd7e1190c6eaccf9a710affd08db02be75b951bd2a69df0b66093"></a>kUnknown&#160;</td><td class="fielddoc"><p>An unknown type. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710aef3f389c2bac70df945e34d7a75ab4b4" name="gga5a0fe76a49bddd7e1190c6eaccf9a710aef3f389c2bac70df945e34d7a75ab4b4"></a>kPGD&#160;</td><td class="fielddoc"><p>Protected Game Data: an encrypted archive that contains the main game archive (a .BIN file in NSUNI/NSLAR). </p>
+<tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710aef3f389c2bac70df945e34d7a75ab4b4" name="gga5a0fe76a49bddd7e1190c6eaccf9a710aef3f389c2bac70df945e34d7a75ab4b4"></a>kPGD&#160;</td><td class="fielddoc"><p>Protected Game Data: an encrypted wrapper that contains a primary data archive (a .BIN file in NSUNI/NSLAR). </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710a6aa5f713452a17d2375ff3ee529d0f1b" name="gga5a0fe76a49bddd7e1190c6eaccf9a710a6aa5f713452a17d2375ff3ee529d0f1b"></a>kDig&#160;</td><td class="fielddoc"><p>The main asset archive (a .BIN file in NSUNI/NSLAR). </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d7/d68/group__Dig__Main.html#ga6528e76fd47c0713031edbe17a69e6f0" title="A main game asset archive.">nnl::dig::Dig</a> </dd></dl>
+<tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710a6aa5f713452a17d2375ff3ee529d0f1b" name="gga5a0fe76a49bddd7e1190c6eaccf9a710a6aa5f713452a17d2375ff3ee529d0f1b"></a>kDig&#160;</td><td class="fielddoc"><p>A primary asset archive (a .BIN file in NSUNI/NSLAR). </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d7/d68/group__Dig__Main.html#ga6528e76fd47c0713031edbe17a69e6f0" title="A primary game data archive.">nnl::dig::Dig</a> </dd></dl>
 </td></tr>
-<tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710abd6fc2941f273182c40d5a72dfae6496" name="gga5a0fe76a49bddd7e1190c6eaccf9a710abd6fc2941f273182c40d5a72dfae6496"></a>kDigEntry&#160;</td><td class="fielddoc"><p>An entry in the main archive (a nested archive). </p>
+<tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710abd6fc2941f273182c40d5a72dfae6496" name="gga5a0fe76a49bddd7e1190c6eaccf9a710abd6fc2941f273182c40d5a72dfae6496"></a>kDigEntry&#160;</td><td class="fielddoc"><p>An entry in a primary archive (a nested archive itself). </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d6/d9b/group__DigEntry__Main.html#gad1a334308c938fcfb08e213c8c893071" title="A nested archive within a top-level Dig archive.">nnl::dig_entry::DigEntry</a> </dd></dl>
 </td></tr>
 <tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710aee0550ef4e6af74719311b258d1e6b9f" name="gga5a0fe76a49bddd7e1190c6eaccf9a710aee0550ef4e6af74719311b258d1e6b9f"></a>kCollection&#160;</td><td class="fielddoc"><p>A container that stores related assets. </p>
@@ -218,12 +218,13 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710a1c63fcee34b57b9587e6e01a7bd4b1eb" name="gga5a0fe76a49bddd7e1190c6eaccf9a710a1c63fcee34b57b9587e6e01a7bd4b1eb"></a>kRenderConfig&#160;</td><td class="fielddoc"><dl class="section see"><dt>See also</dt><dd><a class="el" href="../../da/dde/group__Render__Main.html#de/d55/structnnl_1_1render_1_1RenderConfig" title="Represents settings for rendering.">nnl::render::RenderConfig</a> </dd></dl>
 </td></tr>
-<tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710aa1ecd02225970b398198d619118757b5" name="gga5a0fe76a49bddd7e1190c6eaccf9a710aa1ecd02225970b398198d619118757b5"></a>kUIConfig&#160;</td><td class="fielddoc"><dl class="section see"><dt>See also</dt><dd><a class="el" href="../../db/dbb/group__PHDPBD__Main.html#ga89a4bc5e652ef3f060aa3dae45549510" title="Tests if the provided file is PHD/PBD sound bank.">nnl::phd::IsOfType</a> </dd></dl>
+<tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710a94b4b158f51c1c7553f481eff655e2e3" name="gga5a0fe76a49bddd7e1190c6eaccf9a710a94b4b158f51c1c7553f481eff655e2e3"></a>kPHD&#160;</td><td class="fielddoc"><dl class="section see"><dt>See also</dt><dd><a class="el" href="../../db/dbb/group__PHDPBD__Main.html#ga89a4bc5e652ef3f060aa3dae45549510" title="Tests if the provided file is a PHD header.">nnl::phd::IsOfType</a> </dd></dl>
 </td></tr>
-<tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710a8c2710c925a678fa6db8995c10f20840" name="gga5a0fe76a49bddd7e1190c6eaccf9a710a8c2710c925a678fa6db8995c10f20840"></a>kMinimapConfig&#160;</td><td class="fielddoc"><dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d6/dab/group__UI__Main.html#ga5579733a452d8af50ffcee0fc740a5bc" title="Tests if the provided file is a UI config.">nnl::ui::IsOfType</a> </dd></dl>
+<tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710aa1ecd02225970b398198d619118757b5" name="gga5a0fe76a49bddd7e1190c6eaccf9a710aa1ecd02225970b398198d619118757b5"></a>kUIConfig&#160;</td><td class="fielddoc"><dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d6/dab/group__UI__Main.html#ga5579733a452d8af50ffcee0fc740a5bc" title="Tests if the provided file is a UI config.">nnl::ui::IsOfType</a> </dd></dl>
+</td></tr>
+<tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710a8c2710c925a678fa6db8995c10f20840" name="gga5a0fe76a49bddd7e1190c6eaccf9a710a8c2710c925a678fa6db8995c10f20840"></a>kMinimapConfig&#160;</td><td class="fielddoc"><dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d3/d7c/group__Minimap__Main.html#dd/df0/structnnl_1_1minimap_1_1MinimapConfig" title="Defines settings for a minimap.">nnl::minimap::MinimapConfig</a> </dd></dl>
 </td></tr>
 <tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710af5bf1f1a795b85c52e2498c450fafe4d" name="gga5a0fe76a49bddd7e1190c6eaccf9a710af5bf1f1a795b85c52e2498c450fafe4d"></a>kPNG&#160;</td><td class="fielddoc"><p>A PNG image. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d3/d7c/group__Minimap__Main.html#dd/df0/structnnl_1_1minimap_1_1MinimapConfig" title="Defines settings for a minimap.">nnl::minimap::MinimapConfig</a> </dd></dl>
 </td></tr>
 <tr><td class="fieldname"><a id="gga5a0fe76a49bddd7e1190c6eaccf9a710abf26d8062847386cc4e2b791cea8f1cb" name="gga5a0fe76a49bddd7e1190c6eaccf9a710abf26d8062847386cc4e2b791cea8f1cb"></a>kCCSF&#160;</td><td class="fielddoc"><p>An asset format developed by CyberConnect2. It's used for the finishing blow cutscenes in NSUNI. </p><dl class="section see"><dt>See also</dt><dd><a href="https://github.com/MiguelQueiroz010/CCSF-Asset-Explorer/">https://github.com/MiguelQueiroz010/CCSF-Asset-Explorer/</a> </dd></dl>
 </td></tr>

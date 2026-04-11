@@ -95,7 +95,7 @@ $(function(){initNavTree('db/dbb/group__PHDPBD__Main.html','../../',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga89a4bc5e652ef3f060aa3dae45549510" id="r_ga89a4bc5e652ef3f060aa3dae45549510"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga89a4bc5e652ef3f060aa3dae45549510">nnl::phd::IsOfType</a> (<a class="el" href="../../dc/d8c/group__InputOutput.html#d6/d39/classnnl_1_1BufferView">BufferView</a> buffer)</td></tr>
-<tr class="memdesc:ga89a4bc5e652ef3f060aa3dae45549510"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests if the provided file is PHD/PBD sound bank.  <br /></td></tr>
+<tr class="memdesc:ga89a4bc5e652ef3f060aa3dae45549510"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests if the provided file is a PHD header.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
@@ -114,15 +114,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Tests if the provided file is PHD/PBD sound bank. </p>
-<p>This function takes data representing a file and checks whether it corresponds to the in-game sound bank format.</p>
+<p>Tests if the provided file is a PHD header. </p>
+<p>This function takes data representing a file and checks whether it corresponds to the in-game PHD file format used in PHD/PBD sound banks.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buffer</td><td>The file to be tested. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Returns true if the file is identified as a sound bank; </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the file is identified as a PHD header.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d7/d5c/namespacennl_1_1asset_1_1SoundBank.html" title="Constants for accessing entries in an asset container that stores a PHD/PBD sound bank,...">nnl::asset::SoundBank</a> </dd>
+<dd>
+<a class="el" href="../../d8/d00/group__Asset__Auxiliary.html#gga3a279ae0db228c890b6d74f7ca5370f1a58ea27b2cfeb76ff2378d945c074e96b">nnl::asset::Category::kSoundBank</a> </dd></dl>
 
 </div>
 </div>

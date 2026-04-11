@@ -95,9 +95,9 @@ $(function(){initNavTree('db/d41/group__Action__Main.html','../../',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:nnl_3A_3Aaction_3A_3AAnimationNode_5Fd6_2Fd76_2Funionnnl_5F1_5F1action_5F1_5F1AnimationNode" id="r_nnl_3A_3Aaction_3A_3AAnimationNode_5Fd6_2Fd76_2Funionnnl_5F1_5F1action_5F1_5F1AnimationNode"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#d6/d76/unionnnl_1_1action_1_1AnimationNode">nnl::action::AnimationNode</a></td></tr>
-<tr class="memdesc:d6/d76/unionnnl_1_1action_1_1AnimationNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">A union that represents a main function or argument node within an animation playback chain.  <a href="#d6/d76/unionnnl_1_1action_1_1AnimationNode">More...</a><br /></td></tr>
+<tr class="memdesc:d6/d76/unionnnl_1_1action_1_1AnimationNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">A union that represents a function or argument node within an animation playback chain.  <a href="#d6/d76/unionnnl_1_1action_1_1AnimationNode">More...</a><br /></td></tr>
 <tr class="memitem:nnl_3A_3Aaction_3A_3AEffectNode_5Fdb_2Fd8b_2Funionnnl_5F1_5F1action_5F1_5F1EffectNode" id="r_nnl_3A_3Aaction_3A_3AEffectNode_5Fdb_2Fd8b_2Funionnnl_5F1_5F1action_5F1_5F1EffectNode"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#db/d8b/unionnnl_1_1action_1_1EffectNode">nnl::action::EffectNode</a></td></tr>
-<tr class="memdesc:db/d8b/unionnnl_1_1action_1_1EffectNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">A union that represents a main function or argument node within an auxiliary effect playback chain.  <a href="#db/d8b/unionnnl_1_1action_1_1EffectNode">More...</a><br /></td></tr>
+<tr class="memdesc:db/d8b/unionnnl_1_1action_1_1EffectNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">A union that represents a function or argument node within an auxiliary effect playback chain.  <a href="#db/d8b/unionnnl_1_1action_1_1EffectNode">More...</a><br /></td></tr>
 <tr class="memitem:nnl_3A_3Aaction_3A_3AAction_5Fdd_2Fd64_2Fstructnnl_5F1_5F1action_5F1_5F1Action" id="r_nnl_3A_3Aaction_3A_3AAction_5Fdd_2Fd64_2Fstructnnl_5F1_5F1action_5F1_5F1Action"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#dd/d64/structnnl_1_1action_1_1Action">nnl::action::Action</a></td></tr>
 <tr class="memdesc:dd/d64/structnnl_1_1action_1_1Action"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an action.  <a href="#dd/d64/structnnl_1_1action_1_1Action">More...</a><br /></td></tr>
 </table><table class="memberdecls">
@@ -222,13 +222,13 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="textblock"><p>A union that represents a main function or argument node within an animation playback chain. </p>
+<div class="textblock"><p>A union that represents a function or argument node within an animation playback chain. </p>
 <dl class="section note"><dt>Note</dt><dd>When next_main_node is &gt; 1, nodes that immediately follow store arguments for the function and may be reinterpreted as various numeric types.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga5d4f6a41bb4ff42bfa6c9e88795243e6" title="Enumeration for different animation functions.">nnl::action::AnimationFunction</a> </dd>
 <dd>
 <a class="el" href="../../d8/d05/group__Action__Auxiliary.html#gabf0bbdc05003607e3c7d7a0f0ebd768a" title="Extracts arguments from a series of nodes.">nnl::action::ReadArgs</a> </dd>
 <dd>
-<a class="el" href="#db/d8b/unionnnl_1_1action_1_1EffectNode" title="A union that represents a main function or argument node within an auxiliary effect playback chain.">nnl::action::EffectNode</a> </dd>
+<a class="el" href="#db/d8b/unionnnl_1_1action_1_1EffectNode" title="A union that represents a function or argument node within an auxiliary effect playback chain.">nnl::action::EffectNode</a> </dd>
 <dd>
 <a class="el" href="#dd/d64/structnnl_1_1action_1_1Action" title="Represents an action.">nnl::action::Action</a> </dd></dl>
 </div><table class="memberdecls">
@@ -290,12 +290,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="textblock"><p>A union that represents a main function or argument node within an auxiliary effect playback chain. </p>
+<div class="textblock"><p>A union that represents a function or argument node within an auxiliary effect playback chain. </p>
 <p>Effect nodes trigger additional visual and sound effects <em>during</em> the playback of a main animation chain.</p>
 <dl class="section note"><dt>Note</dt><dd>When next_main_node is &gt; 1, nodes that immediately follow store arguments for the function and may be reinterpreted as various numeric types.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga92011e0d8830404404a2ed5de6dfc2c2" title="Enumeration for different effect functions.">nnl::action::EffectFunction</a> </dd>
 <dd>
-<a class="el" href="#d6/d76/unionnnl_1_1action_1_1AnimationNode" title="A union that represents a main function or argument node within an animation playback chain.">nnl::action::AnimationNode</a> </dd>
+<a class="el" href="#d6/d76/unionnnl_1_1action_1_1AnimationNode" title="A union that represents a function or argument node within an animation playback chain.">nnl::action::AnimationNode</a> </dd>
 <dd>
 <a class="el" href="#dd/d64/structnnl_1_1action_1_1Action" title="Represents an action.">nnl::action::Action</a> </dd></dl>
 </div><table class="memberdecls">
@@ -451,7 +451,7 @@ This object stores only a portion of the data that may be required by a 3D asset
 [] - represents a list of <em>argument nodes</em> expected by the function<br  />
 {} - a single 4 byte node with different layouts.<br  />
 a - an argument</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#d6/d76/unionnnl_1_1action_1_1AnimationNode" title="A union that represents a main function or argument node within an animation playback chain.">nnl::action::AnimationNode</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#d6/d76/unionnnl_1_1action_1_1AnimationNode" title="A union that represents a function or argument node within an animation playback chain.">nnl::action::AnimationNode</a> </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga5d4f6a41bb4ff42bfa6c9e88795243e6a374bf9ba57a441a600d65b212cf9d13c" name="gga5d4f6a41bb4ff42bfa6c9e88795243e6a374bf9ba57a441a600d65b212cf9d13c"></a>kEnd&#160;</td><td class="fielddoc"><p>Mark the end of a node sequence; []. </p>
 </td></tr>
@@ -539,7 +539,7 @@ a - an argument</p>
 [] - represents a list of argument nodes expected by the function<br  />
 {} - a single 4 byte node with different layouts<br  />
 &lt;{}&gt; - an optional node<br  />
- </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="#db/d8b/unionnnl_1_1action_1_1EffectNode" title="A union that represents a main function or argument node within an auxiliary effect playback chain.">nnl::action::EffectNode</a> </dd></dl>
+ </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="#db/d8b/unionnnl_1_1action_1_1EffectNode" title="A union that represents a function or argument node within an auxiliary effect playback chain.">nnl::action::EffectNode</a> </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga92011e0d8830404404a2ed5de6dfc2c2a374bf9ba57a441a600d65b212cf9d13c" name="gga92011e0d8830404404a2ed5de6dfc2c2a374bf9ba57a441a600d65b212cf9d13c"></a>kEnd&#160;</td><td class="fielddoc"><p>Mark the end of a node sequence; []. </p>
 </td></tr>

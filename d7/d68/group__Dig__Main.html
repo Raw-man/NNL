@@ -104,7 +104,7 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ga2ecdb57272ee6c74345cbf81055d57c5" id="r_ga2ecdb57272ee6c74345cbf81055d57c5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga2ecdb57272ee6c74345cbf81055d57c5">nnl::dig::FileRecordView</a> = <a class="el" href="#dd/dda/structnnl_1_1dig_1_1TFileRecord">TFileRecord</a>&lt;<a class="el" href="../../dc/d8c/group__InputOutput.html#d6/d39/classnnl_1_1BufferView">BufferView</a>&gt;</td></tr>
 <tr class="memdesc:ga2ecdb57272ee6c74345cbf81055d57c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A raw entry in the dig archive.     <br /></td></tr>
 <tr class="memitem:ga6528e76fd47c0713031edbe17a69e6f0" id="r_ga6528e76fd47c0713031edbe17a69e6f0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0">nnl::dig::Dig</a> = std::vector&lt;<a class="el" href="#ga412adc232a71574089cb1b737e114fb1">FileRecord</a>&gt;</td></tr>
-<tr class="memdesc:ga6528e76fd47c0713031edbe17a69e6f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">A main game asset archive.  <br /></td></tr>
+<tr class="memdesc:ga6528e76fd47c0713031edbe17a69e6f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">A primary game data archive.  <br /></td></tr>
 <tr class="memitem:ga984900729e159af02cbe858a6b85d169" id="r_ga984900729e159af02cbe858a6b85d169"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga984900729e159af02cbe858a6b85d169">nnl::dig::DigView</a> = std::vector&lt;<a class="el" href="#ga2ecdb57272ee6c74345cbf81055d57c5">FileRecordView</a>&gt;</td></tr>
 <tr class="memdesc:ga984900729e159af02cbe858a6b85d169"><td class="mdescLeft">&#160;</td><td class="mdescRight">A non-owning view of a dig archive.  <br /></td></tr>
 </table><table class="memberdecls">
@@ -113,7 +113,7 @@ Functions</h2></td></tr>
 <tr class="memitem:gaa14b39cbd3083da580c9e71a84519e9a" id="r_gaa14b39cbd3083da580c9e71a84519e9a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaa14b39cbd3083da580c9e71a84519e9a">nnl::dig::IsOfType</a> (<a class="el" href="../../dc/d8c/group__InputOutput.html#d6/d39/classnnl_1_1BufferView">BufferView</a> buffer)</td></tr>
 <tr class="memdesc:gaa14b39cbd3083da580c9e71a84519e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests if the provided file is a dig archive.  <br /></td></tr>
 <tr class="memitem:gae2e0e4f8ae7b54d8af873c6ba4e701b5" id="r_gae2e0e4f8ae7b54d8af873c6ba4e701b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0">Dig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gae2e0e4f8ae7b54d8af873c6ba4e701b5">nnl::dig::Import</a> (<a class="el" href="../../dc/d8c/group__InputOutput.html#d6/d39/classnnl_1_1BufferView">BufferView</a> buffer)</td></tr>
-<tr class="memdesc:gae2e0e4f8ae7b54d8af873c6ba4e701b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a binary file and converts it into a <a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A main game asset archive.">Dig</a> object.  <br /></td></tr>
+<tr class="memdesc:gae2e0e4f8ae7b54d8af873c6ba4e701b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a binary file and converts it into a <a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A primary game data archive.">Dig</a> object.  <br /></td></tr>
 <tr class="memitem:gaa967db1613dab901fedd16c08871e6d0" id="r_gaa967db1613dab901fedd16c08871e6d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ga984900729e159af02cbe858a6b85d169">DigView</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaa967db1613dab901fedd16c08871e6d0">nnl::dig::ImportView</a> (<a class="el" href="../../dc/d8c/group__InputOutput.html#d6/d39/classnnl_1_1BufferView">BufferView</a> buffer)</td></tr>
 <tr class="memdesc:gaa967db1613dab901fedd16c08871e6d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a binary file and converts it into <a class="el" href="#ga984900729e159af02cbe858a6b85d169" title="A non-owning view of a dig archive.">DigView</a>.  <br /></td></tr>
 <tr class="memitem:gacd0b9f4548e11cedb1dfd8e64367e3ca" id="r_gacd0b9f4548e11cedb1dfd8e64367e3ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d8c/group__InputOutput.html#ga536e68388b3e1df823f0f8f9bb4f7dbe">Buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gacd0b9f4548e11cedb1dfd8e64367e3ca">nnl::dig::Export</a> (const <a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0">Dig</a> &amp;cfcdig)</td></tr>
@@ -136,7 +136,7 @@ Functions</h2></td></tr>
 struct nnl::dig::TFileRecord&lt; TData &gt;</div><p>A raw entry in the dig archive. </p>
 <p>This structure encapsulates data and metadata of an entry in the dig archive.</p>
 <dl class="section note"><dt>Note</dt><dd>The buffer it stores is also a nested archive that may need to be decompressed before importing.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A main game asset archive.">nnl::dig::Dig</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A primary game data archive.">nnl::dig::Dig</a> </dd>
 <dd>
 <a class="el" href="../../dc/dc7/group__Dig__Aux.html#ga4fe159d51c23d4bb5461fccb7f377b50" title="Decompress binary data.">nnl::dig::Decompress</a> </dd></dl>
 </div><table class="memberdecls">
@@ -238,7 +238,7 @@ template&lt;typename TData = Buffer&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>A main game asset archive. </p>
+<p>A primary game data archive. </p>
 <p>The primary container for game assets. The archive format is known by different names: CFC.DIG in <a class="el" href="../../dd/d43/md_docs_2glossary.html#NUC2">NUC2</a>, *.BIN in NSUNI and NSLAR. It consists of nested archives.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#gae2e0e4f8ae7b54d8af873c6ba4e701b5" title="Parses a binary file and converts it into a Dig object.">nnl::dig::Import</a> </dd>
 <dd>
@@ -267,8 +267,8 @@ template&lt;typename TData = Buffer&gt; </div>
 </div><div class="memdoc">
 
 <p>A non-owning view of a dig archive. </p>
-<p>This type is almost identical to <a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A main game asset archive.">Dig</a> and represents the same archive but allows for access to its entries via <em>references</em> to the source <a class="el" href="../../dc/d8c/group__InputOutput.html#ga536e68388b3e1df823f0f8f9bb4f7dbe" title="A type alias for std::vector&lt;u8&gt; that denotes a raw, contiguous memory region that may be interpreted...">Buffer</a>. It's most suitable when no modifications to the data are expected.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A main game asset archive.">nnl::dig::Dig</a> </dd>
+<p>This type is almost identical to <a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A primary game data archive.">Dig</a> and represents the same archive but allows for access to its entries via <em>references</em> to the source <a class="el" href="../../dc/d8c/group__InputOutput.html#ga536e68388b3e1df823f0f8f9bb4f7dbe" title="A type alias for std::vector&lt;u8&gt; that denotes a raw, contiguous memory region that may be interpreted...">Buffer</a>. It's most suitable when no modifications to the data are expected.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A primary game data archive.">nnl::dig::Dig</a> </dd>
 <dd>
 <a class="el" href="#gaa967db1613dab901fedd16c08871e6d0" title="Parses a binary file and converts it into DigView.">nnl::dig::ImportView</a> </dd></dl>
 
@@ -289,7 +289,7 @@ template&lt;typename TData = Buffer&gt; </div>
 <p>A raw entry in the dig archive.    </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#dd/dda/structnnl_1_1dig_1_1TFileRecord" title="A raw entry in the dig archive.">nnl::dig::TFileRecord</a> </dd>
 <dd>
-<a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A main game asset archive.">nnl::dig::Dig</a> </dd></dl>
+<a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A primary game data archive.">nnl::dig::Dig</a> </dd></dl>
 
 </div>
 </div>
@@ -337,7 +337,7 @@ template&lt;typename TData = Buffer&gt; </div>
 </div><div class="memdoc">
 
 <p>Converts a dig archive to a binary file representation. </p>
-<p>This function takes a <a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A main game asset archive.">Dig</a> archive and converts it into a <a class="el" href="../../dc/d8c/group__InputOutput.html#ga536e68388b3e1df823f0f8f9bb4f7dbe" title="A type alias for std::vector&lt;u8&gt; that denotes a raw, contiguous memory region that may be interpreted...">Buffer</a>, which represents the binary format of the container.</p>
+<p>This function takes a <a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A primary game data archive.">Dig</a> archive and converts it into a <a class="el" href="../../dc/d8c/group__InputOutput.html#ga536e68388b3e1df823f0f8f9bb4f7dbe" title="A type alias for std::vector&lt;u8&gt; that denotes a raw, contiguous memory region that may be interpreted...">Buffer</a>, which represents the binary format of the container.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cfcdig</td><td>The object to be converted. </td></tr>
@@ -363,15 +363,15 @@ template&lt;typename TData = Buffer&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Parses a binary file and converts it into a <a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A main game asset archive.">Dig</a> object. </p>
-<p>This function takes a binary representation of a dig archive, parses its contents, and converts them into a <a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A main game asset archive.">Dig</a> object for easier access and modification.</p>
+<p>Parses a binary file and converts it into a <a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A primary game data archive.">Dig</a> object. </p>
+<p>This function takes a binary representation of a dig archive, parses its contents, and converts them into a <a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A primary game data archive.">Dig</a> object for easier access and modification.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buffer</td><td>The binary data to be processed. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A <span class="tt"><a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A main game asset archive.">Dig</a></span> object consisting of file records.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <span class="tt"><a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A primary game data archive.">Dig</a></span> object consisting of file records.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>In NSUNI, the archives may be encrypted and must be decrypted prior to importing.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710aef3f389c2bac70df945e34d7a75ab4b4">nnl::format::kPGD</a> </dd>
 <dd>
@@ -410,7 +410,7 @@ template&lt;typename TData = Buffer&gt; </div>
 <dl class="section note"><dt>Note</dt><dd>In NSUNI, the archives may be encrypted and must be decrypted prior to importing.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710aef3f389c2bac70df945e34d7a75ab4b4">nnl::format::kPGD</a> </dd>
 <dd>
-<a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A main game asset archive.">nnl::dig::Dig</a> </dd>
+<a class="el" href="#ga6528e76fd47c0713031edbe17a69e6f0" title="A primary game data archive.">nnl::dig::Dig</a> </dd>
 <dd>
 <a class="el" href="#gaa14b39cbd3083da580c9e71a84519e9a" title="Tests if the provided file is a dig archive.">nnl::dig::IsOfType</a> </dd>
 <dd>

@@ -163,7 +163,7 @@ $(function(){initNavTree('d9/d16/action_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>};</div>
 </div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(<a class="code hl_union" href="../../db/d41/group__Action__Main.html#d6/d76/unionnnl_1_1action_1_1AnimationNode">AnimationNode</a>) == 0x4, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(<a class="code hl_union" href="../../db/d41/group__Action__Main.html#d6/d76/unionnnl_1_1action_1_1AnimationNode">AnimationNode</a>) == 0x4);</div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span></div>
 <div class="foldopen" id="foldopen00157" data-start="{" data-end="};">
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="../../db/d41/group__Action__Main.html#ga92011e0d8830404404a2ed5de6dfc2c2">  157</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="../../db/d41/group__Action__Main.html#ga92011e0d8830404404a2ed5de6dfc2c2">EffectFunction</a> : <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#gabc7da91dc52c860dd84884740ba087c3">u8</a> {</div>
@@ -223,7 +223,7 @@ $(function(){initNavTree('d9/d16/action_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>};</div>
 </div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(<a class="code hl_union" href="../../db/d41/group__Action__Main.html#db/d8b/unionnnl_1_1action_1_1EffectNode">EffectNode</a>) == 0x4, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(<a class="code hl_union" href="../../db/d41/group__Action__Main.html#db/d8b/unionnnl_1_1action_1_1EffectNode">EffectNode</a>) == 0x4);</div>
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span></div>
 <div class="foldopen" id="foldopen00259" data-start="{" data-end="};">
 <div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="../../db/d41/group__Action__Main.html">  259</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../db/d41/group__Action__Main.html#dd/d64/structnnl_1_1action_1_1Action">Action</a> {</div>
@@ -268,7 +268,7 @@ $(function(){initNavTree('d9/d16/action_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>      [&amp;](<span class="keyword">auto</span>&amp;... args) {</div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>        (([&amp;]() {</div>
 <div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>           <span class="keyword">static_assert</span>(std::is_trivially_copyable_v&lt;std::remove_reference_t&lt;<span class="keyword">decltype</span>(args)&gt;&gt;);</div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>           <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(args) &lt;= <span class="keyword">sizeof</span>(Node), <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>           <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(args) &lt;= <span class="keyword">sizeof</span>(Node));</div>
 <div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span> </div>
 <div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>           offset = <a class="code hl_function" href="../../df/d13/group__Math.html#ga7bcc651a53a3e9cccc28600326a7e49e">utl::math::RoundNum</a>(offset, <span class="keyword">sizeof</span>(args));</div>
 <div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
@@ -302,9 +302,9 @@ $(function(){initNavTree('d9/d16/action_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>  std::size_t offset = 0;</div>
 <div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>  (</div>
 <div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>      [&amp;] {</div>
-<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>        <span class="keyword">static_assert</span>(std::is_trivially_copyable_v&lt;std::remove_reference_t&lt;<span class="keyword">decltype</span>(args)&gt;&gt;, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>        <span class="keyword">static_assert</span>(std::is_trivially_copyable_v&lt;std::remove_reference_t&lt;<span class="keyword">decltype</span>(args)&gt;&gt;);</div>
 <div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span> </div>
-<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>        <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(args) &lt;= <span class="keyword">sizeof</span>(Node), <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>        <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(args) &lt;= <span class="keyword">sizeof</span>(Node));</div>
 <div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span> </div>
 <div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>        <span class="keyword">auto</span>&amp; main_node = nodes.at(main_node_ind).main;</div>
 <div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span> </div>
@@ -348,15 +348,15 @@ $(function(){initNavTree('d9/d16/action_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span><span class="keyword">namespace </span>raw {</div>
 <div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span> </div>
 <div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span><a class="code hl_define" href="../../dc/ddd/group__FixedType.html#gaf58aa1cca207444c32dc9145eb4623dc">NNL_PACK</a>(<span class="keyword">struct</span> RActionCategory {</div>
-<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#gaa111b5125734701cae5f29358314dcd9">u32</a> offset = 0x20;  <span class="comment">// never 0</span></div>
+<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#gaa111b5125734701cae5f29358314dcd9">u32</a> offset = 0;</div>
 <div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#gaa111b5125734701cae5f29358314dcd9">u32</a> num_actions = 0;</div>
 <div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>});</div>
 <div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span> </div>
-<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RActionCategory) == 0x8, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RActionCategory) == 0x8);</div>
 <div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span> </div>
 <div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span><a class="code hl_define" href="../../dc/ddd/group__FixedType.html#gaf58aa1cca207444c32dc9145eb4623dc">NNL_PACK</a>(<span class="keyword">struct</span> RHeader { RActionCategory action_categories[<a class="code hl_variable" href="../../da/da2/group__Action__Shared.html#ga386d7fb61bc90d5c9487cadb35d378f8">kNumActionCategories</a>]; });</div>
 <div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span> </div>
-<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RHeader) == 0x20, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RHeader) == 0x20);</div>
 <div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span> </div>
 <div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span><a class="code hl_define" href="../../dc/ddd/group__FixedType.html#gaf58aa1cca207444c32dc9145eb4623dc">NNL_PACK</a>(<span class="keyword">struct</span> RAction {</div>
 <div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> offset_animation_nodes = 0;</div>
@@ -365,7 +365,7 @@ $(function(){initNavTree('d9/d16/action_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> offset_unknown = 0;  <span class="comment">// reserved?</span></div>
 <div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>});</div>
 <div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span> </div>
-<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RAction) == 0x8, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RAction) == 0x8);</div>
 <div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span> </div>
 <div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span><a class="code hl_define" href="../../dc/ddd/group__FixedType.html#gaf58aa1cca207444c32dc9145eb4623dc">NNL_PACK</a>(<span class="keyword">struct</span> RAnimationNode {</div>
 <div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> index_function = 0;</div>
@@ -373,7 +373,7 @@ $(function(){initNavTree('d9/d16/action_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#gabc7da91dc52c860dd84884740ba087c3">u8</a> unk_flag = 0;</div>
 <div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>});</div>
 <div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span> </div>
-<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RAnimationNode) == 0x4, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RAnimationNode) == 0x4);</div>
 <div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(RAnimationNode) == <span class="keyword">sizeof</span>(AnimationNode));</div>
 <div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span> </div>
 <div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span><a class="code hl_define" href="../../dc/ddd/group__FixedType.html#gaf58aa1cca207444c32dc9145eb4623dc">NNL_PACK</a>(<span class="keyword">struct</span> REffectNode {</div>
@@ -382,7 +382,7 @@ $(function(){initNavTree('d9/d16/action_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>  <a class="code hl_typedef" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> time_tick = 0;</div>
 <div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>});</div>
 <div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span> </div>
-<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(REffectNode) == 0x4, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(REffectNode) == 0x4);</div>
 <div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(REffectNode) == <span class="keyword">sizeof</span>(EffectNode));</div>
 <div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span> </div>
 <div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span><span class="keyword">struct </span>RActionConfig {</div>
@@ -414,8 +414,8 @@ $(function(){initNavTree('d9/d16/action_8hpp_source.html','../../',''); });
 <div class="ttc" id="agroup__Action__Main_html_a4af76ec9fe781852a0a5c0098cf350d4"><div class="ttname"><a href="../../db/d41/group__Action__Main.html#a4af76ec9fe781852a0a5c0098cf350d4">nnl::action::Action::animation_nodes</a></div><div class="ttdeci">std::vector&lt; AnimationNode &gt; animation_nodes</div><div class="ttdef"><b>Definition</b> action.hpp:261</div></div>
 <div class="ttc" id="agroup__Action__Main_html_ae1ca1201f78653fbce289647be8bd93b"><div class="ttname"><a href="../../db/d41/group__Action__Main.html#ae1ca1201f78653fbce289647be8bd93b">nnl::action::EffectNode::args</a></div><div class="ttdeci">u8 args[4]</div><div class="ttdoc">Array for storing argument values (in argument nodes)</div><div class="ttdef"><b>Definition</b> action.hpp:245</div></div>
 <div class="ttc" id="agroup__Action__Main_html_afd468282c0b3e8e3f5bcaed1a30a5bcf"><div class="ttname"><a href="../../db/d41/group__Action__Main.html#afd468282c0b3e8e3f5bcaed1a30a5bcf">nnl::action::Action::name</a></div><div class="ttdeci">std::string name</div><div class="ttdoc">The name of the action. It does not affect anything.</div><div class="ttdef"><b>Definition</b> action.hpp:260</div></div>
-<div class="ttc" id="agroup__Action__Main_html_d6/d76/unionnnl_1_1action_1_1AnimationNode"><div class="ttname"><a href="../../db/d41/group__Action__Main.html#d6/d76/unionnnl_1_1action_1_1AnimationNode">nnl::action::AnimationNode</a></div><div class="ttdoc">A union that represents a main function or argument node within an animation playback chain.</div><div class="ttdef"><b>Definition</b> action.hpp:124</div></div>
-<div class="ttc" id="agroup__Action__Main_html_db/d8b/unionnnl_1_1action_1_1EffectNode"><div class="ttname"><a href="../../db/d41/group__Action__Main.html#db/d8b/unionnnl_1_1action_1_1EffectNode">nnl::action::EffectNode</a></div><div class="ttdoc">A union that represents a main function or argument node within an auxiliary effect playback chain.</div><div class="ttdef"><b>Definition</b> action.hpp:234</div></div>
+<div class="ttc" id="agroup__Action__Main_html_d6/d76/unionnnl_1_1action_1_1AnimationNode"><div class="ttname"><a href="../../db/d41/group__Action__Main.html#d6/d76/unionnnl_1_1action_1_1AnimationNode">nnl::action::AnimationNode</a></div><div class="ttdoc">A union that represents a function or argument node within an animation playback chain.</div><div class="ttdef"><b>Definition</b> action.hpp:124</div></div>
+<div class="ttc" id="agroup__Action__Main_html_db/d8b/unionnnl_1_1action_1_1EffectNode"><div class="ttname"><a href="../../db/d41/group__Action__Main.html#db/d8b/unionnnl_1_1action_1_1EffectNode">nnl::action::EffectNode</a></div><div class="ttdoc">A union that represents a function or argument node within an auxiliary effect playback chain.</div><div class="ttdef"><b>Definition</b> action.hpp:234</div></div>
 <div class="ttc" id="agroup__Action__Main_html_dd/d64/structnnl_1_1action_1_1Action"><div class="ttname"><a href="../../db/d41/group__Action__Main.html#dd/d64/structnnl_1_1action_1_1Action">nnl::action::Action</a></div><div class="ttdoc">Represents an action.</div><div class="ttdef"><b>Definition</b> action.hpp:259</div></div>
 <div class="ttc" id="agroup__Action__Main_html_ga32876f4666869465637b627df2ac438a"><div class="ttname"><a href="../../db/d41/group__Action__Main.html#ga32876f4666869465637b627df2ac438a">nnl::action::kNumAnimFuncNSLAR</a></div><div class="ttdeci">constexpr u16 kNumAnimFuncNSLAR</div><div class="ttdef"><b>Definition</b> action.hpp:44</div></div>
 <div class="ttc" id="agroup__Action__Main_html_ga4b1ab4fa2c9650a22f8cfb3e0485867d"><div class="ttname"><a href="../../db/d41/group__Action__Main.html#ga4b1ab4fa2c9650a22f8cfb3e0485867d">nnl::action::Import</a></div><div class="ttdeci">ActionConfig Import(BufferView buffer)</div><div class="ttdoc">Parses a binary file and converts it to ActionConfig.</div></div>

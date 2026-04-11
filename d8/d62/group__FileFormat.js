@@ -21,6 +21,7 @@ var group__FileFormat =
       [ "nnl::format::kPositionData", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a44a77c8c3777cc3125620fc2523128ae", null ],
       [ "nnl::format::kLit", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a8f0161ac38c9ea42c09406fb4be5b3d3", null ],
       [ "nnl::format::kRenderConfig", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a1c63fcee34b57b9587e6e01a7bd4b1eb", null ],
+      [ "nnl::format::kPHD", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a94b4b158f51c1c7553f481eff655e2e3", null ],
       [ "nnl::format::kUIConfig", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710aa1ecd02225970b398198d619118757b5", null ],
       [ "nnl::format::kMinimapConfig", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a8c2710c925a678fa6db8995c10f20840", null ],
       [ "nnl::format::kPNG", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710af5bf1f1a795b85c52e2498c450fafe4d", null ],

@@ -95,8 +95,8 @@ $(function(){initNavTree('d4/d78/math_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define GLM_ENABLE_EXPERIMENTAL</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;glm/glm.hpp&gt;</span></div>
@@ -154,7 +154,7 @@ $(function(){initNavTree('d4/d78/math_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00170" data-start="{" data-end="}">
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="../../df/d13/group__Math.html#ga03250b2f4394ec3454117f0cd2b77b88">  170</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> T <a class="code hl_function" href="../../df/d13/group__Math.html#ga03250b2f4394ec3454117f0cd2b77b88">Sqr</a>(T value) {</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="keyword">static_assert</span>(std::is_arithmetic_v&lt;T&gt;, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="keyword">static_assert</span>(std::is_arithmetic_v&lt;T&gt;);</div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="keywordflow">return</span> value * value;</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>}</div>
 </div>
@@ -162,7 +162,7 @@ $(function(){initNavTree('d4/d78/math_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00182" data-start="{" data-end="}">
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="../../df/d13/group__Math.html#ga0b840699fbe07f241844946a9a068f5b">  182</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../df/d13/group__Math.html#ga0b840699fbe07f241844946a9a068f5b">IsPow2</a>(T n) {</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  <span class="keyword">static_assert</span>(std::is_integral_v&lt;T&gt;, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  <span class="keyword">static_assert</span>(std::is_integral_v&lt;T&gt;);</div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>  <span class="keywordflow">return</span> (n &gt; 0 &amp;&amp; ((n &amp; (n - 1)) == 0));</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>}</div>
 </div>
@@ -186,7 +186,7 @@ $(function(){initNavTree('d4/d78/math_8hpp_source.html','../../',''); });
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00219" data-start="{" data-end="}">
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="../../df/d13/group__Math.html#ga7bcc651a53a3e9cccc28600326a7e49e">  219</a></span>T <a class="code hl_function" href="../../df/d13/group__Math.html#ga7bcc651a53a3e9cccc28600326a7e49e">RoundNum</a>(T number, std::size_t multiple) {</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>  <span class="keyword">static_assert</span>(std::is_integral_v&lt;T&gt;, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>  <span class="keyword">static_assert</span>(std::is_integral_v&lt;T&gt;);</div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>  <span class="keywordflow">if</span> (multiple == 0) <span class="keywordflow">return</span> number;</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>

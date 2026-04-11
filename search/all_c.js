@@ -118,7 +118,7 @@ var searchData=
   ['kpassthrowables_115',['kPassThrowables',['../dd/df5/group__Collision__Main.html#ggac0f5908a99f41a203e4b726559a7e1dfaf810c27d4cf316984b5732da3354f926',1,'nnl::collision']]],
   ['kpbd_116',['kPBD',['../d7/d5c/namespacennl_1_1asset_1_1SoundBank.html#aa59e3684c1521dc8b6f494b66d4a9297',1,'nnl::asset::SoundBank']]],
   ['kpgd_117',['kPGD',['../d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710aef3f389c2bac70df945e34d7a75ab4b4',1,'nnl::format']]],
-  ['kphd_118',['kPHD',['../d7/d5c/namespacennl_1_1asset_1_1SoundBank.html#aedc41f36d8ab40e8165237e06cf449ba',1,'nnl::asset::SoundBank']]],
+  ['kphd_118',['kPHD',['../d7/d5c/namespacennl_1_1asset_1_1SoundBank.html#aedc41f36d8ab40e8165237e06cf449ba',1,'nnl::asset::SoundBank::kPHD'],['../d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a94b4b158f51c1c7553f481eff655e2e3',1,'nnl::format::kPHD']]],
   ['kplaceholder_119',['kPlaceholder',['../d8/d00/group__Asset__Auxiliary.html#gga3a279ae0db228c890b6d74f7ca5370f1a67dfd0442a667cdc8c173ff5f3ee5eb3',1,'nnl::asset']]],
   ['kplaintext_120',['kPlainText',['../d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a69e6732b7d5e15379c083b0ab197aaf9',1,'nnl::format']]],
   ['kplayanimation_121',['kPlayAnimation',['../db/d41/group__Action__Main.html#gga5d4f6a41bb4ff42bfa6c9e88795243e6a40d4acec8232a42ab3c0b583d45e1f2d',1,'nnl::action']]],
