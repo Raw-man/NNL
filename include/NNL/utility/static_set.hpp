@@ -26,7 +26,7 @@ namespace utl {
  */
 template <typename T, std::size_t max_size>
 class StaticSet {
-  static_assert(std::is_arithmetic_v<T>, "");
+  static_assert(std::is_arithmetic_v<T>);
 
  public:
   using container_type = typename std::array<T, max_size>;

@@ -155,7 +155,7 @@ NNL_PACK(struct RLight {
   Vec3<u8> specular{0};  // rgb
 });
 
-static_assert(sizeof(RLight) == 0x9, "");
+static_assert(sizeof(RLight) == 0x9);
 
 NNL_PACK(struct RLit {
   u32 magic_bytes = kMagicBytes;       // 0x0
@@ -168,7 +168,7 @@ NNL_PACK(struct RLit {
   u8 unknown34 = 0xFF;                 // 0x34 unused
 });
 
-static_assert(sizeof(RLit) == 0x35, "");
+static_assert(sizeof(RLit) == 0x35);
 
 Lit Convert(const RLit& rlit);
 

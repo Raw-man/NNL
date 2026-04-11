@@ -49,7 +49,7 @@ constexpr u32 FourCC(const char (&str)[5]) noexcept {
  */
 template <typename T>
 T SwapEndian(T src) noexcept {
-  static_assert(std::is_arithmetic_v<T>, "");
+  static_assert(std::is_arithmetic_v<T>);
   T swapped;
 
   for (std::size_t i = 0; i < sizeof(T); i++)

@@ -134,7 +134,7 @@ union AnimationNode {
   u8 args[4];  ///< Raw memory for storing argument values in argument nodes.
 };
 
-static_assert(sizeof(AnimationNode) == 0x4, "");
+static_assert(sizeof(AnimationNode) == 0x4);
 
 /**
  * @brief Enumeration for different effect functions.
@@ -245,7 +245,7 @@ union EffectNode {
   u8 args[4];  ///< Array for storing argument values (in argument nodes)
 };
 
-static_assert(sizeof(EffectNode) == 0x4, "");
+static_assert(sizeof(EffectNode) == 0x4);
 
 /**
  * @brief Represents an action.
@@ -385,7 +385,7 @@ inline std::tuple<Ts...> ReadArgs(std::size_t main_node_ind, const std::vector<N
       [&](auto&... args) {
         (([&]() {
            static_assert(std::is_trivially_copyable_v<std::remove_reference_t<decltype(args)>>);
-           static_assert(sizeof(args) <= sizeof(Node), "");
+           static_assert(sizeof(args) <= sizeof(Node));
 
            offset = utl::math::RoundNum(offset, sizeof(args));
 
@@ -442,9 +442,9 @@ inline void WriteArgs(std::size_t main_node_ind, std::vector<Node>& nodes, const
   std::size_t offset = 0;
   (
       [&] {
-        static_assert(std::is_trivially_copyable_v<std::remove_reference_t<decltype(args)>>, "");
+        static_assert(std::is_trivially_copyable_v<std::remove_reference_t<decltype(args)>>);
 
-        static_assert(sizeof(args) <= sizeof(Node), "");
+        static_assert(sizeof(args) <= sizeof(Node));
 
         auto& main_node = nodes.at(main_node_ind).main;
 
@@ -510,11 +510,11 @@ NNL_PACK(struct RActionCategory {
   u32 num_actions = 0;
 });
 
-static_assert(sizeof(RActionCategory) == 0x8, "");
+static_assert(sizeof(RActionCategory) == 0x8);
 
 NNL_PACK(struct RHeader { RActionCategory action_categories[kNumActionCategories]; });
 
-static_assert(sizeof(RHeader) == 0x20, "");
+static_assert(sizeof(RHeader) == 0x20);
 
 NNL_PACK(struct RAction {
   u16 offset_animation_nodes = 0;
@@ -523,7 +523,7 @@ NNL_PACK(struct RAction {
   u16 offset_unknown = 0;  // reserved?
 });
 
-static_assert(sizeof(RAction) == 0x8, "");
+static_assert(sizeof(RAction) == 0x8);
 
 NNL_PACK(struct RAnimationNode {
   u16 index_function = 0;
@@ -531,7 +531,7 @@ NNL_PACK(struct RAnimationNode {
   u8 unk_flag = 0;
 });
 
-static_assert(sizeof(RAnimationNode) == 0x4, "");
+static_assert(sizeof(RAnimationNode) == 0x4);
 static_assert(sizeof(RAnimationNode) == sizeof(AnimationNode));
 
 NNL_PACK(struct REffectNode {
@@ -540,7 +540,7 @@ NNL_PACK(struct REffectNode {
   u16 time_tick = 0;
 });
 
-static_assert(sizeof(REffectNode) == 0x4, "");
+static_assert(sizeof(REffectNode) == 0x4);
 static_assert(sizeof(REffectNode) == sizeof(EffectNode));
 
 struct RActionConfig {

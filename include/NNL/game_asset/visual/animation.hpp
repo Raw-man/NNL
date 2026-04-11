@@ -255,7 +255,7 @@ NNL_PACK(struct RHeader {
   u32 offset_scale_traslation_table = 0;  // 0x18
 });
 
-static_assert(sizeof(RHeader) == 0x1C, "");
+static_assert(sizeof(RHeader) == 0x1C);
 
 NNL_PACK(struct RBoneAnimation {
   u32 index_keyframe_scale = 0;        // 0x0 index to keyframe table
@@ -270,7 +270,7 @@ NNL_PACK(struct RBoneAnimation {
   u16 padding = 0;                     // padding
 });
 
-static_assert(sizeof(RBoneAnimation) == 0x20, "");
+static_assert(sizeof(RBoneAnimation) == 0x20);
 
 struct RAnimationContainer {
   RHeader header;

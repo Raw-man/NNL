@@ -136,7 +136,7 @@ NNL_PACK(struct RRenderConfig {
   u32 padding1 = 0;                          // 0x3C
 });
 
-static_assert(sizeof(RRenderConfig) == 0x40, "");
+static_assert(sizeof(RRenderConfig) == 0x40);
 
 RenderConfig Convert(const RRenderConfig& rdistance);
 

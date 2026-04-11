@@ -238,7 +238,7 @@ NNL_PACK(struct RHeader {
   u16 flags_disable_right_channel = 0b0000000000000000;
 });
 
-static_assert(sizeof(RHeader) == 0x8, "");
+static_assert(sizeof(RHeader) == 0x8);
 
 NNL_PACK(struct RAnimation {
   u32 offset_keyframes = 0;
@@ -246,14 +246,14 @@ NNL_PACK(struct RAnimation {
   u16 num_right_channel_keyframes = 0;
 });
 
-static_assert(sizeof(RAnimation) == 0x8, "");
+static_assert(sizeof(RAnimation) == 0x8);
 
 NNL_PACK(struct RKeyFrame {
   u16 time_tick = 0;
   u16 flags_enable_groups = 0b0000000000000000;
 });
 
-static_assert(sizeof(RKeyFrame) == 0x4, "");
+static_assert(sizeof(RKeyFrame) == 0x4);
 
 struct RAnimationContainer {
   RHeader header;

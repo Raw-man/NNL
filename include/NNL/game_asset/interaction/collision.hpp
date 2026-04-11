@@ -300,7 +300,7 @@ NNL_PACK(struct RHeader {
   u16 num_triangles = 0;                  // 0x3E 0 in NUC2
 });
 
-static_assert(sizeof(RHeader) == 0x40, "");
+static_assert(sizeof(RHeader) == 0x40);
 
 NNL_PACK(struct RTriangle {
   u32 calculation = 0;       // 0x0
@@ -338,7 +338,7 @@ NNL_PACK(struct RCollisionTest {
   u16 padding = 0;                       // 0x12
 });
 
-static_assert(sizeof(RCollisionTest) == 0x14, "");
+static_assert(sizeof(RCollisionTest) == 0x14);
 
 struct RCollision {
   RHeader header;

@@ -627,7 +627,7 @@ NNL_PACK(struct RHeader {
   u16 unknown = 0;                // 0x16
 });
 
-static_assert(sizeof(RHeader) == 0x18, "");
+static_assert(sizeof(RHeader) == 0x18);
 
 NNL_PACK(struct RTexture {
   u16 texture_format = 0;           // 0x0
@@ -641,7 +641,7 @@ NNL_PACK(struct RTexture {
   u8 clut_format = 0;               // 0xB
 });
 
-static_assert(sizeof(RTexture) == 0xC, "");
+static_assert(sizeof(RTexture) == 0xC);
 
 NNL_PACK(struct RTextureData {
   u32 offset_bitmap = 0;   // 0x0
@@ -653,7 +653,7 @@ NNL_PACK(struct RTextureData {
   u32 address = 0;         // 0x10 filled dynamically
 });
 
-static_assert(sizeof(RTextureData) == 0x14, "");
+static_assert(sizeof(RTextureData) == 0x14);
 
 struct RTextureContainer {
   RHeader header;

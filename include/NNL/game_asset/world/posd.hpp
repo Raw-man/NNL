@@ -140,7 +140,7 @@ NNL_PACK(struct RHeader {
   u32 num_positions = 0;
 });
 
-static_assert(sizeof(RHeader) == 0x8, "");
+static_assert(sizeof(RHeader) == 0x8);
 
 NNL_PACK(struct RPosition {
   u32 id = 0;
@@ -150,7 +150,7 @@ NNL_PACK(struct RPosition {
   u16 padding = 0;
 });
 
-static_assert(sizeof(RPosition) == 0x18, "");
+static_assert(sizeof(RPosition) == 0x18);
 
 struct RPositionData {
   RHeader header;

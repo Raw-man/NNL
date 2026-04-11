@@ -263,7 +263,7 @@ NNL_PACK(struct RFileRecord {
   u32 size = 0;
 });
 
-static_assert(sizeof(RFileRecord) == 0x8, "");
+static_assert(sizeof(RFileRecord) == 0x8);
 
 template <typename TData>
 struct RAsset {

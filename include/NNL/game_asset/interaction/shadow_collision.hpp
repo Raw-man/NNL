@@ -183,7 +183,7 @@ NNL_PACK(struct RHeader {
   u16 unknown = 0;
 });
 
-static_assert(sizeof(RHeader) == 0x30, "");
+static_assert(sizeof(RHeader) == 0x30);
 
 NNL_PACK(struct RTriangle {
   u16 index_vertex_0 = 0;   // 0x0
@@ -193,7 +193,7 @@ NNL_PACK(struct RTriangle {
   u32 calculation = 0;      // 0x8
 });
 
-static_assert(sizeof(RTriangle) == 0xC, "");
+static_assert(sizeof(RTriangle) == 0xC);
 
 NNL_PACK(struct RCollisionTest {
   u32 offset_triangle_indices = 0;  // 0x0
@@ -201,7 +201,7 @@ NNL_PACK(struct RCollisionTest {
   u16 padding = 0;                  // 0x6
 });
 
-static_assert(sizeof(RCollisionTest) == 0x8, "");
+static_assert(sizeof(RCollisionTest) == 0x8);
 
 struct RCollision {
   RHeader header;

@@ -110,7 +110,7 @@ NNL_PACK(struct RFog {
   u32 color = 0;
 });
 
-static_assert(sizeof(RFog) == 0x10, "");
+static_assert(sizeof(RFog) == 0x10);
 
 Fog Convert(const RFog& rfog);
 

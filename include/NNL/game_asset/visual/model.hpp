@@ -1005,7 +1005,7 @@ NNL_PACK(struct RHeader {
   u32 address = 0;               // 0x3C memory location, filled dynamically
 });
 
-static_assert(sizeof(RHeader) == 0x40, "");
+static_assert(sizeof(RHeader) == 0x40);
 
 NNL_PACK(struct RBone {
   Vec3<f32> scale{0.0f};
@@ -1014,7 +1014,7 @@ NNL_PACK(struct RBone {
   Vec3<f32> translation{0.0f};
 });
 
-static_assert(sizeof(RBone) == 0x20, "");
+static_assert(sizeof(RBone) == 0x20);
 
 NNL_PACK(struct RBBox {
   u16 bone_index = 0;
@@ -1030,14 +1030,14 @@ NNL_PACK(struct RBBox {
   // 7 maxX, maxY, maxZ
 });
 
-static_assert(sizeof(RBBox) == 0x90, "");
+static_assert(sizeof(RBBox) == 0x90);
 
 NNL_PACK(struct RAttachment {
   u16 bone_id = 0;
   u16 attachment_id = 0;
 });
 
-static_assert(sizeof(RAttachment) == 0x4, "");
+static_assert(sizeof(RAttachment) == 0x4);
 
 NNL_PACK(struct RUVAnimation {
   u16 animation_mode = 0;
@@ -1047,7 +1047,7 @@ NNL_PACK(struct RUVAnimation {
   u32 unknown = 0;  // reserved (?)
 });
 
-static_assert(sizeof(RUVAnimation) == 0x10, "");
+static_assert(sizeof(RUVAnimation) == 0x10);
 
 NNL_PACK(struct RTextureSwap {
   u32 id = 0;  // not used
@@ -1055,21 +1055,21 @@ NNL_PACK(struct RTextureSwap {
   i16 new_texture_id = 0;
 });
 
-static_assert(sizeof(RTextureSwap) == 0x8, "");
+static_assert(sizeof(RTextureSwap) == 0x8);
 
 NNL_PACK(struct RBoneTargetHeader {
   u32 offset = 0;
   u32 num_entries = 0;
 });
 
-static_assert(sizeof(RBoneTargetHeader) == 0x8, "");
+static_assert(sizeof(RBoneTargetHeader) == 0x8);
 
 NNL_PACK(struct RBoneTargetEntry {
   u16 bone_index = 0;
   u16 role_id = 0;
 });
 
-static_assert(sizeof(RBoneTargetEntry) == 0x4, "");
+static_assert(sizeof(RBoneTargetEntry) == 0x4);
 
 struct RBoneTargetTable {
   std::vector<RBoneTargetHeader> header;
@@ -1086,7 +1086,7 @@ NNL_PACK(struct RMeshGroup {
   f32 v_offset = 0.0f;    // 0x14
 });
 
-static_assert(sizeof(RMeshGroup) == 0x18, "");
+static_assert(sizeof(RMeshGroup) == 0x18);
 
 NNL_PACK(struct RMesh {
   u32 offset_submeshes = 0;   // 0x0
@@ -1107,7 +1107,7 @@ NNL_PACK(struct RMesh {
   u8 uv_animation_id = 0;     // 0x27
 });
 
-static_assert(sizeof(RMesh) == 0x28, "");
+static_assert(sizeof(RMesh) == 0x28);
 
 NNL_PACK(struct RSubMesh {
   u16 num_bones = 0;       // 0x0
@@ -1120,7 +1120,7 @@ NNL_PACK(struct RSubMesh {
   u32 offset_display_list = 0;                         // 0x20
 });
 
-static_assert(sizeof(RSubMesh) == 0x24, "");
+static_assert(sizeof(RSubMesh) == 0x24);
 
 NNL_PACK(struct RPrimitive {
   u16 primitive_type = 0;
@@ -1130,7 +1130,7 @@ NNL_PACK(struct RPrimitive {
   u32 ptr_vram_vertex_buffer = 0;  // set by the game
 });
 
-static_assert(sizeof(RPrimitive) == 0x10, "");
+static_assert(sizeof(RPrimitive) == 0x10);
 
 struct RModel {
   RHeader header;

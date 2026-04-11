@@ -222,7 +222,7 @@ NNL_PACK(struct RHeader {
   u16 num_reserved_3 = 0;
 });
 
-static_assert(sizeof(RHeader) == 0x40, "");
+static_assert(sizeof(RHeader) == 0x40);
 
 NNL_PACK(struct RCollisionBox14 {
   u16 bone_role = 0;            // 0x0
@@ -232,7 +232,7 @@ NNL_PACK(struct RCollisionBox14 {
   f32 size = 0.0f;  // 0x10
 });
 
-static_assert(sizeof(RCollisionBox14) == 0x14, "");
+static_assert(sizeof(RCollisionBox14) == 0x14);
 
 NNL_PACK(struct RCollisionBox18 {
   u16 bone_role = 0;            // 0x0
@@ -242,7 +242,7 @@ NNL_PACK(struct RCollisionBox18 {
   f32 unknown14 = 0.0f;         // 0x14
 });
 
-static_assert(sizeof(RCollisionBox18) == 0x18, "");
+static_assert(sizeof(RCollisionBox18) == 0x18);
 
 NNL_PACK(struct RHitboxHeader {
   u32 offset_hitboxes = 0;  // 0x0
@@ -251,7 +251,7 @@ NNL_PACK(struct RHitboxHeader {
                             // - action index.
 });
 
-static_assert(sizeof(RHitboxHeader) == 0x8, "");
+static_assert(sizeof(RHitboxHeader) == 0x8);
 
 NNL_PACK(struct RHitbox {
   u32 offset_colboxes = 0;  // 0x0
@@ -264,7 +264,7 @@ NNL_PACK(struct RHitbox {
   u16 unknownE = 0;         // 0xE
 });
 
-static_assert(sizeof(RHitbox) == 0x10, "");
+static_assert(sizeof(RHitbox) == 0x10);
 
 NNL_PACK(struct RCollisionBox20 {
   u16 bone_role = 0;              // 0x0
@@ -275,7 +275,7 @@ NNL_PACK(struct RCollisionBox20 {
   f32 size = 0;  // 0x1C
 });
 
-static_assert(sizeof(RCollisionBox20) == 0x20, "");
+static_assert(sizeof(RCollisionBox20) == 0x20);
 
 struct RCollisionBoxConfig {
   RHeader header;

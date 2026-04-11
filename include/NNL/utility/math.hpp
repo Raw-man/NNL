@@ -6,8 +6,8 @@
 #pragma once
 #include <algorithm>
 #include <cassert>
-#include <type_traits>
 #include <tuple>
+#include <type_traits>
 #define GLM_ENABLE_EXPERIMENTAL
 
 #include <glm/glm.hpp>
@@ -168,7 +168,7 @@ glm::vec3 NormalizeSafe(const glm::vec3& vec);
  */
 template <typename T>
 constexpr inline T Sqr(T value) {
-  static_assert(std::is_arithmetic_v<T>, "");
+  static_assert(std::is_arithmetic_v<T>);
   return value * value;
 }
 
@@ -180,7 +180,7 @@ constexpr inline T Sqr(T value) {
  */
 template <typename T>
 bool IsPow2(T n) {
-  static_assert(std::is_integral_v<T>, "");
+  static_assert(std::is_integral_v<T>);
   return (n > 0 && ((n & (n - 1)) == 0));
 }
 
@@ -217,7 +217,7 @@ inline u32 RoundDownPow2(u32 v) { return IsPow2(v) ? v : RoundUpPow2(v) >> 1; }
  */
 template <typename T>
 T RoundNum(T number, std::size_t multiple) {
-  static_assert(std::is_integral_v<T>, "");
+  static_assert(std::is_integral_v<T>);
 
   if (multiple == 0) return number;
 

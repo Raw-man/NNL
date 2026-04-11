@@ -146,7 +146,7 @@ NNL_PACK(struct RFileRecord {
   u32 reserved = 0;  // always 0
 });
 
-static_assert(sizeof(RFileRecord) == 0x10, "");
+static_assert(sizeof(RFileRecord) == 0x10);
 
 template <typename TData = Buffer>
 struct RDigEntry {
