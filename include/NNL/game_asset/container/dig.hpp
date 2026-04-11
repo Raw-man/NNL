@@ -75,7 +75,7 @@ using FileRecord = TFileRecord<Buffer>;
 using FileRecordView = TFileRecord<BufferView>;
 
 /**
- * @brief A main game asset archive.
+ * @brief A primary game data archive.
  *
  * The primary container for game assets. The archive format is known by different names:
  * CFC.DIG in @ref NUC2, *.BIN in NSUNI and NSLAR. It consists of nested archives.

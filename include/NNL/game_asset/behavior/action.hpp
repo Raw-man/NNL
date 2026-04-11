@@ -111,7 +111,7 @@ enum class AnimationFunction : u16 {
                                  ///< [{i16,i16},{i16,i16},{i16,i16}]
 };
 /**
- * @brief A union that represents a main function or argument node within an animation playback chain.
+ * @brief A union that represents a function or argument node within an animation playback chain.
  *
  * @note When next_main_node is > 1, nodes that immediately follow store arguments for
  * the function and may be reinterpreted as various numeric types.
@@ -219,7 +219,7 @@ enum class EffectFunction : u8 {
 
 };
 /**
- * @brief A union that represents a main function or argument node within an auxiliary effect playback chain.
+ * @brief A union that represents a function or argument node within an auxiliary effect playback chain.
  *
  * Effect nodes trigger additional visual and sound effects _during_
  * the playback of a main animation chain.

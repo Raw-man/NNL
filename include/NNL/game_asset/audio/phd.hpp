@@ -1,6 +1,6 @@
 /**
  * @file phd.hpp
- * @brief Contains a few functions and structures for working with PHD/PBD
+ * @brief Contains a few functions and structures for working with PHD files from PHD/PBD
  * sound banks, a proprietary format developed by Sony Computer Entertainment.
  *
  * @note This module is a **draft**; currently, it only supports file type validation.
@@ -34,13 +34,16 @@ namespace phd {
  */
 
 /**
- * @brief Tests if the provided file is PHD/PBD sound bank.
+ * @brief Tests if the provided file is a PHD header.
  *
  * This function takes data representing a file and checks
- * whether it corresponds to the in-game sound bank format.
+ * whether it corresponds to the in-game PHD file format used in PHD/PBD sound banks.
  *
  * @param buffer The file to be tested.
- * @return Returns true if the file is identified as a sound bank;
+ * @return Returns true if the file is identified as a PHD header.
+ *
+ * @see nnl::asset::SoundBank
+ * @see nnl::asset::Category::kSoundBank
  */
 bool IsOfType(BufferView buffer);
 

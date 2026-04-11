@@ -35,10 +35,10 @@ namespace format {
 enum FileFormat {
 
   kUnknown,                ///< An unknown type
-  kPGD,                    ///< Protected Game Data: an encrypted archive that
-                           ///< contains the main game archive (a .BIN file in NSUNI/NSLAR).
-  kDig,                    ///< The main asset archive (a .BIN file in NSUNI/NSLAR). @see nnl::dig::Dig
-  kDigEntry,               ///< An entry in the main archive (a nested archive). @see nnl::dig_entry::DigEntry
+  kPGD,                    ///< Protected Game Data: an encrypted wrapper that
+                           ///< contains a primary data archive (a .BIN file in NSUNI/NSLAR).
+  kDig,                    ///< A primary asset archive (a .BIN file in NSUNI/NSLAR). @see nnl::dig::Dig
+  kDigEntry,               ///< An entry in a primary archive (a nested archive itself). @see nnl::dig_entry::DigEntry
   kCollection,             ///< A container that stores related assets. @see nnl::collection::Collection
   kAssetContainer,         ///< A container that stores related parts of an asset. @see nnl::asset::Asset
   kModel,                  ///< @see nnl::model::Model
@@ -55,9 +55,9 @@ enum FileFormat {
   kPositionData,           ///< @see nnl::posd::PositionData
   kLit,                    ///< @see nnl::lit::Lit
   kRenderConfig,           ///< @see nnl::render::RenderConfig
-  kPHD,                    /// @see nnl::phd::IsOfType
-  kUIConfig,               /// @see nnl::ui::IsOfType
-  kMinimapConfig,          /// @see nnl::minimap::MinimapConfig
+  kPHD,                    ///< @see nnl::phd::IsOfType
+  kUIConfig,               ///< @see nnl::ui::IsOfType
+  kMinimapConfig,          ///< @see nnl::minimap::MinimapConfig
   kPNG,                    ///< A PNG image
   kCCSF,      ///< An asset format developed by CyberConnect2. It's used for the finishing blow cutscenes in NSUNI. @see
               ///< https://github.com/MiguelQueiroz010/CCSF-Asset-Explorer/

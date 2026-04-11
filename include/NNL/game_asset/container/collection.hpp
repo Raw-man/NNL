@@ -37,7 +37,7 @@ namespace collection {
 /**
  * @brief A container for related but distinct assets.
  *
- * This container often groups complete, logically related but distinct assets (e.g., a main 3D map and its 3D props).
+ * This container often groups complete, logically related but distinct assets (e.g., a 3D map and its 3D props).
  * It's typically nested inside a DigEntry container.
  *
  * @see nnl::collection::Import
