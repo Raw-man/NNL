@@ -20,7 +20,7 @@
 
 /**
  * @def NNL_THROW
- * @brief Throws an exception or aborts the program if exceptions are disabled
+ * @brief Throws an exception or terminates the program if exceptions are disabled
  *
  * @param object The exception object to be thrown
  */
@@ -41,17 +41,11 @@
 #define NNL_TRY try
 #define NNL_CATCH(type) catch (const type& e)
 #else
-#include "NNL/common/logger.hpp"  // IWYU pragma: export
-#ifdef NNL_LOG_ENABLED
-#define NNL_THROW(object)                           \
-  {                                                 \
-    nnl::Log(object.what(), nnl::LogLevel::kError); \
-    std::terminate();                               \
-  }
-#else
+#include "NNL/common/panic.hpp"  // IWYU pragma: export
+
 #define NNL_THROW(object) \
-  { std::terminate(); }
-#endif
+  { nnl::Panic(object.what()); }
+
 #define NNL_TRY if (true)
 
 #define NNL_CATCH(type) else if (type e; false)
@@ -102,8 +96,8 @@ class ParseError : public Exception {
  * @class PreconditionError
  * @brief Exception thrown when a contract precondition is violated.
  *
- * Usually signals that a function
- * received invalid input or was called in an invalid state.
+ * @note Used only when the @c NNL_THROW_ON_CONTRACT_VIOLATION CMake option is enabled.
+ * Otherwise, contract violations are fatal.
  *
  * @see NNL_EXPECTS
  */

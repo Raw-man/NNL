@@ -5,7 +5,10 @@ project(NNL VERSION 1.0.1 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-option(NNL_ENABLE_LOGGING "Enable logging" OFF)
+option(NNL_ENABLE_LOGGING "Enable runtime diagnostics (warnings and errors)" OFF)
+
+option(NNL_THROW_ON_CONTRACT_VIOLATION "Throw an exception on contract violation instead of terminating" OFF)
+
 option(NNL_BUILD_TESTS "Build unit tests" ${PROJECT_IS_TOP_LEVEL})
 
 message(STATUS "NNL: Version ${NNL_VERSION}")
@@ -149,6 +152,7 @@ add_library (NNL::NNL ALIAS NNL)
 
 target_sources(NNL PRIVATE
     src/common/logger.cpp
+    src/common/panic.cpp
 
     src/simple_asset/svalue.cpp
     src/simple_asset/saudio.cpp
@@ -206,6 +210,7 @@ target_sources(NNL PUBLIC
     include/NNL/common/contract.hpp
     include/NNL/common/io.hpp
     include/NNL/common/logger.hpp
+    include/NNL/common/panic.hpp
     include/NNL/common/exception.hpp
 
     include/NNL/simple_asset/svalue.hpp
@@ -264,7 +269,8 @@ target_sources(NNL PUBLIC
 
 target_compile_definitions(NNL
     PUBLIC
-        $<$<BOOL:${NNL_ENABLE_LOGGING}>:NNL_LOG_ENABLED>
+        $<$<BOOL:${NNL_ENABLE_LOGGING}>:NNL_ENABLE_LOGGING>
+        $<$<BOOL:${NNL_THROW_ON_CONTRACT_VIOLATION}>:NNL_THROW_ON_CONTRACT_VIOLATION>
     PRIVATE
         TINYGLTF_NO_INCLUDE_STB_IMAGE
         TINYGLTF_NO_INCLUDE_STB_IMAGE_WRITE

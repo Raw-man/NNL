@@ -10,6 +10,7 @@
 #include "NNL/common/fixed_type.hpp"                        // IWYU pragma: export
 #include "NNL/common/io.hpp"                                // IWYU pragma: export
 #include "NNL/common/logger.hpp"                            // IWYU pragma: export
+#include "NNL/common/panic.hpp"                             // IWYU pragma: export
 #include "NNL/common/src_info.hpp"                          // IWYU pragma: export
 #include "NNL/game_asset/audio/adpcm.hpp"                   // IWYU pragma: export
 #include "NNL/game_asset/audio/phd.hpp"                     // IWYU pragma: export

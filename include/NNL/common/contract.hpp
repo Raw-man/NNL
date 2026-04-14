@@ -24,9 +24,13 @@
  * This macro is used to check requirements that must hold true before the function is called. The caller must
  * ensure these conditions; failure typically indicates an error in the calling code.
  *
- * @note In debug builds, it uses assert; in release, it throws nnl::PreconditionError
+ * @note By default, this macro terminates execution via a configurable callback.
+ * If the CMake option @c NNL_THROW_ON_CONTRACT_VIOLATION is enabled,
+ * it throws nnl::PreconditionError instead.
+ *
+ * @see nnl::SetGlobalPanicCB
  */
-#ifdef NDEBUG
+#ifdef NNL_THROW_ON_CONTRACT_VIOLATION
 #include "NNL/common/exception.hpp"
 #define NNL_EXPECTS(precondition)                                                          \
   do {                                                                                     \
@@ -35,9 +39,12 @@
     }                                                                                      \
   } while (false)
 #else
-#define NNL_EXPECTS(precondition) \
-  do {                            \
-    assert(precondition);         \
+#include "NNL/common/panic.hpp"
+#define NNL_EXPECTS(precondition)                                   \
+  do {                                                              \
+    if (!static_cast<bool>(precondition)) {                         \
+      nnl::Panic(NNL_ERMSG("precondition failed: " #precondition)); \
+    }                                                               \
   } while (false)
 #endif
 
@@ -60,15 +67,9 @@
  * The function itself is responsible for ensuring these conditions, assuming all preconditions
  * were met; failure indicates a bug in the function.
  */
-#ifdef NDEBUG
-#define NNL_ENSURES_DBG(postcondition) \
-  do {                                 \
-  } while (false)
-#else
 #define NNL_ENSURES_DBG(postcondition) \
   do {                                 \
     assert(postcondition);             \
   } while (false)
-#endif
 
 /** @} */
