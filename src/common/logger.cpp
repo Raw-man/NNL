@@ -5,14 +5,16 @@
 
 namespace nnl {
 
-std::atomic<LogFun> log_f{[](const std::string& msg, LogLevel log_lvl) {
+void DefaultLog(std::string_view msg, LogLevel log_lvl) {
   std::cerr << (log_lvl == LogLevel::kError ? "error: " : "warn: ") << msg << std::endl;
-}};
+}
 
-void SetGlobalLogCB(LogFun callback) { log_f.store(callback, std::memory_order_relaxed); }
+std::atomic<LogFun> log_f{DefaultLog};
 
-void Log(const std::string& msg, LogLevel log_lvl) {
-  LogFun current_log_f = log_f.load(std::memory_order_relaxed);
+void SetGlobalLogCB(LogFun callback) noexcept { log_f.store(callback, std::memory_order_release); }
+
+void Log(std::string_view msg, LogLevel log_lvl) {
+  LogFun current_log_f = log_f.load(std::memory_order_acquire);
   if (current_log_f) {
     current_log_f(msg, log_lvl);
   }

@@ -7,9 +7,7 @@
  */
 #pragma once
 
-#include <string>
-
-#include "NNL/common/src_info.hpp"
+#include <string_view>
 
 /**
  * \defgroup Logger Logger
@@ -19,7 +17,8 @@
  * @{
  */
 
-#ifdef NNL_LOG_ENABLED
+#ifdef NNL_ENABLE_LOGGING
+#include "NNL/common/src_info.hpp"
 #define NNL_LOG_WARN(msg)                                        \
   do {                                                           \
     nnl::Log((msg) + ("; " + NNL_SRCINF), nnl::LogLevel::kWarn); \
@@ -72,7 +71,7 @@ enum class LogLevel {
  *
  * @see nnl::SetGlobalLogCB
  */
-using LogFun = void (*)(const std::string& msg, LogLevel log_level);
+using LogFun = void (*)(std::string_view msg, LogLevel log_level);
 
 /**
  * @brief Sets the logging callback function.
@@ -86,9 +85,9 @@ using LogFun = void (*)(const std::string& msg, LogLevel log_level);
  *
  * @see nnl::LogFun
  */
-void SetGlobalLogCB(LogFun callback);
+void SetGlobalLogCB(LogFun callback) noexcept;
 
-void Log(const std::string& msg, LogLevel log_lvl);
+void Log(std::string_view msg, LogLevel log_lvl);
 
 /** @} */
 }  // namespace nnl
