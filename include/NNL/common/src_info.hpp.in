@@ -37,9 +37,9 @@
  * @def NNL_SRCINF
  * @brief Source Information
  *
- * Expands to std::string with info about function signature, file and line number
+ * Expands to a std::string containing the function name, file name, and line number.
  */
 #ifndef NNL_SRCINF
 #include <string> // IWYU pragma: export
-#define NNL_SRCINF std::string(std::string(__func__) + "() at " NNL_FILE ":" NNL_STR(__LINE__))
+#define NNL_SRCINF (std::string(__func__) + "() at " NNL_FILE ":" NNL_STR(__LINE__))
 #endif
