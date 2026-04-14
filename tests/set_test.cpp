@@ -16,8 +16,9 @@ TEST(Set, Insert) {
   ASSERT_EQ(set[5], 5);
   ASSERT_EQ(set[6], 6);
   ASSERT_EQ(set[7], 8);
-
+#if GTEST_HAS_EXCEPTIONS
   EXPECT_THROW(set.Insert(7), nnl::RangeError);
+#endif
 }
 
 TEST(Set, Contains) {
@@ -89,12 +90,14 @@ TEST(Set, Join) {
   ASSERT_TRUE(set_b.Join(set_b) == set_b);
   set_b.Insert(0);
 
+#if GTEST_HAS_EXCEPTIONS
   EXPECT_THROW(
       {
         auto a = set_b.Join(set_a);
-        assert((void*)&a);
+        (void)a;
       },
       nnl::RangeError);
+#endif
 }
 
 TEST(Set, Intersect) {

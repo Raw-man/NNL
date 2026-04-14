@@ -116,12 +116,7 @@ int main(int argc, char** argv) {
 
   std::filesystem::create_directories(g_asset_dir);
 
-  try {
-    ExtractTestAssets(g_main_archive_path, g_asset_dir);
-  } catch (const std::exception& e) {
-    std::cerr << "[ ERROR    ] Failed to extract assets: " << e.what() << std::endl;
-    return 1;
-  }
+  ExtractTestAssets(g_main_archive_path, g_asset_dir);
 
   return RUN_ALL_TESTS();
 }
