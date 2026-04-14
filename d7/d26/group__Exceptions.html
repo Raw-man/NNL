@@ -115,7 +115,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga353a8b1508dd8b30105ffc285cd1f3c9" id="r_ga353a8b1508dd8b30105ffc285cd1f3c9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga353a8b1508dd8b30105ffc285cd1f3c9">NNL_THROW</a>(object)</td></tr>
-<tr class="memdesc:ga353a8b1508dd8b30105ffc285cd1f3c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Throws an exception or aborts the program if exceptions are disabled.  <br /></td></tr>
+<tr class="memdesc:ga353a8b1508dd8b30105ffc285cd1f3c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Throws an exception or terminates the program if exceptions are disabled.  <br /></td></tr>
 <tr class="memitem:ga592c400ccf70a8be4396b4a6e611565a" id="r_ga592c400ccf70a8be4396b4a6e611565a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga592c400ccf70a8be4396b4a6e611565a">NNL_TRY</a>&#160;&#160;&#160;if (true)</td></tr>
 <tr class="memdesc:ga592c400ccf70a8be4396b4a6e611565a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expands to a try statement; or a dummy if statement when exceptions are disabled.  <br /></td></tr>
 <tr class="memitem:ga1337f04ec6971c13063846a14897b2ea" id="r_ga1337f04ec6971c13063846a14897b2ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga1337f04ec6971c13063846a14897b2ea">NNL_CATCH</a>(type)</td></tr>
@@ -187,7 +187,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p><a class="el" href="#d5/d82/classnnl_1_1Exception" title="Base exception class for the library specific exceptions.">Exception</a> thrown when a contract precondition is violated. </p>
-<p>Usually signals that a function received invalid input or was called in an invalid state.</p>
+<dl class="section note"><dt>Note</dt><dd>Used only when the <code>NNL_THROW_ON_CONTRACT_VIOLATION</code> CMake option is enabled. Otherwise, contract violations are fatal.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d7/dbe/group__Contracts.html#ga686cd2de98fd1f78290f03b87ba88c9b" title="A precondition check.">NNL_EXPECTS</a> </dd></dl>
 </div>
 <p>Inherits <a class="el" href="#d5/d82/classnnl_1_1Exception">nnl::Exception</a>.</p>
@@ -288,9 +288,9 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  { std::terminate(); }</div>
+<b>Value:</b><div class="fragment"><div class="line">  { nnl::Panic(<span class="keywordtype">object</span>.what()); }</div>
 </div><!-- fragment -->
-<p>Throws an exception or aborts the program if exceptions are disabled. </p>
+<p>Throws an exception or terminates the program if exceptions are disabled. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">object</td><td>The exception object to be thrown </td></tr>

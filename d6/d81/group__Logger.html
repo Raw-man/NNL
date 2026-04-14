@@ -97,8 +97,8 @@ $(function(){initNavTree('d6/d81/group__Logger.html','../../',''); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gaac7784287ee6e488f343a97fcb6875e7" id="r_gaac7784287ee6e488f343a97fcb6875e7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaac7784287ee6e488f343a97fcb6875e7">nnl::LogFun</a> = void (*)(const std::string&amp; msg, <a class="el" href="#gacba1c325cbb0e874dcc39ddd37fdf6ab">LogLevel</a> log_level)</td></tr>
-<tr class="memdesc:gaac7784287ee6e488f343a97fcb6875e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type definition for a logging function.  <br /></td></tr>
+<tr class="memitem:ga5050d5da329561aa6239ebd02d55428e" id="r_ga5050d5da329561aa6239ebd02d55428e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga5050d5da329561aa6239ebd02d55428e">nnl::LogFun</a> = void (*)(std::string_view msg, <a class="el" href="#gacba1c325cbb0e874dcc39ddd37fdf6ab">LogLevel</a> log_level)</td></tr>
+<tr class="memdesc:ga5050d5da329561aa6239ebd02d55428e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type definition for a logging function.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -109,21 +109,21 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gabfb17477ff5d38b03b50b509f1c113e8" id="r_gabfb17477ff5d38b03b50b509f1c113e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gabfb17477ff5d38b03b50b509f1c113e8">nnl::SetGlobalLogCB</a> (<a class="el" href="#gaac7784287ee6e488f343a97fcb6875e7">LogFun</a> callback)</td></tr>
-<tr class="memdesc:gabfb17477ff5d38b03b50b509f1c113e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the logging callback function.  <br /></td></tr>
+<tr class="memitem:ga69fde58c7d64b33c33486fa2ee1b5ebf" id="r_ga69fde58c7d64b33c33486fa2ee1b5ebf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga69fde58c7d64b33c33486fa2ee1b5ebf">nnl::SetGlobalLogCB</a> (<a class="el" href="#ga5050d5da329561aa6239ebd02d55428e">LogFun</a> callback) noexcept</td></tr>
+<tr class="memdesc:ga69fde58c7d64b33c33486fa2ee1b5ebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the logging callback function.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <p>Provides functions to set up logging.    </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#gabfb17477ff5d38b03b50b509f1c113e8" title="Sets the logging callback function.">nnl::SetGlobalLogCB</a>   </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga69fde58c7d64b33c33486fa2ee1b5ebf" title="Sets the logging callback function.">nnl::SetGlobalLogCB</a>   </dd></dl>
 <a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
-<a id="gaac7784287ee6e488f343a97fcb6875e7" name="gaac7784287ee6e488f343a97fcb6875e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaac7784287ee6e488f343a97fcb6875e7">&#9670;&#160;</a></span>LogFun</h2>
+<a id="ga5050d5da329561aa6239ebd02d55428e" name="ga5050d5da329561aa6239ebd02d55428e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5050d5da329561aa6239ebd02d55428e">&#9670;&#160;</a></span>LogFun</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#gaac7784287ee6e488f343a97fcb6875e7">nnl::LogFun</a> = void (*)(const std::string&amp; msg, <a class="el" href="#gacba1c325cbb0e874dcc39ddd37fdf6ab">LogLevel</a> log_level)</td>
+          <td class="memname">using <a class="el" href="#ga5050d5da329561aa6239ebd02d55428e">nnl::LogFun</a> = void (*)(std::string_view msg, <a class="el" href="#gacba1c325cbb0e874dcc39ddd37fdf6ab">LogLevel</a> log_level)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -136,7 +136,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#gabfb17477ff5d38b03b50b509f1c113e8" title="Sets the logging callback function.">nnl::SetGlobalLogCB</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga69fde58c7d64b33c33486fa2ee1b5ebf" title="Sets the logging callback function.">nnl::SetGlobalLogCB</a> </dd></dl>
 
 </div>
 </div>
@@ -174,19 +174,27 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="gabfb17477ff5d38b03b50b509f1c113e8" name="gabfb17477ff5d38b03b50b509f1c113e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabfb17477ff5d38b03b50b509f1c113e8">&#9670;&#160;</a></span>SetGlobalLogCB()</h2>
+<a id="ga69fde58c7d64b33c33486fa2ee1b5ebf" name="ga69fde58c7d64b33c33486fa2ee1b5ebf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga69fde58c7d64b33c33486fa2ee1b5ebf">&#9670;&#160;</a></span>SetGlobalLogCB()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void nnl::SetGlobalLogCB </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="#gaac7784287ee6e488f343a97fcb6875e7">LogFun</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#ga5050d5da329561aa6239ebd02d55428e">LogFun</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Sets the logging callback function. </p>
@@ -197,7 +205,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>To enable log messages, ensure that the library is compiled with the NNL_ENABLE_LOGGING option set. If logging is invoked from multiple threads, it is the user's responsibility to implement appropriate synchronization mechanisms.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#gaac7784287ee6e488f343a97fcb6875e7" title="Type definition for a logging function.">nnl::LogFun</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga5050d5da329561aa6239ebd02d55428e" title="Type definition for a logging function.">nnl::LogFun</a> </dd></dl>
 
 </div>
 </div>

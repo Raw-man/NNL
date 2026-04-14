@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NSUNI/NSLAR Library: include/NNL/common/logger.hpp File Reference</title>
+<title>NSUNI/NSLAR Library: include/NNL/common/panic.hpp File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('d6/da3/logger_8hpp.html','../../',''); });
+$(function(){initNavTree('da/d6a/panic_8hpp.html','../../',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -88,40 +88,28 @@ $(function(){initNavTree('d6/da3/logger_8hpp.html','../../',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">logger.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">panic.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Provides functions to set up logging.  
+<p>Provides functions to set up the callback for fatal library errors.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string_view&gt;</code><br />
 </div>
-<p><a href="../../d6/da3/logger_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="../../da/d6a/panic_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:nnl" id="r_nnl"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d1f/namespacennl.html">nnl</a></td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ga5050d5da329561aa6239ebd02d55428e" id="r_ga5050d5da329561aa6239ebd02d55428e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d81/group__Logger.html#ga5050d5da329561aa6239ebd02d55428e">nnl::LogFun</a> = void (*)(std::string_view msg, <a class="el" href="../../d6/d81/group__Logger.html#gacba1c325cbb0e874dcc39ddd37fdf6ab">LogLevel</a> log_level)</td></tr>
-<tr class="memdesc:ga5050d5da329561aa6239ebd02d55428e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type definition for a logging function.  <br /></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:gacba1c325cbb0e874dcc39ddd37fdf6ab" id="r_gacba1c325cbb0e874dcc39ddd37fdf6ab"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d81/group__Logger.html#gacba1c325cbb0e874dcc39ddd37fdf6ab">nnl::LogLevel</a> { <a class="el" href="../../d6/d81/group__Logger.html#ggacba1c325cbb0e874dcc39ddd37fdf6abae3587c730cc1aa530fa4ddc9c4204e97">nnl::LogLevel::kError</a>
-, <a class="el" href="../../d6/d81/group__Logger.html#ggacba1c325cbb0e874dcc39ddd37fdf6aba61a920eb4a24199ec6a36dd90f2a30b7">nnl::LogLevel::kWarn</a>
- }</td></tr>
-<tr class="memdesc:gacba1c325cbb0e874dcc39ddd37fdf6ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum class representing log levels.  <a href="../../d6/d81/group__Logger.html#gacba1c325cbb0e874dcc39ddd37fdf6ab">More...</a><br /></td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga69fde58c7d64b33c33486fa2ee1b5ebf" id="r_ga69fde58c7d64b33c33486fa2ee1b5ebf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d81/group__Logger.html#ga69fde58c7d64b33c33486fa2ee1b5ebf">nnl::SetGlobalLogCB</a> (<a class="el" href="../../d6/d81/group__Logger.html#ga5050d5da329561aa6239ebd02d55428e">LogFun</a> callback) noexcept</td></tr>
-<tr class="memdesc:ga69fde58c7d64b33c33486fa2ee1b5ebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the logging callback function.  <br /></td></tr>
+<tr class="memitem:ga1a06ded510b5db0cbf6d1e0af6fed3b1" id="r_ga1a06ded510b5db0cbf6d1e0af6fed3b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d18/group__Panic.html#ga1a06ded510b5db0cbf6d1e0af6fed3b1">nnl::SetGlobalPanicCB</a> (PanicFun callback) noexcept</td></tr>
+<tr class="memdesc:ga1a06ded510b5db0cbf6d1e0af6fed3b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the global callback for fatal library errors.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Provides functions to set up logging. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d6/d81/group__Logger.html#ga69fde58c7d64b33c33486fa2ee1b5ebf" title="Sets the logging callback function.">nnl::SetGlobalLogCB</a> </dd></dl>
+<div class="textblock"><p>Provides functions to set up the callback for fatal library errors. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d1/d18/group__Panic.html#ga1a06ded510b5db0cbf6d1e0af6fed3b1" title="Sets the global callback for fatal library errors.">nnl::SetGlobalPanicCB</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
@@ -135,7 +123,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="../../dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="../../dir_c1a4541e621b00a0fceeaf79b8232ec0.html">NNL</a></li><li class="navelem"><a href="../../dir_51ac859d123d85d0e253ce2cbb9aa6c2.html">common</a></li><li class="navelem"><a href="../../d6/da3/logger_8hpp.html">logger.hpp</a></li>
+    <li class="navelem"><a href="../../dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="../../dir_c1a4541e621b00a0fceeaf79b8232ec0.html">NNL</a></li><li class="navelem"><a href="../../dir_51ac859d123d85d0e253ce2cbb9aa6c2.html">common</a></li><li class="navelem"><a href="../../da/d6a/panic_8hpp.html">panic.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

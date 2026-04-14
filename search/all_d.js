@@ -15,7 +15,7 @@ var searchData=
   ['lit_12',['Lit',['../d1/def/group__Light__Main.html#d4/de6/structnnl_1_1lit_1_1Lit',1,'nnl::lit']]],
   ['lit_13',['lit',['../d1/dc4/group__SModel.html#ac872992174aadc5d16b8cd1186b7d184',1,'nnl::SMaterial']]],
   ['lit_2ehpp_14',['lit.hpp',['../d1/d73/lit_8hpp.html',1,'']]],
-  ['logfun_15',['LogFun',['../d6/d81/group__Logger.html#gaac7784287ee6e488f343a97fcb6875e7',1,'nnl']]],
+  ['logfun_15',['LogFun',['../d6/d81/group__Logger.html#ga5050d5da329561aa6239ebd02d55428e',1,'nnl']]],
   ['logger_16',['Logger',['../d6/d81/group__Logger.html',1,'']]],
   ['logger_2ehpp_17',['logger.hpp',['../d6/da3/logger_8hpp.html',1,'']]],
   ['loglevel_18',['LogLevel',['../d6/d81/group__Logger.html#gacba1c325cbb0e874dcc39ddd37fdf6ab',1,'nnl']]]

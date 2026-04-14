@@ -149,13 +149,16 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  <span class="keywordflow">do</span> {                            \</div>
-<div class="line">    assert(precondition);         \</div>
+<b>Value:</b><div class="fragment"><div class="line">  <span class="keywordflow">do</span> {                                                              \</div>
+<div class="line">    if (!<span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(precondition)) {                         \</div>
+<div class="line">      nnl::Panic(NNL_ERMSG(<span class="stringliteral">&quot;precondition failed: &quot;</span> #precondition)); \</div>
+<div class="line">    }                                                               \</div>
 <div class="line">  } <span class="keywordflow">while</span> (<span class="keyword">false</span>)</div>
 </div><!-- fragment -->
 <p>A precondition check. </p>
 <p>This macro is used to check requirements that must hold true before the function is called. The caller must ensure these conditions; failure typically indicates an error in the calling code.</p>
-<dl class="section note"><dt>Note</dt><dd>In debug builds, it uses assert; in release, it throws <a class="el" href="../../d7/d26/group__Exceptions.html#de/d26/classnnl_1_1PreconditionError" title="Exception thrown when a contract precondition is violated.">nnl::PreconditionError</a> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>By default, this macro terminates execution via a configurable callback. If the CMake option <code>NNL_THROW_ON_CONTRACT_VIOLATION</code> is enabled, it throws <a class="el" href="../../d7/d26/group__Exceptions.html#de/d26/classnnl_1_1PreconditionError" title="Exception thrown when a contract precondition is violated.">nnl::PreconditionError</a> instead.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d1/d18/group__Panic.html#ga1a06ded510b5db0cbf6d1e0af6fed3b1" title="Sets the global callback for fatal library errors.">nnl::SetGlobalPanicCB</a> </dd></dl>
 
 </div>
 </div>
