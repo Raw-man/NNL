@@ -476,7 +476,7 @@ class FileReader final : public Reader {
     file_stream_.open(path, std::ios::ate | std::ios::in | std::ios::binary);
 
     if (!file_stream_.is_open()) {
-      NNL_THROW(nnl::IOError(NNL_ERMSG(std::strerror(errno)), utl::filesys::u8string(path)));
+      NNL_THROW(nnl::IOError(NNL_SRCTAG(std::strerror(errno)), utl::filesys::u8string(path)));
     }
 
     size_ = file_stream_.tellg();
@@ -503,7 +503,7 @@ class FileReader final : public Reader {
   void ReadData(void* dst, std::size_t size) override {
     file_stream_.read(static_cast<char*>(dst), size);
     if (!file_stream_) {
-      NNL_THROW(nnl::IOError(NNL_ERMSG("failed to read data"), utl::filesys::u8string(path_)));
+      NNL_THROW(nnl::IOError(NNL_SRCTAG("failed to read data"), utl::filesys::u8string(path_)));
     }
   }
 
@@ -537,7 +537,7 @@ class FileRW final : public Writer, public Reader {
     file_stream_.open(path, open_mode);
 
     if (!file_stream_.is_open()) {
-      NNL_THROW(nnl::IOError(NNL_ERMSG(std::strerror(errno)), utl::filesys::u8string(path)));
+      NNL_THROW(nnl::IOError(NNL_SRCTAG(std::strerror(errno)), utl::filesys::u8string(path)));
     }
   }
   void Seek(std::size_t offset) override { file_stream_.seekp(offset, std::ios::beg); }
@@ -564,14 +564,14 @@ class FileRW final : public Writer, public Reader {
   void WriteData(const void* src, std::size_t size) override {
     file_stream_.write(static_cast<const char*>(src), size);
     if (!file_stream_) {
-      NNL_THROW(nnl::IOError(NNL_ERMSG("failed to write data"), utl::filesys::u8string(path_)));
+      NNL_THROW(nnl::IOError(NNL_SRCTAG("failed to write data"), utl::filesys::u8string(path_)));
     }
   }
 
   void ReadData(void* dst, std::size_t size) override {
     file_stream_.read(static_cast<char*>(dst), size);
     if (!file_stream_) {
-      NNL_THROW(nnl::IOError(NNL_ERMSG("failed to read data"), utl::filesys::u8string(path_)));
+      NNL_THROW(nnl::IOError(NNL_SRCTAG("failed to read data"), utl::filesys::u8string(path_)));
     }
   }
 
@@ -700,7 +700,7 @@ class BufferView final : public Reader {
  protected:
   void ReadData(void* dst, std::size_t size) override {
     if (position_ + size > this->buffer_size_) {
-      NNL_THROW(nnl::IOError(NNL_ERMSG("Read exceeds buffer size")));
+      NNL_THROW(nnl::IOError(NNL_SRCTAG("Read exceeds buffer size")));
     }
     std::memcpy(dst, buffer_ptr_ + position_, size);
     position_ += size;
@@ -847,7 +847,7 @@ class BufferSpan final : public Reader, public Writer {
  protected:
   void ReadData(void* dst, std::size_t size) override {
     if (position_ + size > this->buffer_size_) {
-      NNL_THROW(nnl::IOError(NNL_ERMSG("Read exceeds buffer size")));
+      NNL_THROW(nnl::IOError(NNL_SRCTAG("Read exceeds buffer size")));
     }
     std::memcpy(dst, buffer_ptr_ + position_, size);
     position_ += size;
@@ -855,7 +855,7 @@ class BufferSpan final : public Reader, public Writer {
 
   void WriteData(const void* src, std::size_t size) override {
     if (position_ + size > this->buffer_size_) {
-      NNL_THROW(nnl::IOError(NNL_ERMSG("Write exceeds buffer size")));
+      NNL_THROW(nnl::IOError(NNL_SRCTAG("Write exceeds buffer size")));
     }
     std::memcpy(buffer_ptr_ + position_, src, size);
     position_ += size;
@@ -951,7 +951,7 @@ class BufferRW final : public Writer, public Reader {
 
   void ReadData(void* dst, std::size_t size) override {
     if (position_ + size > this->buffer_.size()) {
-      NNL_THROW(nnl::IOError(NNL_ERMSG("Read exceeds buffer size")));
+      NNL_THROW(nnl::IOError(NNL_SRCTAG("Read exceeds buffer size")));
     }
     std::memcpy(dst, buffer_.data() + position_, size);
     position_ += size;

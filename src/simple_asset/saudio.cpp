@@ -40,7 +40,7 @@ void Import_(SAudio& audio, BufferView buffer) {
   auto riff_header = buffer.ReadLE<RiffHeader>();
   if ((std::memcmp(riff_header.chunk_info.chunk_id, "RIFF", 4) != 0) ||
       (std::memcmp(riff_header.wave, "WAVE", 4) != 0)) {
-    NNL_THROW(ParseError(NNL_ERMSG("not a wav file: " + audio.name)));
+    NNL_THROW(ParseError(NNL_SRCTAG("not a wav file: " + audio.name)));
   }
 
   while (buffer.Tell() + sizeof(ChunkInfo) <= buffer.Len() && (!fmt_chunk_found || !data_chunk_found)) {
@@ -54,11 +54,11 @@ void Import_(SAudio& audio, BufferView buffer) {
       auto fmt_header = buffer.ReadLE<FmtHeader>();
 
       if (fmt_header.num_channels == 0 || fmt_header.num_channels > 2) {
-        NNL_THROW(ParseError(NNL_ERMSG("only mono/stereo audio is supported: " + audio.name)));
+        NNL_THROW(ParseError(NNL_SRCTAG("only mono/stereo audio is supported: " + audio.name)));
       }
 
       if (fmt_header.audio_format != 1 || fmt_header.bits_per_sample != 16) {
-        NNL_THROW(ParseError(NNL_ERMSG("only 16 bit pcm audio is supported: " + audio.name)));
+        NNL_THROW(ParseError(NNL_SRCTAG("only 16 bit pcm audio is supported: " + audio.name)));
       }
 
       audio.num_channels = fmt_header.num_channels;
@@ -74,7 +74,7 @@ void Import_(SAudio& audio, BufferView buffer) {
   }
 
   if (!data_chunk_found || !fmt_chunk_found) {
-    NNL_THROW(ParseError(NNL_ERMSG("no data found in the wav file: " + audio.name)));
+    NNL_THROW(ParseError(NNL_SRCTAG("no data found in the wav file: " + audio.name)));
   }
 }
 

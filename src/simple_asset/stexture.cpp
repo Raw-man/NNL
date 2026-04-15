@@ -41,7 +41,7 @@ STexture STexture::Import(const std::filesystem::path& path, bool flip) {
   unsigned char* data = stbi_load(upath.c_str(), &w, &h, &nrComponents, 4);
 
   if (data == nullptr) {
-    NNL_THROW(RuntimeError(NNL_ERMSG("texture import failed: "s + upath + "\n"s + stbi_failure_reason())));
+    NNL_THROW(RuntimeError(NNL_SRCTAG("texture import failed: "s + upath + "\n"s + stbi_failure_reason())));
   }
 
   stex.bitmap.resize(w * h);
@@ -60,7 +60,7 @@ STexture STexture::Import(BufferView buffer, bool flip) {
   int w, h, nrComponents;
   unsigned char* data = stbi_load_from_memory(buffer.data(), buffer.Len(), &w, &h, &nrComponents, 4);
   if (data == nullptr) {
-    NNL_THROW(RuntimeError(NNL_ERMSG("texture import failed: "s + stex.name + "\n"s + stbi_failure_reason())));
+    NNL_THROW(RuntimeError(NNL_SRCTAG("texture import failed: "s + stex.name + "\n"s + stbi_failure_reason())));
   }
   stex.bitmap.resize(w * h);
   std::memcpy(stex.bitmap.data(), data, w * h * 4);
@@ -93,7 +93,7 @@ void STexture::ExportPNG(const std::filesystem::path& path, bool flip) const {
     const char* failure_reason_c_str = stbi_failure_reason();
     std::string failure_reason = failure_reason_c_str != nullptr ? failure_reason_c_str : "";
 
-    NNL_THROW(RuntimeError(NNL_ERMSG("texture export failed: " + utl::filesys::u8string(path) + "\n" + failure_reason)));
+    NNL_THROW(RuntimeError(NNL_SRCTAG("texture export failed: " + utl::filesys::u8string(path) + "\n" + failure_reason)));
   }
 }
 
@@ -123,7 +123,7 @@ Buffer STexture::ExportPNG(bool flip) const {
   }
 
   if (!result) {
-    NNL_THROW(RuntimeError(NNL_ERMSG("texture export to memory failed: "s + name + "\n"s + stbi_failure_reason())));
+    NNL_THROW(RuntimeError(NNL_SRCTAG("texture export to memory failed: "s + name + "\n"s + stbi_failure_reason())));
   }
 
   return buffer;

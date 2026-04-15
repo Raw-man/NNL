@@ -20,7 +20,7 @@ std::vector<std::array<u8, 16>> Generate(const dig::Dig& cfc_dig) { return Gener
 std::vector<std::array<u8, 16>> Generate(const dig::DigView& cfc_dig) { return Generate_(cfc_dig); }
 
 std::vector<std::array<u8, 16>> Import_(Reader& f) {
-  if (f.Len() % 0x10 != 0) NNL_THROW(ParseError{NNL_ERMSG("invalid file size")});
+  if (f.Len() % 0x10 != 0) NNL_THROW(ParseError{NNL_SRCTAG("invalid file size")});
 
   const std::size_t num_entries = f.Len() / 0x10;
 

@@ -906,7 +906,7 @@ Texture Convert(STexture&& stexture, const ConvertParam& tex_param) {
         palette_buffer = ConvertRGBA8888ToRGB565(palette_buffer);
         break;
       default:
-        NNL_THROW(RuntimeError(NNL_ERMSG("unknown color format")));
+        NNL_THROW(RuntimeError(NNL_SRCTAG("unknown color format")));
     }
   }
 
@@ -1103,7 +1103,7 @@ STexture Convert(const Texture& texture, unsigned int level) {
         palette = ConvertRGB565ToRGBA8888(palette);
         break;
       default:
-        NNL_THROW(RuntimeError(NNL_ERMSG("unknown color format")));
+        NNL_THROW(RuntimeError(NNL_SRCTAG("unknown color format")));
     }
   }
 
@@ -1125,7 +1125,7 @@ STexture Convert(const Texture& texture, unsigned int level) {
         image_buffer = UnswizzleFromMem(texture_data.bitmap_buffer, texture_data.buffer_width, texture_data.height, 2);
         break;
       default:
-        NNL_THROW(RuntimeError(NNL_ERMSG("unknown texture format")));
+        NNL_THROW(RuntimeError(NNL_SRCTAG("unknown texture format")));
     }
   }
 
@@ -1323,7 +1323,7 @@ RTextureContainer Parse(Reader& f) {
   NNL_TRY {
     texture_container.header = f.ReadLE<RHeader>();
 
-    if (texture_container.header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_ERMSG("invalid magic bytes")));
+    if (texture_container.header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_SRCTAG("invalid magic bytes")));
 
     f.Seek(texture_container.header.offset_textures);
     // Main texture structs
@@ -1365,7 +1365,7 @@ RTextureContainer Parse(Reader& f) {
       texture_container.cluts.insert({clut_offset, clut});
     }
   }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
 
   return texture_container;
 }

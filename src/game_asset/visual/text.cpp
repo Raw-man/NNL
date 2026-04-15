@@ -98,7 +98,7 @@ Text Convert(const std::vector<std::string>& stext, const std::unordered_map<u16
           continue;
         }
 
-        if (text.characters.size() >= 0xFFF) NNL_THROW(RuntimeError(NNL_ERMSG("the limit of characters exceeded")));
+        if (text.characters.size() >= 0xFFF) NNL_THROW(RuntimeError(NNL_SRCTAG("the limit of characters exceeded")));
 
         character_map[ucs2code] = text.characters.size();
         paragraph.push_back(text.characters.size());
@@ -207,7 +207,7 @@ BitmapFont _GenerateBitmapFont(Text& text, BufferView ttf_font_file, const Bitma
   NNL_EXPECTS(params.spacing_offset > -128 && params.spacing_offset <= 127);
 
   if (!stbtt_InitFont(&info, ttf_font_file.data(), 0)) {
-    NNL_THROW(RuntimeError(NNL_ERMSG("failed to initialize ttf font")));
+    NNL_THROW(RuntimeError(NNL_SRCTAG("failed to initialize ttf font")));
   }
 
   auto alpha_levels = std::clamp(params.alpha_levels, 2u, 256u) - 1;
@@ -477,7 +477,7 @@ RText Parse(Reader& f) {
 
     cdl.magic_bytes = f.ReadLE<u32>();
 
-    if (cdl.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_ERMSG("invalid magic bytes")));
+    if (cdl.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_SRCTAG("invalid magic bytes")));
 
     cdl.num_characters = f.ReadLE<u32>();
     cdl.num_0 = f.ReadLE<u32>();
@@ -496,7 +496,7 @@ RText Parse(Reader& f) {
       header.strings.insert({offset_phrase, std::move(phrase)});
     }
   }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
   return rtext;
 }
 

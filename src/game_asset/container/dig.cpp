@@ -174,7 +174,7 @@ RDig<TData> Parse_(Reader f) {
   u32 num_records = EstimateNumRecords_(f);
 
   if (num_records == 0) {
-    NNL_THROW(ParseError(NNL_ERMSG("invalid num records")));
+    NNL_THROW(ParseError(NNL_SRCTAG("invalid num records")));
   }
 
   f.Seek(0);
@@ -203,7 +203,7 @@ RDig<TData> Parse_(Reader f) {
       f.Seek(next_rec_offset);
     }
   }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
 
   return rcfc_dig;
 }

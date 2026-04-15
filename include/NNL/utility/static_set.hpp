@@ -55,7 +55,7 @@ class StaticSet {
     }
 
     if (size_ + 1 > max_size) {
-      NNL_THROW(RangeError(NNL_ERMSG("not enough space")));
+      NNL_THROW(RangeError(NNL_SRCTAG("not enough space")));
     }
 
     data_[i] = value;
@@ -105,7 +105,7 @@ class StaticSet {
     result.size_ = k;
 
     if (i != size_ || j != other.size_) {
-      NNL_THROW(RangeError(NNL_ERMSG("not enough space")));
+      NNL_THROW(RangeError(NNL_SRCTAG("not enough space")));
     }
 
     assert(result.size_ >= size_ && result.size_ >= other.size_);

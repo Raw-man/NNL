@@ -51,7 +51,6 @@
 #define NNL_CATCH(type) else if (type e; false)
 #endif
 
-#define NNL_ERMSG(msg) ((msg) + (" [" + NNL_SRCINF + "]"))
 /** @} */
 
 namespace nnl {

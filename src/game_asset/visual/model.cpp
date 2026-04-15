@@ -1623,7 +1623,7 @@ RModel Parse(Reader& f) {
   NNL_TRY {
     model.header = f.ReadLE<RHeader>();
 
-    if (model.header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_ERMSG("invalid magic bytes")));
+    if (model.header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_SRCTAG("invalid magic bytes")));
 
     // Bones
     f.Seek(model.header.offset_bones);
@@ -1747,7 +1747,7 @@ RModel Parse(Reader& f) {
       }
     }
   }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
 
   return model;
 }

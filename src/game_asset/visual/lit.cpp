@@ -74,7 +74,7 @@ bool IsOfType_(Reader& f) {
   // the rest is unused anyway
 
   NNL_TRY { f.ReadBuf(&rlit, 0x30); }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
 
   if (rlit.magic_bytes != kMagicBytes) return false;
 
@@ -133,7 +133,7 @@ RLit Parse(Reader& f) {
 
   f.ReadBuf(&rlit, 0x30);
 
-  if (rlit.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_ERMSG("invalid magic bytes")));
+  if (rlit.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_SRCTAG("invalid magic bytes")));
 
   return rlit;
 }

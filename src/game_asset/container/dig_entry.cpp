@@ -153,7 +153,7 @@ RDigEntry<TData> Parse_(Reader f) {
       }
     }
   }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
   return rcfc_entry;
 }
 

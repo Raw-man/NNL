@@ -172,13 +172,13 @@ class static_vector {
     if (index < m_size)
       return data(index);
     else
-      NNL_THROW(RangeError(NNL_ERMSG("")));
+      NNL_THROW(RangeError(NNL_SRCTAG("")));
   }
   const_reference at(size_type index) const {
     if (index < m_size)
       return data(index);
     else
-      NNL_THROW(RangeError(NNL_ERMSG("")));
+      NNL_THROW(RangeError(NNL_SRCTAG("")));
   }
 
   // Element access with bounds checking
@@ -270,7 +270,7 @@ class static_vector {
   // Ensures: new `value_type` copy_constructed at `pos`
   // Complexity: exactly `end()` - `pos` moves and one copy
   iterator insert(const_iterator pos, const value_type& value) {
-    if (full()) NNL_THROW(RangeError(NNL_ERMSG("")));
+    if (full()) NNL_THROW(RangeError(NNL_SRCTAG("")));
     // Need mutable iterator to change items. Cast is legal in non-const
     // methos.
     iterator mut_pos = const_cast<iterator>(pos);
@@ -283,7 +283,7 @@ class static_vector {
     return mut_pos;
   }
   iterator insert(const_iterator pos, value_type&& value) {
-    if (full()) NNL_THROW(RangeError(NNL_ERMSG("")));
+    if (full()) NNL_THROW(RangeError(NNL_SRCTAG("")));
     // Need mutable iterator to change items. Cast is legal in non-const
     // methos.
     iterator mut_pos = const_cast<iterator>(pos);
@@ -298,7 +298,7 @@ class static_vector {
 
   // Insert `count` copies of `value` at `pos`
   iterator insert(const_iterator pos, size_type count, const value_type& value) {
-    if (m_size + count < m_size /*ovf*/ || static_capacity < m_size + count) NNL_THROW(RangeError(NNL_ERMSG("")));
+    if (m_size + count < m_size /*ovf*/ || static_capacity < m_size + count) NNL_THROW(RangeError(NNL_SRCTAG("")));
     // Need mutable iterator to change items. Cast is legal in non-const
     // methos.
     iterator mut_pos = const_cast<iterator>(pos);
@@ -318,7 +318,7 @@ class static_vector {
     auto count = std::distance(insert_begin, insert_end);
     if (count < 0 || m_size + static_cast<size_type>(count) < m_size /*ovf*/ ||
         static_capacity < m_size + static_cast<size_type>(count)) {
-      NNL_THROW(RangeError(NNL_ERMSG("std::distance(begin, end)")));
+      NNL_THROW(RangeError(NNL_SRCTAG("std::distance(begin, end)")));
     }
     // Need mutable iterator to change items. Cast is legal in non-const
     // methos.
@@ -338,7 +338,7 @@ class static_vector {
   // TODO documentation
   template <typename... CtorArgs>
   iterator emplace(const_iterator pos, CtorArgs&&... args) {
-    if (full()) NNL_THROW(RangeError(NNL_ERMSG("")));
+    if (full()) NNL_THROW(RangeError(NNL_SRCTAG("")));
     // Need mutable iterator to change items. Cast is legal in non-const
     // methos.
     iterator mut_pos = const_cast<iterator>(pos);
@@ -366,12 +366,12 @@ class static_vector {
 
   // Add `value` at the end of the list
   void push_back(const value_type& value) {
-    if (full()) NNL_THROW(RangeError(NNL_ERMSG("")));
+    if (full()) NNL_THROW(RangeError(NNL_SRCTAG("")));
     new (storage_end()) value_type(value);
     m_size++;
   }
   void push_back(value_type&& value) {
-    if (full()) NNL_THROW(RangeError(NNL_ERMSG("")));
+    if (full()) NNL_THROW(RangeError(NNL_SRCTAG("")));
     new (storage_end()) value_type(std::move(value));
     m_size++;
   }
@@ -384,7 +384,7 @@ class static_vector {
   // Exceptions: std::out_of_range if new_size > capacity()
   void resize(size_type new_size) {
     if (new_size > static_capacity) {
-      NNL_THROW(RangeError(NNL_ERMSG("new_size exceeds capacity")));
+      NNL_THROW(RangeError(NNL_SRCTAG("new_size exceeds capacity")));
     }
 
     if (new_size < m_size) {
@@ -412,7 +412,7 @@ class static_vector {
   // Exceptions: std::out_of_range if new_size > capacity()
   void resize(size_type new_size, const value_type& value) {
     if (new_size > static_capacity) {
-      NNL_THROW(RangeError(NNL_ERMSG("new_size exceeds capacity")));
+      NNL_THROW(RangeError(NNL_SRCTAG("new_size exceeds capacity")));
     }
 
     if (new_size < m_size) {
@@ -440,7 +440,7 @@ class static_vector {
   // Exceptions: std::out_of_range if vector is full
   template <typename... Args>
   reference emplace_back(Args&&... args) {
-    if (full()) NNL_THROW(RangeError(NNL_ERMSG("size()")));
+    if (full()) NNL_THROW(RangeError(NNL_SRCTAG("size()")));
 
     // Construct the element in-place at the end of storage
     pointer new_element = reinterpret_cast<pointer>(&m_data[m_size]);

@@ -63,7 +63,7 @@ double SValue::AsDouble() const {
     }
       [[fallthrough]];
     default:
-      NNL_THROW(RuntimeError(NNL_ERMSG("not a number")));
+      NNL_THROW(RuntimeError(NNL_SRCTAG("not a number")));
   }
 }
 
@@ -86,7 +86,7 @@ i64 SValue::AsInt() const {
     }
       [[fallthrough]];
     default:
-      NNL_THROW(RuntimeError(NNL_ERMSG("not a number")));
+      NNL_THROW(RuntimeError(NNL_SRCTAG("not a number")));
   }
 }
 
@@ -150,7 +150,7 @@ const SValue& SValue::At(std::size_t ind) const {
   const auto& array_ = std::get<Array>(data_);
 
   if (ind >= array_.size()) {
-    NNL_THROW(RangeError(NNL_ERMSG("index is out of range: " + std::to_string(ind))));
+    NNL_THROW(RangeError(NNL_SRCTAG("index is out of range: " + std::to_string(ind))));
   }
 
   return array_[ind];
@@ -164,7 +164,7 @@ const SValue& SValue::At(std::string_view key) const {
   const auto& object_ = std::get<Object>(data_);
   Object::const_iterator it_key = object_.find(key);
   if (it_key == object_.end()) {
-    NNL_THROW(RangeError(NNL_ERMSG("key is not in the object: " + std::string{key})));
+    NNL_THROW(RangeError(NNL_SRCTAG("key is not in the object: " + std::string{key})));
   }
   return it_key->second;
 }

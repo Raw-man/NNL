@@ -150,7 +150,7 @@ RCollection<TData> Parse_(Reader f) {
     u32 num_records = f.template ReadLE<u32>();
 
     if (num_records == 0) {
-      NNL_THROW(ParseError(NNL_ERMSG("invalid num records")));
+      NNL_THROW(ParseError(NNL_SRCTAG("invalid num records")));
     }
 
     rs_col.file_records = f.template ReadArrayLE<RFileRecord>(num_records);
@@ -174,7 +174,7 @@ RCollection<TData> Parse_(Reader f) {
       }
     }
   }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
 
   return rs_col;
 }

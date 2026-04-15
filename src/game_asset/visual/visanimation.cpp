@@ -288,7 +288,7 @@ RAnimationContainer Parse(Reader& f) {
   NNL_TRY {
     header = f.ReadLE<RHeader>();
 
-    if (header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_ERMSG("invalid magic bytes")));
+    if (header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_SRCTAG("invalid magic bytes")));
 
     subanim_container.animations = f.ReadArrayLE<RAnimation>(header.num_animations);
 
@@ -298,7 +298,7 @@ RAnimationContainer Parse(Reader& f) {
           f.ReadArrayLE<RKeyFrame>(ranim.num_left_channel_keyframes + ranim.num_right_channel_keyframes);
     }
   }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
   return subanim_container;
 }
 }  // namespace raw

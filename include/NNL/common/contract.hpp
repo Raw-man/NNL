@@ -9,6 +9,8 @@
 #pragma once
 
 #include <cassert>
+
+#include "NNL/common/src_info.hpp"  // IWYU pragma: export
 /**
  * \defgroup Contracts Contracts
  * @ingroup Common
@@ -32,19 +34,19 @@
  */
 #ifdef NNL_THROW_ON_CONTRACT_VIOLATION
 #include "NNL/common/exception.hpp"
-#define NNL_EXPECTS(precondition)                                                          \
-  do {                                                                                     \
-    if (!static_cast<bool>(precondition)) {                                                \
-      NNL_THROW(nnl::PreconditionError(NNL_ERMSG("precondition failed: " #precondition))); \
-    }                                                                                      \
+#define NNL_EXPECTS(precondition)                                                           \
+  do {                                                                                      \
+    if (!static_cast<bool>(precondition)) {                                                 \
+      NNL_THROW(nnl::PreconditionError(NNL_SRCTAG("precondition failed: " #precondition))); \
+    }                                                                                       \
   } while (false)
 #else
-#include "NNL/common/panic.hpp"
-#define NNL_EXPECTS(precondition)                                   \
-  do {                                                              \
-    if (!static_cast<bool>(precondition)) {                         \
-      nnl::Panic(NNL_ERMSG("precondition failed: " #precondition)); \
-    }                                                               \
+#include "NNL/common/panic.hpp"  // IWYU pragma: export
+#define NNL_EXPECTS(precondition)                                    \
+  do {                                                               \
+    if (!static_cast<bool>(precondition)) {                          \
+      nnl::Panic(NNL_SRCTAG("precondition failed: " #precondition)); \
+    }                                                                \
   } while (false)
 #endif
 

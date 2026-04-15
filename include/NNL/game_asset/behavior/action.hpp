@@ -395,10 +395,10 @@ inline std::tuple<Ts...> ReadArgs(std::size_t main_node_ind, const std::vector<N
                main_node_ind + 1 + (utl::math::RoundNum(offset + sizeof(args), sizeof(Node)) / sizeof(Node));
 
            if (required_size > nodes.size())
-             NNL_THROW(nnl::RangeError(NNL_ERMSG("Read exceeds the size of available nodes")));
+             NNL_THROW(nnl::RangeError(NNL_SRCTAG("Read exceeds the size of available nodes")));
 
            if (sizeof(Node) + offset + sizeof(args) > main_node.next_main_node * sizeof(Node))
-             NNL_THROW(nnl::RangeError(NNL_ERMSG("Read exceeds the size of the argument nodes")));
+             NNL_THROW(nnl::RangeError(NNL_SRCTAG("Read exceeds the size of the argument nodes")));
 
            std::memcpy(&args, reinterpret_cast<const char*>(nodes.data() + main_node_ind + 1) + offset, sizeof(args));
 
@@ -455,7 +455,7 @@ inline void WriteArgs(std::size_t main_node_ind, std::vector<Node>& nodes, const
 
         if (main_node.next_main_node != 0 &&
             sizeof(Node) + offset + sizeof(args) > main_node.next_main_node * sizeof(Node))
-          NNL_THROW(nnl::RangeError(NNL_ERMSG("Write exceeds the size of the argument nodes")));
+          NNL_THROW(nnl::RangeError(NNL_SRCTAG("Write exceeds the size of the argument nodes")));
 
         if (required_size > nodes.size()) {
           nodes.resize(required_size);

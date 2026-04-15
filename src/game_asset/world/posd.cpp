@@ -109,11 +109,11 @@ RPositionData Parse(Reader& f) {
   NNL_TRY {
     rposd.header = f.ReadLE<RHeader>();
 
-    if (rposd.header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_ERMSG("invalid magic bytes")));
+    if (rposd.header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_SRCTAG("invalid magic bytes")));
 
     rposd.positions = f.ReadArrayLE<RPosition>(rposd.header.num_positions);
   }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
   return rposd;
 }
 

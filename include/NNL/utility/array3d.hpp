@@ -79,7 +79,7 @@ class Array3D {
    */
   T& At(std::size_t z, std::size_t y, std::size_t x) {
     std::size_t index = GetIndex(z, y, x);
-    if (index >= data_.size()) NNL_THROW(RangeError(NNL_ERMSG("index out of range: " + std::to_string(index))));
+    if (index >= data_.size()) NNL_THROW(RangeError(NNL_SRCTAG("index out of range: " + std::to_string(index))));
     return data_.at(index);
   }
   /**
@@ -92,7 +92,7 @@ class Array3D {
    */
   const T& At(std::size_t z, std::size_t y, std::size_t x) const {
     std::size_t index = GetIndex(z, y, x);
-    if (index >= data_.size()) NNL_THROW(RangeError(NNL_ERMSG("index out of range: " + std::to_string(index))));
+    if (index >= data_.size()) NNL_THROW(RangeError(NNL_SRCTAG("index out of range: " + std::to_string(index))));
     return data_.at(index);
   }
   /**

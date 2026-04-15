@@ -19,13 +19,13 @@
 
 #ifdef NNL_ENABLE_LOGGING
 #include "NNL/common/src_info.hpp"
-#define NNL_LOG_WARN(msg)                                        \
-  do {                                                           \
-    nnl::Log((msg) + ("; " + NNL_SRCINF), nnl::LogLevel::kWarn); \
+#define NNL_LOG_WARN(msg)                            \
+  do {                                               \
+    nnl::Log(NNL_SRCTAG(msg), nnl::LogLevel::kWarn); \
   } while (false)
-#define NNL_LOG_ERROR(msg)                                        \
-  do {                                                            \
-    nnl::Log((msg) + ("; " + NNL_SRCINF), nnl::LogLevel::kError); \
+#define NNL_LOG_ERROR(msg)                            \
+  do {                                                \
+    nnl::Log(NNL_SRCTAG(msg), nnl::LogLevel::kError); \
   } while (false)
 #else
 #define NNL_LOG_WARN(msg) \

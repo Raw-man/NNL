@@ -1258,7 +1258,7 @@ class GLTFExporter {
       bool success =
           gltf_ctx_.WriteGltfSceneToFile(&gltf_model_, utl::filesys::u8string(path_), false, false, true, true);
 
-      if (!success) NNL_THROW(RuntimeError(NNL_ERMSG("gltf: exporting failed: " + utl::filesys::u8string(path_))));
+      if (!success) NNL_THROW(RuntimeError(NNL_SRCTAG("gltf: exporting failed: " + utl::filesys::u8string(path_))));
     } else if (buffer_ != nullptr) {
       std::ostringstream oss;
       gltf_ctx_.WriteGltfSceneToStream(&gltf_model_, oss, true, true);

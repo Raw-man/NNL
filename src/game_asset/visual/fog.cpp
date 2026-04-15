@@ -42,9 +42,9 @@ RFog Parse(Reader& f) {
   RFog rfog;
 
   NNL_TRY { rfog = f.ReadLE<RFog>(); }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
 
-  if (rfog.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_ERMSG("invalid magic bytes")));
+  if (rfog.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_SRCTAG("invalid magic bytes")));
 
   return rfog;
 }

@@ -185,7 +185,7 @@ class GLTFImporter {
 
     const unsigned char* buf_end_ptr = buffer.data.data() + buffer.data.size();
 
-    if (data_end_ptr > buf_end_ptr) NNL_THROW(RangeError(NNL_ERMSG("buffer out of range")));
+    if (data_end_ptr > buf_end_ptr) NNL_THROW(RangeError(NNL_SRCTAG("buffer out of range")));
 
     std::vector<T> data;
 
@@ -224,7 +224,7 @@ class GLTFImporter {
           break;
 
         default:
-          NNL_THROW(ParseError(NNL_ERMSG("invalid gltf index format")));
+          NNL_THROW(ParseError(NNL_SRCTAG("invalid gltf index format")));
       }
 
       auto data_sparse =
@@ -479,7 +479,7 @@ class GLTFImporter {
               positions = ExtractData<Vec3<float>>(primitive.attributes.at("POSITION"));
               break;
             default:
-              NNL_THROW(ParseError(NNL_ERMSG("mesh \"" + smesh.name + "\" uses invalid position type")));
+              NNL_THROW(ParseError(NNL_SRCTAG("mesh \"" + smesh.name + "\" uses invalid position type")));
           }
         } else {
           switch (accessor.componentType) {
@@ -496,7 +496,7 @@ class GLTFImporter {
               positions = NormalizeToFloat<Vec3<float>>(ExtractData<Vec3<i16>>(primitive.attributes.at("POSITION")));
               break;
             default:
-              NNL_THROW(ParseError(NNL_ERMSG("mesh \"" + smesh.name + "\" uses invalid position type")));
+              NNL_THROW(ParseError(NNL_SRCTAG("mesh \"" + smesh.name + "\" uses invalid position type")));
           }
         }
 
@@ -526,7 +526,7 @@ class GLTFImporter {
             normals = ExtractData<Vec3<float>>(primitive.attributes.at("NORMAL"));
             break;
           default:
-            NNL_THROW(ParseError(NNL_ERMSG("mesh \"" + smesh.name + "\" uses invalid normal type")));
+            NNL_THROW(ParseError(NNL_SRCTAG("mesh \"" + smesh.name + "\" uses invalid normal type")));
         }
 
         if (det != 0.0f) {
@@ -567,7 +567,7 @@ class GLTFImporter {
               uvs = ExtractData<Vec2<float>>(primitive.attributes.at("TEXCOORD_0"));
               break;
             default:
-              NNL_THROW(ParseError(NNL_ERMSG("mesh \"" + smesh.name + "\" uses invalid uv type")));
+              NNL_THROW(ParseError(NNL_SRCTAG("mesh \"" + smesh.name + "\" uses invalid uv type")));
           }
         } else {
           switch (accessor.componentType) {
@@ -579,7 +579,7 @@ class GLTFImporter {
               uvs = NormalizeToFloat<Vec2<float>>(ExtractData<Vec2<i16>>(primitive.attributes.at("TEXCOORD_0")));
               break;
             default:
-              NNL_THROW(ParseError(NNL_ERMSG("mesh \"" + smesh.name + "\" uses invalid uv type")));
+              NNL_THROW(ParseError(NNL_SRCTAG("mesh \"" + smesh.name + "\" uses invalid uv type")));
           }
         }
 
@@ -620,7 +620,7 @@ class GLTFImporter {
                 break;
 
               default:
-                NNL_THROW(ParseError(NNL_ERMSG("mesh \"" + smesh.name + "\" uses invalid color type")));
+                NNL_THROW(ParseError(NNL_SRCTAG("mesh \"" + smesh.name + "\" uses invalid color type")));
             }
           } break;
           case TINYGLTF_TYPE_VEC4: {
@@ -638,7 +638,7 @@ class GLTFImporter {
                 break;
 
               default:
-                NNL_THROW(ParseError(NNL_ERMSG("mesh \"" + smesh.name + "\" uses invalid color type")));
+                NNL_THROW(ParseError(NNL_SRCTAG("mesh \"" + smesh.name + "\" uses invalid color type")));
             }
           } break;
         }
@@ -671,7 +671,7 @@ class GLTFImporter {
             joints_0 = ExtractData<Vec4<u16>>(primitive.attributes.at(attr_joint));
             break;
           default:
-            NNL_THROW(ParseError(NNL_ERMSG("mesh \"" + smesh.name + "\" uses invalid joint index type")));
+            NNL_THROW(ParseError(NNL_SRCTAG("mesh \"" + smesh.name + "\" uses invalid joint index type")));
         }
 
         auto& w_accessor = gltf_model_.accessors.at(primitive.attributes.at(attr_weight));
@@ -687,7 +687,7 @@ class GLTFImporter {
             weights_0 = ExtractData<Vec4<float>>(primitive.attributes.at(attr_weight));
             break;
           default:
-            NNL_THROW(ParseError(NNL_ERMSG("mesh \"" + smesh.name + "\" uses invalid joint weight type")));
+            NNL_THROW(ParseError(NNL_SRCTAG("mesh \"" + smesh.name + "\" uses invalid joint weight type")));
         }
 
         for (std::size_t i = 0; i < smesh.vertices.size(); i++) {
@@ -741,7 +741,7 @@ class GLTFImporter {
             break;
 
           default:
-            NNL_THROW(ParseError(NNL_ERMSG("mesh \"" + smesh.name + "\" uses invalid index type")));
+            NNL_THROW(ParseError(NNL_SRCTAG("mesh \"" + smesh.name + "\" uses invalid index type")));
         }
       } else {
         smesh.indices.resize(smesh.vertices.size());
@@ -750,7 +750,7 @@ class GLTFImporter {
       }
 
       if (smesh.indices.size() % 3 != 0)
-        NNL_THROW(nnl::ParseError(NNL_ERMSG("mesh \"" + smesh.name + "\" has invalid number of indices")));
+        NNL_THROW(nnl::ParseError(NNL_SRCTAG("mesh \"" + smesh.name + "\" has invalid number of indices")));
 
       if (smesh.indices.empty() || smesh.vertices.empty()) {
         NNL_LOG_WARN("mesh \"" + smesh.name + "\" is empty and will be ignored");
@@ -1578,7 +1578,7 @@ class GLTFImporter {
             values = ExtractData<Vec4<float>>(sampler.output);
             break;
           default:
-            NNL_THROW(ParseError(NNL_ERMSG("invalid rotation type")));
+            NNL_THROW(ParseError(NNL_SRCTAG("invalid rotation type")));
         }
 
         for (std::size_t i = 0; i < key_frames.size(); i++) {
@@ -1700,11 +1700,11 @@ class GLTFImporter {
 
     if (!warn_.empty()) NNL_LOG_WARN(warn_);
 
-    if (!success) NNL_THROW(ParseError(NNL_ERMSG("importing failed: " + error_ + " " + utl::filesys::u8string(path_))));
+    if (!success) NNL_THROW(ParseError(NNL_SRCTAG("importing failed: " + error_ + " " + utl::filesys::u8string(path_))));
 
     for (auto& extension_required : gltf_model_.extensionsRequired) {
       if (extensions_supported_.count(extension_required) == 0)
-        NNL_THROW(ParseError(NNL_ERMSG("a required extension is not supported: " + extension_required + "; " +
+        NNL_THROW(ParseError(NNL_SRCTAG("a required extension is not supported: " + extension_required + "; " +
                                        utl::filesys::u8string(path_))));
     }
 

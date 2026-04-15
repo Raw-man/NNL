@@ -149,7 +149,7 @@ Collision Convert_(SModel&& smodel, const std::vector<ConvertParam>& mesh_params
 
   if (smesh.indices.size() / 3 > std::numeric_limits<u16>::max())
     NNL_THROW(RuntimeError(
-        NNL_ERMSG("the total number of triangles exceeds 65535: " + std::to_string(smesh.indices.size() / 3))));
+        NNL_SRCTAG("the total number of triangles exceeds 65535: " + std::to_string(smesh.indices.size() / 3))));
 
   smesh.ReverseWindingOrder();
 
@@ -265,7 +265,7 @@ Collision Convert_(SModel&& smodel, const std::vector<ConvertParam>& mesh_params
 
   if (collision.vertices.size() > std::numeric_limits<u16>::max())
     NNL_THROW(RuntimeError(
-        NNL_ERMSG("the total number of vertices exceeds 65535: " + std::to_string(collision.vertices.size()))));
+        NNL_SRCTAG("the total number of vertices exceeds 65535: " + std::to_string(collision.vertices.size()))));
   smodel = {};
   return collision;
 }
@@ -334,7 +334,7 @@ RCollision Parse(Reader& f) {
     collision.header = f.ReadLE<RHeader>();
     auto& header = collision.header;
 
-    if (header.offset_vertex_table != sizeof(RHeader)) NNL_THROW(ParseError(NNL_ERMSG("invalid header size")));
+    if (header.offset_vertex_table != sizeof(RHeader)) NNL_THROW(ParseError(NNL_SRCTAG("invalid header size")));
 
     f.Seek(header.offset_coordinate_map);
     u32 num_coordinates = header.bbox_dimension.x * header.bbox_dimension.y * header.bbox_dimension.z;
@@ -382,7 +382,7 @@ RCollision Parse(Reader& f) {
 
     collision.indices_triangles_edges = f.ReadArrayLE<u16>(num_indices);
   }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
   return collision;
 }
 

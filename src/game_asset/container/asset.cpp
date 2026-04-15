@@ -239,7 +239,7 @@ RAsset<TData> Parse_(Reader f) {
     u32 max_num_records = f.template ReadLE<u32>();
 
     if (max_num_records > kMaxEntryNum_) {
-      NNL_THROW(ParseError(NNL_ERMSG("too many elements, not an asset container (?)")));
+      NNL_THROW(ParseError(NNL_SRCTAG("too many elements, not an asset container (?)")));
     }
 
     asset_archive.file_records = f.template ReadArrayLE<RFileRecord>(max_num_records);
@@ -259,7 +259,7 @@ RAsset<TData> Parse_(Reader f) {
       }
     }
   }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
 
   return asset_archive;
 }

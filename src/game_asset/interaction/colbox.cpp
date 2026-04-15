@@ -54,7 +54,7 @@ RCollisionBoxConfig Parse(Reader& f) {
     rhitbox_config.header = f.ReadLE<RHeader>();
     auto& header = rhitbox_config.header;
 
-    if (header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_ERMSG("invalid magic bytes")));
+    if (header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_SRCTAG("invalid magic bytes")));
 
     f.Seek(header.offset_colbox_enviroment);
     rhitbox_config.col_enviroment = f.ReadArrayLE<RCollisionBox14>(header.num_colbox_enviroment);
@@ -83,7 +83,7 @@ RCollisionBoxConfig Parse(Reader& f) {
       }
     }
   }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
   return rhitbox_config;
 }
 

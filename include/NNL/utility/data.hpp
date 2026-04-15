@@ -199,7 +199,7 @@ auto ReinterpretContainer(const std::vector<From>& container) {
   std::size_t new_size = (container.size() * sizeof(From)) / sizeof(To);
 
   if (new_size * sizeof(To) != container.size() * sizeof(From)) {
-    NNL_THROW(RuntimeError(NNL_ERMSG("size mismatch")));
+    NNL_THROW(RuntimeError(NNL_SRCTAG("size mismatch")));
   }
 
   std::vector<To> new_container(new_size);

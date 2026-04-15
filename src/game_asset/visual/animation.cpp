@@ -346,7 +346,7 @@ RAnimationContainer Parse(Reader& f) {
   NNL_TRY {
     animation_container.header = f.ReadLE<RHeader>();
 
-    if (animation_container.header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_ERMSG("invalid magic bytes")));
+    if (animation_container.header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_SRCTAG("invalid magic bytes")));
 
     animation_container.bone_animations = f.ReadArrayLE<RBoneAnimation>(
         animation_container.header.num_bones_per_animation * animation_container.header.num_animations);
@@ -385,7 +385,7 @@ RAnimationContainer Parse(Reader& f) {
 
     animation_container.duration_table = f.ReadArrayLE<u16>(animation_container.header.num_animations);
   }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
 
   return animation_container;
 }

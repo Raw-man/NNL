@@ -63,9 +63,9 @@ RRenderConfig Parse(Reader& f) {
   RRenderConfig rdistance;
 
   NNL_TRY { rdistance = f.ReadLE<RRenderConfig>(); }
-  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_ERMSG(e.what())}); }
+  NNL_CATCH(std::exception) { NNL_THROW(ParseError{NNL_SRCTAG(e.what())}); }
 
-  if (rdistance.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_ERMSG("invalid magic bytes")));
+  if (rdistance.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_SRCTAG("invalid magic bytes")));
   return rdistance;
 }
 

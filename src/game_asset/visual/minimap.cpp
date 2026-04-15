@@ -85,7 +85,7 @@ RMinimapConfig Parse(Reader& f) {
   rminimap.num_markers = f.ReadLE<u32>();
 
   if (rminimap.num_markers == 0 || rminimap.num_markers > kMaxNumMarkers_)
-    NNL_THROW(ParseError(NNL_ERMSG("the number of markers is invalid")));
+    NNL_THROW(ParseError(NNL_SRCTAG("the number of markers is invalid")));
 
   f.Seek(0x10);
 
