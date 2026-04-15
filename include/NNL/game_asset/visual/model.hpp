@@ -1071,7 +1071,7 @@ NNL_PACK(struct RBoneTargetEntry {
 
 static_assert(sizeof(RBoneTargetEntry) == 0x4);
 
-struct RBoneTargetTable {
+struct RBoneTargetTables {
   std::vector<RBoneTargetHeader> header;
   std::vector<std::vector<RBoneTargetEntry>> entries;
 };
@@ -1141,7 +1141,7 @@ struct RModel {
   std::vector<RTextureSwap> texture_swaps;
   std::vector<u16> inverse_matrix_bone_table;
   // padding to 0x4
-  RBoneTargetTable bone_role_table;
+  RBoneTargetTables bone_target_tables;
   // padding to 0x10
   std::vector<Mat4<f32>> attachment_matrices;
   std::vector<RAttachment> attachments;

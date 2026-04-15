@@ -698,13 +698,13 @@ void SetBoneNames(SSkeleton& skeleton, const std::vector<std::map<BoneTarget, Bo
   std::map<BoneIndex, std::map<u16, std::vector<std::string>>> bone_names;
 
   for (std::size_t i = 0; i < bone_target_tables.size(); i++) {
-    auto& bone_role_table = bone_target_tables.at(i);
+    auto& bone_target_table = bone_target_tables.at(i);
 
-    for (auto [bone_role_id, bone_id] : bone_role_table) {
+    for (auto [bone_target_id, bone_index] : bone_target_table) {
       if (is_character)
-        bone_names[bone_id][i].push_back(bone_target_names.at(bone_role_id).data());
+        bone_names[bone_index][i].push_back(bone_target_names.at(bone_target_id).data());
       else
-        bone_names[bone_id][i].push_back("VFX" + std::to_string(bone_role_id));
+        bone_names[bone_index][i].push_back("VFX" + std::to_string(bone_target_id));
     }
 
     for (auto& [bone_id, name_table] : bone_names) {
@@ -728,7 +728,7 @@ void SetBoneNames(SSkeleton& skeleton, const std::vector<std::map<BoneTarget, Bo
 std::vector<std::map<BoneTarget, BoneIndex>> GenerateBoneTargetTables(const SSkeleton& skeleton) {
   auto bone_refs = skeleton.GetBoneRefs();
 
-  std::vector<std::map<BoneTarget, BoneIndex>> bone_body_tables;  // max size is 2
+  std::vector<std::map<BoneTarget, BoneIndex>> bone_target_tables;  // max size is 2
 
   for (std::size_t i = 0; i < bone_refs.size(); i++) {
     std::string bone_name = bone_refs.at(i).get().name;
@@ -742,11 +742,11 @@ std::vector<std::map<BoneTarget, BoneIndex>> GenerateBoneTargetTables(const SSke
         auto name = utl::string::ToLower(names.at(n));
 
         if (utl::string::StartsWith(name, "vfx")) {
-          u16 bone_role = (u16)std::min<std::size_t>(std::stoul(name.substr(3)), bone_target_names.size() - 1);
+          u16 bone_target = (u16)std::min<std::size_t>(std::stoul(name.substr(3)), bone_target_names.size() - 1);
 
-          if (bone_body_tables.size() < j + 1) bone_body_tables.resize(j + 1);
+          if (bone_target_tables.size() < j + 1) bone_target_tables.resize(j + 1);
 
-          bone_body_tables.at(j).insert({(u16)bone_role, (u16)i});
+          bone_target_tables.at(j).insert({(u16)bone_target, (u16)i});
           continue;
         }
 
@@ -760,11 +760,11 @@ std::vector<std::map<BoneTarget, BoneIndex>> GenerateBoneTargetTables(const SSke
                                 [&name](const std::string_view a) { return utl::string::ToLower(a) == name; });
 
         if (itr != bone_target_names.end()) {
-          u16 bone_role = static_cast<u16>(itr - bone_target_names.begin());
+          u16 bone_target = static_cast<u16>(itr - bone_target_names.begin());
 
-          if (bone_body_tables.size() < j + 1) bone_body_tables.resize(j + 1);
+          if (bone_target_tables.size() < j + 1) bone_target_tables.resize(j + 1);
 
-          bone_body_tables.at(j).insert({(u16)bone_role, (u16)i});
+          bone_target_tables.at(j).insert({(u16)bone_target, (u16)i});
         }
       }
     }
@@ -778,12 +778,12 @@ std::vector<std::map<BoneTarget, BoneIndex>> GenerateBoneTargetTables(const SSke
                                      kSpine1,    kRightShoulder, kRightArm,     kRightForeArm, kHips,
                                      kLeftUpLeg, kLeftLeg,       kHips,         kRightUpLeg,   kRightLeg};
 
-  for (auto& bone_table : bone_body_tables) {
+  for (auto& bone_table : bone_target_tables) {
     if (bone_table.empty()) continue;
 
-    std::size_t bone_role_count = 1 + bone_table.rbegin()->first;
+    std::size_t bone_target_max = 1 + bone_table.rbegin()->first;
 
-    for (std::size_t j = 0; j < bone_role_count && j < bone_parent.size(); j++) {
+    for (std::size_t j = 0; j < bone_target_max && j < bone_parent.size(); j++) {
       i16 bone_index = j;
 
       while ((bone_index != -1) && bone_table.count(bone_index) == 0) {
@@ -793,12 +793,12 @@ std::vector<std::map<BoneTarget, BoneIndex>> GenerateBoneTargetTables(const SSke
       if (bone_table.count(bone_index) > 0) bone_table.insert({(u16)j, (u16)bone_table.at(bone_index)});
     }
 
-    for (std::size_t j = 0; j < bone_role_count; j++) {
+    for (std::size_t j = 0; j < bone_target_max; j++) {
       bone_table.insert({(u16)j, (u16)0});
     }
   }
 
-  return bone_body_tables;
+  return bone_target_tables;
 }
 
 SSkeleton Convert(const std::vector<Bone>& bones) {
@@ -1458,10 +1458,10 @@ Model Convert(RModel&& rmodel) {
   }
 
   // Bone target tables
-  for (auto& rbone_role_table : rmodel.bone_role_table.entries) {
-    auto& bone_role_table = model.bone_target_tables.emplace_back();
-    for (const auto& body_part : rbone_role_table) {
-      bone_role_table.insert(std::make_pair(body_part.role_id, body_part.bone_index));
+  for (auto& rbone_target_table : rmodel.bone_target_tables.entries) {
+    auto& bone_target_table = model.bone_target_tables.emplace_back();
+    for (const auto& body_target : rbone_target_table) {
+      bone_target_table.insert(std::make_pair(body_target.role_id, body_target.bone_index));
     }
   }
 
@@ -1649,12 +1649,12 @@ RModel Parse(Reader& f) {
     // Bone target tables
     f.Seek(model.header.offset_bone_target_tables);
 
-    model.bone_role_table.header = f.ReadArrayLE<RBoneTargetHeader>(model.header.num_bone_target_tables);
+    model.bone_target_tables.header = f.ReadArrayLE<RBoneTargetHeader>(model.header.num_bone_target_tables);
 
     for (u16 i = 0; i < model.header.num_bone_target_tables; i++) {
-      auto& header = model.bone_role_table.header.at(i);
+      auto& header = model.bone_target_tables.header.at(i);
 
-      auto& entries = model.bone_role_table.entries.emplace_back();
+      auto& entries = model.bone_target_tables.entries.emplace_back();
 
       f.Seek(header.offset);
 
@@ -1878,13 +1878,13 @@ void Export_(const Model& model, Writer& f) {
     auto bone_body_header_off = f.MakeOffsetLE<RBoneTargetHeader>();
 
     header_off->*& RHeader::offset_bone_target_tables = utl::data::narrow<u32>(f.Tell());
-    for (auto& bone_role_table : model.bone_target_tables) {
-      f.WriteLE(RBoneTargetHeader{0, (u32)bone_role_table.size()});
+    for (auto& bone_target_table : model.bone_target_tables) {
+      f.WriteLE(RBoneTargetHeader{0, (u32)bone_target_table.size()});
     }
 
-    for (auto& bone_role_table : model.bone_target_tables) {
+    for (auto& bone_target_table : model.bone_target_tables) {
       bone_body_header_off->*& RBoneTargetHeader::offset = utl::data::narrow<u32>(f.Tell());
-      for (auto& [bone_target_id, bone_ind] : bone_role_table) {
+      for (auto& [bone_target_id, bone_ind] : bone_target_table) {
         f.WriteLE(RBoneTargetEntry{bone_ind, bone_target_id});
       }
       ++bone_body_header_off;
@@ -2119,12 +2119,12 @@ void Export_(const Model& model, Writer& f) {
           // Check if indices are valid
           if (vertexde::IsIndexed(submesh.vertex_format)) {
             for (std::size_t i = 0; i < prim.num_elements && vertexde::Is8Indices(submesh.vertex_format); i++) {
-              NNL_EXPECTS(prim.vertex_index_buffer[i] < submesh.indexed_vertex_buffer.size());
+              NNL_EXPECTS_DBG(prim.vertex_index_buffer[i] < submesh.indexed_vertex_buffer.size());
             }
 
             for (std::size_t i = 0; i < prim.num_elements && vertexde::Is16Indices(submesh.vertex_format); i++) {
               u16 index = (prim.vertex_index_buffer[i * 2 + 1] << 8) | prim.vertex_index_buffer[i * 2];
-              NNL_EXPECTS(index < submesh.indexed_vertex_buffer.size());
+              NNL_EXPECTS_DBG(index < submesh.indexed_vertex_buffer.size());
             }
           }
 #endif
