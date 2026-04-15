@@ -41,7 +41,7 @@ bool IsOfType_(Reader& f) {
     auto& cat = rheader.action_categories[i];
 
     if (cat.offset < sizeof(RHeader) || cat.offset % sizeof(u16) != 0 ||
-        data_size < cat.offset + sizeof(RAction) * cat.num_actions || cat.num_actions > kMaxNumActionsPerCat)
+        data_size < cat.offset + sizeof(RAction) * cat.num_actions || cat.num_actions > (kMaxActionIndex + 1))
       return false;
 
     if (i == 0) continue;
@@ -78,7 +78,7 @@ ActionConfig Convert(RActionConfig&& raction_config) {
     auto& raction_category = raction_config.header.action_categories[i];
     auto& ractions = raction_config.actions.at(raction_category.offset);
 
-    for (std::size_t j = 0; j < ractions.size() && j <= kMaxNumActionsPerCat; j++) {
+    for (std::size_t j = 0; j < ractions.size() && j <= kMaxActionIndex; j++) {
       const RAction& raction = ractions.at(j);
       action::Id id{static_cast<ActionCategory>(i), utl::data::narrow_cast<u16>(j)};
       ractions_map.insert({raction.offset_action_name, {id, &raction}});
@@ -210,7 +210,7 @@ void Export_(const ActionConfig& action_config, Writer& f) {
   RHeader header;
 
   for (auto& [id, action] : action_config) {
-    NNL_EXPECTS(id.action_index <= kMaxNumActionsPerCat);
+    NNL_EXPECTS(id.action_index <= kMaxActionIndex);
     auto& action_category = header.action_categories[utl::data::as_int(id.action_category)];
     if ((u32)id.action_index + 1 > action_category.num_actions) action_category.num_actions = id.action_index + 1;
   }
@@ -228,7 +228,7 @@ void Export_(const ActionConfig& action_config, Writer& f) {
     }
   }
 
-  auto calc_index = [&header](const Id& id) -> int {
+  auto calc_index = [&header](const action::Id& id) -> int {
     int action_index = 0;
     for (std::size_t i = 0; i < (std::size_t)id.action_category; i++) {
       action_index += header.action_categories[i].num_actions;

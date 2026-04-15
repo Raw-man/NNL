@@ -34,12 +34,12 @@ namespace action {
 constexpr std::size_t kNumActionCategories = 4;
 
 /**
- * @brief Defines the maximum number of actions per category;
+ * @brief Defines the maximum index of an action in a category;
  *
  * @see nnl::action::ActionCategory
  * @see nnl::action::kNumActionCategories
  */
-constexpr std::size_t kMaxNumActionsPerCat = 0x3FFF;
+constexpr std::size_t kMaxActionIndex = 0x3FFF;
 
 /**
  * @brief Defines the categories of actions.
@@ -67,6 +67,10 @@ enum class ActionCategory {
 struct Id {
   ActionCategory action_category = ActionCategory::kMovement;  ///< Type of the action
   u16 action_index = 0;  ///< The index within the category @see nnl::action::kMaxNumActionsPerCat
+
+  operator u16() const noexcept {
+    return static_cast<u16>(nnl::utl::data::as_int(action_category) << 14 | action_index);
+  }
 };
 
 inline bool operator==(const Id& rhs, const Id& lhs) {
@@ -80,8 +84,6 @@ inline bool operator==(const Id& rhs, const Id& lhs) {
 namespace std {
 template <>
 struct hash<nnl::action::Id> {
-  size_t operator()(const nnl::action::Id& id) const {
-    return hash<size_t>{}(nnl::utl::data::as_int(id.action_category) << 14 | id.action_index);
-  }
+  size_t operator()(const nnl::action::Id& id) const { return hash<size_t>{}(static_cast<nnl::u16>(id)); }
 };
 }  // namespace std

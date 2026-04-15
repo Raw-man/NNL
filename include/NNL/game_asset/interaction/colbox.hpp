@@ -225,7 +225,7 @@ NNL_PACK(struct RHeader {
 static_assert(sizeof(RHeader) == 0x40);
 
 NNL_PACK(struct RCollisionBox14 {
-  u16 bone_role = 0;            // 0x0
+  u16 bone_target = 0;          // 0x0
   u16 unknown2 = 0;             // 0x2
   Vec3<f32> translation{0.0f};  // 0x4
 
@@ -235,7 +235,7 @@ NNL_PACK(struct RCollisionBox14 {
 static_assert(sizeof(RCollisionBox14) == 0x14);
 
 NNL_PACK(struct RCollisionBox18 {
-  u16 bone_role = 0;            // 0x0
+  u16 bone_target = 0;          // 0x0
   u16 unknown2 = 0;             // 0x2
   Vec3<f32> translation{0.0f};  // 0x4
   f32 size = 0.0f;              // 0x10
@@ -267,7 +267,7 @@ NNL_PACK(struct RHitbox {
 static_assert(sizeof(RHitbox) == 0x10);
 
 NNL_PACK(struct RCollisionBox20 {
-  u16 bone_role = 0;              // 0x0
+  u16 bone_target = 0;            // 0x0
   u16 distance_attack = 0;        // 0x2
   Vec3<f32> translation{0.0f};    // 0x4
   Vec3<f32> translation_2{0.0f};  // 0x10

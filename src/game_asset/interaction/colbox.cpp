@@ -92,22 +92,22 @@ ColBoxConfig Convert(const RCollisionBoxConfig& rhitbox_config) {
 
   for (auto& rhitbox : rhitbox_config.col_enviroment)
     hitbox_config.col_enviroment.push_back(
-        {rhitbox.bone_role, rhitbox.unknown2,
+        {rhitbox.bone_target, rhitbox.unknown2,
          glm::vec3(rhitbox.translation.x, rhitbox.translation.y, rhitbox.translation.z), rhitbox.size});
 
   for (auto& rhitbox : rhitbox_config.colbox_unknown)
-    hitbox_config.col_unknown.push_back({rhitbox.bone_role, rhitbox.unknown2,
+    hitbox_config.col_unknown.push_back({rhitbox.bone_target, rhitbox.unknown2,
                                          glm::vec3(rhitbox.translation.x, rhitbox.translation.y, rhitbox.translation.z),
                                          rhitbox.size});
 
   for (auto& rhitbox : rhitbox_config.colbox_entities)
     hitbox_config.col_entities.push_back(
-        {rhitbox.bone_role, rhitbox.unknown2,
+        {rhitbox.bone_target, rhitbox.unknown2,
          glm::vec3(rhitbox.translation.x, rhitbox.translation.y, rhitbox.translation.z), rhitbox.size,
          rhitbox.unknown14});
 
   for (auto& rhitbox : rhitbox_config.colbox_damage)
-    hitbox_config.col_damage.push_back({rhitbox.bone_role, rhitbox.unknown2,
+    hitbox_config.col_damage.push_back({rhitbox.bone_target, rhitbox.unknown2,
                                         glm::vec3(rhitbox.translation.x, rhitbox.translation.y, rhitbox.translation.z),
                                         rhitbox.size});
 
@@ -125,7 +125,7 @@ ColBoxConfig Convert(const RCollisionBoxConfig& rhitbox_config) {
 
       for (auto& rhitbox : rhitbox_config.hitbox_colboxes.at(rattack_argument.offset_colboxes)) {
         attack_argument.colboxes.push_back(
-            {rhitbox.bone_role, rhitbox.distance_attack,
+            {rhitbox.bone_target, rhitbox.distance_attack,
              glm::vec3(rhitbox.translation.x, rhitbox.translation.y, rhitbox.translation.z),
              glm::vec3(rhitbox.translation_2.x, rhitbox.translation_2.y, rhitbox.translation_2.z), rhitbox.size});
       }
@@ -133,7 +133,7 @@ ColBoxConfig Convert(const RCollisionBoxConfig& rhitbox_config) {
       u16 numeric_id = rattack_config.action_id;
 
       action::Id id{static_cast<action::ActionCategory>((numeric_id & 0xC000) >> 14),
-                    utl::data::narrow<u8>(numeric_id & 0x3FFF)};
+                    utl::data::narrow<u8>(numeric_id & action::kMaxActionIndex)};
 
       hitbox_config.col_attack[id].push_back(std::move(attack_argument));
     }
@@ -176,7 +176,7 @@ void Export_(const ColBoxConfig& colbox_config, Writer& f) {
 
   for (auto& colbox : colbox_config.col_enviroment) {
     RCollisionBox14 rcolbox;
-    rcolbox.bone_role = colbox.bone_target;
+    rcolbox.bone_target = colbox.bone_target;
     rcolbox.unknown2 = colbox.unknown2;
     rcolbox.translation = Vec3<float>{colbox.translation.x, colbox.translation.y, colbox.translation.z};
     rcolbox.size = colbox.size;
@@ -192,7 +192,7 @@ void Export_(const ColBoxConfig& colbox_config, Writer& f) {
 
   for (auto& colbox : colbox_config.col_unknown) {
     RCollisionBox14 rcolbox;
-    rcolbox.bone_role = colbox.bone_target;
+    rcolbox.bone_target = colbox.bone_target;
     rcolbox.unknown2 = colbox.unknown2;
     rcolbox.translation = Vec3<float>{colbox.translation.x, colbox.translation.y, colbox.translation.z};
     rcolbox.size = colbox.size;
@@ -206,7 +206,7 @@ void Export_(const ColBoxConfig& colbox_config, Writer& f) {
 
   for (auto& colbox : colbox_config.col_entities) {
     RCollisionBox18 rcolbox;
-    rcolbox.bone_role = colbox.bone_target;
+    rcolbox.bone_target = colbox.bone_target;
     rcolbox.unknown2 = colbox.unknown2;
     rcolbox.translation = Vec3<float>{colbox.translation.x, colbox.translation.y, colbox.translation.z};
     rcolbox.size = colbox.size;
@@ -221,7 +221,7 @@ void Export_(const ColBoxConfig& colbox_config, Writer& f) {
 
   for (auto& colbox : colbox_config.col_damage) {
     RCollisionBox14 rcolbox;
-    rcolbox.bone_role = colbox.bone_target;
+    rcolbox.bone_target = colbox.bone_target;
     rcolbox.unknown2 = colbox.unknown2;
     rcolbox.translation = Vec3<float>{colbox.translation.x, colbox.translation.y, colbox.translation.z};
     rcolbox.size = colbox.size;
@@ -236,7 +236,7 @@ void Export_(const ColBoxConfig& colbox_config, Writer& f) {
   auto hitbox_header_off = f.MakeOffsetLE<RHitboxHeader>();
 
   for (auto& [id, hitboxes] : colbox_config.col_attack) {
-    NNL_EXPECTS(id.action_index <= 0x3FFF);
+    NNL_EXPECTS(id.action_index <= action::kMaxActionIndex);
     RHitboxHeader rhitbox_header;
     u16 numeric_id = static_cast<u16>(utl::data::as_int(id.action_category) << 14 | id.action_index);
     rhitbox_header.action_id = numeric_id;
@@ -275,7 +275,7 @@ void Export_(const ColBoxConfig& colbox_config, Writer& f) {
 
       for (auto& colbox : hitbox.colboxes) {
         RCollisionBox20 rcolbox;
-        rcolbox.bone_role = colbox.bone_target;
+        rcolbox.bone_target = colbox.bone_target;
         rcolbox.distance_attack = colbox.distance_attack;
         rcolbox.translation = Vec3<float>{colbox.translation.x, colbox.translation.y, colbox.translation.z};
         rcolbox.translation_2 = Vec3<float>{colbox.translation_2.x, colbox.translation_2.y, colbox.translation_2.z};
