@@ -149,10 +149,10 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  <span class="keywordflow">do</span> {                                                              \</div>
-<div class="line">    if (!<span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(precondition)) {                         \</div>
-<div class="line">      nnl::Panic(NNL_ERMSG(<span class="stringliteral">&quot;precondition failed: &quot;</span> #precondition)); \</div>
-<div class="line">    }                                                               \</div>
+<b>Value:</b><div class="fragment"><div class="line">  <span class="keywordflow">do</span> {                                                               \</div>
+<div class="line">    if (!<span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(precondition)) {                          \</div>
+<div class="line">      nnl::Panic(NNL_SRCTAG(<span class="stringliteral">&quot;precondition failed: &quot;</span> #precondition)); \</div>
+<div class="line">    }                                                                \</div>
 <div class="line">  } <span class="keywordflow">while</span> (<span class="keyword">false</span>)</div>
 </div><!-- fragment -->
 <p>A precondition check. </p>

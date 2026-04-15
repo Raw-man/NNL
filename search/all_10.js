@@ -14,8 +14,7 @@ var searchData=
   ['operator_3d_11',['operator=',['../de/de6/classnnl_1_1Writer_1_1Ref.html#ac39814bed7cbbd0375a90348cfe293f2',1,'nnl::Writer::Ref']]],
   ['operator_3d_3d_12',['operator==',['../d1/dc4/group__SModel.html#a48f9363adc0e9ec9e6cb419e72176444',1,'nnl::SMaterial']]],
   ['operator_5b_5d_13',['operator[]',['../da/d76/classnnl_1_1Writer_1_1Offset.html#a514a9b3cc6d861179846c9bc642a7360',1,'nnl::Writer::Offset::operator[]()'],['../de/de6/classnnl_1_1Writer_1_1Ref.html#a257eb71e82937b637b90cc1adc2a55fb',1,'nnl::Writer::Ref::operator[](std::size_t index) const'],['../de/de6/classnnl_1_1Writer_1_1Ref.html#a257eb71e82937b637b90cc1adc2a55fb',1,'nnl::Writer::Ref::operator[](std::size_t index) const'],['../d1/dc4/group__SModel.html#a690278c4f3c492b05020810c93c8ca2e',1,'nnl::STriangle::operator[](std::size_t index) const'],['../d1/dc4/group__SModel.html#a59cd9de19406d6be0424196627339d90',1,'nnl::STriangle::operator[](std::size_t index)']]],
-  ['optimize_14',['Optimize',['../d1/dc4/group__SModel.html#ad06f628bfb0f9a922a80d83adaacbd40',1,'nnl::SMesh::Optimize()'],['../d1/dc4/group__SModel.html#a7444471b66219e13a9037b51f4b5a424',1,'nnl::SModel::Optimize()']]],
-  ['optimize_5fweights_15',['optimize_weights',['../da/d2b/group__Model__Main.html#a5631d77b7ab3d4a8d5916baa7d643dc2',1,'nnl::model::ConvertParam']]],
-  ['origin_5fpoint_16',['origin_point',['../dd/df5/group__Collision__Main.html#a4941f8882a84546eb7ec053dcfb9e98e',1,'nnl::collision::Collision::origin_point'],['../d7/df4/group__Shadow__Main.html#a80a75e9e334dc7b31687632acb2e2958',1,'nnl::shadow_collision::Collision::origin_point']]],
-  ['output_17',['Input/Output',['../dc/d8c/group__InputOutput.html',1,'']]]
+  ['optimize_5fweights_14',['optimize_weights',['../da/d2b/group__Model__Main.html#a5631d77b7ab3d4a8d5916baa7d643dc2',1,'nnl::model::ConvertParam']]],
+  ['origin_5fpoint_15',['origin_point',['../dd/df5/group__Collision__Main.html#a4941f8882a84546eb7ec053dcfb9e98e',1,'nnl::collision::Collision::origin_point'],['../d7/df4/group__Shadow__Main.html#a80a75e9e334dc7b31687632acb2e2958',1,'nnl::shadow_collision::Collision::origin_point']]],
+  ['output_16',['Input/Output',['../dc/d8c/group__InputOutput.html',1,'']]]
 ];
