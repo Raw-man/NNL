@@ -1,7 +1,5 @@
 #include "NNL/simple_asset/smodel.hpp"
 
-#include <meshoptimizer.h>
-
 #include "NNL/utility/math.hpp"
 namespace nnl {
 
@@ -512,12 +510,6 @@ void SMesh::RemoveDuplicateVertices() {
   vertices = std::move(new_vertices);
 }
 
-void SMesh::Optimize() {
-  RemoveDuplicateVertices();
-
-  meshopt_optimizeVertexCache(indices.data(), indices.data(), indices.size(), vertices.size());
-}
-
 void SMesh::GenerateSmoothNormals() {
   NNL_EXPECTS(indices.size() % 3 == 0);
 
@@ -941,10 +933,6 @@ void SModel::RemoveDuplicateMaterials() {
 
   uv_animations = std::move(new_uv_anims);
   materials = std::move(new_materials);
-}
-
-void SModel::Optimize() {
-  for (auto& smesh : meshes) smesh.Optimize();
 }
 
 void SModel::GenerateSmoothNormals() {

@@ -135,7 +135,7 @@ class GLTFImporter {
   std::map<int, std::tuple<glm::vec3, glm::quat, glm::vec3>> node_local_transform_;
 
   std::set<int> node_new_transform_;  // Root nodes (joints) that should inherit
-                                     // their parent transform
+                                      // their parent transform
 
   std::map<int, std::size_t> joint_bone_id_;  // A node id to a bone index
 
@@ -770,7 +770,7 @@ class GLTFImporter {
         }
       }
 
-      smesh.Optimize();
+      smesh.RemoveDuplicateVertices();
     }
   }
 
@@ -1260,9 +1260,11 @@ class GLTFImporter {
         if (texture.sampler != -1) {
           auto& texture_sampler = gltf_model_.samplers.at(texture.sampler);
 
-          if (texture_sampler.minFilter != -1) stexture.min_filter = kGltfToSTextureFilter.at(texture_sampler.minFilter);
+          if (texture_sampler.minFilter != -1)
+            stexture.min_filter = kGltfToSTextureFilter.at(texture_sampler.minFilter);
 
-          if (texture_sampler.magFilter != -1) stexture.mag_filter = kGltfToSTextureFilter.at(texture_sampler.magFilter);
+          if (texture_sampler.magFilter != -1)
+            stexture.mag_filter = kGltfToSTextureFilter.at(texture_sampler.magFilter);
         }
 
         if (!utl::math::IsPow2(texture_data.width) || !utl::math::IsPow2(texture_data.height)) {
@@ -1737,7 +1739,8 @@ class GLTFImporter {
       // Keep local transforms as identity for animated nodes.
       // For armature root nodes, ensure they inherit global transform.
       if (animated_srt_nodes_.count(root_id) == 0) {
-        std::tie(root.scale, root.rotation, root.translation) = utl::math::Decompose(node_global_transform_.at(root_id));
+        std::tie(root.scale, root.rotation, root.translation) =
+            utl::math::Decompose(node_global_transform_.at(root_id));
       }
 
       node_local_transform_[root_id] = {root.scale, root.rotation, root.translation};

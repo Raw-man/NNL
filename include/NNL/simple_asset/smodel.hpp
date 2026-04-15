@@ -323,14 +323,6 @@ struct SMesh {
       const std::vector<u32>& indices, const std::vector<SVertex>& vertices);
 
   /**
-   * @brief Optimizes the mesh for rendering.
-   *
-   * This method removes duplicate vertices and optimizes vertex data for vertex
-   * cache.
-   */
-  void Optimize();
-
-  /**
    * @brief Generates smooth normals for the mesh.
    *
    * This method calculates smooth normals for smooth shading. It also sets
@@ -745,14 +737,6 @@ struct SModel {
    * which may improve the performance.
    */
   void RemoveDuplicateMaterials();
-
-  /**
-   * @brief Optimizes the meshes for rendering.
-   *
-   * This method removes duplicate vertices and optimizes vertex data for vertex
-   * cache.
-   */
-  void Optimize();
 
   /**
    * @brief Generates smooth normals for the meshes.

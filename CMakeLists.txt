@@ -98,15 +98,6 @@ FetchContent_Declare(
   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
-set(MESHOPT_BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS} CACHE BOOL "" FORCE)
-
-FetchContent_Declare(
-  meshoptimizer
-  GIT_REPOSITORY https://github.com/zeux/meshoptimizer.git
-  GIT_TAG v1.0.1
-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
-)
-
 FetchContent_Declare(
   ordered-map
   GIT_REPOSITORY https://github.com/Tessil/ordered-map.git
@@ -123,7 +114,7 @@ FetchContent_Declare(
   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
-FetchContent_MakeAvailable(glm ordered-map stb tristripper json tinygltf meshoptimizer)
+FetchContent_MakeAvailable(glm ordered-map stb tristripper json tinygltf)
 
 set(BUILD_SHARED_LIBS ${_NNL_ORIG_BUILD_SHARED})
 
@@ -135,7 +126,6 @@ endif()
 
 add_library(GPSnoopy::TriStripper ALIAS TriStripper)
 add_library(syoyo::tinygltf ALIAS tinygltf)
-add_library(zeux::meshoptimizer ALIAS meshoptimizer)
 
 add_library(stb INTERFACE)
 add_library(stb::stb ALIAS stb)
@@ -297,7 +287,6 @@ target_link_libraries(NNL
         nlohmann_json::nlohmann_json
         stb::stb
         syoyo::tinygltf
-        zeux::meshoptimizer
         GPSnoopy::TriStripper
    )
 
