@@ -5,21 +5,11 @@
  */
 #pragma once
 
-/**
- * @def NNL_STR
- * @brief Converts a macro argument into a C string literal
- *
- */
+
 #define NNL_STR_HELPER(x) #x
 #define NNL_STR(x) NNL_STR_HELPER(x)
 
-
-#define NNL_VERSION_MAJOR @RacjinAssetLib_VERSION_MAJOR@
-#define NNL_VERSION_MINOR @RacjinAssetLib_VERSION_MINOR@
-#define NNL_VERSION_PATCH @RacjinAssetLib_VERSION_PATCH@
-
-#define NNL_VERSION_STR NNL_STR(NNL_VERSION_MAJOR) "." NNL_STR(NNL_VERSION_MINOR) "." NNL_STR(NNL_VERSION_PATCH)
-
+#define NNL_GIT_HASH "@GIT_COMMIT_HASH@"
 
 /**
  * @def NNL_FILE

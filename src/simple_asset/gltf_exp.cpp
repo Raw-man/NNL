@@ -1107,7 +1107,7 @@ class GLTFExporter {
   }
 
   void Export() {
-    gltf_model_.asset.generator = "NSUNI/NSLAR library " NNL_VERSION_STR;
+    gltf_model_.asset.generator = "NSUNI/NSLAR library " NNL_GIT_HASH;
     gltf_model_.asset.copyright =
         "This asset may be subject to copyright protection. "
         "Unauthorized use, distribution, or modification of this asset may "

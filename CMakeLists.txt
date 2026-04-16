@@ -1,9 +1,21 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(NNL VERSION 1.0.1 LANGUAGES C CXX)
+project(NNL LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+execute_process(
+    COMMAND git rev-parse --short HEAD
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    OUTPUT_VARIABLE GIT_COMMIT_HASH
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    ERROR_QUIET
+)
+
+if(NOT GIT_COMMIT_HASH)
+    set(GIT_COMMIT_HASH "")
+endif()
 
 option(NNL_ENABLE_LOGGING "Enable runtime diagnostics (warnings and errors)" OFF)
 
@@ -57,7 +69,6 @@ if(Doxygen_FOUND)
 else()
     message(STATUS "NNL: Doxygen not found - 'doc' target will not be available")
 endif()
-
 
 
 FetchContent_Declare(
