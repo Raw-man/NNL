@@ -11,12 +11,13 @@ var searchData=
   ['sizey_8',['SizeY',['../dd/d97/group__UtilityContainers.html#a7b5c67e5c824a48d2f429b9ed2918c6e',1,'nnl::utl::Array3D']]],
   ['sizez_9',['SizeZ',['../dd/d97/group__UtilityContainers.html#a600ae9e34b1fe046f6f4b5bbe38dafe1',1,'nnl::utl::Array3D']]],
   ['sortforblending_10',['SortForBlending',['../d4/d43/group__Simple3DAsset.html#a2dd91f0e8fb76e1a712ab047b1043356',1,'nnl::SAsset3D']]],
-  ['split_11',['Split',['../d2/d40/group__String.html#gae5499d3503e7a33a6adbffaa6c30a2b7',1,'nnl::utl::string']]],
-  ['sqr_12',['Sqr',['../df/d13/group__Math.html#ga03250b2f4394ec3454117f0cd2b77b88',1,'nnl::utl::math']]],
-  ['srgbtolinear_13',['SRGBToLinear',['../d4/d6e/group__Color.html#ga0dbcf5671beb3c35281ed0c3655b2e8c',1,'nnl::utl::color::SRGBToLinear(float c) noexcept'],['../d4/d6e/group__Color.html#gab3e0d14ae9b1dfe3dab109ab270ae00e',1,'nnl::utl::color::SRGBToLinear(T color)']]],
-  ['startswith_14',['StartsWith',['../d2/d40/group__String.html#ga5d77edffe398ff5b7bef26295de985b4',1,'nnl::utl::string']]],
-  ['subspan_15',['SubSpan',['../dc/d8c/group__InputOutput.html#a8d0faafc3af289e65d50db509e50324a',1,'nnl::BufferSpan']]],
-  ['subview_16',['SubView',['../dc/d8c/group__InputOutput.html#a4d3489d4a7c17ceec22f6fc084c2ed46',1,'nnl::BufferView::SubView()'],['../dc/d8c/group__InputOutput.html#a1f64f16a4bc087f4af5ce6bcbae88491',1,'nnl::BufferSpan::SubView()']]],
-  ['swapendian_17',['SwapEndian',['../de/d23/group__Data.html#ga0905602e68ce9483a79dc6fed72756b1',1,'nnl::utl::data']]],
-  ['swizzlefrommem_18',['SwizzleFromMem',['../d4/db4/group__Texture__Auxiliary.html#ga8d8516f53527aeebf6102a7327e458b4',1,'nnl::texture']]]
+  ['sortweights_11',['SortWeights',['../d1/dc4/group__SModel.html#a8da6b64934ae1bb00d894fc30ed27aba',1,'nnl::SVertex::SortWeights()'],['../d1/dc4/group__SModel.html#a7e8c1e906d8e7c801d80750b9ad89c3c',1,'nnl::SMesh::SortWeights()'],['../d1/dc4/group__SModel.html#a11762563cbcef14781c653dc6187cfaa',1,'nnl::SModel::SortWeights()']]],
+  ['split_12',['Split',['../d2/d40/group__String.html#gae5499d3503e7a33a6adbffaa6c30a2b7',1,'nnl::utl::string']]],
+  ['sqr_13',['Sqr',['../df/d13/group__Math.html#ga03250b2f4394ec3454117f0cd2b77b88',1,'nnl::utl::math']]],
+  ['srgbtolinear_14',['SRGBToLinear',['../d4/d6e/group__Color.html#ga0dbcf5671beb3c35281ed0c3655b2e8c',1,'nnl::utl::color::SRGBToLinear(float c) noexcept'],['../d4/d6e/group__Color.html#gab3e0d14ae9b1dfe3dab109ab270ae00e',1,'nnl::utl::color::SRGBToLinear(T color)']]],
+  ['startswith_15',['StartsWith',['../d2/d40/group__String.html#ga5d77edffe398ff5b7bef26295de985b4',1,'nnl::utl::string']]],
+  ['subspan_16',['SubSpan',['../dc/d8c/group__InputOutput.html#a8d0faafc3af289e65d50db509e50324a',1,'nnl::BufferSpan']]],
+  ['subview_17',['SubView',['../dc/d8c/group__InputOutput.html#a4d3489d4a7c17ceec22f6fc084c2ed46',1,'nnl::BufferView::SubView()'],['../dc/d8c/group__InputOutput.html#a1f64f16a4bc087f4af5ce6bcbae88491',1,'nnl::BufferSpan::SubView()']]],
+  ['swapendian_18',['SwapEndian',['../de/d23/group__Data.html#ga0905602e68ce9483a79dc6fed72756b1',1,'nnl::utl::data']]],
+  ['swizzlefrommem_19',['SwizzleFromMem',['../d4/db4/group__Texture__Auxiliary.html#ga8d8516f53527aeebf6102a7327e458b4',1,'nnl::texture']]]
 ];

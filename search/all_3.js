@@ -23,7 +23,7 @@ var searchData=
   ['bone_5ftarget_5ftables_20',['bone_target_tables',['../da/d2b/group__Model__Main.html#a509ebc456f1c91cddb8d4041d33f7c1b',1,'nnl::model::Model']]],
   ['boneanimation_21',['BoneAnimation',['../d6/da3/group__Animation__Main.html#d8/dc0/structnnl_1_1animation_1_1BoneAnimation',1,'nnl::animation']]],
   ['boneindex_22',['BoneIndex',['../d3/db5/group__Model__Shared.html#ga0493a27bd1be762657e9720a4cf5e0d7',1,'nnl::model']]],
-  ['bones_23',['bones',['../d3/d07/group__Model__Auxiliary.html#a1a26cfacc346db4a882c4eeefec9118c',1,'nnl::model::TriangleGroup']]],
+  ['bones_23',['bones',['../d3/d07/group__Model__Auxiliary.html#a1a26cfacc346db4a882c4eeefec9118c',1,'nnl::model::TriangleGroup::bones'],['../d1/dc4/group__SModel.html#a1b97c0d0a7f5e24fd2242a34f2eb098e',1,'nnl::SVertex::bones']]],
   ['bonetarget_24',['BoneTarget',['../d3/db5/group__Model__Shared.html#ga62d480d121a35d41160bb1d707c1c18e',1,'nnl::model']]],
   ['box_25',['Collision box',['../d6/d0d/group__Colbox.html',1,'']]],
   ['buffer_26',['Buffer',['../dc/d8c/group__InputOutput.html#ga536e68388b3e1df823f0f8f9bb4f7dbe',1,'nnl']]],

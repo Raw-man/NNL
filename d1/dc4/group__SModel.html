@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">NSUNI/NSLAR Library<span id="projectnumber">&#160;10806f0</span>
+   <div id="projectname">NSUNI/NSLAR Library<span id="projectnumber">&#160;a81c210</span>
    </div>
   </td>
  </tr>
@@ -166,8 +166,6 @@ Enumerations</h2></td></tr>
 <a class="el" href="../../da/d2b/group__Model__Main.html#ga34676a2d09b807878e5c6aa994482ca5" title="Parses a binary file and converts it to a structured model.">nnl::model::Import</a> </dd></dl>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h3>Public Member Functions</h3></td></tr>
-<tr class="memitem:a6938df5afa5258ae008f9a28deb8fd89" id="r_a6938df5afa5258ae008f9a28deb8fd89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d97/group__UtilityContainers.html#d4/df6/classnnl_1_1utl_1_1static__vector">utl::static_vector</a>&lt; <a class="el" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a>, 8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6938df5afa5258ae008f9a28deb8fd89">GetBoneIndices</a> () const</td></tr>
-<tr class="memdesc:a6938df5afa5258ae008f9a28deb8fd89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the bone indices associated with the vertex.  <br /></td></tr>
 <tr class="memitem:af3b1401ff34bd97af4851c48a2cca831" id="r_af3b1401ff34bd97af4851c48a2cca831"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3b1401ff34bd97af4851c48a2cca831">Transform</a> (const glm::mat4 &amp;transform)</td></tr>
 <tr class="memdesc:af3b1401ff34bd97af4851c48a2cca831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms the vertex using a transformation matrix.  <br /></td></tr>
 <tr class="memitem:ab89f473c3c2f983bc418cd72198ee388" id="r_ab89f473c3c2f983bc418cd72198ee388"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab89f473c3c2f983bc418cd72198ee388">HasAlpha</a> () const</td></tr>
@@ -178,12 +176,12 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:a91ad9c517e7ed4f3cbec2b83e297fae9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalizes the weights of the vertex so they add up to 1.0.  <br /></td></tr>
 <tr class="memitem:ac7c04357527e0f361e8615f56e3eab1e" id="r_ac7c04357527e0f361e8615f56e3eab1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7c04357527e0f361e8615f56e3eab1e">QuantWeights</a> (unsigned int steps=128)</td></tr>
 <tr class="memdesc:ac7c04357527e0f361e8615f56e3eab1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quantizes the weights to the specified number of steps.  <br /></td></tr>
+<tr class="memitem:a8da6b64934ae1bb00d894fc30ed27aba" id="r_a8da6b64934ae1bb00d894fc30ed27aba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8da6b64934ae1bb00d894fc30ed27aba">SortWeights</a> ()</td></tr>
+<tr class="memdesc:a8da6b64934ae1bb00d894fc30ed27aba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts vertex weights by influence, placing the highest values first.  <br /></td></tr>
 <tr class="memitem:acf201283b95e5f4f33fb5a2bb62f507d" id="r_acf201283b95e5f4f33fb5a2bb62f507d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf201283b95e5f4f33fb5a2bb62f507d">LimitWeights</a> (unsigned int max_weights=3)</td></tr>
 <tr class="memdesc:acf201283b95e5f4f33fb5a2bb62f507d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limits the number of bones a vertex refers to by removing the least influential weights.  <br /></td></tr>
-<tr class="memitem:a6578bfd3c1bec3dae7056cabe055c259" id="r_a6578bfd3c1bec3dae7056cabe055c259"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6578bfd3c1bec3dae7056cabe055c259">RemoveZeroWeights</a> ()</td></tr>
-<tr class="memdesc:a6578bfd3c1bec3dae7056cabe055c259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes dummy weights that have no influence on the vertex.  <br /></td></tr>
 <tr class="memitem:acd1d636a4d661ba57ec2e1f64a246f4b" id="r_acd1d636a4d661ba57ec2e1f64a246f4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd1d636a4d661ba57ec2e1f64a246f4b">ResetWeights</a> ()</td></tr>
-<tr class="memdesc:acd1d636a4d661ba57ec2e1f64a246f4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all weights.  <br /></td></tr>
+<tr class="memdesc:acd1d636a4d661ba57ec2e1f64a246f4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the vertex bone indices and weights to their default value.  <br /></td></tr>
 <tr class="memitem:a30adb5d39c8ec9a85bb3552776dbbc6c" id="r_a30adb5d39c8ec9a85bb3552776dbbc6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30adb5d39c8ec9a85bb3552776dbbc6c">ResetNormals</a> ()</td></tr>
 <tr class="memdesc:a30adb5d39c8ec9a85bb3552776dbbc6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the vertex normal to its default value.  <br /></td></tr>
 <tr class="memitem:a95135237fa28ce2f91c1c6a071c85f0d" id="r_a95135237fa28ce2f91c1c6a071c85f0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95135237fa28ce2f91c1c6a071c85f0d">ResetUVs</a> ()</td></tr>
@@ -199,32 +197,14 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:a7fd36a5a3a243055055b284bf7c877e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Texture coordinates.  <br /></td></tr>
 <tr class="memitem:a2e65c2106c2975f16b64372fadb43f1c" id="r_a2e65c2106c2975f16b64372fadb43f1c"><td class="memItemLeft" align="right" valign="top">glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e65c2106c2975f16b64372fadb43f1c">color</a> {1.0f, 1.0f, 1.0f, 1.0f}</td></tr>
 <tr class="memdesc:a2e65c2106c2975f16b64372fadb43f1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertex color (RGBA)  <br /></td></tr>
-<tr class="memitem:a27b2e4b201eed5da320c77ca023026ac" id="r_a27b2e4b201eed5da320c77ca023026ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d97/group__UtilityContainers.html#d4/df6/classnnl_1_1utl_1_1static__vector">utl::static_vector</a>&lt; std::pair&lt; <a class="el" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a>, float &gt;, 8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27b2e4b201eed5da320c77ca023026ac">weights</a></td></tr>
+<tr class="memitem:a1b97c0d0a7f5e24fd2242a34f2eb098e" id="r_a1b97c0d0a7f5e24fd2242a34f2eb098e"><td class="memItemLeft" align="right" valign="top">std::array&lt; <a class="el" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a>, kMaxNumVertWeight &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b97c0d0a7f5e24fd2242a34f2eb098e">bones</a> {0}</td></tr>
+<tr class="memdesc:a1b97c0d0a7f5e24fd2242a34f2eb098e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bone indices.  <br /></td></tr>
+<tr class="memitem:a345dbbd16b97d67b6add1d106efb017a" id="r_a345dbbd16b97d67b6add1d106efb017a"><td class="memItemLeft" align="right" valign="top">std::array&lt; float, kMaxNumVertWeight &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a345dbbd16b97d67b6add1d106efb017a">weights</a> {1.0f}</td></tr>
 <tr><td colspan="2"><h3>Friends</h3></td></tr>
 <tr class="memitem:af1945fb37d6f976cb17593e1791bf4fa" id="r_af1945fb37d6f976cb17593e1791bf4fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#dc/d68/structnnl_1_1SVertex">SVertex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1945fb37d6f976cb17593e1791bf4fa">operator*</a> (const glm::mat4 &amp;transform, <a class="el" href="#dc/d68/structnnl_1_1SVertex">SVertex</a> vertex)</td></tr>
-<tr class="memdesc:af1945fb37d6f976cb17593e1791bf4fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication operator for transforming the vertex by an SRT matrix.  <br /></td></tr>
+<tr class="memdesc:af1945fb37d6f976cb17593e1791bf4fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication operator for transforming the vertex by a matrix.  <br /></td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h4 id="header-doc-func-members" class="groupheader">Member Function Documentation</h4>
-<a id="a6938df5afa5258ae008f9a28deb8fd89" name="a6938df5afa5258ae008f9a28deb8fd89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6938df5afa5258ae008f9a28deb8fd89">&#9670;&#160;</a></span>GetBoneIndices()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../dd/d97/group__UtilityContainers.html#d4/df6/classnnl_1_1utl_1_1static__vector">utl::static_vector</a>&lt; <a class="el" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a>, 8 &gt; nnl::SVertex::GetBoneIndices </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Retrieves the bone indices associated with the vertex. </p>
-<dl class="section return"><dt>Returns</dt><dd>A static vector of sorted bone indices. </dd></dl>
-
-</div>
-</div>
 <a id="ab89f473c3c2f983bc418cd72198ee388" name="ab89f473c3c2f983bc418cd72198ee388"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab89f473c3c2f983bc418cd72198ee388">&#9670;&#160;</a></span>HasAlpha()</h2>
 
@@ -340,25 +320,6 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="a6578bfd3c1bec3dae7056cabe055c259" name="a6578bfd3c1bec3dae7056cabe055c259"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6578bfd3c1bec3dae7056cabe055c259">&#9670;&#160;</a></span>RemoveZeroWeights()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void nnl::SVertex::RemoveZeroWeights </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Removes dummy weights that have no influence on the vertex. </p>
-
-</div>
-</div>
 <a id="a189037251ab609402bfe57fbcf23a03d" name="a189037251ab609402bfe57fbcf23a03d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a189037251ab609402bfe57fbcf23a03d">&#9670;&#160;</a></span>ResetColors()</h2>
 
@@ -431,7 +392,26 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Removes all weights. </p>
+<p>Resets the vertex bone indices and weights to their default value. </p>
+
+</div>
+</div>
+<a id="a8da6b64934ae1bb00d894fc30ed27aba" name="a8da6b64934ae1bb00d894fc30ed27aba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8da6b64934ae1bb00d894fc30ed27aba">&#9670;&#160;</a></span>SortWeights()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void nnl::SVertex::SortWeights </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sorts vertex weights by influence, placing the highest values first. </p>
 
 </div>
 </div>
@@ -489,7 +469,7 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Multiplication operator for transforming the vertex by an SRT matrix. </p>
+<p>Multiplication operator for transforming the vertex by a matrix. </p>
 <p>This operator allows for the correct transformation of a vertex's position and normal vector using a 4x4 SRT matrix.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -503,6 +483,22 @@ Enumerations</h2></td></tr>
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h4 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h4>
+<a id="a1b97c0d0a7f5e24fd2242a34f2eb098e" name="a1b97c0d0a7f5e24fd2242a34f2eb098e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b97c0d0a7f5e24fd2242a34f2eb098e">&#9670;&#160;</a></span>bones</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;<a class="el" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a>, kMaxNumVertWeight&gt; nnl::SVertex::bones {0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bone indices. </p>
+
+</div>
+</div>
 <a id="a2e65c2106c2975f16b64372fadb43f1c" name="a2e65c2106c2975f16b64372fadb43f1c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2e65c2106c2975f16b64372fadb43f1c">&#9670;&#160;</a></span>color</h2>
 
@@ -567,18 +563,18 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="a27b2e4b201eed5da320c77ca023026ac" name="a27b2e4b201eed5da320c77ca023026ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27b2e4b201eed5da320c77ca023026ac">&#9670;&#160;</a></span>weights</h2>
+<a id="a345dbbd16b97d67b6add1d106efb017a" name="a345dbbd16b97d67b6add1d106efb017a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a345dbbd16b97d67b6add1d106efb017a">&#9670;&#160;</a></span>weights</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d97/group__UtilityContainers.html#d4/df6/classnnl_1_1utl_1_1static__vector">utl::static_vector</a>&lt;std::pair&lt;<a class="el" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a>, float&gt;, 8&gt; nnl::SVertex::weights</td>
+          <td class="memname">std::array&lt;float, kMaxNumVertWeight&gt; nnl::SVertex::weights {1.0f}</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bone indices and their influence on the vertex. This array <em>should</em> contain at least 1 element. </p>
+<p>Bone weights. This array <em>must</em> contain at least 1 positive weight. </p>
 
 </div>
 </div>
@@ -750,10 +746,6 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:aa8943d0b51681f7d6d95df1be6ff9817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the center of the mesh.  <br /></td></tr>
 <tr class="memitem:ae480da2b988c191960750feddc729bd7" id="r_ae480da2b988c191960750feddc729bd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae480da2b988c191960750feddc729bd7">ReverseWindingOrder</a> ()</td></tr>
 <tr class="memdesc:ae480da2b988c191960750feddc729bd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reverses the winding order of the mesh's triangles.  <br /></td></tr>
-<tr class="memitem:ac3cc02a00e5d6f54e45ee36e24016f75" id="r_ac3cc02a00e5d6f54e45ee36e24016f75"><td class="memItemLeft" align="right" valign="top">std::set&lt; <a class="el" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3cc02a00e5d6f54e45ee36e24016f75">GetBoneIndices</a> () const</td></tr>
-<tr class="memdesc:ac3cc02a00e5d6f54e45ee36e24016f75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns unique bone indices that influence this mesh.  <br /></td></tr>
-<tr class="memitem:aa6e39aaa999d5dc587f9f350467fd074" id="r_aa6e39aaa999d5dc587f9f350467fd074"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../dc/ddd/group__FixedType.html#gaa111b5125734701cae5f29358314dcd9">u32</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6e39aaa999d5dc587f9f350467fd074">GetVerticesByBone</a> (<a class="el" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> bone_id) const</td></tr>
-<tr class="memdesc:aa6e39aaa999d5dc587f9f350467fd074"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns vertices that are influenced by the bone.  <br /></td></tr>
 <tr class="memitem:abc5117a95c09a96adf06b133d50a8988" id="r_abc5117a95c09a96adf06b133d50a8988"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc5117a95c09a96adf06b133d50a8988">Transform</a> (const glm::mat4 &amp;transform)</td></tr>
 <tr class="memdesc:abc5117a95c09a96adf06b133d50a8988"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms the mesh using a transformation matrix.  <br /></td></tr>
 <tr class="memitem:a053ab4296fefff1d8056d2778d206778" id="r_a053ab4296fefff1d8056d2778d206778"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a053ab4296fefff1d8056d2778d206778">TransformUV</a> (const glm::mat3 &amp;transform)</td></tr>
@@ -778,12 +770,12 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:a8e2f95b6c422aa7ac3329ee463a5fa33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalizes the normals of the vertices.  <br /></td></tr>
 <tr class="memitem:a10f7173116227bf4f3a283dd1b2b010b" id="r_a10f7173116227bf4f3a283dd1b2b010b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10f7173116227bf4f3a283dd1b2b010b">QuantWeights</a> (unsigned int steps=128)</td></tr>
 <tr class="memdesc:a10f7173116227bf4f3a283dd1b2b010b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quantizes the vertex weights to a specified number of steps.  <br /></td></tr>
+<tr class="memitem:a7e8c1e906d8e7c801d80750b9ad89c3c" id="r_a7e8c1e906d8e7c801d80750b9ad89c3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e8c1e906d8e7c801d80750b9ad89c3c">SortWeights</a> ()</td></tr>
+<tr class="memdesc:a7e8c1e906d8e7c801d80750b9ad89c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts vertex weights by influence, placing the highest values first.  <br /></td></tr>
 <tr class="memitem:ab13e41143610e78ed0e39b17a4a8b916" id="r_ab13e41143610e78ed0e39b17a4a8b916"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab13e41143610e78ed0e39b17a4a8b916">LimitWeightsPerVertex</a> (unsigned int max_weights=3)</td></tr>
 <tr class="memdesc:ab13e41143610e78ed0e39b17a4a8b916"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limits the number of weights per vertex.  <br /></td></tr>
 <tr class="memitem:a8f045445c2683ed64a8410cf2e5c7b57" id="r_a8f045445c2683ed64a8410cf2e5c7b57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f045445c2683ed64a8410cf2e5c7b57">LimitWeightsPerTriangle</a> (unsigned int max_weights=8)</td></tr>
-<tr class="memdesc:a8f045445c2683ed64a8410cf2e5c7b57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limits the number of weights per triangle.  <br /></td></tr>
-<tr class="memitem:a9685c5fee206f56b817b16c86856327d" id="r_a9685c5fee206f56b817b16c86856327d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9685c5fee206f56b817b16c86856327d">RemoveZeroWeights</a> ()</td></tr>
-<tr class="memdesc:a9685c5fee206f56b817b16c86856327d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes dummy weights that have no influence on the vertices.  <br /></td></tr>
+<tr class="memdesc:a8f045445c2683ed64a8410cf2e5c7b57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limits the number of unique bone influences per triangle.  <br /></td></tr>
 <tr class="memitem:ae3d10e2c84f231c997215c477576a173" id="r_ae3d10e2c84f231c997215c477576a173"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3d10e2c84f231c997215c477576a173">ResetWeights</a> ()</td></tr>
 <tr class="memdesc:ae3d10e2c84f231c997215c477576a173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all weights.  <br /></td></tr>
 <tr class="memitem:a9283ef3ae2f42bbeb0025efbc4ec8674" id="r_a9283ef3ae2f42bbeb0025efbc4ec8674"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9283ef3ae2f42bbeb0025efbc4ec8674">ResetNormals</a> ()</td></tr>
@@ -954,52 +946,6 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="ac3cc02a00e5d6f54e45ee36e24016f75" name="ac3cc02a00e5d6f54e45ee36e24016f75"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3cc02a00e5d6f54e45ee36e24016f75">&#9670;&#160;</a></span>GetBoneIndices()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::set&lt; <a class="el" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a> &gt; nnl::SMesh::GetBoneIndices </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns unique bone indices that influence this mesh. </p>
-<dl class="section return"><dt>Returns</dt><dd>A set of unique bone indices. </dd></dl>
-
-</div>
-</div>
-<a id="aa6e39aaa999d5dc587f9f350467fd074" name="aa6e39aaa999d5dc587f9f350467fd074"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa6e39aaa999d5dc587f9f350467fd074">&#9670;&#160;</a></span>GetVerticesByBone()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="../../dc/ddd/group__FixedType.html#gaa111b5125734701cae5f29358314dcd9">u32</a> &gt; nnl::SMesh::GetVerticesByBone </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dc/ddd/group__FixedType.html#ga12e54726f1f8a66bfef7a212db4a4284">u16</a></td>          <td class="paramname"><span class="paramname"><em>bone_id</em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns vertices that are influenced by the bone. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bone_id</td><td>The index of the bone to query. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A vector of vertex indices affected by the specified bone. </dd></dl>
-
-</div>
-</div>
 <a id="abf07e411563af46f000f30fb282efc01" name="abf07e411563af46f000f30fb282efc01"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf07e411563af46f000f30fb282efc01">&#9670;&#160;</a></span>HasAlphaVertex()</h2>
 
@@ -1081,8 +1027,8 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Limits the number of weights per triangle. </p>
-<p>This method restricts the number of bone weights that can influence vertices of a triangle to a specified maximum.</p>
+<p>Limits the number of unique bone influences per triangle. </p>
+<p>This method restricts the number of unique bones that influence vertices of a triangle to a specified maximum.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">max_weights</td><td>The maximum number of weights per triangle. </td></tr>
@@ -1246,25 +1192,6 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="a9685c5fee206f56b817b16c86856327d" name="a9685c5fee206f56b817b16c86856327d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9685c5fee206f56b817b16c86856327d">&#9670;&#160;</a></span>RemoveZeroWeights()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void nnl::SMesh::RemoveZeroWeights </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Removes dummy weights that have no influence on the vertices. </p>
-
-</div>
-</div>
 <a id="a141917394c6b88d494e954eae1050546" name="a141917394c6b88d494e954eae1050546"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a141917394c6b88d494e954eae1050546">&#9670;&#160;</a></span>ResetColors()</h2>
 
@@ -1358,6 +1285,25 @@ Enumerations</h2></td></tr>
 
 <p>Reverses the winding order of the mesh's triangles. </p>
 <p>This method changes the order of the vertices in each triangle, which affects the front-facing direction for rendering. </p>
+
+</div>
+</div>
+<a id="a7e8c1e906d8e7c801d80750b9ad89c3c" name="a7e8c1e906d8e7c801d80750b9ad89c3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e8c1e906d8e7c801d80750b9ad89c3c">&#9670;&#160;</a></span>SortWeights()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void nnl::SMesh::SortWeights </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sorts vertex weights by influence, placing the highest values first. </p>
 
 </div>
 </div>
@@ -2361,12 +2307,12 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:a187938195fed038365155a56922e64aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalizes the normals of the vertices.  <br /></td></tr>
 <tr class="memitem:ae37196ef54a8a8430d212836a42dc8ae" id="r_ae37196ef54a8a8430d212836a42dc8ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae37196ef54a8a8430d212836a42dc8ae">QuantWeights</a> (unsigned int steps=128)</td></tr>
 <tr class="memdesc:ae37196ef54a8a8430d212836a42dc8ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quantizes the vertex weights to a specified number of steps.  <br /></td></tr>
+<tr class="memitem:a11762563cbcef14781c653dc6187cfaa" id="r_a11762563cbcef14781c653dc6187cfaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11762563cbcef14781c653dc6187cfaa">SortWeights</a> ()</td></tr>
+<tr class="memdesc:a11762563cbcef14781c653dc6187cfaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts vertex weights by influence, placing the highest values first.  <br /></td></tr>
 <tr class="memitem:a5f540bff796e3d3349122ce16ac1bef6" id="r_a5f540bff796e3d3349122ce16ac1bef6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f540bff796e3d3349122ce16ac1bef6">LimitWeightsPerVertex</a> (unsigned int max_weights=3)</td></tr>
 <tr class="memdesc:a5f540bff796e3d3349122ce16ac1bef6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limits the number of weights per vertex.  <br /></td></tr>
 <tr class="memitem:a8c3f60e11b7ecf02d7f15b7d856adf6d" id="r_a8c3f60e11b7ecf02d7f15b7d856adf6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c3f60e11b7ecf02d7f15b7d856adf6d">LimitWeightsPerTriangle</a> (unsigned int max_weights=8)</td></tr>
 <tr class="memdesc:a8c3f60e11b7ecf02d7f15b7d856adf6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limits the number of weights per triangle.  <br /></td></tr>
-<tr class="memitem:ac7a72b8fb5c831c8590a2c95491dad14" id="r_ac7a72b8fb5c831c8590a2c95491dad14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7a72b8fb5c831c8590a2c95491dad14">RemoveZeroWeights</a> ()</td></tr>
-<tr class="memdesc:ac7a72b8fb5c831c8590a2c95491dad14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes dummy weights that have no influence on the vertices.  <br /></td></tr>
 <tr class="memitem:ae78b141f5141eb833b0413fb3125c526" id="r_ae78b141f5141eb833b0413fb3125c526"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae78b141f5141eb833b0413fb3125c526">ResetWeights</a> ()</td></tr>
 <tr class="memdesc:ae78b141f5141eb833b0413fb3125c526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all weights.  <br /></td></tr>
 <tr class="memitem:a854d400bc509e8d5e2b38eb65392c698" id="r_a854d400bc509e8d5e2b38eb65392c698"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a854d400bc509e8d5e2b38eb65392c698">ResetNormals</a> ()</td></tr>
@@ -2651,25 +2597,6 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="ac7a72b8fb5c831c8590a2c95491dad14" name="ac7a72b8fb5c831c8590a2c95491dad14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7a72b8fb5c831c8590a2c95491dad14">&#9670;&#160;</a></span>RemoveZeroWeights()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void nnl::SModel::RemoveZeroWeights </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Removes dummy weights that have no influence on the vertices. </p>
-
-</div>
-</div>
 <a id="a5d0893bdb76927f3a45b3237b9d68fee" name="a5d0893bdb76927f3a45b3237b9d68fee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d0893bdb76927f3a45b3237b9d68fee">&#9670;&#160;</a></span>ResetColors()</h2>
 
@@ -2743,6 +2670,25 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Removes all weights. </p>
+
+</div>
+</div>
+<a id="a11762563cbcef14781c653dc6187cfaa" name="a11762563cbcef14781c653dc6187cfaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11762563cbcef14781c653dc6187cfaa">&#9670;&#160;</a></span>SortWeights()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void nnl::SModel::SortWeights </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sorts vertex weights by influence, placing the highest values first. </p>
 
 </div>
 </div>

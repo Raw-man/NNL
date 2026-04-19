@@ -14,7 +14,7 @@ var searchData=
   ['bone_5ftarget_11',['bone_target',['../dd/de7/group__Colbox__Main.html#a7c399e77b9f6dc8bb8b1ba65b28d293a',1,'nnl::colbox::CollisionBox14::bone_target'],['../dd/de7/group__Colbox__Main.html#ad57a33e8bdc69a827146411bc2621256',1,'nnl::colbox::CollisionBox18::bone_target'],['../dd/de7/group__Colbox__Main.html#afb7988a1845e9a290b929034e231cd3f',1,'nnl::colbox::CollisionBox20::bone_target']]],
   ['bone_5ftarget_5fnames_12',['bone_target_names',['../d3/d07/group__Model__Auxiliary.html#ga0ab2a3f80b602091c08c361042e38350',1,'nnl::model']]],
   ['bone_5ftarget_5ftables_13',['bone_target_tables',['../da/d2b/group__Model__Main.html#a509ebc456f1c91cddb8d4041d33f7c1b',1,'nnl::model::Model']]],
-  ['bones_14',['bones',['../d3/d07/group__Model__Auxiliary.html#a1a26cfacc346db4a882c4eeefec9118c',1,'nnl::model::TriangleGroup']]],
+  ['bones_14',['bones',['../d3/d07/group__Model__Auxiliary.html#a1a26cfacc346db4a882c4eeefec9118c',1,'nnl::model::TriangleGroup::bones'],['../d1/dc4/group__SModel.html#a1b97c0d0a7f5e24fd2242a34f2eb098e',1,'nnl::SVertex::bones']]],
   ['buffer_15',['buffer',['../d7/d68/group__Dig__Main.html#a693dc734f5a0e9b37b2a2ad39be9f4b7',1,'nnl::dig::TFileRecord']]],
   ['buffer_5fwidth_16',['buffer_width',['../d1/da7/group__Texture__Main.html#a3bd795d802ba89a6b8d14323c26e1115',1,'nnl::texture::TextureData']]]
 ];
