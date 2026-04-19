@@ -3,6 +3,7 @@
 #include <tiny_gltf.h>
 
 #include <numeric>
+#include <set>
 
 #include "NNL/common/io.hpp"
 #include "NNL/common/logger.hpp"
@@ -694,10 +695,12 @@ class GLTFImporter {
           auto& joint = joints_0.at(i);
           auto& weight = weights_0.at(i);
 
-          for (std::size_t j = 0; j < 4; j++)
-            if (weight[j] > 0.0f)
-              smesh.vertices[i].weights.push_back(
-                  {(u16)joint_bone_id_.at(gltf_model_.skins.at(skin_id).joints.at(joint[j])), weight[j]});
+          for (std::size_t j = 0, k = joint_index * 4; j < 4; j++)
+            if (weight[j] > 0.0f) {
+              smesh.vertices[i].weights[k] = weight[j];
+              smesh.vertices[i].bones[k] = (u16)joint_bone_id_.at(gltf_model_.skins.at(skin_id).joints.at(joint[j]));
+              k++;
+            }
         }
       };
 
@@ -706,17 +709,23 @@ class GLTFImporter {
       } else  // Must be attached to some joint anyway
       {
         if (joint_bone_id_.count(mesh_node_id) != 0) {  // Attach to bones inserted for animated objects
-          for (auto& vertex : smesh.vertices) vertex.weights.push_back({joint_bone_id_.at(mesh_node_id), 1.0f});
+          for (auto& vertex : smesh.vertices) {
+            vertex.bones[0] = joint_bone_id_.at(mesh_node_id);
+            vertex.weights[0] = 1.0f;
+          }
 
         } else {
           if (dummy_root_id_ == -1) CreateDummyRootBone();  // Attach to a dummy root
 
-          for (auto& vertex : smesh.vertices) vertex.weights.push_back({joint_bone_id_.at(dummy_root_id_), 1.0f});
+          for (auto& vertex : smesh.vertices) {
+            vertex.bones[0] = joint_bone_id_.at(dummy_root_id_);
+            vertex.weights[0] = 1.0f;
+          }
         }
       }
 
       if (primitive.attributes.find("JOINTS_1") != primitive.attributes.end() &&
-          primitive.attributes.find("JOINTS_0") != primitive.attributes.end()) {
+          primitive.attributes.find("JOINTS_0") != primitive.attributes.end() && kMaxNumVertWeight > 4) {
         ProcessJointsN(1);
       }
 
@@ -1700,12 +1709,13 @@ class GLTFImporter {
 
     if (!warn_.empty()) NNL_LOG_WARN(warn_);
 
-    if (!success) NNL_THROW(ParseError(NNL_SRCTAG("importing failed: " + error_ + " " + utl::filesys::u8string(path_))));
+    if (!success)
+      NNL_THROW(ParseError(NNL_SRCTAG("importing failed: " + error_ + " " + utl::filesys::u8string(path_))));
 
     for (auto& extension_required : gltf_model_.extensionsRequired) {
       if (extensions_supported_.count(extension_required) == 0)
         NNL_THROW(ParseError(NNL_SRCTAG("a required extension is not supported: " + extension_required + "; " +
-                                       utl::filesys::u8string(path_))));
+                                        utl::filesys::u8string(path_))));
     }
 
     if (gltf_model_.scenes.empty()) return;

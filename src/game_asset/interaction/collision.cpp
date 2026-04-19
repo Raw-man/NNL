@@ -1,5 +1,7 @@
 #include "NNL/game_asset/interaction/collision.hpp"
 
+#include <set>
+
 #include "NNL/common/contract.hpp"
 #include "NNL/utility/data.hpp"
 #include "NNL/utility/string.hpp"

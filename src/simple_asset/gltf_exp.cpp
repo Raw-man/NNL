@@ -2,6 +2,8 @@
 #include <stb_image_write.h>
 #include <tiny_gltf.h>
 
+#include <set>
+
 #include "NNL/common/logger.hpp"
 #include "NNL/common/src_info.hpp"
 #include "NNL/simple_asset/sasset3d.hpp"
@@ -384,7 +386,7 @@ class GLTFExporter {
 
       std::vector<Vec4<u16>> joints_1(smesh.vertices.size(), {0});
       std::vector<Vec4<float>> weights_1(smesh.vertices.size(), {0.0f});
-      bool export_joints_0 = false;
+
       bool export_joints_1 = false;
 
       for (std::size_t i = 0; i < smesh.vertices.size(); i++) {
@@ -395,28 +397,25 @@ class GLTFExporter {
         auto& weight_1 = weights_1[i];
         auto& joint_1 = joints_1[i];
 
-        export_joints_0 |= !svertex.weights.empty();
-
-        for (std::size_t i = 0; i < std::min<std::size_t>(svertex.weights.size(), 4U); i++) {
-          joint_0[i] = joint_pos_.at(bone_joint_id_.at(svertex.weights[i].first));
-          weight_0[i] = svertex.weights[i].second;
+        for (std::size_t i = 0; i < 4; i++) {
+          joint_0[i] = joint_pos_.at(bone_joint_id_.at(svertex.bones[i]));
+          weight_0[i] = svertex.weights[i];
         }
 
-        export_joints_1 |= (svertex.weights.size() > 4);
-        // Sometimes, more than 4 weights
+        export_joints_1 |= (kMaxNumVertWeight > 4 && ((svertex.weights[4] > 0.0f) || (svertex.weights[5] > 0.0f) ||
+                                                      (svertex.weights[6] > 0.0f) || (svertex.weights[7] > 0.0f)));
+
         for (std::size_t i = 4; i < svertex.weights.size(); i++) {
-          joint_1[i - 4] = joint_pos_.at(bone_joint_id_.at(svertex.weights[i].first));
-          weight_1[i - 4] = svertex.weights[i].second;
+          joint_1[i - 4] = joint_pos_.at(bone_joint_id_.at(svertex.bones[i]));
+          weight_1[i - 4] = svertex.weights[i];
         }
       }
 
-      if (export_joints_0) {
-        node.skin = 0;
-        primitive.attributes["JOINTS_0"] =
-            WriteData(joints_0, TINYGLTF_TYPE_VEC4, TINYGLTF_COMPONENT_TYPE_UNSIGNED_SHORT);
+      node.skin = 0;
+      primitive.attributes["JOINTS_0"] =
+          WriteData(joints_0, TINYGLTF_TYPE_VEC4, TINYGLTF_COMPONENT_TYPE_UNSIGNED_SHORT);
 
-        primitive.attributes["WEIGHTS_0"] = WriteData(weights_0, TINYGLTF_TYPE_VEC4);
-      }
+      primitive.attributes["WEIGHTS_0"] = WriteData(weights_0, TINYGLTF_TYPE_VEC4);
 
       if (export_joints_1) {
         primitive.attributes["JOINTS_1"] =

@@ -14,7 +14,6 @@
 
 #include <functional>
 #include <glm/glm.hpp>
-#include <set>
 #include <string>
 #include <vector>
 
@@ -22,7 +21,6 @@
 #include "NNL/common/fixed_type.hpp"
 #include "NNL/simple_asset/sanimation.hpp"
 #include "NNL/simple_asset/svalue.hpp"
-#include "NNL/utility/static_vector.hpp"
 
 namespace nnl {
 
@@ -33,6 +31,7 @@ namespace nnl {
  * @{
  */
 
+constexpr std::size_t kMaxNumVertWeight = 8;
 /**
  * @brief Represents a simple vertex with a fixed set of attributes.
  *
@@ -60,14 +59,10 @@ struct SVertex {
 
   glm::vec4 color{1.0f, 1.0f, 1.0f, 1.0f};  ///< Vertex color (RGBA)
 
-  utl::static_vector<std::pair<u16, float>, 8> weights;  ///< Bone indices and their influence on the vertex. This array
-                                                         ///< _should_ contain at least 1 element.
+  std::array<u16, kMaxNumVertWeight> bones{0};  ///< Bone indices
 
-  /**
-   * @brief Retrieves the bone indices associated with the vertex.
-   * @return A static vector of sorted bone indices.
-   */
-  utl::static_vector<u16, 8> GetBoneIndices() const;
+  std::array<float, kMaxNumVertWeight> weights{1.0f};  ///< Bone weights. This array
+                                                       ///< _must_ contain at least 1 positive weight.
 
   /**
    * @brief Transforms the vertex using a transformation matrix.
@@ -104,19 +99,20 @@ struct SVertex {
   void QuantWeights(unsigned int steps = 128);
 
   /**
+   * @brief Sorts vertex weights by influence, placing the highest values first.
+   */
+  void SortWeights();
+
+  /**
    * @brief Limits the number of bones a vertex refers to by removing the least
    * influential weights.
+   *
    * @param max_weights The maximum number of weights to retain.
    */
   void LimitWeights(unsigned int max_weights = 3);
 
   /**
-   * @brief Removes dummy weights that have no influence on the vertex.
-   */
-  void RemoveZeroWeights();
-
-  /**
-   * @brief Removes all weights.
+   * @brief Resets the vertex bone indices and weights to their default value.
    */
   void ResetWeights();
 
@@ -136,7 +132,7 @@ struct SVertex {
   void ResetColors();
 
   /**
-   * @brief Multiplication operator for transforming the vertex by an SRT
+   * @brief Multiplication operator for transforming the vertex by a
    * matrix.
    *
    * This operator allows for the correct transformation of a vertex's position
@@ -268,20 +264,6 @@ struct SMesh {
   void ReverseWindingOrder();
 
   /**
-   * @brief Returns unique bone indices that influence this mesh.
-   *
-   * @return A set of unique bone indices.
-   */
-  std::set<u16> GetBoneIndices() const;
-
-  /**
-   * @brief Returns vertices that are influenced by the bone.
-   *
-   * @param bone_id The index of the bone to query.
-   * @return A vector of vertex indices affected by the specified bone.
-   */
-  std::vector<u32> GetVerticesByBone(u16 bone_id) const;
-  /**
    * @brief Transforms the mesh using a transformation matrix.
    *
    * This method applies the specified transformation matrix to all vertices in
@@ -401,6 +383,11 @@ struct SMesh {
   void QuantWeights(unsigned int steps = 128);
 
   /**
+   * @brief Sorts vertex weights by influence, placing the highest values first.
+   */
+  void SortWeights();
+
+  /**
    * @brief Limits the number of weights per vertex.
    *
    * This method restricts the number of bone weights that can influence each
@@ -411,20 +398,15 @@ struct SMesh {
   void LimitWeightsPerVertex(unsigned int max_weights = 3);
 
   /**
-   * @brief Limits the number of weights per triangle.
+   * @brief Limits the number of unique bone influences per triangle.
    *
-   * This method restricts the number of bone weights that can influence
+   * This method restricts the number of unique bones that influence
    * vertices of a triangle to a specified maximum.
    *
    * @param max_weights The maximum number of weights per triangle.
    * @see nnl::model::kMaxNumBonePerPrim
    */
   void LimitWeightsPerTriangle(unsigned int max_weights = 8);
-
-  /**
-   * @brief Removes dummy weights that have no influence on the vertices.
-   */
-  void RemoveZeroWeights();
 
   /**
    * @brief Removes all weights.
@@ -819,6 +801,11 @@ struct SModel {
   void QuantWeights(unsigned int steps = 128);
 
   /**
+   * @brief Sorts vertex weights by influence, placing the highest values first.
+   */
+  void SortWeights();
+
+  /**
    * @brief Limits the number of weights per vertex.
    *
    * This method restricts the number of bone weights that can influence each
@@ -838,11 +825,6 @@ struct SModel {
    * @see nnl::model::kMaxNumBonePerPrim
    */
   void LimitWeightsPerTriangle(unsigned int max_weights = 8);
-
-  /**
-   * @brief Removes dummy weights that have no influence on the vertices.
-   */
-  void RemoveZeroWeights();
 
   /**
    * @brief Removes all weights.

@@ -5,8 +5,8 @@
 #include <string>
 #include <vector>
 
-#include "NNL/common/fixed_type.hpp"
 #include "NNL/common/constant.hpp"
+#include "NNL/common/fixed_type.hpp"
 #include "NNL/utility/filesys.hpp"
 #include "NNL/utility/math.hpp"
 #include "stb_image.h"
@@ -79,28 +79,31 @@ void STexture::ExportPNG(const std::filesystem::path& path, bool flip) const {
   int result = 0;
 
   if (!flip) {
-    result = stbi_write_png(utl::filesys::u8string(utl::filesys::ReplaceExtension(path, utl::filesys::u8path(".png"))).c_str(),
-                            width, height, 4, bitmap.data(), 0);
+    result = stbi_write_png(
+        utl::filesys::u8string(utl::filesys::ReplaceExtension(path, utl::filesys::u8path(".png"))).c_str(), width,
+        height, 4, bitmap.data(), 0);
   } else {
     STexture flipped = *this;
     flipped.FlipV();
 
-    result = stbi_write_png(utl::filesys::u8string(utl::filesys::ReplaceExtension(path, utl::filesys::u8path(".png"))).c_str(),
-                            width, height, 4, flipped.bitmap.data(), 0);
+    result = stbi_write_png(
+        utl::filesys::u8string(utl::filesys::ReplaceExtension(path, utl::filesys::u8path(".png"))).c_str(), width,
+        height, 4, flipped.bitmap.data(), 0);
   }
 
   if (!result) {
     const char* failure_reason_c_str = stbi_failure_reason();
     std::string failure_reason = failure_reason_c_str != nullptr ? failure_reason_c_str : "";
 
-    NNL_THROW(RuntimeError(NNL_SRCTAG("texture export failed: " + utl::filesys::u8string(path) + "\n" + failure_reason)));
+    NNL_THROW(
+        RuntimeError(NNL_SRCTAG("texture export failed: " + utl::filesys::u8string(path) + "\n" + failure_reason)));
   }
 }
 
 void stbi_write_func(void* context, void* data, int size) {
-  NNL_EXPECTS_DBG(size > 0);
-  NNL_EXPECTS_DBG(context != nullptr);
-  NNL_EXPECTS_DBG(data != nullptr);
+  assert(size > 0);
+  assert(context != nullptr);
+  assert(data != nullptr);
   auto& buffer = *reinterpret_cast<Buffer*>(context);
   buffer.resize((std::size_t)size);
   std::memcpy(buffer.data(), data, buffer.size());

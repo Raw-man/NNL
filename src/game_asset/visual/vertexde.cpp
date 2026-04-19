@@ -87,30 +87,30 @@ VertexLayout GetLayout(u32 vertex_format) {
 }
 // Format weights for further conversion: sort bones of a vertex, add
 // missing bones
-static std::array<std::pair<u16, float>, 8> FormatWeights(utl::static_vector<std::pair<u16, float>, 8> weights,
-                                                          std::array<u16, 8> bone_indices, u32 weight_num) {
-  std::array<std::pair<u16, float>, 8> formated_weights{};
+static std::array<f32, 8> FormatWeights_(const std::array<u16, kMaxNumVertWeight>& vertex_bones,
+                                         const std::array<f32, kMaxNumVertWeight>& vertex_weights,
+                                         const std::array<u16, 8>& bone_indices, u32 weight_num) {
+  assert(weight_num != 0);
 
-  static_assert(formated_weights.size() == bone_indices.size(), "");
+  std::array<f32, 8> sorted_weights{0.0f};
 
-  for (u16 i = 0; i < weight_num; i++) {
-    formated_weights[i] = std::make_pair(bone_indices[i], 0.0f);
+  for (std::size_t i = 0; i < kMaxNumVertWeight; i++) {
+    u16 bone_index = vertex_bones[i];
 
-    auto& weight = formated_weights[i];
+    auto itr_bone_beg = bone_indices.begin();
+    auto itr_bone_end = itr_bone_beg + weight_num;
 
-    auto itr = std::find_if(weights.begin(), weights.end(),
-                            [&weight](const auto& element) { return weight.first == element.first; });
+    auto itr_ind = std::find(itr_bone_beg, itr_bone_end, bone_index);
+    if (itr_ind == itr_bone_end) continue;
 
-    if (itr != weights.end()) weight.second = itr->second;
+    auto pos = std::distance(itr_bone_beg, itr_ind);
+
+    sorted_weights[pos] = vertex_weights[i];
   }
 
-#ifndef NDEBUG
-  auto non_zero_weight = std::find_if(formated_weights.begin(), formated_weights.end(),
-                                      [](const auto& element) { return element.second > 0.0f; });
-  NNL_EXPECTS_DBG(non_zero_weight != formated_weights.end());  // At least one non zero weight
-#endif
+  assert(std::any_of(std::begin(sorted_weights), std::end(sorted_weights), [](f32 w) { return w != 0.0f; }));
 
-  return formated_weights;
+  return sorted_weights;
 }
 
 Buffer Encode(const std::vector<SVertex>& vertices, u32 vertex_format, std::array<u16, 8> bone_indices) {
@@ -136,6 +136,7 @@ Buffer Encode(const std::vector<SVertex>& vertices, u32 vertex_format, std::arra
 
       for (u16 i = 0; i < GetPositionNum(vertex_format); i++) {
         NNL_EXPECTS_DBG(utl::math::IsFinite(vertex.position[i]));
+
         // In the original assets, positions are mapped from +-1.0 to +-32735 (not +-32767)
         switch (GetPositionFormat(vertex_format)) {
           case fmt_code::k8:
@@ -147,7 +148,7 @@ Buffer Encode(const std::vector<SVertex>& vertices, u32 vertex_format, std::arra
             *(i16*)(pos_ptr + i * sizeof(i16)) = utl::math::FloatToFixed<i16>(vertex.position[i] * 0.999f);
             break;
           case fmt_code::k32:
-            *(float*)(pos_ptr + i * sizeof(float)) = vertex.position[i];
+            *(f32*)(pos_ptr + i * sizeof(f32)) = vertex.position[i];
             break;
         }
       }
@@ -169,7 +170,7 @@ Buffer Encode(const std::vector<SVertex>& vertices, u32 vertex_format, std::arra
             break;
 
           case fmt_code::k32:
-            *(float*)(norm_ptr + i * sizeof(float)) = vertex.normal[i];
+            *(f32*)(norm_ptr + i * sizeof(f32)) = vertex.normal[i];
             break;
         }
       }
@@ -178,22 +179,26 @@ Buffer Encode(const std::vector<SVertex>& vertices, u32 vertex_format, std::arra
     if (HasWeights(vertex_format)) {
       const u8* weights_ptr = vertex_ptr + offset_weights;
 
-      auto weights = FormatWeights(vertex.weights, bone_indices, GetWeightNum(vertex_format));
+      const u16 weight_num = GetWeightNum(vertex_format);
 
-      for (u16 i = 0; i < GetWeightNum(vertex_format); i++) {
-        NNL_EXPECTS_DBG(utl::math::IsFinite(weights.at(i).second));
+      std::array<f32, 8> weights = FormatWeights_(vertex.bones, vertex.weights, bone_indices, weight_num);
+
+      assert(weight_num <= weights.size());
+
+      for (u16 i = 0; i < weight_num; i++) {
+        NNL_EXPECTS_DBG(utl::math::IsFinite(weights[i]));
 
         switch (GetWeightFormat(vertex_format)) {
           case fmt_code::k8:
-            *(u8*)(weights_ptr + i * sizeof(u8)) = utl::math::FloatToFixed<u8, 1>(weights.at(i).second);
+            *(u8*)(weights_ptr + i * sizeof(u8)) = utl::math::FloatToFixed<u8, 1>(weights[i]);
             break;
 
           case fmt_code::k16:
-            *(u16*)(weights_ptr + i * sizeof(u16)) = utl::math::FloatToFixed<u16, 1>(weights.at(i).second);
+            *(u16*)(weights_ptr + i * sizeof(u16)) = utl::math::FloatToFixed<u16, 1>(weights[i]);
             break;
 
           case fmt_code::k32:
-            *(float*)(weights_ptr + i * sizeof(float)) = weights.at(i).second;
+            *(f32*)(weights_ptr + i * sizeof(f32)) = weights[i];
             break;
         }
       }
@@ -215,7 +220,7 @@ Buffer Encode(const std::vector<SVertex>& vertices, u32 vertex_format, std::arra
 
           case fmt_code::k32:
 
-            *(float*)(uv_ptr + i * sizeof(float)) = vertex.uv[i];
+            *(f32*)(uv_ptr + i * sizeof(f32)) = vertex.uv[i];
             break;
         }
       }
@@ -278,7 +283,7 @@ std::vector<SVertex> Decode(BufferView vertex_buffer, u32 vertex_format, std::ar
             break;
 
           case fmt_code::k32:
-            vertex.position[i] = *(float*)(pos_ptr + i * sizeof(float));
+            vertex.position[i] = *(f32*)(pos_ptr + i * sizeof(f32));
             break;
         }
       }
@@ -298,7 +303,7 @@ std::vector<SVertex> Decode(BufferView vertex_buffer, u32 vertex_format, std::ar
             break;
 
           case fmt_code::k32:
-            vertex.normal[i] = *(float*)(norm_ptr + i * sizeof(float));
+            vertex.normal[i] = *(f32*)(norm_ptr + i * sizeof(f32));
             break;
         }
       }
@@ -318,7 +323,7 @@ std::vector<SVertex> Decode(BufferView vertex_buffer, u32 vertex_format, std::ar
             break;
 
           case fmt_code::k32:
-            vertex.uv[i] = *(float*)(uv_ptr + i * sizeof(float));
+            vertex.uv[i] = *(f32*)(uv_ptr + i * sizeof(f32));
             break;
         }
       }
@@ -364,34 +369,36 @@ std::vector<SVertex> Decode(BufferView vertex_buffer, u32 vertex_format, std::ar
       }
     }
 
-    vertex.weights.clear();
-
     if (HasWeights(vertex_format)) {
       const u8* weights_ptr = vertex_ptr + offset_weights;
 
-      for (u16 i = 0; i < GetWeightNum(vertex_format); i++) {
-        std::pair<u16, float> weight = {0xFFFF, 0.0f};
+      const u16 weight_num = GetWeightNum(vertex_format);
+
+      for (u16 i = 0, j = 0; i < weight_num && j < kMaxNumVertWeight; i++) {
+        f32 weight = 0.0f;
         switch (GetWeightFormat(vertex_format)) {
           case fmt_code::k8:
-            weight =
-                std::make_pair(bone_indices[i], utl::math::FixedToFloat<u8, 1>(*(u8*)(weights_ptr + i * sizeof(u8))));
+            weight = utl::math::FixedToFloat<u8, 1>(*(u8*)(weights_ptr + i * sizeof(u8)));
             break;
 
           case fmt_code::k16:
-            weight = std::make_pair(bone_indices[i],
-                                    utl::math::FixedToFloat<u16, 1>(*(u16*)(weights_ptr + i * sizeof(u16))));
+            weight = utl::math::FixedToFloat<u16, 1>(*(u16*)(weights_ptr + i * sizeof(u16)));
             break;
 
           case fmt_code::k32:
-            weight = std::make_pair(bone_indices[i], *(float*)(weights_ptr + i * sizeof(float)));
+            weight = *(f32*)(weights_ptr + i * sizeof(f32));
             break;
         }
-
-        if (weight.second > 0.0f) vertex.weights.push_back(weight);
+        if (weight > 0.0f) {
+          vertex.bones[j] = bone_indices[i];
+          vertex.weights[j] = weight;
+          j++;
+        }
       }
     } else  // always at least 1 bone
     {
-      vertex.weights.push_back(std::make_pair(bone_indices.at(0), 1.0f));
+      vertex.bones[0] = bone_indices[0];
+      vertex.weights[0] = 1.0f;
     }
   }
   return svertices;

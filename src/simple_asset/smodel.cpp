@@ -1,6 +1,9 @@
 #include "NNL/simple_asset/smodel.hpp"
 
+#include <set>
+
 #include "NNL/utility/math.hpp"
+#include "NNL/utility/static_set.hpp"
 namespace nnl {
 
 glm::mat4 SAttachment::GetTransform() const { return utl::math::Compose(scale, rotation, translation); }
@@ -32,91 +35,70 @@ SVertex operator*(const SVertex& vertex, float scalar) {
 }
 
 void SVertex::QuantWeights(unsigned int steps) {
-  NNL_EXPECTS_DBG(steps > 0 && steps <= 1'000'000);
-  NNL_EXPECTS_DBG(!weights.empty());
+  NNL_EXPECTS_DBG(steps > 0);
 
   float sum = 0;
 
   for (auto& weight : weights) {
-    weight.second = std::round(weight.second * steps);
-    sum += weight.second;
-  }
-
-  if (sum != steps) {
-    auto max_weight_itr = std::max_element(weights.begin(), weights.end(),
-                                           [](const auto& lhs, const auto& rhs) { return lhs.second < rhs.second; });
-
-    auto& max_weight = (*max_weight_itr).second;
-
-    float remainder = steps - sum;
-
-    max_weight += remainder;
+    weight = std::round(weight * steps);
+    sum += weight;
   }
 
   for (auto& weight : weights) {
-    weight.second = weight.second / steps;
+    weight = weight / sum;
   }
 }
 
 void SVertex::LimitWeights(unsigned int max_weights) {
-  NNL_EXPECTS_DBG(max_weights > 0);
-  while (weights.size() > max_weights) {
-    auto min_weight_itr = std::min_element(weights.cbegin(), weights.cend(),
-                                           [](const auto& lhs, const auto& rhs) { return lhs.second < rhs.second; });
+  NNL_EXPECTS_DBG(max_weights > 0 && max_weights <= kMaxNumVertWeight);
 
-    auto min_weight_index = min_weight_itr - weights.begin();
+  this->SortWeights();
 
-    auto min_weight = (*min_weight_itr).second;
-
-    weights.erase(weights.begin() + min_weight_index);
-
-    float weight_remainder = min_weight / weights.size();
-
-    // Make sure weights add up to 1
-    for (auto& weight : weights) {
-      weight.second = (double)weight.second + weight_remainder;
-    }
+  for (std::size_t i = max_weights; i < bones.size(); i++) {
+    bones[i] = 0;
+    weights[i] = 0.0f;
   }
 }
 
-void SVertex::RemoveZeroWeights() {
-  decltype(weights) new_weights;
-
-  for (auto& weight : weights) {
-    if (weight.second > 0.0f) new_weights.push_back(weight);
-  }
-
-  weights = std::move(new_weights);
+void SVertex::ResetWeights() {
+  bones = {0};
+  weights = {1.0f};
 }
-
-void SVertex::ResetWeights() { weights.clear(); }
 
 void SVertex::ResetNormals() { normal = {0.0f, 1.0f, 0.0f}; }
 
 void SVertex::ResetUVs() { uv = {0.0f, 0.0f}; }
 
-void SVertex::ResetColors() { color = {0xFF, 0xFF, 0xFF, 0xFF}; }
+void SVertex::ResetColors() { color = {1.0f, 1.0f, 1.0f, 1.0f}; }
 
 bool SVertex::HasAlpha() const { return color.a < NNL_ALPHA_OPAQ_F; }
 
 void SVertex::NormalizeWeights() {
-  double sum = 0.0f;
+  float vertex_weight_sum = 0.0f;
 
-  for (auto& weight : weights) sum += weight.second;
-
-  for (auto& weight : weights) weight.second /= sum;
-}
-
-utl::static_vector<u16, 8> SVertex::GetBoneIndices() const {
-  utl::static_vector<u16, 8> bones(weights.size());
-
-  for (std::size_t i = 0; i < weights.size(); i++) {
-    bones[i] = weights[i].first;
+  for (auto& weight : weights) {
+    NNL_EXPECTS_DBG(weight >= 0.0f);
+    vertex_weight_sum += weight;
   }
 
-  std::sort(bones.begin(), bones.begin() + weights.size());
+  NNL_EXPECTS_DBG(vertex_weight_sum >= 0.0f);
 
-  return bones;
+  for (auto& weight : weights) weight /= vertex_weight_sum;
+}
+
+void SVertex::SortWeights() {
+  std::array<std::pair<float, u16>, kMaxNumVertWeight> combined;
+
+  for (std::size_t i = 0; i < combined.size(); i++) {
+    combined[i] = {weights[i], bones[i]};
+  }
+
+  std::sort(combined.begin(), combined.end(), [](const auto w0, const auto w1) { return w0.first > w1.first; });
+
+  for (std::size_t i = 0; i < combined.size(); i++) {
+    weights[i] = combined[i].first;
+    bones[i] = combined[i].second;
+  }
 }
 
 bool SVertex::IsApproxEqual(const SVertex& rhs) const {
@@ -128,9 +110,8 @@ bool SVertex::IsApproxEqual(const SVertex& rhs) const {
 
   if (color != rhs.color) return false;
 
-  if (weights.size() != rhs.weights.size()) return false;
-
-  if (GetBoneIndices() != rhs.GetBoneIndices()) return false;
+  // There are few cases where it's the only way to distinguish 2 vertices
+  if (bones != rhs.bones) return false;
 
   return true;
 }
@@ -198,7 +179,9 @@ SMesh SMesh::FromTriangles(const std::vector<STriangle>& triangles) {
 
   for (auto& triangle : triangles) {
     for (std::size_t i = 0; i < 3; i++) {
-      const auto& vertex = triangle[i];
+      SVertex vertex = triangle[i];
+
+      vertex.SortWeights();
 
       auto itr_vertex = vertex2Index.find(vertex);
 
@@ -245,35 +228,11 @@ void SMesh::ReverseWindingOrder() {
   }
 }
 
-std::set<u16> SMesh::GetBoneIndices() const {
-  std::set<u16> unique_ids;
-  for (auto& vertex : vertices) {
-    for (const auto& weight : vertex.weights) {
-      unique_ids.insert(weight.first);
-    }
-  }
-  return unique_ids;
-}
-
-std::vector<u32> SMesh::GetVerticesByBone(u16 bone_id) const {
-  std::set<u32> unique_ids;
-  for (std::size_t i = 0; i < vertices.size(); i++) {
-    auto& vertex = vertices[i];
-    for (auto& weight : vertex.weights) {
-      if (weight.first == bone_id) {
-        unique_ids.insert(i);
-      }
-    }
-  }
-
-  return std::vector<u32>(unique_ids.begin(), unique_ids.end());
-}
-
 bool SMesh::IsAffectedByFewBones() const {
   std::set<u16> unique_ids;
   for (auto& vertex : vertices) {
-    for (const auto& weight : vertex.weights) {
-      unique_ids.insert(weight.first);
+    for (std::size_t i = 0; i < vertex.bones.size(); i++) {
+      if (vertex.weights[i] > 0.0f) unique_ids.insert(vertex.bones[i]);
     }
 
     if (unique_ids.size() > 1) return true;
@@ -298,12 +257,6 @@ void SMesh::Transform(const glm::mat4& transform) {
 void SMesh::TransformUV(const glm::mat3& transform) {
   NNL_EXPECTS_DBG(utl::math::IsFinite(transform));
   for (auto& vertex : vertices) vertex.uv = transform * glm::vec3(vertex.uv, 1.0f);
-}
-
-void SMesh::RemoveZeroWeights() {
-  for (auto& vertex : vertices) {
-    vertex.RemoveZeroWeights();
-  }
 }
 
 void SMesh::ResetWeights() {
@@ -343,16 +296,15 @@ void SMesh::NormalizeNormals() {
 }
 
 void SMesh::QuantWeights(unsigned int steps) {
-  NNL_EXPECTS(steps > 0 && steps <= 1'000'000);
+  NNL_EXPECTS(steps > 0);
   for (auto& vertex : vertices) {
     vertex.QuantWeights(steps);
   }
 }
 
-void SMesh::LimitWeightsPerVertex(unsigned int max_weights) {
-  NNL_EXPECTS(max_weights > 0);
+void SMesh::SortWeights() {
   for (auto& vertex : vertices) {
-    vertex.LimitWeights(max_weights);
+    vertex.SortWeights();
   }
 }
 
@@ -402,73 +354,101 @@ std::pair<glm::vec2, glm::vec2> SMesh::FindMinMaxUV() const {
   return std::make_pair(glm::vec2(minX, minY), glm::vec2(maxX, maxY));
 }
 
+void SMesh::LimitWeightsPerVertex(unsigned int max_weights) {
+  NNL_EXPECTS(max_weights > 0 && max_weights <= kMaxNumVertWeight);
+  for (auto& vertex : vertices) {
+    vertex.LimitWeights(max_weights);
+  }
+}
+
 void SMesh::LimitWeightsPerTriangle(unsigned int max_weights) {
   NNL_EXPECTS(max_weights > 0);
   NNL_EXPECTS(indices.size() % 3 == 0);
+
   for (std::size_t i = 0; i < indices.size(); i += 3) {
-    std::vector<std::reference_wrapper<SVertex>> triangle_vertices;
+    std::array<SVertex*, 3> triangle_vertices{&vertices.at(indices[i]), &vertices.at(indices[i + 1]),
+                                              &vertices.at(indices[i + 2])};
 
-    std::set<u16> unique_bones;
+    utl::StaticSet<u16, 3 * kMaxNumVertWeight> unique_bones;
+    std::array<std::size_t, 3> vert_num_bones{0};
+
     // Get unique bones of the primitive
-    for (std::size_t j = i; j < i + 3; j++) {
-      auto& vertex = vertices.at(indices[j]);
+    for (std::size_t k = 0; k < 3; k++) {
+      SVertex& vertex = *triangle_vertices[k];
 
-      // If there's only 1 weight, it shouldn't be removed
-      if (vertex.weights.size() > 1) triangle_vertices.push_back(vertex);
+      std::size_t num_bones = 0;
 
-      for (auto& weight : vertex.weights) unique_bones.insert(weight.first);
+      for (std::size_t l = 0; l < vertex.bones.size(); l++) {
+        if (vertex.weights[l] > 0.0f) {
+          unique_bones.Insert(vertex.bones[l]);
+          num_bones++;
+        }
+      }
+
+      assert(num_bones > 0);
+
+      vert_num_bones[k] = num_bones;
     }
 
-    // Go to the next iteration if the size of unique bones doesn't exceed the limit
-    // or no weights to remove
-    if (unique_bones.size() <= max_weights || triangle_vertices.size() == 0) continue;
+    if (unique_bones.Size() <= max_weights) continue;
 
-    std::unordered_map<u16, float> bone_infos;  // bone id, total_weight
+    std::unordered_map<u16, f32> bone_total_weight;
 
     // Calculate the sum of all weights of a bone in a triangle
-    for (auto& vertex_ref : triangle_vertices) {
-      auto& vertex = vertex_ref.get();
+    for (auto vertex_ref : triangle_vertices) {
+      SVertex& vertex = *vertex_ref;
 
-      for (auto& weight : vertex.weights) {
-        bone_infos[weight.first] += weight.second;
+      for (std::size_t j = 0; j < vertex.bones.size(); j++) {
+        if (vertex.weights[j] > 0.0f) {
+          bone_total_weight[vertex.bones[j]] += vertex.weights[j];
+        }
       }
     }
 
-    // Find least influential bone id (with the smallest weight)
-    u16 least_influential_bone_id = 0;
+    // Find the least influential bone id (smallest total)
 
-    float min_total_weight = std::numeric_limits<double>::max();
+    while (bone_total_weight.size() > max_weights) {
+      u16 least_influential_bone_id = -1;
 
-    for (auto [bone_id, total_weight] : bone_infos) {
-      if (total_weight < min_total_weight) {
-        min_total_weight = total_weight;
-        least_influential_bone_id = bone_id;
+      float min_total_weight = std::numeric_limits<float>::max();
+
+      for (auto [bone_id, total_weight] : bone_total_weight) {
+        if (total_weight < min_total_weight) {
+          min_total_weight = total_weight;
+          least_influential_bone_id = bone_id;
+        }
       }
-    }
 
-    // Delete this bone from weight data
-    for (auto& vertex_ref : triangle_vertices) {
-      auto& vertex = vertex_ref.get();
+      assert(least_influential_bone_id != u16(-1));
 
-      auto min_weight_itr =
-          std::find_if(vertex.weights.begin(), vertex.weights.end(),
-                       [least_influential_bone_id](auto& lhs) { return lhs.first == least_influential_bone_id; });
+      bone_total_weight.erase(least_influential_bone_id);
 
-      // If the bone was not found in this vertex, go to the next one
-      if (min_weight_itr == vertex.weights.end()) continue;
+      // Delete this bone from weight data
+      for (std::size_t j = 0; j < triangle_vertices.size(); j++) {
+        SVertex& vertex = *triangle_vertices[j];
 
-      auto min_weight_index = min_weight_itr - vertex.weights.begin();
+        if (vert_num_bones[j] <= 1) continue;
 
-      if (vertex.weights.size() > 1) {
-        double min_weight = std::get<1>(*min_weight_itr);
+        auto min_weight_itr = std::find(vertex.bones.begin(), vertex.bones.end(), least_influential_bone_id);
 
-        vertex.weights.erase(vertex.weights.begin() + min_weight_index);
+        if (min_weight_itr == vertex.bones.end()) continue;
 
-        double weight_remainder = min_weight / (double)vertex.weights.size();
-        // Normalize weights
+        auto min_weight_index = std::distance(vertex.bones.begin(), min_weight_itr);
 
+        float min_weight = vertex.weights[min_weight_index];
+
+        vertex.weights[min_weight_index] = 0.0f;
+        vertex.bones[min_weight_index] = 0;
+
+        vert_num_bones[j] -= 1;
+
+        float weight_remainder = min_weight / (float)vert_num_bones[j];
+
+        // Normalize
         for (auto& weight : vertex.weights) {
-          weight.second += (float)weight_remainder;
+          if (weight > 0.0f) {
+            weight += weight_remainder;
+          }
         }
       }
     }
@@ -488,7 +468,9 @@ std::pair<std::vector<u32>, std::vector<SVertex>> SMesh::RemoveDuplicateVertices
   std::unordered_map<SVertex, u32, SVertexHash, SVertexEq> vertex2Index(vertices.size());
 
   for (std::size_t i = 0; i < indices.size(); i++) {
-    const auto& vertex = vertices.at(indices[i]);
+    SVertex vertex = vertices.at(indices[i]);
+
+    vertex.SortWeights();
 
     auto itr_vertex = vertex2Index.find(vertex);
 
@@ -676,9 +658,10 @@ bool SModel::TryBakeBindShape() {
   for (auto& smesh : meshes) {
     for (auto& vertex : smesh.vertices) {
       glm::mat4 average_transform = glm::mat4(0.0f);
-      for (auto& weight : vertex.weights) {
-        auto pre_transform = bind_shape_mats.at(weight.first);
-        average_transform += pre_transform * weight.second;
+
+      for (std::size_t i = 0; i < kMaxNumVertWeight; i++) {
+        auto pre_transform = bind_shape_mats.at(vertex.bones[i]);
+        average_transform += pre_transform * vertex.weights[i];
       }
 
       if (average_transform != glm::mat4(0)) {
@@ -833,15 +816,21 @@ void SModel::NormalizeNormals() {
   }
 }
 
+void SModel::SortWeights() {
+  for (auto& mesh : meshes) {
+    mesh.SortWeights();
+  }
+}
+
 void SModel::QuantWeights(unsigned int steps) {
-  NNL_EXPECTS(steps > 0 && steps <= 1'000'000);
+  NNL_EXPECTS(steps > 0);
   for (auto& mesh : meshes) {
     mesh.QuantWeights(steps);
   }
 }
 
 void SModel::LimitWeightsPerVertex(unsigned int max_weights) {
-  NNL_EXPECTS(max_weights > 0);
+  NNL_EXPECTS(max_weights > 0 && max_weights <= kMaxNumVertWeight);
   for (auto& mesh : meshes) {
     mesh.LimitWeightsPerVertex(max_weights);
   }
@@ -851,12 +840,6 @@ void SModel::LimitWeightsPerTriangle(unsigned int max_weights) {
   NNL_EXPECTS(max_weights > 0);
   for (auto& mesh : meshes) {
     mesh.LimitWeightsPerTriangle(max_weights);
-  }
-}
-
-void SModel::RemoveZeroWeights() {
-  for (auto& mesh : meshes) {
-    mesh.RemoveZeroWeights();
   }
 }
 

@@ -60,11 +60,13 @@ TEST(SAsset3D, ImportNaruto) {
   ASSERT_TRUE(!sasset.model.skeleton.roots.empty());
   ASSERT_TRUE(!sasset.extras.IsEmpty());
 
+  model::ConvertParam conv_p;
+
   asset::Asset base_asset = asset::Import(GetPath("naruto"));
 
   base_asset.erase(asset::Asset3D::kVisanimationContainer);
 
-  model::Model model = model::Convert(std::move(sasset.model), model::ConvertParam(), true);
+  model::Model model = model::Convert(std::move(sasset.model), conv_p, true);
 
   base_asset[asset::Asset3D::kModel] = model::Export(model);
 
@@ -117,7 +119,11 @@ TEST(SAsset3D, ImportMapTower) {
 
   asset::Asset asset;
 
-  asset[asset::Asset3D::kModel] = model::Export(model::Convert(std::move(sasset.model)));
+  model::ConvertParam conv_p;
+
+  conv_p.use_bbox = true;
+
+  asset[asset::Asset3D::kModel] = model::Export(model::Convert(std::move(sasset.model), conv_p));
   asset[asset::Asset3D::kTextureContainer] = texture::Export(texture::Convert(std::move(sasset.textures)));
   asset[asset::Asset3D::kCollision] = collision::Export(collision::Convert(std::move(scol.model)));
   asset[asset::Asset3D::kShadowCollision] =

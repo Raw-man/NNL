@@ -459,9 +459,6 @@ class static_vector {
   // The array providing the inline storage for the elements.
   std::array<storage_type, static_capacity> m_data = {};
 
-#ifndef NDEBUG
-  T (*m_values)[static_capacity] = reinterpret_cast<T (*)[static_capacity]>(&m_data);
-#endif
   // The current occupied size of the static_vector
   size_type m_size = 0;
 

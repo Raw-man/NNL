@@ -7,6 +7,7 @@
 #include <cmath>
 #include <glm/gtc/type_ptr.hpp>
 #include <numeric>
+#include <set>
 
 #include "NNL/common/io.hpp"
 #include "NNL/game_asset/visual/vertexde.hpp"
@@ -117,17 +118,15 @@ std::vector<STriangle> ExtractTriangles(const SubMesh& submesh, bool skip_degene
   return triangles;
 }
 
-auto GetBones(u32 start_index, const std::vector<u32>& indices, const std::vector<SVertex>& vertices) {
+static auto GetTriBones_(u32 start_index, const std::vector<u32>& indices, const std::vector<SVertex>& vertices) {
   NNL_EXPECTS_DBG(start_index + 3 <= indices.size());
   decltype(TriangleGroup::bones) bones;
 
   for (std::size_t i = 0; i < 3; i++) {
     auto& vertex = vertices.at(indices[start_index + i]);
 
-    NNL_EXPECTS_DBG(!vertex.weights.empty());
-
-    for (auto& weight : vertex.weights) {
-      bones.Insert(weight.first);
+    for (std::size_t i = 0; i < vertex.bones.size(); i++) {
+      if (vertex.weights[i] > 0.0f) bones.Insert(vertex.bones[i]);
     }
   }
 
@@ -162,7 +161,7 @@ std::vector<TriangleGroup> GroupTrianglesByBones(const std::vector<u32>& indices
 
   for (std::size_t i = 0; i < indices.size(); i += 3) {
     TriangleGroup group;
-    group.bones = GetBones(i, indices, vertices);
+    group.bones = GetTriBones_(i, indices, vertices);
     triangle_bones[i / 3] = group.bones;
     init_groups.insert(group);
     assert(!group.bones.IsEmpty());
@@ -294,7 +293,7 @@ std::vector<TriangleGroup> GroupTrianglesByBones(const std::vector<u32>& indices
       decltype(TriangleGroup::bones) bones;
 
       for (std::size_t j = 0; j < triangle_groups[i].indices.size(); j += 3) {
-        bones = bones.Join(GetBones(j, triangle_groups[i].indices, vertices));
+        bones = bones.Join(GetTriBones_(j, triangle_groups[i].indices, vertices));
       }
 
       triangle_groups[i].bones = bones;
@@ -302,7 +301,7 @@ std::vector<TriangleGroup> GroupTrianglesByBones(const std::vector<u32>& indices
       bones.Clear();
 
       for (std::size_t j = 0; j < triangle_group.indices.size(); j += 3) {
-        bones = bones.Join(GetBones(j, triangle_group.indices, vertices));
+        bones = bones.Join(GetTriBones_(j, triangle_group.indices, vertices));
       }
 
       triangle_group.bones = bones;
@@ -331,15 +330,17 @@ Mesh Convert(SMesh&& smesh, const ConvertParam& param) {
   NNL_EXPECTS(!smesh.vertices.empty());
   NNL_EXPECTS(!smesh.indices.empty());
 
-  smesh.LimitWeightsPerVertex(4);
-  smesh.LimitWeightsPerTriangle();
-  smesh.NormalizeWeights();
+  smesh.LimitWeightsPerTriangle(8);
 
   if ((param.compress_lvl != CompLvl::kNone && param.force_vertex_format == 0) ||
       vertexde::Is8Weights(param.force_vertex_format))
     smesh.QuantWeights(128);
 
   if (vertexde::Is16Weights(param.force_vertex_format)) smesh.QuantWeights(32768);
+
+  if ((param.compress_lvl == CompLvl::kNone && param.force_vertex_format == 0) ||
+      vertexde::Is32Weights(param.force_vertex_format))
+    smesh.NormalizeWeights();
 
   Mesh mesh;
 
@@ -365,7 +366,6 @@ Mesh Convert(SMesh&& smesh, const ConvertParam& param) {
       vertex_format |= (param.compress_lvl == CompLvl::kNone
                             ? vertexde::fmt::kUV32
                             : (param.compress_lvl == CompLvl::kMedium ? vertexde::fmt::kUV16 : vertexde::fmt::kUV8));
-    ;
 
     if (smesh.uses_normal)
       vertex_format |= (param.compress_lvl == CompLvl::kNone ? vertexde::fmt::kNormal32 : vertexde::fmt::kNormal8);
@@ -382,9 +382,11 @@ Mesh Convert(SMesh&& smesh, const ConvertParam& param) {
                          ? glm::pow(2, vertexde::GetIndexFormat(vertex_format) * CHAR_BIT)
                          : std::numeric_limits<u16>::max() + 1;
 
-  auto triangle_groups = GroupTrianglesByBones(smesh.indices, smesh.vertices, vertex_limit / 3, param.join_submeshes);
+  auto tri_groups = GroupTrianglesByBones(smesh.indices, smesh.vertices, vertex_limit / 3, param.join_submeshes);
 
-  for (auto& [bones, triangles] : triangle_groups) {
+  assert(!tri_groups.empty());
+
+  for (auto& [bones, triangles] : tri_groups) {
     u32 vertex_type_local = vertex_format;
 
     auto [indices, vertices] = SMesh::RemoveDuplicateVertices(triangles, smesh.vertices);
@@ -534,11 +536,11 @@ Mesh Convert(SMesh&& smesh, const ConvertParam& param) {
   }
 
   if (param.use_bbox) {
-    auto used_bones_ids = smesh.GetBoneIndices();
+    auto itr_root = std::min_element(tri_groups.begin(), tri_groups.end(), [](const auto& g0, const auto& g1) {
+      return g0.bones.front() < g1.bones.front();
+    });
 
-    assert(!used_bones_ids.empty());
-
-    i16 parent_bone_id = *used_bones_ids.begin();
+    i16 parent_bone_id = itr_root->bones.front();
 
     mesh.use_bbox = param.use_bbox;
 
@@ -851,9 +853,8 @@ std::map<BoneIndex, glm::mat4> GenerateInverseMatrixBoneTable(const SModel& smod
 
   for (auto& smesh : smodel.meshes) {
     for (auto& vertex : smesh.vertices) {
-      NNL_EXPECTS_DBG(!vertex.weights.empty());
-      for (const auto& weight : vertex.weights) {
-        used_bones.insert(weight.first);
+      for (std::size_t i = 0; i < vertex.bones.size(); i++) {
+        if (vertex.weights[i] > 0.0f) used_bones.insert(vertex.bones[i]);
       }
     }
   }

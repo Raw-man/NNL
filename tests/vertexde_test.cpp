@@ -29,14 +29,14 @@ TEST(VertexDE, VertexReader_Encode) {
     vertex.position = {};
     vertex.uv = {};
     vertex.normal = {};
-    vertex.weights = {{0, 0.25f}, {1, 0.25f}, {2, 0.25f}, {3, 0.25f}, {4, 0.0f}, {5, 0.0f}, {6, 0.0f}, {7, 0.0f}};
+    vertex.bones = {0, 1, 2, 3, 4, 5, 6, 7};
+    vertex.weights = {0.25f, 0.25f, 0.25f, 0.25f, 0.0f, 0.0f, 0.0f, 0.0f};
     vertex.color = {255, 255, 255, 255};
   }
+
   const u32 format = vertexde::fmt::kUV16 | vertexde::fmt::kPosition16 | vertexde::fmt::kNormal8 |
                      vertexde::fmt::kWeight8 | vertexde::fmt::kWeightNum(8) | vertexde::fmt::kColor4444 |
                      vertexde::fmt::kIndex16;
-
-  // model::vertexde vertex_reader(vertex_array, format);
 
   ASSERT_EQ(vertexde::GetUVFormat(format), 2);
   ASSERT_EQ(vertexde::GetPositionFormat(format), 2);
@@ -47,7 +47,7 @@ TEST(VertexDE, VertexReader_Encode) {
 
   ASSERT_EQ(vertexde::GetWeightNum(format), 8);
   ASSERT_EQ(vertexde::GetMorphNum(format), 1);
-  // ASSERT_EQ(vertexde::GetVertexApproxNum(), 6);
+
   auto [offset_weights, offset_uv, offset_color, offset_normal, offset_position, vertex_size] =
       vertexde::GetLayout(format);
 

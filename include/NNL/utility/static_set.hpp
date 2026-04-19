@@ -145,7 +145,7 @@ class StaticSet {
   void Clear() noexcept { size_ = 0; }
 
   const T& operator[](std::size_t index) const noexcept {
-    NNL_EXPECTS_DBG(index < size_);
+    NNL_EXPECTS_DBG(index < this->Size());
     return data_[index];
   }
 
@@ -165,6 +165,16 @@ class StaticSet {
   const_iterator cbegin() const noexcept { return data_.cbegin(); }
 
   const_iterator cend() const noexcept { return data_.cbegin() + size_; }
+
+  const value_type& front() const noexcept {
+    NNL_EXPECTS_DBG(!this->IsEmpty());
+    return *data_.cbegin();
+  }
+
+  const value_type& back() const noexcept {
+    NNL_EXPECTS_DBG(!this->IsEmpty());
+    return *data_.rcbegin();
+  }
 
  private:
   std::size_t size_ = 0;

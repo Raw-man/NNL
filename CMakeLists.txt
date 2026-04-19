@@ -23,7 +23,7 @@ option(NNL_THROW_ON_CONTRACT_VIOLATION "Throw an exception on contract violation
 
 option(NNL_BUILD_TESTS "Build unit tests" ${PROJECT_IS_TOP_LEVEL})
 
-message(STATUS "NNL: Version ${NNL_VERSION}")
+message(STATUS "NNL: commit ${GIT_COMMIT_HASH}")
 
 if(NOT CMAKE_CXX_BYTE_ORDER STREQUAL "LITTLE_ENDIAN")
     message(FATAL_ERROR "Little Endian required. Detected: ${CMAKE_CXX_BYTE_ORDER}")

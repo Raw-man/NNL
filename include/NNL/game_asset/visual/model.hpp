@@ -23,7 +23,6 @@
 #include "NNL/common/io.hpp"
 #include "NNL/game_asset/visual/model_common.hpp"
 #include "NNL/simple_asset/smodel.hpp"
-#include "NNL/utility/data.hpp"
 #include "NNL/utility/static_set.hpp"
 
 /**
