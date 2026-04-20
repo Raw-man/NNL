@@ -31,7 +31,12 @@ namespace nnl {
  * @{
  */
 
-constexpr std::size_t kMaxNumVertWeight = 8;
+/** @brief Maximum number of bone weights and indices in SVertex.
+ *
+ *  @see nnl::SVertex
+ */
+constexpr std::size_t kMaxNumBoneWeight = 8;
+
 /**
  * @brief Represents a simple vertex with a fixed set of attributes.
  *
@@ -59,9 +64,9 @@ struct SVertex {
 
   glm::vec4 color{1.0f, 1.0f, 1.0f, 1.0f};  ///< Vertex color (RGBA)
 
-  std::array<u16, kMaxNumVertWeight> bones{0};  ///< Bone indices
+  std::array<u16, kMaxNumBoneWeight> bones{0};  ///< Bone indices
 
-  std::array<float, kMaxNumVertWeight> weights{1.0f};  ///< Bone weights. This array
+  std::array<float, kMaxNumBoneWeight> weights{1.0f};  ///< Bone weights. This array
                                                        ///< _must_ contain at least 1 positive weight.
 
   /**
@@ -391,9 +396,11 @@ struct SMesh {
    * @brief Limits the number of weights per vertex.
    *
    * This method restricts the number of bone weights that can influence each
-   * vertex to a specified maximum.
+   * vertex to a specified maximum. This may be useful for further conversion of vertices to
+   * vertex buffers used by the @ref GE.
    *
    * @param max_weights The maximum number of weights per vertex.
+   * @see nnl::model::kMaxNumBonePerPrim
    */
   void LimitWeightsPerVertex(unsigned int max_weights = 3);
 
@@ -401,7 +408,8 @@ struct SMesh {
    * @brief Limits the number of unique bone influences per triangle.
    *
    * This method restricts the number of unique bones that influence
-   * vertices of a triangle to a specified maximum.
+   * vertices of a triangle to a specified maximum. This may be useful for
+   * further conversion of vertices to vertex buffers used by the @ref GE.
    *
    * @param max_weights The maximum number of weights per triangle.
    * @see nnl::model::kMaxNumBonePerPrim
@@ -809,9 +817,11 @@ struct SModel {
    * @brief Limits the number of weights per vertex.
    *
    * This method restricts the number of bone weights that can influence each
-   * vertex to a specified maximum.
+   * vertex to a specified maximum. This may be useful for further conversion of vertices to
+   * vertex buffers used by the @ref GE.
    *
    * @param max_weights The maximum number of weights per vertex.
+   * @see nnl::model::kMaxNumBonePerPrim
    */
   void LimitWeightsPerVertex(unsigned int max_weights = 3);
 
@@ -819,7 +829,8 @@ struct SModel {
    * @brief Limits the number of weights per triangle.
    *
    * This method restricts the number of bone weights that can influence
-   * vertices of a triangle to a specified maximum.
+   * vertices of a triangle to a specified maximum. This may be useful for
+   * further conversion of vertices to vertex buffers used by the @ref GE.
    *
    * @param max_weights The maximum number of weights per triangle.
    * @see nnl::model::kMaxNumBonePerPrim

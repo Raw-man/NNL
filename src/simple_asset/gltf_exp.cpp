@@ -402,7 +402,7 @@ class GLTFExporter {
           weight_0[i] = svertex.weights[i];
         }
 
-        export_joints_1 |= (kMaxNumVertWeight > 4 && ((svertex.weights[4] > 0.0f) || (svertex.weights[5] > 0.0f) ||
+        export_joints_1 |= (kMaxNumBoneWeight > 4 && ((svertex.weights[4] > 0.0f) || (svertex.weights[5] > 0.0f) ||
                                                       (svertex.weights[6] > 0.0f) || (svertex.weights[7] > 0.0f)));
 
         for (std::size_t i = 4; i < svertex.weights.size(); i++) {

@@ -17,7 +17,7 @@ void SVertex::Transform(const glm::mat4& transform) {
   NNL_EXPECTS_DBG(utl::math::IsFinite(position));
   NNL_EXPECTS_DBG(utl::math::IsFinite(normal));
 
-  position = transform * glm::vec4(position, 1);
+  position = transform * glm::vec4(position, 1.0f);
 
   normal = glm::transpose(utl::math::Inverse(glm::mat3(transform))) * normal;
 
@@ -38,19 +38,32 @@ void SVertex::QuantWeights(unsigned int steps) {
   NNL_EXPECTS_DBG(steps > 0);
 
   float sum = 0;
+  float steps_f = static_cast<float>(steps);
+  float max_weight = std::numeric_limits<float>::lowest();
 
-  for (auto& weight : weights) {
-    weight = std::round(weight * steps);
+  std::size_t max_id = 0;
+
+  for (std::size_t i = 0; i < weights.size(); i++) {
+    float& weight = weights[i];
+    weight = std::round(weight * steps_f);
     sum += weight;
+    if (weight > max_weight) {
+      max_weight = weight;
+      max_id = i;
+    }
   }
 
+  float remainder = steps_f - sum;
+
+  weights[max_id] += remainder;
+
   for (auto& weight : weights) {
-    weight = weight / sum;
+    weight = weight / steps;
   }
 }
 
 void SVertex::LimitWeights(unsigned int max_weights) {
-  NNL_EXPECTS_DBG(max_weights > 0 && max_weights <= kMaxNumVertWeight);
+  NNL_EXPECTS_DBG(max_weights > 0 && max_weights <= kMaxNumBoneWeight);
 
   this->SortWeights();
 
@@ -58,6 +71,8 @@ void SVertex::LimitWeights(unsigned int max_weights) {
     bones[i] = 0;
     weights[i] = 0.0f;
   }
+
+  this->NormalizeWeights();
 }
 
 void SVertex::ResetWeights() {
@@ -81,13 +96,11 @@ void SVertex::NormalizeWeights() {
     vertex_weight_sum += weight;
   }
 
-  NNL_EXPECTS_DBG(vertex_weight_sum >= 0.0f);
-
   for (auto& weight : weights) weight /= vertex_weight_sum;
 }
 
 void SVertex::SortWeights() {
-  std::array<std::pair<float, u16>, kMaxNumVertWeight> combined;
+  std::array<std::pair<float, u16>, kMaxNumBoneWeight> combined;
 
   for (std::size_t i = 0; i < combined.size(); i++) {
     combined[i] = {weights[i], bones[i]};
@@ -355,7 +368,7 @@ std::pair<glm::vec2, glm::vec2> SMesh::FindMinMaxUV() const {
 }
 
 void SMesh::LimitWeightsPerVertex(unsigned int max_weights) {
-  NNL_EXPECTS(max_weights > 0 && max_weights <= kMaxNumVertWeight);
+  NNL_EXPECTS(max_weights > 0 && max_weights <= kMaxNumBoneWeight);
   for (auto& vertex : vertices) {
     vertex.LimitWeights(max_weights);
   }
@@ -369,7 +382,7 @@ void SMesh::LimitWeightsPerTriangle(unsigned int max_weights) {
     std::array<SVertex*, 3> triangle_vertices{&vertices.at(indices[i]), &vertices.at(indices[i + 1]),
                                               &vertices.at(indices[i + 2])};
 
-    utl::StaticSet<u16, 3 * kMaxNumVertWeight> unique_bones;
+    utl::StaticSet<u16, 3 * kMaxNumBoneWeight> unique_bones;
     std::array<std::size_t, 3> vert_num_bones{0};
 
     // Get unique bones of the primitive
@@ -659,7 +672,7 @@ bool SModel::TryBakeBindShape() {
     for (auto& vertex : smesh.vertices) {
       glm::mat4 average_transform = glm::mat4(0.0f);
 
-      for (std::size_t i = 0; i < kMaxNumVertWeight; i++) {
+      for (std::size_t i = 0; i < kMaxNumBoneWeight; i++) {
         auto pre_transform = bind_shape_mats.at(vertex.bones[i]);
         average_transform += pre_transform * vertex.weights[i];
       }
@@ -830,7 +843,7 @@ void SModel::QuantWeights(unsigned int steps) {
 }
 
 void SModel::LimitWeightsPerVertex(unsigned int max_weights) {
-  NNL_EXPECTS(max_weights > 0 && max_weights <= kMaxNumVertWeight);
+  NNL_EXPECTS(max_weights > 0 && max_weights <= kMaxNumBoneWeight);
   for (auto& mesh : meshes) {
     mesh.LimitWeightsPerVertex(max_weights);
   }

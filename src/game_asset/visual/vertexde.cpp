@@ -87,14 +87,14 @@ VertexLayout GetLayout(u32 vertex_format) {
 }
 // Format weights for further conversion: sort bones of a vertex, add
 // missing bones
-static std::array<f32, 8> FormatWeights_(const std::array<u16, kMaxNumVertWeight>& vertex_bones,
-                                         const std::array<f32, kMaxNumVertWeight>& vertex_weights,
+static std::array<f32, 8> FormatWeights_(const std::array<u16, kMaxNumBoneWeight>& vertex_bones,
+                                         const std::array<f32, kMaxNumBoneWeight>& vertex_weights,
                                          const std::array<u16, 8>& bone_indices, u32 weight_num) {
   assert(weight_num != 0);
 
   std::array<f32, 8> sorted_weights{0.0f};
 
-  for (std::size_t i = 0; i < kMaxNumVertWeight; i++) {
+  for (std::size_t i = 0; i < kMaxNumBoneWeight; i++) {
     u16 bone_index = vertex_bones[i];
 
     auto itr_bone_beg = bone_indices.begin();
@@ -374,7 +374,7 @@ std::vector<SVertex> Decode(BufferView vertex_buffer, u32 vertex_format, std::ar
 
       const u16 weight_num = GetWeightNum(vertex_format);
 
-      for (u16 i = 0, j = 0; i < weight_num && j < kMaxNumVertWeight; i++) {
+      for (u16 i = 0, j = 0; i < weight_num && j < kMaxNumBoneWeight; i++) {
         f32 weight = 0.0f;
         switch (GetWeightFormat(vertex_format)) {
           case fmt_code::k8:

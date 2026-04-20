@@ -36,6 +36,7 @@ adpcm_test.cpp
 stexture_test.cpp
 saudio_test.cpp
 svalue_test.cpp
+smodel_test.cpp
 sasset3d_test.cpp
 )
 

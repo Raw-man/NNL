@@ -725,7 +725,7 @@ class GLTFImporter {
       }
 
       if (primitive.attributes.find("JOINTS_1") != primitive.attributes.end() &&
-          primitive.attributes.find("JOINTS_0") != primitive.attributes.end() && kMaxNumVertWeight > 4) {
+          primitive.attributes.find("JOINTS_0") != primitive.attributes.end() && kMaxNumBoneWeight > 4) {
         ProcessJointsN(1);
       }
 
