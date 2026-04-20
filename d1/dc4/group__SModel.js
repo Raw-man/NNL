@@ -13,12 +13,12 @@ var group__SModel =
       [ "SortWeights", "d1/dc4/group__SModel.html#a8da6b64934ae1bb00d894fc30ed27aba", null ],
       [ "Transform", "d1/dc4/group__SModel.html#af3b1401ff34bd97af4851c48a2cca831", null ],
       [ "operator*", "d1/dc4/group__SModel.html#af1945fb37d6f976cb17593e1791bf4fa", null ],
-      [ "bones", "d1/dc4/group__SModel.html#a1b97c0d0a7f5e24fd2242a34f2eb098e", null ],
+      [ "bones", "d1/dc4/group__SModel.html#a147d87fc24b43cb9d22ccdcdb62823b7", null ],
       [ "color", "d1/dc4/group__SModel.html#a2e65c2106c2975f16b64372fadb43f1c", null ],
       [ "normal", "d1/dc4/group__SModel.html#a17b866dee74cd0f7e21c2a135da1a63f", null ],
       [ "position", "d1/dc4/group__SModel.html#a6b68057e25d666453953d89268705a9d", null ],
       [ "uv", "d1/dc4/group__SModel.html#a7fd36a5a3a243055055b284bf7c877e7", null ],
-      [ "weights", "d1/dc4/group__SModel.html#a345dbbd16b97d67b6add1d106efb017a", null ]
+      [ "weights", "d1/dc4/group__SModel.html#a01b3c446fa66aaabc4c5326bad8950f6", null ]
     ] ],
     [ "nnl::STriangle", "d1/dc4/group__SModel.html#d3/d4a/structnnl_1_1STriangle", [
       [ "IsDegenerate", "d1/dc4/group__SModel.html#adeb54a6d469f46b2aaba99355f7c0e80", null ],
@@ -142,5 +142,6 @@ var group__SModel =
       [ "nnl::STextureProjection::kUV", "d1/dc4/group__SModel.html#ggabfd0f1f5e782e345627988d2c6caaf02a9f49aa1bb2b8cb2003a5fe1c8b259db4", null ],
       [ "nnl::STextureProjection::kMatrix", "d1/dc4/group__SModel.html#ggabfd0f1f5e782e345627988d2c6caaf02a6748ae353823e83f822c0b9bd94a1006", null ],
       [ "nnl::STextureProjection::kEnvironment", "d1/dc4/group__SModel.html#ggabfd0f1f5e782e345627988d2c6caaf02a80fc8fe414097b1dba1eb7ab93949db2", null ]
-    ] ]
+    ] ],
+    [ "nnl::kMaxNumBoneWeight", "d1/dc4/group__SModel.html#gada517718c9c22302d507d2aca698e757", null ]
 ];

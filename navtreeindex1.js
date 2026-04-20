@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"d2/d69/group__ADPCM__Main.html":[3,3,6,0,0],
 "d2/d69/group__ADPCM__Main.html#ga5c27a55ba4e4ed4e3df0ad3242b3fe56":[3,3,6,0,0,0],
 "d2/d69/group__ADPCM__Main.html#gaf1f366c764574c111c9c8d32c4f487ac":[3,3,6,0,0,1],
 "d2/d7e/vertexde_8hpp.html":[6,0,0,0,1,4,10],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "d6/dfd/color_8hpp_source.html":[6,0,0,0,3,1],
 "d7/d02/group__Light__Raw.html":[3,3,2,2,1],
 "d7/d02/group__Light__Raw.html#ga911fd7eb12b604ea86a47a1ad7a93738":[3,3,2,2,1,0],
-"d7/d12/group__Subanimation__Main.html":[3,3,2,10,0],
-"d7/d12/group__Subanimation__Main.html#a43d15adf17c24dac9629900eb7603834":[3,3,2,10,0,2,0]
+"d7/d12/group__Subanimation__Main.html":[3,3,2,10,0]
 };

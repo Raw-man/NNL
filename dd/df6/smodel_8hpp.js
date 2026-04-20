@@ -11,5 +11,6 @@ var smodel_8hpp =
       [ "nnl::STextureProjection::kUV", "d1/dc4/group__SModel.html#ggabfd0f1f5e782e345627988d2c6caaf02a9f49aa1bb2b8cb2003a5fe1c8b259db4", null ],
       [ "nnl::STextureProjection::kMatrix", "d1/dc4/group__SModel.html#ggabfd0f1f5e782e345627988d2c6caaf02a6748ae353823e83f822c0b9bd94a1006", null ],
       [ "nnl::STextureProjection::kEnvironment", "d1/dc4/group__SModel.html#ggabfd0f1f5e782e345627988d2c6caaf02a80fc8fe414097b1dba1eb7ab93949db2", null ]
-    ] ]
+    ] ],
+    [ "nnl::kMaxNumBoneWeight", "d1/dc4/group__SModel.html#gada517718c9c22302d507d2aca698e757", null ]
 ];
