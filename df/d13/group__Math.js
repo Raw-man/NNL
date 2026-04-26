@@ -16,10 +16,15 @@ var group__Math =
     [ "nnl::utl::math::IsNan", "df/d13/group__Math.html#ga96e86e08863c8a2a83d949d7221cbd0f", null ],
     [ "nnl::utl::math::IsNan", "df/d13/group__Math.html#gaf4a27e40bb76f20d8ac8b754358b5ec7", null ],
     [ "nnl::utl::math::IsPow2", "df/d13/group__Math.html#ga0b840699fbe07f241844946a9a068f5b", null ],
+    [ "nnl::utl::math::NormalizeEuler", "df/d13/group__Math.html#gaa08b82bd3dca88d18f2222d1f89e8295", null ],
+    [ "nnl::utl::math::NormalizeEuler", "df/d13/group__Math.html#ga4230ab2702d8ffeb3c77e668f971c63a", null ],
     [ "nnl::utl::math::NormalizeSafe", "df/d13/group__Math.html#ga69b49a0187e4ad83d5dcd45bf5e1489c", null ],
     [ "nnl::utl::math::QuatToEuler", "df/d13/group__Math.html#ga62cb966dd8bc01feff81fcaa5507cd42", null ],
+    [ "nnl::utl::math::QuatToEulerCompat", "df/d13/group__Math.html#ga5b42de413bd6463854858305fd1b910b", null ],
     [ "nnl::utl::math::RoundDownPow2", "df/d13/group__Math.html#ga333700ac9dbd48086a183dd70fc28369", null ],
     [ "nnl::utl::math::RoundNum", "df/d13/group__Math.html#ga7bcc651a53a3e9cccc28600326a7e49e", null ],
     [ "nnl::utl::math::RoundUpPow2", "df/d13/group__Math.html#gaf85340f99fac85ae3ee31a40bc06946f", null ],
-    [ "nnl::utl::math::Sqr", "df/d13/group__Math.html#ga03250b2f4394ec3454117f0cd2b77b88", null ]
+    [ "nnl::utl::math::Sqr", "df/d13/group__Math.html#ga03250b2f4394ec3454117f0cd2b77b88", null ],
+    [ "nnl::utl::math::UnwrapEuler", "df/d13/group__Math.html#ga88c5d410edff357cc66ea0b94c57c6dc", null ],
+    [ "nnl::utl::math::UnwrapEuler", "df/d13/group__Math.html#gabd1ec772709eb544fb80b733d1cbba5e", null ]
 ];

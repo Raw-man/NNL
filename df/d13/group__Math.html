@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">NSUNI/NSLAR Library<span id="projectnumber">&#160;a250670</span>
+   <div id="projectname">NSUNI/NSLAR Library<span id="projectnumber">&#160;a745c47</span>
    </div>
   </td>
  </tr>
@@ -107,10 +107,20 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3494166d40382266596488ea565ad0a1" id="r_ga3494166d40382266596488ea565ad0a1"><td class="memTemplParams" colspan="2">template&lt;typename TContainer&gt; </td></tr>
 <tr class="memitem:ga3494166d40382266596488ea565ad0a1 template"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga3494166d40382266596488ea565ad0a1">nnl::utl::math::IsFinite</a> (const TContainer &amp;container)</td></tr>
 <tr class="memdesc:ga3494166d40382266596488ea565ad0a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if all floating-point values in a container are finite.  <br /></td></tr>
+<tr class="memitem:gaa08b82bd3dca88d18f2222d1f89e8295" id="r_gaa08b82bd3dca88d18f2222d1f89e8295"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaa08b82bd3dca88d18f2222d1f89e8295">nnl::utl::math::NormalizeEuler</a> (float angle)</td></tr>
+<tr class="memdesc:gaa08b82bd3dca88d18f2222d1f89e8295"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalizes an Euler angle to the range [-180, 180] degrees.  <br /></td></tr>
+<tr class="memitem:ga4230ab2702d8ffeb3c77e668f971c63a" id="r_ga4230ab2702d8ffeb3c77e668f971c63a"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga4230ab2702d8ffeb3c77e668f971c63a">nnl::utl::math::NormalizeEuler</a> (glm::vec3 angles)</td></tr>
+<tr class="memdesc:ga4230ab2702d8ffeb3c77e668f971c63a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalizes Euler angles to the range [-180, 180] degrees.  <br /></td></tr>
+<tr class="memitem:ga88c5d410edff357cc66ea0b94c57c6dc" id="r_ga88c5d410edff357cc66ea0b94c57c6dc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga88c5d410edff357cc66ea0b94c57c6dc">nnl::utl::math::UnwrapEuler</a> (float current, float previous)</td></tr>
+<tr class="memdesc:ga88c5d410edff357cc66ea0b94c57c6dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unwraps an Euler angle to be closer to a previous value.  <br /></td></tr>
+<tr class="memitem:gabd1ec772709eb544fb80b733d1cbba5e" id="r_gabd1ec772709eb544fb80b733d1cbba5e"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gabd1ec772709eb544fb80b733d1cbba5e">nnl::utl::math::UnwrapEuler</a> (glm::vec3 current, glm::vec3 previous)</td></tr>
+<tr class="memdesc:gabd1ec772709eb544fb80b733d1cbba5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unwraps Euler angles to be closer to previous values.  <br /></td></tr>
 <tr class="memitem:gac04e5556a94da89c99c3fce4ceb1a6da" id="r_gac04e5556a94da89c99c3fce4ceb1a6da"><td class="memItemLeft" align="right" valign="top">glm::quat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gac04e5556a94da89c99c3fce4ceb1a6da">nnl::utl::math::EulerToQuat</a> (glm::vec3 euler)</td></tr>
-<tr class="memdesc:gac04e5556a94da89c99c3fce4ceb1a6da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts Euler angles in degrees (Pitch X, Yaw Y, Roll Z) to a quaternion.  <br /></td></tr>
+<tr class="memdesc:gac04e5556a94da89c99c3fce4ceb1a6da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts Euler angles (Pitch X, Yaw Y, Roll Z) in degrees to a quaternion.  <br /></td></tr>
 <tr class="memitem:ga62cb966dd8bc01feff81fcaa5507cd42" id="r_ga62cb966dd8bc01feff81fcaa5507cd42"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga62cb966dd8bc01feff81fcaa5507cd42">nnl::utl::math::QuatToEuler</a> (glm::quat quat)</td></tr>
 <tr class="memdesc:ga62cb966dd8bc01feff81fcaa5507cd42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts quaternion to Euler angles (Pitch X, Yaw Y, Roll Z)  <br /></td></tr>
+<tr class="memitem:ga5b42de413bd6463854858305fd1b910b" id="r_ga5b42de413bd6463854858305fd1b910b"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga5b42de413bd6463854858305fd1b910b">nnl::utl::math::QuatToEulerCompat</a> (glm::quat quat, glm::vec3 prev_euler)</td></tr>
+<tr class="memdesc:ga5b42de413bd6463854858305fd1b910b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a quaternion to Euler angles while maintaining continuity with a previous state.  <br /></td></tr>
 <tr class="memitem:gad06859ec49c0936a82ea418e68fe25e5" id="r_gad06859ec49c0936a82ea418e68fe25e5"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; glm::vec3, glm::quat, glm::vec3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad06859ec49c0936a82ea418e68fe25e5">nnl::utl::math::Decompose</a> (const glm::mat4 &amp;matrix)</td></tr>
 <tr class="memdesc:gad06859ec49c0936a82ea418e68fe25e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decomposes a transformation matrix into scale, rotation, and translation.  <br /></td></tr>
 <tr class="memitem:ga58561d668cd86c02dcb1d7ac69097e71" id="r_ga58561d668cd86c02dcb1d7ac69097e71"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga58561d668cd86c02dcb1d7ac69097e71">nnl::utl::math::Compose</a> (glm::vec3 scale, glm::quat rotation, glm::vec3 translation)</td></tr>
@@ -232,14 +242,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Converts Euler angles in degrees (Pitch X, Yaw Y, Roll Z) to a quaternion. </p>
+<p>Converts Euler angles (Pitch X, Yaw Y, Roll Z) in degrees to a quaternion. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">euler</td><td>The angles to convert </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>glm::quat </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>glm::quat</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga62cb966dd8bc01feff81fcaa5507cd42" title="Converts quaternion to Euler angles (Pitch X, Yaw Y, Roll Z)">nnl::utl::math::QuatToEuler</a> </dd>
+<dd>
+<a class="el" href="#ga5b42de413bd6463854858305fd1b910b" title="Converts a quaternion to Euler angles while maintaining continuity with a previous state.">nnl::utl::math::QuatToEulerCompat</a> </dd></dl>
 
 </div>
 </div>
@@ -697,6 +710,58 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
+<a id="gaa08b82bd3dca88d18f2222d1f89e8295" name="gaa08b82bd3dca88d18f2222d1f89e8295"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa08b82bd3dca88d18f2222d1f89e8295">&#9670;&#160;</a></span>NormalizeEuler() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float nnl::utl::math::NormalizeEuler </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>angle</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normalizes an Euler angle to the range [-180, 180] degrees. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>The input angle in degrees. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The normalized angle within the [-180, 180] range. </dd></dl>
+
+</div>
+</div>
+<a id="ga4230ab2702d8ffeb3c77e668f971c63a" name="ga4230ab2702d8ffeb3c77e668f971c63a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4230ab2702d8ffeb3c77e668f971c63a">&#9670;&#160;</a></span>NormalizeEuler() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 nnl::utl::math::NormalizeEuler </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3</td>          <td class="paramname"><span class="paramname"><em>angles</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normalizes Euler angles to the range [-180, 180] degrees. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angles</td><td>A glm::vec3 containing the Euler angles. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A glm::vec3 with all components normalized within the [-180, 180] range. </dd></dl>
+
+</div>
+</div>
 <a id="ga69b49a0187e4ad83d5dcd45bf5e1489c" name="ga69b49a0187e4ad83d5dcd45bf5e1489c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga69b49a0187e4ad83d5dcd45bf5e1489c">&#9670;&#160;</a></span>NormalizeSafe()</h2>
 
@@ -746,8 +811,43 @@ template&lt;typename T&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>glm::vec3 containing Euler angles in <em>degrees</em> </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Conversion from Euler -&gt; Quaternion -&gt; Euler may not yield the same set of angles since there are multiple <em>Euler</em> combinations that represent the same rotation. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>glm::vec3 containing Euler angles in <em>degrees</em></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Conversion from Euler -&gt; Quaternion -&gt; Euler may not yield the same set of angles since there are multiple <em>Euler</em> combinations that represent the same rotation.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga5b42de413bd6463854858305fd1b910b" title="Converts a quaternion to Euler angles while maintaining continuity with a previous state.">nnl::utl::math::QuatToEulerCompat</a> </dd>
+<dd>
+<a class="el" href="#gac04e5556a94da89c99c3fce4ceb1a6da" title="Converts Euler angles (Pitch X, Yaw Y, Roll Z) in degrees to a quaternion.">nnl::utl::math::EulerToQuat</a> </dd></dl>
+
+</div>
+</div>
+<a id="ga5b42de413bd6463854858305fd1b910b" name="ga5b42de413bd6463854858305fd1b910b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5b42de413bd6463854858305fd1b910b">&#9670;&#160;</a></span>QuatToEulerCompat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 nnl::utl::math::QuatToEulerCompat </td>
+          <td>(</td>
+          <td class="paramtype">glm::quat</td>          <td class="paramname"><span class="paramname"><em>quat</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3</td>          <td class="paramname"><span class="paramname"><em>prev_euler</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a quaternion to Euler angles while maintaining continuity with a previous state. </p>
+<p>This function calculates two possible Euler representations of the same rotation and selects the one closest to the previous Euler angles while keeping the result in the [-180, 180] range.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">quat</td><td>The rotation quaternion to convert. </td></tr>
+    <tr><td class="paramname">prev_euler</td><td>The Euler angles from the previous frame/state (in degrees). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The Euler angle representation (in degrees) that is most compatible with the previous state. </dd></dl>
 
 </div>
 </div>
@@ -897,6 +997,69 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>value * value </dd></dl>
+
+</div>
+</div>
+<a id="ga88c5d410edff357cc66ea0b94c57c6dc" name="ga88c5d410edff357cc66ea0b94c57c6dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga88c5d410edff357cc66ea0b94c57c6dc">&#9670;&#160;</a></span>UnwrapEuler() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float nnl::utl::math::UnwrapEuler </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>current</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>previous</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unwraps an Euler angle to be closer to a previous value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current</td><td>The current angle value. </td></tr>
+    <tr><td class="paramname">previous</td><td>The previous angle value used as a reference for continuity. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The unwrapped angle value. </dd></dl>
+
+</div>
+</div>
+<a id="gabd1ec772709eb544fb80b733d1cbba5e" name="gabd1ec772709eb544fb80b733d1cbba5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabd1ec772709eb544fb80b733d1cbba5e">&#9670;&#160;</a></span>UnwrapEuler() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 nnl::utl::math::UnwrapEuler </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3</td>          <td class="paramname"><span class="paramname"><em>current</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3</td>          <td class="paramname"><span class="paramname"><em>previous</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unwraps Euler angles to be closer to previous values. </p>
+<p>This prevents sudden jumps when an angle crosses the 180/-180 boundary by calculating the shortest rotational path.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current</td><td>The current glm::vec3 of Euler angles. </td></tr>
+    <tr><td class="paramname">previous</td><td>The previous glm::vec3 of Euler angles. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A glm::vec3 of unwrapped Euler angles. </dd></dl>
 
 </div>
 </div>
