@@ -14,15 +14,65 @@ glm::vec3 QuatToEuler(glm::quat quat) {
 
   glm::vec3 angles = glm::degrees(glm::eulerAngles(quat));
 
-  // Pick a similar set of angles if > 180 (for conversion to normalized ints)
-  for (u32 i = 0; i < 3; i++) {
-    if (angles[i] > 180.0f)
-      angles[i] = angles[i] - 360.0f;
-    else if (angles[i] < -180.0f)
-      angles[i] = 360.0f + angles[i];
-  }
+  angles = NormalizeEuler(angles);
 
   return angles;
+}
+
+float UnwrapEuler(float current, float previous) {
+  float diff = current - previous;
+
+  // How many full circles the current value is away
+  float circles = std::round(diff / 360.0f);
+
+  // Reduce the distance
+  float result = current - (circles * 360.0f);
+
+  return result;
+}
+
+glm::vec3 UnwrapEuler(glm::vec3 current, glm::vec3 previous) {
+  glm::vec3 result;
+  result.x = UnwrapEuler(current.x, previous.x);
+  result.y = UnwrapEuler(current.y, previous.y);
+  result.z = UnwrapEuler(current.z, previous.z);
+  return result;
+}
+
+float NormalizeEuler(float angle) { return std::remainder(angle, 360.0f); }
+
+glm::vec3 NormalizeEuler(glm::vec3 angles) {
+  angles[0] = NormalizeEuler(angles[0]);
+  angles[1] = NormalizeEuler(angles[1]);
+  angles[2] = NormalizeEuler(angles[2]);
+
+  return angles;
+}
+
+glm::vec3 QuatToEulerCompat(glm::quat quat, glm::vec3 prev_euler) {
+  glm::vec3 euler_a = glm::degrees(glm::eulerAngles(quat));
+
+  glm::vec3 euler_b;
+  euler_b.x = euler_a.x + 180.0f;
+  euler_b.y = 180.0f - euler_a.y;
+  euler_b.z = euler_a.z + 180.0f;
+
+  euler_a = UnwrapEuler(euler_a, prev_euler);
+  euler_b = UnwrapEuler(euler_b, prev_euler);
+
+  euler_a = NormalizeEuler(euler_a);
+  euler_b = NormalizeEuler(euler_b);
+
+  glm::vec3 diff_a = glm::abs(euler_a - prev_euler);
+  glm::vec3 diff_b = glm::abs(euler_b - prev_euler);
+
+  float distance_a = diff_a.x + diff_a.y + diff_a.z;
+  float distance_b = diff_b.x + diff_b.y + diff_b.z;
+
+  if (distance_a <= distance_b)
+    return euler_a;
+  else
+    return euler_b;
 }
 
 glm::quat EulerToQuat(glm::vec3 euler) { return glm::quat(glm::radians(euler)); }

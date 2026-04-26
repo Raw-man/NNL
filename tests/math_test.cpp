@@ -3,7 +3,32 @@
 #include <gtest/gtest.h>
 
 #include <limits>
+
 using namespace nnl;
+
+TEST(Math, QuatEulerCompat) {
+  glm::vec3 e_3{0, 136.873, 0};
+
+  glm::vec3 e_4{0.0f, -177.5f, 0.0f};
+
+  auto quat = utl::math::EulerToQuat(e_4);
+
+  auto e_4_c = utl::math::QuatToEulerCompat(quat, e_3);
+
+  ASSERT_FLOAT_EQ(e_4_c[0], e_4[0]);
+  ASSERT_FLOAT_EQ(e_4_c[1], e_4[1]);
+  ASSERT_FLOAT_EQ(e_4_c[2], e_4[2]);
+}
+
+TEST(Math, NormalizeEuler) {
+  glm::vec3 e{-720.0f, 350.0f, 180.0f};
+
+  e = utl::math::NormalizeEuler(e);
+
+  ASSERT_FLOAT_EQ(e[0], 0.0);
+  ASSERT_FLOAT_EQ(e[1], -10.0f);
+  ASSERT_FLOAT_EQ(e[2], 180.0f);
+}
 
 TEST(Math, FloatToFixed) {
   auto res = utl::math::FloatToFixed<i8>(-1.0f);

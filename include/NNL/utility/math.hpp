@@ -78,10 +78,49 @@ bool IsFinite(const TContainer& container) {
 }
 
 /**
- * @brief Converts Euler angles in degrees (Pitch X, Yaw Y, Roll Z) to a
- * quaternion
+ * @brief Normalizes an Euler angle to the range [-180, 180] degrees.
+ *
+ * @param angle The input angle in degrees.
+ * @return The normalized angle within the [-180, 180] range.
+ */
+float NormalizeEuler(float angle);
+
+/**
+ * @brief Normalizes Euler angles to the range [-180, 180] degrees.
+ *
+ * @param angles A glm::vec3 containing the Euler angles.
+ * @return A glm::vec3 with all components normalized within the [-180, 180] range.
+ */
+glm::vec3 NormalizeEuler(glm::vec3 angles);
+
+/**
+ * @brief Unwraps an Euler angle to be closer to a previous value.
+ *
+ * @param current The current angle value.
+ * @param previous The previous angle value used as a reference for continuity.
+ * @return The unwrapped angle value.
+ */
+float UnwrapEuler(float current, float previous);
+
+/**
+ * @brief Unwraps Euler angles to be closer to previous values.
+ *
+ * This prevents sudden jumps when an angle crosses the 180/-180 boundary
+ * by calculating the shortest rotational path.
+ *
+ * @param current The current glm::vec3 of Euler angles.
+ * @param previous The previous glm::vec3 of Euler angles.
+ * @return A glm::vec3 of unwrapped Euler angles.
+ */
+glm::vec3 UnwrapEuler(glm::vec3 current, glm::vec3 previous);
+
+/**
+ * @brief Converts Euler angles (Pitch X, Yaw Y, Roll Z) in degrees to a quaternion.
  * @param euler The angles to convert
  * @return glm::quat
+ *
+ * @see nnl::utl::math::QuatToEuler
+ * @see nnl::utl::math::QuatToEulerCompat
  */
 glm::quat EulerToQuat(glm::vec3 euler);
 
@@ -89,11 +128,28 @@ glm::quat EulerToQuat(glm::vec3 euler);
  * @brief Converts quaternion to Euler angles (Pitch X, Yaw Y, Roll Z)
  * @param quat The quaternion to convert
  * @return glm::vec3 containing Euler angles in _degrees_
+ *
  * @note Conversion from Euler -> Quaternion -> Euler may not yield the same set
  * of angles since there are multiple _Euler_ combinations that represent the same
  * rotation.
+ *
+ * @see nnl::utl::math::QuatToEulerCompat
+ * @see nnl::utl::math::EulerToQuat
  */
 glm::vec3 QuatToEuler(glm::quat quat);
+
+/**
+ * @brief Converts a quaternion to Euler angles while maintaining continuity with a previous state.
+ *
+ * This function calculates two possible Euler representations of the same rotation
+ * and selects the one closest to the previous Euler angles while keeping the result
+ * in the [-180, 180] range.
+ *
+ * @param quat The rotation quaternion to convert.
+ * @param prev_euler The Euler angles from the previous frame/state (in degrees).
+ * @return The Euler angle representation (in degrees) that is most compatible with the previous state.
+ */
+glm::vec3 QuatToEulerCompat(glm::quat quat, glm::vec3 prev_euler);
 
 /**
  * @brief Decomposes a transformation matrix into scale, rotation, and
