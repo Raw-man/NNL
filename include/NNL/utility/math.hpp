@@ -152,6 +152,26 @@ glm::vec3 QuatToEuler(glm::quat quat);
 glm::vec3 QuatToEulerCompat(glm::quat quat, glm::vec3 prev_euler);
 
 /**
+ * @brief Linearly interpolates between angles via the shortest path.
+ *
+ * @param a Starting angle in degrees.
+ * @param b Target angle in degrees.
+ * @param factor Interpolation alpha [0.0 to 1.0].
+ * @return The interpolated angle in degrees.
+ */
+float EulerShortLerp(float a, float b, float factor);
+
+/**
+ * @brief Linearly interpolates between angles via the shortest path.
+ *
+ * @param a Starting angles in degrees.
+ * @param b Target angles in degrees.
+ * @param factor Interpolation alpha [0.0 to 1.0].
+ * @return The interpolated angle in degrees.
+ */
+glm::vec3 EulerShortLerp(glm::vec3 a, glm::vec3 b, float factor);
+
+/**
  * @brief Decomposes a transformation matrix into scale, rotation, and
  * translation
  * @param matrix The 4x4 transformation matrix to decompose

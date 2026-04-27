@@ -77,6 +77,22 @@ glm::vec3 QuatToEulerCompat(glm::quat quat, glm::vec3 prev_euler) {
 
 glm::quat EulerToQuat(glm::vec3 euler) { return glm::quat(glm::radians(euler)); }
 
+float EulerShortLerp(float a, float b, float factor) {
+  NNL_EXPECTS_DBG(factor >= 0.0f && factor <= 1.0f);
+
+  float delta = NormalizeEuler(b - a);
+
+  return a + delta * factor;
+}
+
+glm::vec3 EulerShortLerp(glm::vec3 a, glm::vec3 b, float factor) {
+  glm::vec3 r;
+  r.x = EulerShortLerp(a.x, b.x, factor);
+  r.y = EulerShortLerp(a.y, b.y, factor);
+  r.z = EulerShortLerp(a.z, b.z, factor);
+  return r;
+}
+
 std::tuple<glm::vec3, glm::quat, glm::vec3> Decompose(const glm::mat4& m) {
   NNL_EXPECTS_DBG(utl::math::IsFinite(m));
 
