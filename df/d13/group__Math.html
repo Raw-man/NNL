@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">NSUNI/NSLAR Library<span id="projectnumber">&#160;a745c47</span>
+   <div id="projectname">NSUNI/NSLAR Library<span id="projectnumber">&#160;6c59e60</span>
    </div>
   </td>
  </tr>
@@ -121,6 +121,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga62cb966dd8bc01feff81fcaa5507cd42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts quaternion to Euler angles (Pitch X, Yaw Y, Roll Z)  <br /></td></tr>
 <tr class="memitem:ga5b42de413bd6463854858305fd1b910b" id="r_ga5b42de413bd6463854858305fd1b910b"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga5b42de413bd6463854858305fd1b910b">nnl::utl::math::QuatToEulerCompat</a> (glm::quat quat, glm::vec3 prev_euler)</td></tr>
 <tr class="memdesc:ga5b42de413bd6463854858305fd1b910b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a quaternion to Euler angles while maintaining continuity with a previous state.  <br /></td></tr>
+<tr class="memitem:ga42121c4a97a9596d4205747e757d2511" id="r_ga42121c4a97a9596d4205747e757d2511"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga42121c4a97a9596d4205747e757d2511">nnl::utl::math::EulerShortLerp</a> (float a, float b, float factor)</td></tr>
+<tr class="memdesc:ga42121c4a97a9596d4205747e757d2511"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linearly interpolates between angles via the shortest path.  <br /></td></tr>
+<tr class="memitem:gac55c5016d32a7f745e7af7a22382890c" id="r_gac55c5016d32a7f745e7af7a22382890c"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gac55c5016d32a7f745e7af7a22382890c">nnl::utl::math::EulerShortLerp</a> (glm::vec3 a, glm::vec3 b, float factor)</td></tr>
+<tr class="memdesc:gac55c5016d32a7f745e7af7a22382890c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linearly interpolates between angles via the shortest path.  <br /></td></tr>
 <tr class="memitem:gad06859ec49c0936a82ea418e68fe25e5" id="r_gad06859ec49c0936a82ea418e68fe25e5"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; glm::vec3, glm::quat, glm::vec3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad06859ec49c0936a82ea418e68fe25e5">nnl::utl::math::Decompose</a> (const glm::mat4 &amp;matrix)</td></tr>
 <tr class="memdesc:gad06859ec49c0936a82ea418e68fe25e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decomposes a transformation matrix into scale, rotation, and translation.  <br /></td></tr>
 <tr class="memitem:ga58561d668cd86c02dcb1d7ac69097e71" id="r_ga58561d668cd86c02dcb1d7ac69097e71"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga58561d668cd86c02dcb1d7ac69097e71">nnl::utl::math::Compose</a> (glm::vec3 scale, glm::quat rotation, glm::vec3 translation)</td></tr>
@@ -224,6 +228,80 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Tuple containing scale (glm::vec3), rotation (glm::quat), and translation (glm::vec3) </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>If any scale component is 0, the rotation is set to the identity </dd></dl>
+
+</div>
+</div>
+<a id="ga42121c4a97a9596d4205747e757d2511" name="ga42121c4a97a9596d4205747e757d2511"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga42121c4a97a9596d4205747e757d2511">&#9670;&#160;</a></span>EulerShortLerp() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float nnl::utl::math::EulerShortLerp </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>factor</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Linearly interpolates between angles via the shortest path. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Starting angle in degrees. </td></tr>
+    <tr><td class="paramname">b</td><td>Target angle in degrees. </td></tr>
+    <tr><td class="paramname">factor</td><td>Interpolation alpha [0.0 to 1.0]. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The interpolated angle in degrees. </dd></dl>
+
+</div>
+</div>
+<a id="gac55c5016d32a7f745e7af7a22382890c" name="gac55c5016d32a7f745e7af7a22382890c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac55c5016d32a7f745e7af7a22382890c">&#9670;&#160;</a></span>EulerShortLerp() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 nnl::utl::math::EulerShortLerp </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3</td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>factor</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Linearly interpolates between angles via the shortest path. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Starting angles in degrees. </td></tr>
+    <tr><td class="paramname">b</td><td>Target angles in degrees. </td></tr>
+    <tr><td class="paramname">factor</td><td>Interpolation alpha [0.0 to 1.0]. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The interpolated angle in degrees. </dd></dl>
 
 </div>
 </div>

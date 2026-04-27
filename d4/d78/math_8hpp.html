@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">NSUNI/NSLAR Library<span id="projectnumber">&#160;a745c47</span>
+   <div id="projectname">NSUNI/NSLAR Library<span id="projectnumber">&#160;6c59e60</span>
    </div>
   </td>
  </tr>
@@ -139,6 +139,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga62cb966dd8bc01feff81fcaa5507cd42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts quaternion to Euler angles (Pitch X, Yaw Y, Roll Z)  <br /></td></tr>
 <tr class="memitem:ga5b42de413bd6463854858305fd1b910b" id="r_ga5b42de413bd6463854858305fd1b910b"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d13/group__Math.html#ga5b42de413bd6463854858305fd1b910b">nnl::utl::math::QuatToEulerCompat</a> (glm::quat quat, glm::vec3 prev_euler)</td></tr>
 <tr class="memdesc:ga5b42de413bd6463854858305fd1b910b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a quaternion to Euler angles while maintaining continuity with a previous state.  <br /></td></tr>
+<tr class="memitem:ga42121c4a97a9596d4205747e757d2511" id="r_ga42121c4a97a9596d4205747e757d2511"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d13/group__Math.html#ga42121c4a97a9596d4205747e757d2511">nnl::utl::math::EulerShortLerp</a> (float a, float b, float factor)</td></tr>
+<tr class="memdesc:ga42121c4a97a9596d4205747e757d2511"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linearly interpolates between angles via the shortest path.  <br /></td></tr>
+<tr class="memitem:gac55c5016d32a7f745e7af7a22382890c" id="r_gac55c5016d32a7f745e7af7a22382890c"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d13/group__Math.html#gac55c5016d32a7f745e7af7a22382890c">nnl::utl::math::EulerShortLerp</a> (glm::vec3 a, glm::vec3 b, float factor)</td></tr>
+<tr class="memdesc:gac55c5016d32a7f745e7af7a22382890c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linearly interpolates between angles via the shortest path.  <br /></td></tr>
 <tr class="memitem:gad06859ec49c0936a82ea418e68fe25e5" id="r_gad06859ec49c0936a82ea418e68fe25e5"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; glm::vec3, glm::quat, glm::vec3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d13/group__Math.html#gad06859ec49c0936a82ea418e68fe25e5">nnl::utl::math::Decompose</a> (const glm::mat4 &amp;matrix)</td></tr>
 <tr class="memdesc:gad06859ec49c0936a82ea418e68fe25e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decomposes a transformation matrix into scale, rotation, and translation.  <br /></td></tr>
 <tr class="memitem:ga58561d668cd86c02dcb1d7ac69097e71" id="r_ga58561d668cd86c02dcb1d7ac69097e71"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d13/group__Math.html#ga58561d668cd86c02dcb1d7ac69097e71">nnl::utl::math::Compose</a> (glm::vec3 scale, glm::quat rotation, glm::vec3 translation)</td></tr>
