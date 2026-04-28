@@ -20,6 +20,20 @@ TEST(Math, QuatEulerCompat) {
   ASSERT_FLOAT_EQ(e_4_c[2], e_4[2]);
 }
 
+TEST(Math, QuatEulerCompatLock) {
+  glm::vec3 e_3{30.0f, -89.0f, 10.0f};
+
+  glm::vec3 e_4{35.0f, -90.0f, 10.0f};
+
+  auto quat = utl::math::EulerToQuat(e_4);
+
+  auto e_4_c = utl::math::QuatToEulerCompat(quat, e_3);
+
+  ASSERT_NEAR(e_4_c[0], e_4[0], 0.1f);
+  ASSERT_NEAR(e_4_c[1], e_4[1], 0.1f);
+  ASSERT_NEAR(e_4_c[2], e_4[2], 0.1f);
+}
+
 TEST(Math, NormalizeEuler) {
   glm::vec3 e{-720.0f, 350.0f, 180.0f};
 

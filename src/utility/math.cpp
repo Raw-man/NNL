@@ -32,6 +32,14 @@ float UnwrapEuler(float current, float previous) {
 }
 
 glm::vec3 UnwrapEuler(glm::vec3 current, glm::vec3 previous) {
+  float n_y = NormalizeEuler(current.y);
+
+  // Y at ~90 makes X and Z parallel; lock Z to keep continuity
+  if (IsApproxEqual(std::abs(n_y), 90.0f, 0.05f)) {
+    current.x = n_y > 0.0f ? previous.z - (current.z - current.x) : (current.z + current.x) - previous.z;
+    current.z = previous.z;
+  }
+
   glm::vec3 result;
   result.x = UnwrapEuler(current.x, previous.x);
   result.y = UnwrapEuler(current.y, previous.y);
