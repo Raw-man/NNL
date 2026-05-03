@@ -21,7 +21,7 @@ var searchData=
   ['bone_5ftarget_18',['bone_target',['../dd/de7/group__Colbox__Main.html#a7c399e77b9f6dc8bb8b1ba65b28d293a',1,'nnl::colbox::CollisionBox14::bone_target'],['../dd/de7/group__Colbox__Main.html#ad57a33e8bdc69a827146411bc2621256',1,'nnl::colbox::CollisionBox18::bone_target'],['../dd/de7/group__Colbox__Main.html#afb7988a1845e9a290b929034e231cd3f',1,'nnl::colbox::CollisionBox20::bone_target']]],
   ['bone_5ftarget_5fnames_19',['bone_target_names',['../d3/d07/group__Model__Auxiliary.html#ga0ab2a3f80b602091c08c361042e38350',1,'nnl::model']]],
   ['bone_5ftarget_5ftables_20',['bone_target_tables',['../da/d2b/group__Model__Main.html#a509ebc456f1c91cddb8d4041d33f7c1b',1,'nnl::model::Model']]],
-  ['boneanimation_21',['BoneAnimation',['../d6/da3/group__Animation__Main.html#d8/dc0/structnnl_1_1animation_1_1BoneAnimation',1,'nnl::animation']]],
+  ['bonechannel_21',['BoneChannel',['../d6/da3/group__Animation__Main.html#d9/d18/structnnl_1_1animation_1_1BoneChannel',1,'nnl::animation']]],
   ['boneindex_22',['BoneIndex',['../d3/db5/group__Model__Shared.html#ga0493a27bd1be762657e9720a4cf5e0d7',1,'nnl::model']]],
   ['bones_23',['bones',['../d3/d07/group__Model__Auxiliary.html#a1a26cfacc346db4a882c4eeefec9118c',1,'nnl::model::TriangleGroup::bones'],['../d1/dc4/group__SModel.html#a147d87fc24b43cb9d22ccdcdb62823b7',1,'nnl::SVertex::bones']]],
   ['bonetarget_24',['BoneTarget',['../d3/db5/group__Model__Shared.html#ga62d480d121a35d41160bb1d707c1c18e',1,'nnl::model']]],

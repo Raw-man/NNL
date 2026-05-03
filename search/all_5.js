@@ -29,6 +29,5 @@ var searchData=
   ['dmg_5fend_5fframe_26',['dmg_end_frame',['../dd/de7/group__Colbox__Main.html#a166a9581296ea38cbf92f8874f326c4c',1,'nnl::colbox::HitboxConfig']]],
   ['dmg_5fstart_5fframe_27',['dmg_start_frame',['../dd/de7/group__Colbox__Main.html#acd767a3ff5043cab468909c360844366',1,'nnl::colbox::HitboxConfig']]],
   ['documentation_28',['Documentation',['../index.html#autotoc_md6',1,'']]],
-  ['duration_29',['duration',['../da/ddc/group__SAnimation.html#a60c8dd3718bcf3de26ea59a09c4b4219',1,'nnl::SAnimation']]],
-  ['duration_5fticks_30',['duration_ticks',['../d6/da3/group__Animation__Main.html#af8bec029461fe9bbd38b5c4dbbb027f0',1,'nnl::animation::Animation']]]
+  ['duration_29',['duration',['../d6/da3/group__Animation__Main.html#ad580b0f737682070c8fc6c61f78fc1c9',1,'nnl::animation::Animation::duration'],['../da/ddc/group__SAnimation.html#a60c8dd3718bcf3de26ea59a09c4b4219',1,'nnl::SAnimation::duration']]]
 ];

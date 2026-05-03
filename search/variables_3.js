@@ -8,6 +8,5 @@ var searchData=
   ['distance_5ftransition_5ftranslucency_5',['distance_transition_translucency',['../da/dde/group__Render__Main.html#a418a1a4caaf04bd1bf5a3d3868814643',1,'nnl::render::RenderConfig']]],
   ['dmg_5fend_5fframe_6',['dmg_end_frame',['../dd/de7/group__Colbox__Main.html#a166a9581296ea38cbf92f8874f326c4c',1,'nnl::colbox::HitboxConfig']]],
   ['dmg_5fstart_5fframe_7',['dmg_start_frame',['../dd/de7/group__Colbox__Main.html#acd767a3ff5043cab468909c360844366',1,'nnl::colbox::HitboxConfig']]],
-  ['duration_8',['duration',['../da/ddc/group__SAnimation.html#a60c8dd3718bcf3de26ea59a09c4b4219',1,'nnl::SAnimation']]],
-  ['duration_5fticks_9',['duration_ticks',['../d6/da3/group__Animation__Main.html#af8bec029461fe9bbd38b5c4dbbb027f0',1,'nnl::animation::Animation']]]
+  ['duration_8',['duration',['../d6/da3/group__Animation__Main.html#ad580b0f737682070c8fc6c61f78fc1c9',1,'nnl::animation::Animation::duration'],['../da/ddc/group__SAnimation.html#a60c8dd3718bcf3de26ea59a09c4b4219',1,'nnl::SAnimation::duration']]]
 ];

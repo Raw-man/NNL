@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">NSUNI/NSLAR Library<span id="projectnumber">&#160;f2d5460</span>
+   <div id="projectname">NSUNI/NSLAR Library<span id="projectnumber">&#160;939fecb</span>
    </div>
   </td>
  </tr>
@@ -117,6 +117,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:gabd1ec772709eb544fb80b733d1cbba5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unwraps Euler angles to be closer to previous values.  <br /></td></tr>
 <tr class="memitem:gac04e5556a94da89c99c3fce4ceb1a6da" id="r_gac04e5556a94da89c99c3fce4ceb1a6da"><td class="memItemLeft" align="right" valign="top">glm::quat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gac04e5556a94da89c99c3fce4ceb1a6da">nnl::utl::math::EulerToQuat</a> (glm::vec3 euler)</td></tr>
 <tr class="memdesc:gac04e5556a94da89c99c3fce4ceb1a6da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts Euler angles (Pitch X, Yaw Y, Roll Z) in degrees to a quaternion.  <br /></td></tr>
+<tr class="memitem:ga9623a47a3fb3b7535076e0dd239e3a59" id="r_ga9623a47a3fb3b7535076e0dd239e3a59"><td class="memItemLeft" align="right" valign="top">glm::quat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga9623a47a3fb3b7535076e0dd239e3a59">nnl::utl::math::EulerToQuatCompat</a> (glm::vec3 euler, glm::quat prev_quat)</td></tr>
+<tr class="memdesc:ga9623a47a3fb3b7535076e0dd239e3a59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts Euler angles to a quaternion while ensuring the shortest path relative to a previous state.  <br /></td></tr>
 <tr class="memitem:ga62cb966dd8bc01feff81fcaa5507cd42" id="r_ga62cb966dd8bc01feff81fcaa5507cd42"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga62cb966dd8bc01feff81fcaa5507cd42">nnl::utl::math::QuatToEuler</a> (glm::quat quat)</td></tr>
 <tr class="memdesc:ga62cb966dd8bc01feff81fcaa5507cd42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts quaternion to Euler angles (Pitch X, Yaw Y, Roll Z)  <br /></td></tr>
 <tr class="memitem:ga5b42de413bd6463854858305fd1b910b" id="r_ga5b42de413bd6463854858305fd1b910b"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga5b42de413bd6463854858305fd1b910b">nnl::utl::math::QuatToEulerCompat</a> (glm::quat quat, glm::vec3 prev_euler)</td></tr>
@@ -329,6 +331,40 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>glm::quat</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga62cb966dd8bc01feff81fcaa5507cd42" title="Converts quaternion to Euler angles (Pitch X, Yaw Y, Roll Z)">nnl::utl::math::QuatToEuler</a> </dd>
+<dd>
+<a class="el" href="#ga5b42de413bd6463854858305fd1b910b" title="Converts a quaternion to Euler angles while maintaining continuity with a previous state.">nnl::utl::math::QuatToEulerCompat</a> </dd></dl>
+
+</div>
+</div>
+<a id="ga9623a47a3fb3b7535076e0dd239e3a59" name="ga9623a47a3fb3b7535076e0dd239e3a59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9623a47a3fb3b7535076e0dd239e3a59">&#9670;&#160;</a></span>EulerToQuatCompat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::quat nnl::utl::math::EulerToQuatCompat </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3</td>          <td class="paramname"><span class="paramname"><em>euler</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::quat</td>          <td class="paramname"><span class="paramname"><em>prev_quat</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts Euler angles to a quaternion while ensuring the shortest path relative to a previous state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">euler</td><td>The angles to convert (Pitch X, Yaw Y, Roll Z) in degrees. </td></tr>
+    <tr><td class="paramname">prev_quat</td><td>The quaternion from the previous frame/state used for sign comparison. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>glm::quat The converted quaternion</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#gac04e5556a94da89c99c3fce4ceb1a6da" title="Converts Euler angles (Pitch X, Yaw Y, Roll Z) in degrees to a quaternion.">nnl::utl::math::EulerToQuat</a> </dd>
 <dd>
 <a class="el" href="#ga5b42de413bd6463854858305fd1b910b" title="Converts a quaternion to Euler angles while maintaining continuity with a previous state.">nnl::utl::math::QuatToEulerCompat</a> </dd></dl>
 
@@ -925,7 +961,8 @@ template&lt;typename T&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The Euler angle representation (in degrees) that is most compatible with the previous state. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The Euler angle representation (in degrees) that is most compatible with the previous state.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ga62cb966dd8bc01feff81fcaa5507cd42" title="Converts quaternion to Euler angles (Pitch X, Yaw Y, Roll Z)">nnl::utl::math::QuatToEuler</a> </dd></dl>
 
 </div>
 </div>

@@ -12,7 +12,7 @@ var hierarchy =
     [ "nnl::text::BitmapFont", "df/d14/group__Text__Auxiliary.html#dd/d16/structnnl_1_1text_1_1BitmapFont", null ],
     [ "nnl::text::BitmapFontParams", "df/d14/group__Text__Auxiliary.html#d5/d42/structnnl_1_1text_1_1BitmapFontParams", null ],
     [ "nnl::model::Bone", "da/d2b/group__Model__Main.html#d7/dc3/structnnl_1_1model_1_1Bone", null ],
-    [ "nnl::animation::BoneAnimation", "d6/da3/group__Animation__Main.html#d8/dc0/structnnl_1_1animation_1_1BoneAnimation", null ],
+    [ "nnl::animation::BoneChannel", "d6/da3/group__Animation__Main.html#d9/d18/structnnl_1_1animation_1_1BoneChannel", null ],
     [ "nnl::colbox::ColBoxConfig", "dd/de7/group__Colbox__Main.html#de/d2c/structnnl_1_1colbox_1_1ColBoxConfig", null ],
     [ "nnl::collision::Collision", "dd/df5/group__Collision__Main.html#dd/df0/structnnl_1_1collision_1_1Collision", null ],
     [ "nnl::shadow_collision::Collision", "d7/df4/group__Shadow__Main.html#d6/d27/structnnl_1_1shadow__collision_1_1Collision", null ],

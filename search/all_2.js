@@ -25,7 +25,7 @@ var searchData=
   ['and_20nslar_22',['NNL: A library for modding NSUNI and NSLAR',['../index.html',1,'']]],
   ['animation_23',['Animation',['../d6/da3/group__Animation__Main.html#d8/dc7/structnnl_1_1animation_1_1Animation',1,'nnl::animation::Animation'],['../d7/d12/group__Subanimation__Main.html#da/d0f/structnnl_1_1visanimation_1_1Animation',1,'nnl::visanimation::Animation'],['../da/ddc/group__SAnimation.html',1,'Simple Animation'],['../d5/d29/group__Animation.html',1,'Skeletal Animation'],['../d4/dda/group__Subanimation.html',1,'Visibility Animation']]],
   ['animation_2ehpp_24',['animation.hpp',['../d6/d5a/animation_8hpp.html',1,'']]],
-  ['animation_5fchannels_25',['animation_channels',['../d6/da3/group__Animation__Main.html#a6ef2fc4fa50bb6fd8d0c3435285873cb',1,'nnl::animation::Animation']]],
+  ['animation_5fchannels_25',['animation_channels',['../d6/da3/group__Animation__Main.html#ad3d8b57621496841c5d3896134f0c597',1,'nnl::animation::Animation']]],
   ['animation_5fmode_26',['animation_mode',['../da/d2b/group__Model__Main.html#a5f7636d035fabcd4e19cbfef32693cd4',1,'nnl::model::UVAnimation']]],
   ['animation_5fnodes_27',['animation_nodes',['../db/d41/group__Action__Main.html#a4af76ec9fe781852a0a5c0098cf350d4',1,'nnl::action::Action']]],
   ['animationcontainer_28',['AnimationContainer',['../d6/da3/group__Animation__Main.html#d0/d0a/structnnl_1_1animation_1_1AnimationContainer',1,'nnl::animation::AnimationContainer'],['../d7/d12/group__Subanimation__Main.html#d3/d53/structnnl_1_1visanimation_1_1AnimationContainer',1,'nnl::visanimation::AnimationContainer']]],

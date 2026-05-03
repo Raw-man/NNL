@@ -10,7 +10,7 @@ var annotated_dup =
       [ "animation", "d0/d08/namespacennl_1_1animation.html", [
         [ "Animation", "d6/da3/group__Animation__Main.html#d8/dc7/structnnl_1_1animation_1_1Animation", "d6/da3/group__Animation__Main_d8/dc7/structnnl_1_1animation_1_1Animation" ],
         [ "AnimationContainer", "d6/da3/group__Animation__Main.html#d0/d0a/structnnl_1_1animation_1_1AnimationContainer", "d6/da3/group__Animation__Main_d0/d0a/structnnl_1_1animation_1_1AnimationContainer" ],
-        [ "BoneAnimation", "d6/da3/group__Animation__Main.html#d8/dc0/structnnl_1_1animation_1_1BoneAnimation", "d6/da3/group__Animation__Main_d8/dc0/structnnl_1_1animation_1_1BoneAnimation" ],
+        [ "BoneChannel", "d6/da3/group__Animation__Main.html#d9/d18/structnnl_1_1animation_1_1BoneChannel", "d6/da3/group__Animation__Main_d9/d18/structnnl_1_1animation_1_1BoneChannel" ],
         [ "ConvertParam", "d6/da3/group__Animation__Main.html#d6/d36/structnnl_1_1animation_1_1ConvertParam", "d6/da3/group__Animation__Main_d6/d36/structnnl_1_1animation_1_1ConvertParam" ],
         [ "KeyFrame", "d6/da3/group__Animation__Main.html#d2/d76/structnnl_1_1animation_1_1KeyFrame", "d6/da3/group__Animation__Main_d2/d76/structnnl_1_1animation_1_1KeyFrame" ]
       ] ],

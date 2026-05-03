@@ -5,6 +5,7 @@ var group__Math =
     [ "nnl::utl::math::EulerShortLerp", "df/d13/group__Math.html#ga42121c4a97a9596d4205747e757d2511", null ],
     [ "nnl::utl::math::EulerShortLerp", "df/d13/group__Math.html#gac55c5016d32a7f745e7af7a22382890c", null ],
     [ "nnl::utl::math::EulerToQuat", "df/d13/group__Math.html#gac04e5556a94da89c99c3fce4ceb1a6da", null ],
+    [ "nnl::utl::math::EulerToQuatCompat", "df/d13/group__Math.html#ga9623a47a3fb3b7535076e0dd239e3a59", null ],
     [ "nnl::utl::math::FixedToFloat", "df/d13/group__Math.html#gaa35ad0bb7678acd62311198b30d4de31", null ],
     [ "nnl::utl::math::FloatToFixed", "df/d13/group__Math.html#gaf2d4935a350cdcb1bb67eabb2a268efa", null ],
     [ "nnl::utl::math::Inverse", "df/d13/group__Math.html#gaa824f6f5ce703109d44cc2dfe1824202", null ],

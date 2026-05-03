@@ -10,7 +10,7 @@ var searchData=
   ['ambient_7',['ambient',['../da/d2b/group__Model__Main.html#a12fd5f477aeed00f9b94804b0761eafc',1,'nnl::model::Material::ambient'],['../d1/dc4/group__SModel.html#a649f1cfda8cfb1175e107842d772cf1b',1,'nnl::SMaterial::ambient']]],
   ['anchor_5fx_8',['anchor_x',['../d3/d7c/group__Minimap__Main.html#a4e1eeb61fb7b20f6a1b3a8bcb02207ca',1,'nnl::minimap::MinimapConfig']]],
   ['anchor_5fz_9',['anchor_z',['../d3/d7c/group__Minimap__Main.html#a49c11e5d19905e0738dd6db39773425a',1,'nnl::minimap::MinimapConfig']]],
-  ['animation_5fchannels_10',['animation_channels',['../d6/da3/group__Animation__Main.html#a6ef2fc4fa50bb6fd8d0c3435285873cb',1,'nnl::animation::Animation']]],
+  ['animation_5fchannels_10',['animation_channels',['../d6/da3/group__Animation__Main.html#ad3d8b57621496841c5d3896134f0c597',1,'nnl::animation::Animation']]],
   ['animation_5fmode_11',['animation_mode',['../da/d2b/group__Model__Main.html#a5f7636d035fabcd4e19cbfef32693cd4',1,'nnl::model::UVAnimation']]],
   ['animation_5fnodes_12',['animation_nodes',['../db/d41/group__Action__Main.html#a4af76ec9fe781852a0a5c0098cf350d4',1,'nnl::action::Action']]],
   ['animations_13',['animations',['../d6/da3/group__Animation__Main.html#a1613ae34ce6c1ddf153e82eef1701e5e',1,'nnl::animation::AnimationContainer::animations'],['../d7/d12/group__Subanimation__Main.html#a43d15adf17c24dac9629900eb7603834',1,'nnl::visanimation::AnimationContainer::animations'],['../d4/d43/group__Simple3DAsset.html#a11a644451abc1740787a0b0e23ccccc0',1,'nnl::SAsset3D::animations']]],
