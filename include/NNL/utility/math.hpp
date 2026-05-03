@@ -125,6 +125,18 @@ glm::vec3 UnwrapEuler(glm::vec3 current, glm::vec3 previous);
 glm::quat EulerToQuat(glm::vec3 euler);
 
 /**
+ * @brief Converts Euler angles to a quaternion while ensuring the shortest path relative to a previous state.
+ *
+ * @param euler The angles to convert (Pitch X, Yaw Y, Roll Z) in degrees.
+ * @param prev_quat The quaternion from the previous frame/state used for sign comparison.
+ * @return glm::quat The converted quaternion
+ *
+ * @see nnl::utl::math::EulerToQuat
+ * @see nnl::utl::math::QuatToEulerCompat
+ */
+glm::quat EulerToQuatCompat(glm::vec3 euler, glm::quat prev_quat);
+
+/**
  * @brief Converts quaternion to Euler angles (Pitch X, Yaw Y, Roll Z)
  * @param quat The quaternion to convert
  * @return glm::vec3 containing Euler angles in _degrees_
@@ -148,6 +160,8 @@ glm::vec3 QuatToEuler(glm::quat quat);
  * @param quat The rotation quaternion to convert.
  * @param prev_euler The Euler angles from the previous frame/state (in degrees).
  * @return The Euler angle representation (in degrees) that is most compatible with the previous state.
+ *
+ * @see nnl::utl::math::QuatToEuler
  */
 glm::vec3 QuatToEulerCompat(glm::quat quat, glm::vec3 prev_euler);
 
@@ -366,14 +380,7 @@ template <typename TContainer>
 bool IsApproxEqual(TContainer a, TContainer b, float range = NNL_EPSILON) {
   static_assert(std::is_floating_point_v<typename TContainer::value_type>);
 
-  std::size_t size = 0;
-
-  if constexpr (utl::trait::has_size_member_v<TContainer>) {
-    if (a.size() != b.size()) return false;
-    size = static_cast<std::size_t>(a.size());
-  } else {
-    size = static_cast<std::size_t>(TContainer::length());
-  }
+  const std::size_t size = static_cast<std::size_t>(TContainer::length());
 
   for (std::size_t i = 0; i < size; i++)
     if (!IsApproxEqual(a[i], b[i], range)) return false;

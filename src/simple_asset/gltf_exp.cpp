@@ -668,7 +668,7 @@ class GLTFExporter {
 
     animation.name = sanimation.name;
 
-    NNL_EXPECTS_DBG(sanimation.duration != 0);
+    NNL_EXPECTS(sanimation.duration != 0);
 
     if (sanimation.extras.IsObject() && !sanimation.extras.IsEmpty()) {
       animation.extras = SValueToGLTFValue(sanimation.extras);
@@ -703,9 +703,6 @@ class GLTFExporter {
         float min = 0.0f;
 
         float max = (sanimation.duration - 1) / 30.0f;
-
-        assert(schannel.rotation_keys.empty() || schannel.rotation_keys.front().time == 0);
-        assert(schannel.rotation_keys.empty() || schannel.rotation_keys.back().time == sanimation.duration - 1);
 
         for (auto& key : schannel.rotation_keys) {
           float time = key.time / 30.0f;
@@ -749,9 +746,6 @@ class GLTFExporter {
 
         float max = (sanimation.duration - 1) / 30.0f;
 
-        assert(schannel.translation_keys.empty() || schannel.translation_keys.front().time == 0);
-        assert(schannel.translation_keys.empty() || schannel.translation_keys.back().time == sanimation.duration - 1);
-
         for (auto& key : schannel.translation_keys) {
           float time = key.time / 30.0f;
 
@@ -793,10 +787,6 @@ class GLTFExporter {
         float min = 0.0f;
 
         float max = (sanimation.duration - 1) / 30.0f;
-
-        assert(schannel.scale_keys.empty() || schannel.scale_keys.front().time == 0);
-
-        assert(schannel.scale_keys.empty() || schannel.scale_keys.back().time == sanimation.duration - 1);
 
         for (auto& key : schannel.scale_keys) {
           float time = key.time / 30.0f;

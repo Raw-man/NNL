@@ -47,7 +47,17 @@ glm::vec3 UnwrapEuler(glm::vec3 current, glm::vec3 previous) {
   return result;
 }
 
-float NormalizeEuler(float angle) { return std::remainder(angle, 360.0f); }
+float NormalizeEuler(float angle) {
+  angle = std::fmod(angle + 180.0f, 360.0f);
+
+  // Handle fmod returning negative values for negative inputs
+  if (angle < 0) {
+    angle += 360.0f;
+  }
+
+  // Shift back to [-180, 180]
+  return angle - 180.0f;
+}
 
 glm::vec3 NormalizeEuler(glm::vec3 angles) {
   angles[0] = NormalizeEuler(angles[0]);
@@ -84,6 +94,18 @@ glm::vec3 QuatToEulerCompat(glm::quat quat, glm::vec3 prev_euler) {
 }
 
 glm::quat EulerToQuat(glm::vec3 euler) { return glm::quat(glm::radians(euler)); }
+
+glm::quat EulerToQuatCompat(glm::vec3 euler, glm::quat prev_quat) {
+  glm::quat q_new = glm::quat(glm::radians(euler));
+
+  float dot = glm::dot(q_new, prev_quat);
+
+  if (dot < 0.0f) {
+    q_new = -q_new;
+  }
+
+  return q_new;
+}
 
 float EulerShortLerp(float a, float b, float factor) {
   NNL_EXPECTS_DBG(factor >= 0.0f && factor <= 1.0f);

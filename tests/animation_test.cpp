@@ -2,8 +2,8 @@
 
 #include <gtest/gtest.h>
 
+#include "NNL/nnl.hpp"
 #include "test_common.hpp"
-
 using namespace nnl;
 
 TEST(Animation, IsOfType) {

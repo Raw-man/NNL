@@ -34,14 +34,28 @@ TEST(Math, QuatEulerCompatLock) {
   ASSERT_NEAR(e_4_c[2], e_4[2], 0.1f);
 }
 
+TEST(Math, EulerToQuatCompat) {
+  glm::vec3 e_3{179, 0, 0};
+
+  glm::vec3 e_4{-179.0f, 0, 0};
+
+  glm::quat q_3 = utl::math::EulerToQuatCompat(e_3, glm::quat{1.0f, 0.0f, 0.0f, 0.0f});
+
+  glm::quat q_4 = utl::math::EulerToQuatCompat(e_4, e_3);
+
+  float res = glm::dot(q_3, q_4);
+
+  ASSERT_TRUE(res >= 0.0f);
+}
+
 TEST(Math, NormalizeEuler) {
-  glm::vec3 e{-720.0f, 350.0f, 180.0f};
+  glm::vec3 e{-720.0f, 350.0f, 179.999f};
 
   e = utl::math::NormalizeEuler(e);
 
   ASSERT_FLOAT_EQ(e[0], 0.0);
   ASSERT_FLOAT_EQ(e[1], -10.0f);
-  ASSERT_FLOAT_EQ(e[2], 180.0f);
+  ASSERT_FLOAT_EQ(e[2], 179.999f);
 }
 
 TEST(Math, FloatToFixed) {

@@ -288,6 +288,8 @@ target_include_directories(NNL
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/generated>
+    PRIVATE
+       ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 target_link_libraries(NNL

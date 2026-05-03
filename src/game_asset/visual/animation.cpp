@@ -3,119 +3,92 @@
 #include "NNL/utility/data.hpp"
 #include "NNL/utility/math.hpp"
 #include "NNL/utility/string.hpp"
+#include "simple_asset/sanimation.tpp"
+
 namespace nnl {
 namespace animation {
 
 SAnimation Convert(const Animation& animation) {
   SAnimation sanimation;
 
-  sanimation.duration = animation.duration_ticks;
+  NNL_EXPECTS_DBG(animation.duration >= 1);
 
-  for (auto& bone_animation : animation.animation_channels) {
+  const u16 duration = animation.duration;
+
+  const u16 last_valid_time = (u16)(duration - 1);
+
+  sanimation.duration = duration;
+
+  for (const BoneChannel& bone_animation : animation.animation_channels) {
     SBoneChannel sbone_animation;
 
-    const u16 last_valid_time = (u16)(sanimation.duration - 1);
+    std::vector<SKeyFrame<glm::vec3>>& sscale_keys = sbone_animation.scale_keys;
+    std::vector<SKeyFrame<glm::quat>>& srotation_keys = sbone_animation.rotation_keys;
+    std::vector<SKeyFrame<glm::vec3>>& stranslation_keys = sbone_animation.translation_keys;
 
-    // Always insert frame 0.
-    if (!bone_animation.scale_keys.empty() && bone_animation.scale_keys.front().time_tick != 0) {
-      sbone_animation.scale_keys.push_back({0, bone_animation.scale_keys.front().value});
+    sscale_keys.reserve(duration);
+    srotation_keys.reserve(duration);
+    stranslation_keys.reserve(duration);
+
+    const std::vector<KeyFrame>& scale_keys = bone_animation.scale_keys;
+    const std::vector<KeyFrame>& translation_keys = bone_animation.translation_keys;
+    const std::vector<KeyFrame> rotation_keys = BakeChannel_<nnl::LerpShort_>(bone_animation.rotation_keys, duration);
+
+    NNL_EXPECTS_DBG(!scale_keys.empty());
+    NNL_EXPECTS_DBG(!rotation_keys.empty());
+    NNL_EXPECTS_DBG(!translation_keys.empty());
+
+    if (auto& k0 = scale_keys.front(); k0.time != 0) {
+      sscale_keys.push_back({0, k0.value});
     }
 
-    for (auto& key : bone_animation.scale_keys) {
-      SKeyFrame<glm::vec3> skey;
+    for (const auto& key : scale_keys) {
+      if (key.time >= duration) break;
 
-      skey.time = key.time_tick;
+      auto& skey = sscale_keys.emplace_back();
+
+      skey.time = key.time;
 
       skey.value = key.value;
-      // When the timestamp exceeds the duration, interpolate and clip to get the correct
-      // value at the last frame
-      if (skey.time >= sanimation.duration) {
-        if (last_valid_time != 0) {
-          auto& p_skey = sbone_animation.scale_keys.back();
-
-          float progress = (float)(last_valid_time - p_skey.time) / (float)(skey.time - p_skey.time);
-
-          skey.time = last_valid_time;
-          skey.value = glm::mix(p_skey.value, skey.value, progress);
-
-          sbone_animation.scale_keys.push_back(skey);
-        }
-        break;
-      }
-
-      sbone_animation.scale_keys.push_back(skey);
-    }
-    // The last keyframe should always be at duration-1
-    if (!sbone_animation.scale_keys.empty() && sbone_animation.scale_keys.back().time != last_valid_time) {
-      sbone_animation.scale_keys.push_back({last_valid_time, sbone_animation.scale_keys.back().value});
     }
 
-    if (!bone_animation.rotation_keys.empty() && bone_animation.rotation_keys.front().time_tick != 0) {
-      sbone_animation.rotation_keys.push_back({0, glm::quat(glm::radians(bone_animation.rotation_keys.front().value))});
+    if (auto& kl = sscale_keys.back(); kl.time != last_valid_time) {
+      sscale_keys.push_back({last_valid_time, kl.value});
     }
 
-    for (auto& key : bone_animation.rotation_keys) {
-      SKeyFrame<glm::quat> skey;
+    glm::quat prev_q{1.0f, 0.0f, 0.0f, 0.0f};
 
-      skey.time = key.time_tick;
+    for (const auto& key : rotation_keys) {
+      if (key.time >= duration) break;
 
-      skey.value = utl::math::EulerToQuat(key.value);
+      auto& skey = srotation_keys.emplace_back();
 
-      if (skey.time >= sanimation.duration) {
-        if (last_valid_time != 0) {
-          auto& p_skey = sbone_animation.rotation_keys.back();
+      skey.time = key.time;
 
-          float progress = (float)(last_valid_time - p_skey.time) / (float)(skey.time - p_skey.time);
+      skey.value = utl::math::EulerToQuatCompat(key.value, prev_q);
 
-          skey.time = last_valid_time;
-          skey.value = glm::slerp(p_skey.value, skey.value, progress);
-
-          sbone_animation.rotation_keys.push_back(skey);
-        }
-        break;
-      }
-
-      sbone_animation.rotation_keys.push_back(skey);
+      prev_q = skey.value;
     }
 
-    if (!sbone_animation.rotation_keys.empty() && sbone_animation.rotation_keys.back().time != last_valid_time) {
-      sbone_animation.rotation_keys.push_back({last_valid_time, sbone_animation.rotation_keys.back().value});
+    if (auto& k0 = translation_keys.front(); k0.time != 0) {
+      stranslation_keys.push_back({0, k0.value});
     }
 
-    if (!bone_animation.translation_keys.empty() && bone_animation.translation_keys.front().time_tick != 0) {
-      sbone_animation.translation_keys.push_back({0, bone_animation.translation_keys.front().value});
-    }
+    for (const auto& key : translation_keys) {
+      if (key.time >= duration) break;
 
-    for (auto& key : bone_animation.translation_keys) {
-      SKeyFrame<glm::vec3> skey;
+      auto& skey = stranslation_keys.emplace_back();
 
-      skey.time = key.time_tick;
+      skey.time = key.time;
 
       skey.value = key.value;
-
-      if (skey.time >= sanimation.duration) {
-        if (last_valid_time != 0) {
-          auto& p_skey = sbone_animation.translation_keys.back();
-
-          float progress = (float)(last_valid_time - p_skey.time) / (float)(skey.time - p_skey.time);
-
-          skey.time = last_valid_time;
-
-          skey.value = glm::mix(p_skey.value, skey.value, progress);
-
-          sbone_animation.translation_keys.push_back(skey);
-        }
-        break;
-      }
-
-      sbone_animation.translation_keys.push_back(skey);
     }
 
-    if (!sbone_animation.translation_keys.empty() && sbone_animation.translation_keys.back().time != last_valid_time) {
-      sbone_animation.translation_keys.push_back({last_valid_time, sbone_animation.translation_keys.back().value});
+    if (auto& kl = stranslation_keys.back(); kl.time != last_valid_time) {
+      stranslation_keys.push_back({last_valid_time, kl.value});
     }
 
-    sanimation.bone_channels.push_back(sbone_animation);
+    sanimation.bone_channels.push_back(std::move(sbone_animation));
   }
 
   return sanimation;
@@ -136,56 +109,71 @@ std::vector<SAnimation> Convert(const AnimationContainer& animations) {
 Animation Convert(SAnimation&& sanimation, const ConvertParam& anim_param) {
   NNL_EXPECTS(sanimation.duration >= 1);
 
-  // Ensures safe Quaternion to Euler conversion.
-  sanimation.Bake();
-
-  if (anim_param.unbake) sanimation.Unbake();
-
   Animation animation;
 
-  animation.duration_ticks = sanimation.duration;
+  animation.duration = sanimation.duration;
 
   for (auto& sbone_animation : sanimation.bone_channels) {
+    std::vector<SKeyFrame<glm::vec3>>& sscale_keys = sbone_animation.scale_keys;
+    std::vector<SKeyFrame<glm::quat>>& srotation_keys = sbone_animation.rotation_keys;
+    std::vector<SKeyFrame<glm::vec3>>& stranslation_keys = sbone_animation.translation_keys;
+
     NNL_EXPECTS(!sbone_animation.scale_keys.empty());
     NNL_EXPECTS(!sbone_animation.rotation_keys.empty());
     NNL_EXPECTS(!sbone_animation.translation_keys.empty());
 
-    BoneAnimation bone_animation;
-    bone_animation.scale_keys.reserve(sbone_animation.scale_keys.size());
-    bone_animation.rotation_keys.reserve(sbone_animation.rotation_keys.size());
-    bone_animation.translation_keys.reserve(sbone_animation.translation_keys.size());
+    // Ensures safe Quaternion to Euler conversion.
 
-    for (auto& skey : sbone_animation.scale_keys) {
+    srotation_keys = BakeChannel_<nnl::Slerp_>(srotation_keys, sanimation.duration);
+
+    BoneChannel bone_animation;
+    std::vector<KeyFrame>& scale_keys = bone_animation.scale_keys;
+    std::vector<KeyFrame>& rotation_keys = bone_animation.rotation_keys;
+    std::vector<KeyFrame>& translation_keys = bone_animation.translation_keys;
+
+    scale_keys.reserve(sscale_keys.size());
+    rotation_keys.reserve(srotation_keys.size());
+    translation_keys.reserve(stranslation_keys.size());
+
+    for (auto& skey : sscale_keys) {
       KeyFrame key;
 
-      key.time_tick = skey.time;
+      key.time = skey.time;
 
       key.value = skey.value;
 
       bone_animation.scale_keys.push_back(key);
     }
 
-    for (auto& skey : sbone_animation.rotation_keys) {
+    glm::vec3 prev_rot{0.0f};
+    for (auto& skey : srotation_keys) {
       KeyFrame key;
 
-      key.time_tick = skey.time;
+      key.time = skey.time;
 
-      key.value = utl::math::QuatToEuler(skey.value);
+      key.value = utl::math::QuatToEulerCompat(skey.value, prev_rot);
+      prev_rot = key.value;
 
       bone_animation.rotation_keys.push_back(key);
     }
 
-    for (auto& skey : sbone_animation.translation_keys) {
+    for (auto& skey : stranslation_keys) {
       KeyFrame key;
 
-      key.time_tick = skey.time;
+      key.time = skey.time;
 
       key.value = skey.value;
 
       bone_animation.translation_keys.push_back(key);
     }
 
-    animation.animation_channels.push_back(bone_animation);
+    if (anim_param.unbake) {
+      scale_keys = UnbakeChannel_<nnl::Lerp_>(bone_animation.scale_keys);
+      rotation_keys = UnbakeChannel_<nnl::LerpShort_>(bone_animation.rotation_keys, 0.05f);
+      translation_keys = UnbakeChannel_<nnl::Lerp_>(bone_animation.translation_keys);
+    }
+
+    animation.animation_channels.push_back(std::move(bone_animation));
   }
 
   sanimation = {};
@@ -243,7 +231,7 @@ bool IsOfType_(Reader& f) {
   if (rheader.offset_scale_traslation_table < sizeof(RHeader) || data_size < rheader.offset_scale_traslation_table)
     return false;
 
-  if (data_size < sizeof(RHeader) + rheader.num_animations * rheader.num_bones_per_animation * sizeof(RBoneAnimation))
+  if (data_size < sizeof(RHeader) + rheader.num_animations * rheader.num_bones_per_animation * sizeof(RBoneChannel))
     return false;
 
   if (rheader.num_animations != 0 && rheader.num_bones_per_animation == 0) return false;
@@ -276,12 +264,12 @@ AnimationContainer Convert(const RAnimationContainer& ranimation_container) {
   for (std::size_t i = 0; i < ranimation_container.header.num_animations; i++) {
     Animation animation;
 
-    animation.duration_ticks = ranimation_container.duration_table.at(i);
+    animation.duration = ranimation_container.duration_table.at(i);
 
     for (std::size_t j = 0; j < ranimation_container.header.num_bones_per_animation; j++) {
       auto& rbone_animation =
           ranimation_container.bone_animations.at(i * ranimation_container.header.num_bones_per_animation + j);
-      BoneAnimation bone_animation;
+      BoneChannel bone_animation;
 
       bone_animation.scale_keys.reserve(rbone_animation.num_scale_transforms);
       bone_animation.rotation_keys.reserve(rbone_animation.num_rotation_transforms);
@@ -292,7 +280,7 @@ AnimationContainer Convert(const RAnimationContainer& ranimation_container) {
         KeyFrame scale;
 
         if (ranimation_container.keyframe_table.size() > 0)
-          scale.time_tick = ranimation_container.keyframe_table.at(rbone_animation.index_keyframe_scale + k);
+          scale.time = ranimation_container.keyframe_table.at(rbone_animation.index_keyframe_scale + k);
 
         auto value = ranimation_container.scale_translation_table.at(rbone_animation.index_scale_table + k);
         scale.value = glm::vec3(value.x, value.y, value.z);
@@ -304,8 +292,7 @@ AnimationContainer Convert(const RAnimationContainer& ranimation_container) {
         KeyFrame translation;
 
         if (ranimation_container.keyframe_table.size() > 0)
-          translation.time_tick =
-              ranimation_container.keyframe_table.at(rbone_animation.index_keyframe_translation + k);
+          translation.time = ranimation_container.keyframe_table.at(rbone_animation.index_keyframe_translation + k);
 
         auto value = ranimation_container.scale_translation_table.at(rbone_animation.index_translation_table + k);
 
@@ -318,7 +305,7 @@ AnimationContainer Convert(const RAnimationContainer& ranimation_container) {
         KeyFrame rotation;
 
         if (ranimation_container.keyframe_table.size() > 0)
-          rotation.time_tick = ranimation_container.keyframe_table.at(rbone_animation.index_keyframe_rotation + k);
+          rotation.time = ranimation_container.keyframe_table.at(rbone_animation.index_keyframe_rotation + k);
 
         auto rotationS16 = ranimation_container.rotation_table.at(rbone_animation.index_rotation_table + k);
 
@@ -348,7 +335,7 @@ RAnimationContainer Parse(Reader& f) {
 
     if (animation_container.header.magic_bytes != kMagicBytes) NNL_THROW(ParseError(NNL_SRCTAG("invalid magic bytes")));
 
-    animation_container.bone_animations = f.ReadArrayLE<RBoneAnimation>(
+    animation_container.bone_animations = f.ReadArrayLE<RBoneChannel>(
         animation_container.header.num_bones_per_animation * animation_container.header.num_animations);
 
     f.Seek(animation_container.header.offset_scale_traslation_table);
@@ -429,16 +416,16 @@ void Export_(const AnimationContainer& animation_archive, Writer& f) {
   for (std::size_t i = 0; i < animation_archive.animations.size(); i++) {
     auto& animation = animation_archive.animations.at(i);
 
-    NNL_EXPECTS(animation.duration_ticks != 0);
+    NNL_EXPECTS(animation.duration >= 1);
 
-    duration_table.push_back(animation.duration_ticks);
+    duration_table.push_back(animation.duration);
 
     NNL_EXPECTS(animation.animation_channels.size() == header.num_bones_per_animation);
 
     for (std::size_t j = 0; j < animation.animation_channels.size(); j++) {
       auto& bone_animation = animation.animation_channels.at(j);
 
-      RBoneAnimation rbone_animation;
+      RBoneChannel rbone_animation;
 
       // Write scale
       rbone_animation.num_scale_transforms =
@@ -454,10 +441,10 @@ void Export_(const AnimationContainer& animation_archive, Writer& f) {
         NNL_EXPECTS(!bone_animation.scale_keys.empty());
 
         for (std::size_t k = 0; k < bone_animation.scale_keys.size(); k++) {
-          auto& scale = bone_animation.scale_keys.at(k);
-          NNL_EXPECTS(key_sequence.empty() || key_sequence.back() < scale.time_tick);
-          value_sequence.push_back(scale.value);
-          key_sequence.push_back(scale.time_tick);
+          auto& scale_key = bone_animation.scale_keys.at(k);
+          NNL_EXPECTS(key_sequence.empty() || key_sequence.back() < scale_key.time);
+          value_sequence.push_back(scale_key.value);
+          key_sequence.push_back(scale_key.time);
         }
 
         auto itr = std::search(scale_translation_table.begin(), scale_translation_table.end(), value_sequence.begin(),
@@ -498,10 +485,10 @@ void Export_(const AnimationContainer& animation_archive, Writer& f) {
         NNL_EXPECTS(!bone_animation.rotation_keys.empty());
 
         for (std::size_t k = 0; k < bone_animation.rotation_keys.size(); k++) {
-          auto& rotation = bone_animation.rotation_keys.at(k);
-          NNL_EXPECTS(key_sequence.empty() || key_sequence.back() < rotation.time_tick);
-          value_sequence.push_back(rotation.value);
-          key_sequence.push_back(rotation.time_tick);
+          auto& rotation_key = bone_animation.rotation_keys.at(k);
+          NNL_EXPECTS(key_sequence.empty() || key_sequence.back() < rotation_key.time);
+          value_sequence.push_back(rotation_key.value);
+          key_sequence.push_back(rotation_key.time);
         }
 
         auto itr =
@@ -521,7 +508,6 @@ void Export_(const AnimationContainer& animation_archive, Writer& f) {
             auto index = key_itr - keyframe_table.begin();
             rbone_animation.index_keyframe_rotation = index;
           } else {
-            // rbone_animation->
             rbone_animation.index_keyframe_rotation = keyframe_table.size();
             keyframe_table.insert(keyframe_table.end(), key_sequence.begin(), key_sequence.end());
           }
@@ -544,10 +530,10 @@ void Export_(const AnimationContainer& animation_archive, Writer& f) {
         NNL_EXPECTS(!bone_animation.translation_keys.empty());
 
         for (std::size_t k = 0; k < bone_animation.translation_keys.size(); k++) {
-          auto& translation = bone_animation.translation_keys.at(k);
-          NNL_EXPECTS(key_sequence.empty() || key_sequence.back() < translation.time_tick);
-          value_sequence.push_back(translation.value);
-          key_sequence.push_back(translation.time_tick);
+          auto& translation_key = bone_animation.translation_keys.at(k);
+          NNL_EXPECTS(key_sequence.empty() || key_sequence.back() < translation_key.time);
+          value_sequence.push_back(translation_key.value);
+          key_sequence.push_back(translation_key.time);
         }
 
         auto itr = std::search(scale_translation_table.begin(), scale_translation_table.end(), value_sequence.begin(),
@@ -583,6 +569,7 @@ void Export_(const AnimationContainer& animation_archive, Writer& f) {
 
   {
     std::vector<Vec3<i16>> rotation_table_s;
+    rotation_table_s.reserve(rotation_table.size());
     for (auto& rotation : rotation_table) {
       NNL_EXPECTS(std::abs(rotation.x) <= 180.0f);
       NNL_EXPECTS(std::abs(rotation.y) <= 180.0f);

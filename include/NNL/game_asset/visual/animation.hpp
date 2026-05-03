@@ -41,8 +41,8 @@ namespace animation {
  * animation timeline, as well as a new value set at that keyframe.
  */
 struct KeyFrame {
-  u16 time_tick{0};       ///< Time in ticks (1 tick ~ 1 frame). @note In some assets,
-                          ///< this value sometimes exceed the total duration, in
+  u16 time{0};            ///< Time in ticks (1 tick ~ 1 frame). @note In few invalid assets,
+                          ///< this value exceeds the total duration, in
                           ///< which case an animation gets truncated.
   glm::vec3 value{0.0f};  ///< The new value at the specified time. This can store scale,
                           ///< translation, or Euler rotation (pitch, yaw, roll) in degrees.
@@ -57,7 +57,7 @@ struct KeyFrame {
  *
  * @note Each vector must contain at least 1 keyframe.
  */
-struct BoneAnimation {
+struct BoneChannel {
   std::vector<KeyFrame> scale_keys;        ///< Scale keys
   std::vector<KeyFrame> rotation_keys;     ///< Rotation keys
   std::vector<KeyFrame> translation_keys;  ///< Translation keys
@@ -68,12 +68,12 @@ struct BoneAnimation {
  * @see nnl::animation::AnimationContainer
  */
 struct Animation {
-  u16 duration_ticks = 1;                         ///< The duration of the animation in ticks. In general, it should be
-                                                  ///< set to the time of the last keyframe + 1.
-  std::vector<BoneAnimation> animation_channels;  ///< Bone animation data for each bone of a skeleton.
-                                                  ///< @note The number of channels must match the
-                                                  ///< number of bones in the model. @see
-                                                  ///< nnl::model::Model::skeleton
+  u16 duration = 1;                             ///< The duration of the animation in ticks. In general, it should be
+                                                ///< set to the time of the last keyframe + 1.
+  std::vector<BoneChannel> animation_channels;  ///< Bone animation data for each bone of a skeleton.
+                                                ///< @note The number of channels must match the
+                                                ///< number of bones in the model. @see
+                                                ///< nnl::model::Model::skeleton
 };
 /**
  * @brief Holds a collection of skeletal animations.
@@ -257,7 +257,7 @@ NNL_PACK(struct RHeader {
 
 static_assert(sizeof(RHeader) == 0x1C);
 
-NNL_PACK(struct RBoneAnimation {
+NNL_PACK(struct RBoneChannel {
   u32 index_keyframe_scale = 0;        // 0x0 index to keyframe table
   u32 index_keyframe_translation = 0;  // 0x8
   u32 index_keyframe_rotation = 0;     // 0x4
@@ -270,11 +270,11 @@ NNL_PACK(struct RBoneAnimation {
   u16 padding = 0;                     // padding
 });
 
-static_assert(sizeof(RBoneAnimation) == 0x20);
+static_assert(sizeof(RBoneChannel) == 0x20);
 
 struct RAnimationContainer {
   RHeader header;
-  std::vector<RBoneAnimation> bone_animations;
+  std::vector<RBoneChannel> bone_animations;
   std::vector<Vec3<f32>> scale_translation_table;
   std::vector<Vec3<i16>> rotation_table;  // normalized ints
   std::vector<u16> keyframe_table;
