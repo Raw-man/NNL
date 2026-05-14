@@ -110,7 +110,7 @@ const std::unordered_map<u16, std::string_view> kSpecialCodeToString{
     {0x801A, "{801A}"},      //
     {0x801B, "{801B}"},      //
     {0x801C, "{801C}"},      //
-    {0x801D, "{801D}"},      // used 1 time in Spanish (tutorial)
+    {0x801D, "{801D}"},      // The (invisible) letter P (?). Used 1 time in Spanish (tutorial)
     {0x801E, "{801E}"},      //
     {0x801F, "{801F}"},      //
     {0x8020, "{8020}"},      //
@@ -310,23 +310,22 @@ struct BitmapFontParams {
   unsigned int alpha_levels = 256;  ///< Number of shades to use.
 };
 /**
- * @brief Generates a bitmap font from a TrueType font file.
+ * @brief Generates a bitmap font from a .ttf or .otf font file.
  *
  * This function creates a BitmapFont object based on the provided text and
- * TrueType font, using the specified parameters for customization.
- *
+ * font, using the specified parameters for customization.
  *
  * @param text The Text object containing the character data for the font (The object
  * may be changed if simulate_kerning is true)
- * @param ttf_font_path The path to the TrueType font file.
+ * @param font_path The path to a TrueType or OpenType font file.
  * @param params An object containing customization options.
  * @return A BitmapFont object representing the generated bitmap font.
+ *
  * @see nnl::text::BitmapFont
  */
-BitmapFont GenerateBitmapFont(Text& text, const std::filesystem::path& ttf_font_path,
-                              const BitmapFontParams& params = {});
+BitmapFont GenerateBitmapFont(Text& text, const std::filesystem::path& font_path, const BitmapFontParams& params = {});
 
-BitmapFont GenerateBitmapFont(Text& text, BufferView ttf_font_file, const BitmapFontParams& params = {});
+BitmapFont GenerateBitmapFont(Text& text, BufferView font_file, const BitmapFontParams& params = {});
 
 /**
  * @brief Generates a BMFont .fnt file.

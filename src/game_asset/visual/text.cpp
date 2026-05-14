@@ -55,6 +55,7 @@ Text Convert(const std::vector<std::string>& stext, const std::unordered_map<u16
 
     for (std::size_t i = 0; i < str.size();) {
       assert(i < str.size());
+
       // See if a substring should be replaced
       bool replaced = false;
 
@@ -85,10 +86,11 @@ Text Convert(const std::vector<std::string>& stext, const std::unordered_map<u16
 
       u16 ucs2code = (u16)codepoint;
 
+      // Skip certain codepoints
       if ((ucs2code == 0xFEFF) || (ucs2code >= 0xFE00 && ucs2code <= 0xFE0F)  // variation selector
-          || (ucs2code <= 8)                                                  // control characters
-          || (ucs2code >= 12 && ucs2code <= 31) || (ucs2code == 0x200E) || (ucs2code == 0x200F))
-        continue;  // rtl, ltr marks
+          || (ucs2code <= 8) || (ucs2code >= 12 && ucs2code <= 31) ||         // control characters
+          (ucs2code == 0x200E) || (ucs2code == 0x200F))                       // rtl, ltr marks
+        continue;
 
       if (utl::utf8::IsRightToLeft(ucs2code)) right_to_left = true;
 
@@ -127,7 +129,11 @@ Text Convert(const std::vector<std::string>& stext, const std::unordered_map<u16
     // Some symbol codes are made of 2 parts: insert it if missing
     for (std::size_t i = 0; i < paragraph.size(); i++) {
       u16 special_character = paragraph.at(i);
-      if (special_character > 0x1007 && special_character < 0x1010 && special_character % 2 == 0) {
+
+      bool is_paired_symbol = special_character > 0x1007 && special_character < 0x1010;
+      bool is_primary_part = special_character % 2 == 0;
+
+      if (is_paired_symbol && is_primary_part) {
         if (i + 1 == paragraph.size() || (i + 1 < paragraph.size() && paragraph.at(i + 1) != special_character + 1)) {
           paragraph.insert(paragraph.begin() + i + 1, special_character + 1);
           i++;
@@ -189,7 +195,7 @@ std::string GenerateFNT(const Text& text, const std::vector<u8>& advance_width, 
   return out.str();
 }
 
-BitmapFont _GenerateBitmapFont(Text& text, BufferView ttf_font_file, const BitmapFontParams& params) {
+static BitmapFont GenerateBitmapFont_(Text& text, BufferView font_file, const BitmapFontParams& params) {
   stbtt_fontinfo info;
 
   NNL_EXPECTS(!text.characters.empty());
@@ -206,8 +212,12 @@ BitmapFont _GenerateBitmapFont(Text& text, BufferView ttf_font_file, const Bitma
 
   NNL_EXPECTS(params.spacing_offset > -128 && params.spacing_offset <= 127);
 
-  if (!stbtt_InitFont(&info, ttf_font_file.data(), 0)) {
-    NNL_THROW(RuntimeError(NNL_SRCTAG("failed to initialize ttf font")));
+  u32 magic_bytes = font_file.size() >= 12 ? font_file.ReadLE<u32>() : 0;
+
+  bool is_valid_magic = magic_bytes == 0x00'00'01'00 || magic_bytes == utl::data::FourCC("OTTO");
+
+  if (!is_valid_magic || !stbtt_InitFont(&info, font_file.data(), 0)) {
+    NNL_THROW(RuntimeError(NNL_SRCTAG("failed to initialize the font")));
   }
 
   auto alpha_levels = std::clamp(params.alpha_levels, 2u, 256u) - 1;
@@ -399,14 +409,15 @@ BitmapFont _GenerateBitmapFont(Text& text, BufferView ttf_font_file, const Bitma
   return {stextures, spacing};
 }
 
-BitmapFont GenerateBitmapFont(Text& text, BufferView ttf_font_file, const BitmapFontParams& params) {
-  return _GenerateBitmapFont(text, ttf_font_file, params);
+BitmapFont GenerateBitmapFont(Text& text, BufferView font_file, const BitmapFontParams& params) {
+  return GenerateBitmapFont_(text, font_file, params);
 }
 
-BitmapFont GenerateBitmapFont(Text& text, const std::filesystem::path& ttf_font_path, const BitmapFontParams& params) {
-  FileReader f{ttf_font_path};
+BitmapFont GenerateBitmapFont(Text& text, const std::filesystem::path& font_path, const BitmapFontParams& params) {
+  FileReader f{font_path};
   Buffer font = f.ReadArrayLE<u8>(f.Len());
-  return _GenerateBitmapFont(text, font, params);
+  f.Close();
+  return GenerateBitmapFont_(text, font, params);
 }
 
 bool IsOfType_(Reader& f) {
