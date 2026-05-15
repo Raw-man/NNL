@@ -34,9 +34,7 @@ namespace format {
  */
 enum FileFormat {
 
-  kUnknown,                ///< An unknown type
-  kPGD,                    ///< Protected Game Data: an encrypted wrapper that
-                           ///< contains a primary data archive (a .BIN file in NSUNI/NSLAR).
+  kUnknown = 0,            ///< An unknown type
   kDig,                    ///< A primary asset archive (a .BIN file in NSUNI/NSLAR). @see nnl::dig::Dig
   kDigEntry,               ///< An entry in a primary archive (a nested archive itself). @see nnl::dig_entry::DigEntry
   kCollection,             ///< A container that stores related assets. @see nnl::collection::Collection
@@ -50,7 +48,6 @@ enum FileFormat {
   kCollision,              ///< @see nnl::collision::Collision
   kShadowCollision,        ///< @see nnl::shadow_collision::Collision
   kText,                   ///< @see nnl::text::Text
-  kATRAC3,                 ///< An AT3 file that uses a proprietary audio codec by Sony.
   kFog,                    ///< @see nnl::fog::Fog
   kPositionData,           ///< @see nnl::posd::PositionData
   kLit,                    ///< @see nnl::lit::Lit
@@ -58,7 +55,12 @@ enum FileFormat {
   kPHD,                    ///< @see nnl::phd::IsOfType
   kUIConfig,               ///< @see nnl::ui::IsOfType
   kMinimapConfig,          ///< @see nnl::minimap::MinimapConfig
-  kPNG,                    ///< A PNG image
+
+  // Formats used by the games, but not unique to them:
+  kPGD,       ///< Protected Game Data: an encrypted wrapper that
+              ///< contains a primary data archive (a .BIN file in NSUNI/NSLAR).
+  kATRAC3,    ///< An AT3 file that uses a proprietary audio codec by Sony.
+  kPNG,       ///< A PNG image
   kCCSF,      ///< An asset format developed by CyberConnect2. It's used for the finishing blow cutscenes in NSUNI. @see
               ///< https://github.com/MiguelQueiroz010/CCSF-Asset-Explorer/
   kELF,       ///< An executable file
