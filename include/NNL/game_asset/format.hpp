@@ -56,11 +56,11 @@ enum FileFormat {
   kUIConfig,               ///< @see nnl::ui::IsOfType
   kMinimapConfig,          ///< @see nnl::minimap::MinimapConfig
 
-  // Formats used by the games, but not unique to them:
-  kPGD,       ///< Protected Game Data: an encrypted wrapper that
-              ///< contains a primary data archive (a .BIN file in NSUNI/NSLAR).
-  kATRAC3,    ///< An AT3 file that uses a proprietary audio codec by Sony.
-  kPNG,       ///< A PNG image
+  kStartOfGeneralFormats,         ///< A marker separating game-specific formats from general formats.
+  kPGD = kStartOfGeneralFormats,  ///< Protected Game Data: an encrypted wrapper that
+                                  ///< contains a primary data archive (a .BIN file in NSUNI/NSLAR).
+  kATRAC3,                        ///< An AT3 file that uses a proprietary audio codec by Sony.
+  kPNG,                           ///< A PNG image
   kCCSF,      ///< An asset format developed by CyberConnect2. It's used for the finishing blow cutscenes in NSUNI. @see
               ///< https://github.com/MiguelQueiroz010/CCSF-Asset-Explorer/
   kELF,       ///< An executable file
