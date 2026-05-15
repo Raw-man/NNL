@@ -2,7 +2,6 @@ var format_8hpp =
 [
     [ "nnl::format::FileFormat", "d8/d62/group__FileFormat.html#ga5a0fe76a49bddd7e1190c6eaccf9a710", [
       [ "nnl::format::kUnknown", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710affd08db02be75b951bd2a69df0b66093", null ],
-      [ "nnl::format::kPGD", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710aef3f389c2bac70df945e34d7a75ab4b4", null ],
       [ "nnl::format::kDig", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a6aa5f713452a17d2375ff3ee529d0f1b", null ],
       [ "nnl::format::kDigEntry", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710abd6fc2941f273182c40d5a72dfae6496", null ],
       [ "nnl::format::kCollection", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710aee0550ef4e6af74719311b258d1e6b9f", null ],
@@ -16,7 +15,6 @@ var format_8hpp =
       [ "nnl::format::kCollision", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710afca384fbcc875dea13db86b457c9b383", null ],
       [ "nnl::format::kShadowCollision", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a4920c320d77981c4c30af7066fb9510f", null ],
       [ "nnl::format::kText", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710acb91151be7ba98ec1a3854d029586e45", null ],
-      [ "nnl::format::kATRAC3", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710ac5ed3f98c48ffa9c22a14da800bef834", null ],
       [ "nnl::format::kFog", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a48ab41f1ae76e21b42c7af8ef45b3929", null ],
       [ "nnl::format::kPositionData", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a44a77c8c3777cc3125620fc2523128ae", null ],
       [ "nnl::format::kLit", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a8f0161ac38c9ea42c09406fb4be5b3d3", null ],
@@ -24,6 +22,8 @@ var format_8hpp =
       [ "nnl::format::kPHD", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a94b4b158f51c1c7553f481eff655e2e3", null ],
       [ "nnl::format::kUIConfig", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710aa1ecd02225970b398198d619118757b5", null ],
       [ "nnl::format::kMinimapConfig", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a8c2710c925a678fa6db8995c10f20840", null ],
+      [ "nnl::format::kPGD", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710aef3f389c2bac70df945e34d7a75ab4b4", null ],
+      [ "nnl::format::kATRAC3", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710ac5ed3f98c48ffa9c22a14da800bef834", null ],
       [ "nnl::format::kPNG", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710af5bf1f1a795b85c52e2498c450fafe4d", null ],
       [ "nnl::format::kCCSF", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710abf26d8062847386cc4e2b791cea8f1cb", null ],
       [ "nnl::format::kELF", "d8/d62/group__FileFormat.html#gga5a0fe76a49bddd7e1190c6eaccf9a710a85f97899e1e278a863e0fab7f6ad0fab", null ],
