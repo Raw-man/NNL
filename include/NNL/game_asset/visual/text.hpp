@@ -307,7 +307,7 @@ struct BitmapFontParams {
   bool simulate_kerning = false;    ///< Simulates kerning between characters
                                     ///< (by using more characters)
   bool filter_nearest = false;      ///< Flag to use the nearest/linear neighbor filtering
-  unsigned int alpha_levels = 256;  ///< Number of shades to use.
+  unsigned int alpha_levels = 256;  ///< Number of shades to use (e.g. 16, 256).
 };
 /**
  * @brief Generates a bitmap font from a .ttf or .otf font file.

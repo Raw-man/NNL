@@ -212,11 +212,13 @@ static BitmapFont GenerateBitmapFont_(Text& text, BufferView font_file, const Bi
 
   NNL_EXPECTS(params.spacing_offset > -128 && params.spacing_offset <= 127);
 
+  font_file.Seek(0);
+
   u32 magic_bytes = font_file.size() >= 12 ? font_file.ReadLE<u32>() : 0;
 
-  bool is_valid_magic = magic_bytes == 0x00'00'01'00 || magic_bytes == utl::data::FourCC("OTTO");
+  bool is_valid_font_magic = magic_bytes == 0x00'00'01'00 || magic_bytes == utl::data::FourCC("OTTO");
 
-  if (!is_valid_magic || !stbtt_InitFont(&info, font_file.data(), 0)) {
+  if (!is_valid_font_magic || !stbtt_InitFont(&info, font_file.data(), 0)) {
     NNL_THROW(RuntimeError(NNL_SRCTAG("failed to initialize the font")));
   }
 
