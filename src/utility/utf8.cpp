@@ -74,7 +74,7 @@ char32_t Decode(std::string_view str, std::size_t pos) {
 }
 
 std::string Encode(char32_t codepoint) {
-  NNL_EXPECTS_DBG(codepoint <= 0x10FFFD);
+  NNL_EXPECTS_DBG(codepoint <= 0x10FFFF);
   std::string str;
 
   if (0 == ((std::size_t)0xffffff80 & codepoint)) {
@@ -111,7 +111,7 @@ std::string Encode(char32_t codepoint) {
 }
 
 bool IsRightToLeft(char32_t codepoint) {
-  NNL_EXPECTS_DBG(codepoint <= 0x10FFFD);
+  NNL_EXPECTS_DBG(codepoint <= 0x10FFFF);
   if ((codepoint == 0x05BE) || (codepoint == 0x05C0) || (codepoint == 0x05C3) || (codepoint == 0x05C6) ||
       ((codepoint >= 0x05D0) && (codepoint <= 0x05F4)) || (codepoint == 0x0608) || (codepoint == 0x060B) ||
       (codepoint == 0x060D) || ((codepoint >= 0x061B) && (codepoint <= 0x064A)) ||

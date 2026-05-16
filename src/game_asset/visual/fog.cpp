@@ -66,10 +66,9 @@ Fog Import(const std::filesystem::path& path) {
 void Export_(const Fog& _fog, Writer& f) {
   using namespace raw;
   f.Seek(0);
-  NNL_EXPECTS(_fog.near_ >= -2048.0f);
+
   NNL_EXPECTS(_fog.far_ >= 0.0f);
   NNL_EXPECTS(_fog.far_ >= _fog.near_);
-  NNL_EXPECTS(_fog.far_ <= 512000.0f);
 
   RFog rfog;
   rfog.far_ = _fog.far_;

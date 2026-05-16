@@ -61,8 +61,6 @@ std::string GetDescription(u32 vertex_format) {
 VertexLayout GetLayout(u32 vertex_format) {
   VertexLayout layout;
 
-  NNL_EXPECTS(HasPosition(vertex_format));
-
   layout.offset_weights = 0;
 
   layout.offset_uv = utl::math::RoundNum(

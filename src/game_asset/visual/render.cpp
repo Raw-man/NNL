@@ -86,12 +86,8 @@ RenderConfig Import(const std::filesystem::path& path) {
 void Export_(const RenderConfig& distance, Writer& f) {
   using namespace raw;
   f.Seek(0);
-  NNL_EXPECTS(distance.fog_near >= -2048.0f);  // It may be negative
   NNL_EXPECTS(distance.fog_draw_distance_far >= 0.0f);
   NNL_EXPECTS(distance.fog_draw_distance_far >= distance.fog_near);
-  NNL_EXPECTS(distance.fog_draw_distance_far <= 512000.0f);
-  NNL_EXPECTS(std::abs(distance.mipmap_bias) <= 15.0f);
-  NNL_EXPECTS(std::abs(distance.mipmap_slope) <= 15.0f);
 
   RRenderConfig rdistance;
   rdistance.enable_buffer_effects = 1;  // re-enabled anyway even if 0
