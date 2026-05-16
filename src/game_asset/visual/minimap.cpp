@@ -5,8 +5,6 @@
 namespace nnl {
 namespace minimap {
 
-constexpr inline std::size_t kMaxNumMarkers_ = 255;  // An arbitrary limit, it should be enough
-
 constexpr inline f32 kScreenHalfWidth_ = 240.0f;
 constexpr inline f32 kScreenHalfHeight_ = 136.0f;
 
@@ -19,25 +17,26 @@ bool IsOfType_(Reader& f) {
 
   if (data_len < sizeof(0x20)) return false;
 
-  auto num_markers = f.ReadLE<u32>();
+  auto num_markers = f.ReadLE<i16>();
 
-  if (num_markers == 0 || num_markers > 0xFF) return false;
+  if (num_markers <= 0) return false;
 
   if (data_len < 0x10 + sizeof(Vec4<f32>) * num_markers) return false;
 
-  auto reserved_0 = f.ReadLE<u32>();
+  auto reserved_0 = f.ReadLE<u16>();
   auto reserved_1 = f.ReadLE<u32>();
   auto reserved_2 = f.ReadLE<u32>();
+  auto reserved_3 = f.ReadLE<u32>();
 
-  if (reserved_0 != 0 || reserved_1 != 0 || reserved_2 != 0) return false;
+  if (reserved_0 != 0 || reserved_1 != 0 || reserved_2 != 0 || reserved_3 != 0) return false;
 
   f.Seek(0x10);
 
   auto ranchor = f.ReadLE<Vec4<f32>>();
 
-  if (ranchor.z < 0.0f || ranchor.w != 0.0f) return false;
+  if (!utl::math::IsFinite(ranchor) || ranchor.z <= 0.0f || ranchor.w != 0.0f) return false;
 
-  for (std::size_t i = 1; i < num_markers; i++) {
+  for (i16 i = 1; i < num_markers; i++) {
     auto m = f.ReadLE<Vec4<f32>>();
     if (!utl::math::IsFinite(m) || m.w != 0.0f) return false;
 
@@ -69,7 +68,7 @@ MinimapConfig Convert(const RMinimapConfig& rminimap) {
 
   minimap.markers.reserve(rminimap.num_markers - 1);
 
-  for (std::size_t i = 1; i < rminimap.num_markers; i++) {
+  for (i16 i = 1; i < rminimap.num_markers; i++) {
     auto& rmarker = rminimap.markers.at(i);
     minimap.markers.push_back({rmarker.x, rmarker.y, rmarker.z});
   }
@@ -82,10 +81,9 @@ RMinimapConfig Parse(Reader& f) {
 
   RMinimapConfig rminimap;
 
-  rminimap.num_markers = f.ReadLE<u32>();
+  rminimap.num_markers = f.ReadLE<i16>();
 
-  if (rminimap.num_markers == 0 || rminimap.num_markers > kMaxNumMarkers_)
-    NNL_THROW(ParseError(NNL_SRCTAG("the number of markers is invalid")));
+  if (rminimap.num_markers <= 0) NNL_THROW(ParseError(NNL_SRCTAG("the number of markers is invalid")));
 
   f.Seek(0x10);
 
@@ -114,7 +112,7 @@ void Export_(const MinimapConfig& minimap, Writer& f) {
 
   RMinimapConfig rminimap;
 
-  NNL_EXPECTS(minimap.markers.size() < kMaxNumMarkers_);
+  NNL_EXPECTS(!minimap.markers.empty() && minimap.markers.size() < std::numeric_limits<i16>::max());
   NNL_EXPECTS(utl::math::IsFinite(minimap.anchor_x));
   NNL_EXPECTS(utl::math::IsFinite(minimap.anchor_z));
   NNL_EXPECTS(minimap.pixels_per_unit > 0.0f);
@@ -131,7 +129,7 @@ void Export_(const MinimapConfig& minimap, Writer& f) {
     rminimap.markers.push_back({marker.x, marker.y, marker.z, 0.0f});
   }
 
-  f.WriteLE<u32>(rminimap.num_markers);
+  f.WriteLE<i16>(rminimap.num_markers);
   f.AlignData(0x10);
   f.WriteArrayLE(rminimap.markers);
 }

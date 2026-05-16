@@ -19,3 +19,22 @@ TEST(Minimap, ImportExport) {
 
   ASSERT_TRUE(bin_minimap == bin_minimap_re);
 }
+
+TEST(Minimap, Convert) {
+  auto mm = minimap::Import(bin_minimap);
+  auto spos = minimap::Convert(mm, 128);
+
+  auto mm_re = minimap::Convert(spos, 128);
+
+  ASSERT_FLOAT_EQ(mm.anchor_x, mm_re.anchor_x);
+  ASSERT_FLOAT_EQ(mm.anchor_z, mm_re.anchor_z);
+  ASSERT_FLOAT_EQ(mm.pixels_per_unit, mm_re.pixels_per_unit);
+  ASSERT_EQ(mm.markers.size(), mm_re.markers.size());
+  for (std::size_t i = 0; i < mm.markers.size(); i++) {
+    auto& m = mm.markers.at(i);
+    auto& m_re = mm_re.markers.at(i);
+    ASSERT_FLOAT_EQ(m.x, m_re.x);
+    ASSERT_FLOAT_EQ(m.y, m_re.y);
+    ASSERT_FLOAT_EQ(m.z, m_re.z);
+  }
+}

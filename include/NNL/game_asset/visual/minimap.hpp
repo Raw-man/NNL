@@ -147,10 +147,11 @@ namespace raw {
  */
 
 struct RMinimapConfig {
-  u32 num_markers = 0;
-  u32 reserved_0 = 0;
+  i16 num_markers = 0;
+  u16 reserved_0 = 0;
   u32 reserved_1 = 0;
   u32 reserved_2 = 0;
+  u32 reserved_3 = 0;
   std::vector<Vec4<f32>> markers;
 };
 
