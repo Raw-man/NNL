@@ -46,7 +46,6 @@ if(NNL_BUILD_TESTS)
       googletest
       GIT_REPOSITORY https://github.com/google/googletest.git
       GIT_TAG v1.17.0
-      DOWNLOAD_EXTRACT_TIMESTAMP TRUE
     )
 
     FetchContent_MakeAvailable(googletest)
@@ -75,7 +74,6 @@ FetchContent_Declare(
   tristripper
   GIT_REPOSITORY https://github.com/GPSnoopy/TriStripper.git
   GIT_TAG a591babacf2ec65a134d7a7a86e824ee98accad3
-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 
   SOURCE_SUBDIR src
 )
@@ -86,7 +84,6 @@ FetchContent_Declare(
   glm
   GIT_REPOSITORY https://github.com/g-truc/glm.git
   GIT_TAG 1.0.3
-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
 
@@ -94,7 +91,6 @@ FetchContent_Declare(
   json
   GIT_REPOSITORY https://github.com/nlohmann/json.git
   GIT_TAG v3.12.0
-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
 set(TINYGLTF_BUILD_LOADER_EXAMPLE OFF CACHE INTERNAL "" FORCE)
@@ -106,14 +102,12 @@ FetchContent_Declare(
   tinygltf
   GIT_REPOSITORY https://github.com/syoyo/tinygltf.git
   GIT_TAG v2.9.7
-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
 FetchContent_Declare(
   ordered-map
   GIT_REPOSITORY https://github.com/Tessil/ordered-map.git
   GIT_TAG v1.2.0
-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
 FetchContent_Declare(
@@ -122,7 +116,6 @@ FetchContent_Declare(
   GIT_TAG e6cd9561ea6dae43d41633797745789d142b691e
   # Prevents CMake from looking for a CMakeLists.txt that doesn't exist
   SOURCE_SUBDIR "OFF"
-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
 FetchContent_MakeAvailable(glm ordered-map stb tristripper json tinygltf)
@@ -302,6 +295,3 @@ target_link_libraries(NNL
         syoyo::tinygltf
         GPSnoopy::TriStripper
    )
-
-
-
