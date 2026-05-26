@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">NSUNI/NSLAR Library<span id="projectnumber">&#160;247c2ac</span>
+   <div id="projectname">NSUNI/NSLAR Library<span id="projectnumber">&#160;989a9bd</span>
    </div>
   </td>
  </tr>
@@ -103,8 +103,6 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:gad8c508941f1d439643b582744b0e66cb" id="r_gad8c508941f1d439643b582744b0e66cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#dd/d16/structnnl_1_1text_1_1BitmapFont">BitmapFont</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad8c508941f1d439643b582744b0e66cb">nnl::text::GenerateBitmapFont</a> (<a class="el" href="../../d8/d44/group__Text__Main.html#dd/dcf/structnnl_1_1text_1_1Text">Text</a> &amp;text, const std::filesystem::path &amp;font_path, const <a class="el" href="#d5/d42/structnnl_1_1text_1_1BitmapFontParams">BitmapFontParams</a> &amp;params={})</td></tr>
 <tr class="memdesc:gad8c508941f1d439643b582744b0e66cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a bitmap font from a .ttf or .otf font file.  <br /></td></tr>
-<tr class="memitem:ga1a2a106244cc963ac25131f3343f1629" id="r_ga1a2a106244cc963ac25131f3343f1629"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga1a2a106244cc963ac25131f3343f1629">nnl::text::GenerateFNT</a> (const <a class="el" href="../../d8/d44/group__Text__Main.html#dd/dcf/structnnl_1_1text_1_1Text">Text</a> &amp;text, const std::vector&lt; <a class="el" href="../../dc/ddd/group__FixedType.html#gabc7da91dc52c860dd84884740ba087c3">u8</a> &gt; &amp;advance_width, const std::vector&lt; <a class="el" href="../../d7/d31/group__STexture.html#dd/d47/structnnl_1_1STexture">STexture</a> &gt; &amp;bitmaps, int columns=-1)</td></tr>
-<tr class="memdesc:ga1a2a106244cc963ac25131f3343f1629"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a BMFont .fnt file.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <hr/><h2 id="header-inline_5Fclasses" class="groupheader">Class Documentation</h2>
@@ -365,51 +363,6 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="#dd/d16/structnnl_1_1text_1_1BitmapFont" title="Represents a bitmap font consisting of glyph atlases and advance widths.">BitmapFont</a> object representing the generated bitmap font.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#dd/d16/structnnl_1_1text_1_1BitmapFont" title="Represents a bitmap font consisting of glyph atlases and advance widths.">nnl::text::BitmapFont</a> </dd></dl>
-
-</div>
-</div>
-<a id="ga1a2a106244cc963ac25131f3343f1629" name="ga1a2a106244cc963ac25131f3343f1629"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1a2a106244cc963ac25131f3343f1629">&#9670;&#160;</a></span>GenerateFNT()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string nnl::text::GenerateFNT </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d8/d44/group__Text__Main.html#dd/dcf/structnnl_1_1text_1_1Text">Text</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="../../dc/ddd/group__FixedType.html#gabc7da91dc52c860dd84884740ba087c3">u8</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>advance_width</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="../../d7/d31/group__STexture.html#dd/d47/structnnl_1_1STexture">STexture</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>bitmaps</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>columns</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generates a BMFont .fnt file. </p>
-<p>This function creates a BMFont .fnt file using the provided data. The generated .fnt file can be utilized in Godot.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">text</td><td>The <a class="el" href="../../d8/d44/group__Text__Main.html#dd/dcf/structnnl_1_1text_1_1Text" title="Represents an in-game text archive.">Text</a> object containing the character data to be included in the .fnt file. </td></tr>
-    <tr><td class="paramname">advance_width</td><td>Advance width for each character. </td></tr>
-    <tr><td class="paramname">bitmaps</td><td>Character glyph bitmaps. </td></tr>
-    <tr><td class="paramname">columns</td><td>An optional parameter specifying the number of columns in the bitmap. If not provided, it's calculated automatically. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A string containing the contents of the generated .fnt file.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a href="https://docs.godotengine.org/en/stable/tutorials/ui/gui_using_fonts.html#bitmap-fonts">https://docs.godotengine.org/en/stable/tutorials/ui/gui_using_fonts.html#bitmap-fonts</a> </dd></dl>
 
 </div>
 </div>
