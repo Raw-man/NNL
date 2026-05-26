@@ -149,52 +149,6 @@ Text Convert(const std::vector<std::string>& stext, const std::unordered_map<u16
   return text;
 }
 
-std::string GenerateFNT(const Text& text, const std::vector<u8>& advance_width, const std::vector<STexture>& bitmaps,
-                        int columns) {
-  NNL_EXPECTS(!bitmaps.empty());
-  NNL_EXPECTS(columns == -1 || utl::math::IsPow2(columns));
-  if (columns == -1) {
-    std::size_t max_width = 16;
-
-    for (auto advance : advance_width) max_width = std::max<std::size_t>(max_width, advance);
-
-    max_width = utl::math::RoundUpPow2(max_width);
-
-    columns = bitmaps.at(0).width / max_width;
-  }
-
-  std::ostringstream out;
-  std::size_t bitmap_width = bitmaps.at(0).width;
-  std::size_t character_width = bitmaps.at(0).width / (std::size_t)columns;
-
-  out << "info face=\"\" size=" << character_width
-      << " bold=0 italic=0 charset=\"\" unicode=1 stretchH=100 smooth=1 aa=1 "
-         "padding=0,0,0,0 spacing=0,0 outline=0\n";
-  out << "common lineHeight=0 base=" << character_width << " scaleW=" << bitmap_width << " scaleH=" << bitmap_width
-      << " pages=" << bitmaps.size() << " packed=0 alphaChnl=0 redChnl=0 greenChnl=0 blueChnl=0\n";
-
-  for (std::size_t i = 0; i < bitmaps.size(); i++) {
-    out << "page id=" << i << " file=\"" << bitmaps.at(i).name << ".png\"\n";
-  }
-
-  // fake space
-  out << "chars count=" << text.characters.size() + 1 << "\n";
-
-  out << "char id=32   x=0     y=0     width=0    height=0    xoffset=0   "
-         "yoffset=0     xadvance="
-      << character_width / 2 << "    page=0  chnl=15\n";
-
-  for (std::size_t i = 0; i < text.characters.size(); i++) {
-    out << "char id=" << text.characters.at(i) << " x=" << character_width * (i % columns)
-        << "     y=" << character_width * ((i / columns) % columns) << "     width=" << character_width
-        << "    height=" << character_width
-        << "    xoffset=0    yoffset=0     xadvance=" << (i16)advance_width.at(i) + 2
-        << "     page=" << i / (columns * columns) << "  chnl=15\n";
-  }
-
-  return out.str();
-}
-
 static BitmapFont GenerateBitmapFont_(Text& text, BufferView font_file, const BitmapFontParams& params) {
   stbtt_fontinfo info;
 

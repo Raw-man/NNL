@@ -326,26 +326,6 @@ struct BitmapFontParams {
 BitmapFont GenerateBitmapFont(Text& text, const std::filesystem::path& font_path, const BitmapFontParams& params = {});
 
 BitmapFont GenerateBitmapFont(Text& text, BufferView font_file, const BitmapFontParams& params = {});
-
-/**
- * @brief Generates a BMFont .fnt file.
- *
- * This function creates a BMFont .fnt file using the provided data. The
- * generated .fnt file can be utilized in Godot.
- *
- * @param text The Text object containing the character data to be included in
- * the .fnt file.
- * @param advance_width Advance width for
- * each character.
- * @param bitmaps Character glyph bitmaps.
- * @param columns An optional parameter specifying the number of columns in the
- * bitmap. If not provided, it's calculated automatically.
- * @return A string containing the contents of the generated .fnt file.
- *
- * @see https://docs.godotengine.org/en/stable/tutorials/ui/gui_using_fonts.html#bitmap-fonts
- */
-std::string GenerateFNT(const Text& text, const std::vector<u8>& advance_width, const std::vector<STexture>& bitmaps,
-                        int columns = -1);
 /** @} */
 
 namespace raw {
