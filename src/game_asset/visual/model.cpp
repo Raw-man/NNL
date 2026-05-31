@@ -513,14 +513,14 @@ Mesh Convert(SMesh&& smesh, const ConvertParam& param) {
             primitive.vertex_index_buffer =
                 utl::data::ReinterpretContainer<u8>(utl::data::CastContainer<u16>(out_prim.Indices));
         } else {
-          std::vector<SVertex> vertices;
-          vertices.reserve(out_prim.Indices.size());
+          std::vector<SVertex> plain_vertices;
+          plain_vertices.reserve(out_prim.Indices.size());
 
           for (std::size_t i = 0; i < out_prim.Indices.size(); i++) {
-            vertices.push_back(vertices.at(out_prim.Indices.at(i)));
+            plain_vertices.push_back(vertices.at(out_prim.Indices.at(i)));
           }
 
-          primitive.vertex_index_buffer = vertexde::Encode(vertices, vertex_type_local, submesh.bone_indices);
+          primitive.vertex_index_buffer = vertexde::Encode(plain_vertices, vertex_type_local, submesh.bone_indices);
         }
 
         submesh.display_list.push_back(GeCmd::kSetVertexType | submesh.vertex_format);
